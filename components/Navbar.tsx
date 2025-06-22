@@ -17,7 +17,7 @@ export default function Navbar() {
             >
               Products
             </Link>
-            <Link href="/about" className="text-white hover:text-red-200 font-medium text-sm">
+            <Link href="/about" className="text-white hover:text-red-200 font-medium text-sm border-b-2 border-transparent hover:border-red-200">
               About Us
             </Link>
             <Link href="/blog" className="text-white hover:text-red-200 font-medium text-sm">
