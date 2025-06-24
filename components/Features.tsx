@@ -2,7 +2,7 @@ import { Printer, Clock, Shield } from "lucide-react"
 
 export default function Features() {
   return (
-    <section className="bg-white py-12">
+    <section className="py-12 bg-gray-100">
       <div className="container mx-auto px-4">
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -49,8 +49,9 @@ export default function Features() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="bg-red-600 text-white text-center py-4 rounded-lg">
-          <p className="font-bold text-lg">Free Shipping within Lagos for Order Above ₦20,0000</p>
+        <div className=" text-white text-center py-4 rounded-lg">
+          <p className="font-bold text-gray-700 text-lg">Free Shipping within Lagos for Order Above ₦20,0000</p>
+            <div className="border-t border-gray-300 my-4"></div>
         </div>
       </div>
     </section>

@@ -1,18 +1,20 @@
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
-import Link from "next/link"
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="bg-red-600 p-2 rounded">
                 <span className="text-white font-bold text-xl">P</span>
               </div>
-              <span className="text-red-600 font-bold text-lg">De palash ltd.</span>
+              <span className="text-red-600 font-bold text-lg">
+                De palash ltd.
+              </span>
             </div>
             <address className="text-gray-300 not-italic leading-relaxed">
               29 Shipeolu street, elediye
@@ -23,30 +25,63 @@ export default function Footer() {
             </address>
           </div>
 
-          {/* Navigation & Social */}
-          <div className="space-y-6">
+        
+          <div className="">
             {/* Navigation Links */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Home</h3>
+            <div className="pr-2">
               <div className="space-y-2">
-                <Link href="/about" className="block text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
                   About Us
                 </Link>
-                <Link href="/contact" className="block text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/contact"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
                   Contact
                 </Link>
-                <Link href="/track-order" className="block text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/track-order"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
                   Track Order
                 </Link>
-                <Link href="/blog" className="block text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/blog"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
                   Blog
+                </Link>
+                <Link
+                  href="/terms"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  Terms and Conditions
+                </Link>
+                <Link
+                  href="/priivacy"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  Privacy Policy
                 </Link>
               </div>
             </div>
+          </div>
 
-            {/* Social Media */}
-            <div>
-              <h3 className="text-white font-semibold mb-4 underline">Social Media</h3>
+          {/* Social Media */}
+          <div className="space-y-4">
+            
+              <h3 className="text-white font-semibold mb-4 underline">
+                Social Media
+              </h3>
               <p className="text-gray-300 text-sm mb-4">
                 Stay connected with us on social media.
                 <br />
@@ -55,20 +90,32 @@ export default function Footer() {
                 how we can improve. Thank you.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   <Facebook className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   <Twitter className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   <Instagram className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   <Linkedin className="w-6 h-6" />
                 </a>
               </div>
-            </div>
+            
           </div>
 
           {/* Newsletter */}
@@ -96,9 +143,11 @@ export default function Footer() {
       {/* Copyright Bar */}
       <div className="bg-red-600 py-3">
         <div className="container mx-auto px-4">
-          <p className="text-center text-white text-sm">Copyright © 2023 DePalashltd. All rights reserved.</p>
+          <p className="text-center text-white text-sm">
+            Copyright © 2023 DePalashltd. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
