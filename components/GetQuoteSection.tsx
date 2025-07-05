@@ -1,4 +1,5 @@
 import Image from "next/image"
+import getQuoteImageBg from "@/public/assests/get-quote-img/getQuote-img-bg.png"
 
 export default function GetQuote() {
   const whatsappNumber = "+2347039017359"
@@ -14,10 +15,10 @@ export default function GetQuote() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/placeholder.svg?height=600&width=1200"
+            src={getQuoteImageBg}
             alt="Colorful printing materials and papers"
             fill
-            className="object-cover opacity-60"
+            className="object-cover opacity-100"
             priority
           />
           <div className="absolute inset-0 bg-black bg-opacity-70"></div>

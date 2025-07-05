@@ -4,6 +4,8 @@ import type React from "react"
 
 import { useState } from "react"
 import { ChevronRight } from "lucide-react"
+import Image from "next/image"
+import trackOrderImage from "@/public/assests/red-delivery-car-deliver-express-shipping-fast-delivery-with-arrow-graph-background-3d-rendering 1.png"
 
 export default function TrackOrderHero() {
   const [orderNumber, setOrderNumber] = useState("")
@@ -31,47 +33,10 @@ export default function TrackOrderHero() {
             {/* Mobile Phone with Tracking Steps */}
             <div className="relative z-10 flex items-center justify-center">
               <div className="relative">
-                {/* Phone Frame */}
-                <div className="w-48 h-80 bg-gray-800 rounded-3xl p-2 shadow-2xl">
-                  <div className="w-full h-full bg-white rounded-2xl p-4 flex flex-col">
-                    {/* Tracking Steps */}
-                    <div className="space-y-4 mt-8">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-4 h-4 bg-red-600 rounded-full"></div>
-                        <div className="flex-1 h-1 bg-red-600 rounded"></div>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-4 h-4 bg-red-600 rounded-full"></div>
-                        <div className="flex-1 h-1 bg-red-600 rounded"></div>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-                        <div className="flex-1 h-1 bg-gray-300 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Delivery Truck */}
-                <div className="absolute -right-20 top-1/2 transform -translate-y-1/2">
-                  <div className="relative">
-                    {/* Truck Body */}
-                    <div className="w-32 h-20 bg-red-600 rounded-lg relative">
-                      {/* Truck Cab */}
-                      <div className="absolute -left-8 top-2 w-12 h-16 bg-red-600 rounded-l-lg"></div>
-                      {/* Truck Door Lines */}
-                      <div className="absolute right-2 top-2 bottom-2 w-0.5 bg-white"></div>
-                      <div className="absolute right-6 top-2 bottom-2 w-0.5 bg-white"></div>
-                      {/* Wheels */}
-                      <div className="absolute -bottom-2 left-2 w-6 h-6 bg-gray-800 rounded-full"></div>
-                      <div className="absolute -bottom-2 right-8 w-6 h-6 bg-gray-800 rounded-full"></div>
-                    </div>
-
-                    {/* Packages */}
-                    <div className="absolute -bottom-8 -left-4 w-6 h-6 bg-yellow-600 rounded"></div>
-                    <div className="absolute -bottom-6 left-8 w-4 h-4 bg-yellow-600 rounded"></div>
-                  </div>
-                </div>
+                <Image 
+               src={trackOrderImage}
+               alt="" 
+                />
               </div>
             </div>
           </div>

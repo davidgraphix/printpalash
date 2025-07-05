@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import AboutImageBg from "@/public/assests/about-image/about-bg-img.png";
 import Features from "@/components/Features"
 
 export default function AboutSection() {
@@ -10,10 +11,11 @@ export default function AboutSection() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/placeholder.svg?height=400&width=1200"
+            src={AboutImageBg}
+           
             alt="Professional printing machine with colorful prints"
             fill
-            className="object-cover opacity-80"
+            className="object-cover opacity-100"
             priority
           />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
