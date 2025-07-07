@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 const products = [
   {
@@ -74,7 +74,7 @@ const products = [
     unit: "per 100",
     image: "/placeholder.svg?height=200&width=200",
   },
-]
+];
 
 export default function PopularProducts() {
   return (
@@ -83,7 +83,10 @@ export default function PopularProducts() {
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900">Popular Products</h2>
-          <Link href="/products" className="text-red-600 hover:text-red-700 font-medium">
+          <Link
+            href="/products"
+            className="text-red-600 hover:text-red-700 font-medium"
+          >
             See all products
           </Link>
         </div>
@@ -97,15 +100,26 @@ export default function PopularProducts() {
             >
               {/* Product Image */}
               <div className="aspect-square bg-gray-200 relative">
-                <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+                <Image
+                  src={product.image || "/placeholder.svg"}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Product Info */}
               <div className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">STARTING AT</p>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">
+                  STARTING AT
+                </p>
                 <div className="flex items-baseline space-x-1">
-                  <span className="text-xl font-bold text-red-600">{product.price}</span>
+                  <span className="text-xl font-bold text-red-600">
+                    {product.price}
+                  </span>
                   <span className="text-sm text-gray-500">{product.unit}</span>
                 </div>
               </div>
@@ -114,5 +128,5 @@ export default function PopularProducts() {
         </div>
       </div>
     </section>
-  )
+  );
 }
