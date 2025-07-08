@@ -202,65 +202,116 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
           </div>
         </div>
         {/* Specifications Section */}
-        <div className="mt-16 grid lg:grid-cols-[2fr_1fr] gap-12">
+        <div className="mt-16 grid lg:grid-cols-[2fr_1fr] gap-24">
           {/* Specifications */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red-1000">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red-600">
               SPECIFICATIONS
             </h2>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-16">
               {/* Paper Thickness */}
-              <div className="mb-10">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  PAPER THICKNESS
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    {
-                      id: "thick-300gsm",
-                      label: "Thick 300gsm",
-                      image: "/placeholder.svg?height=100&width=100",
-                    },
-                    {
-                      id: "super-thick-600gsm",
-                      label: "Super Thick 600gsm",
-                      image: "/placeholder.svg?height=100&width=100",
-                    },
-                  ].map((option) => (
-                    <div key={option.id} className="flex flex-col items-center">
+              <div>
+                <div className="mb-10">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    PAPER THICKNESS
+                  </h3>
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      {
+                        id: "thick-300gsm",
+                        label: "Thick 300gsm",
+                        image: "/placeholder.svg?height=100&width=100",
+                      },
+                      {
+                        id: "super-thick-600gsm",
+                        label: "Super Thick 600gsm",
+                        image: "/placeholder.svg?height=100&width=100",
+                      },
+                    ].map((option) => (
                       <div
-                        onClick={() =>
-                          handleSpecChange("paperThickness", option.id)
-                        }
-                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
-                          selectedSpecs.paperThickness === option.id
-                            ? "border-red-600"
-                            : "border-transparent"
-                        }`}
+                        key={option.id}
+                        className="flex flex-col items-center"
                       >
-                        <Image
-                          src={option.image}
-                          alt={option.label}
-                          width={100}
-                          height={100}
-                          className="w-full h-full object-cover rounded-md"
-                        />
+                        <div
+                          onClick={() =>
+                            handleSpecChange("paperThickness", option.id)
+                          }
+                          className={`aspect-square bg-gray-200 rounded-sm cursor-pointer border-2 transition-colors w-full ${
+                            selectedSpecs.paperThickness === option.id
+                              ? "border-red-600"
+                              : "border-transparent"
+                          }`}
+                        >
+                          <Image
+                            src={option.image}
+                            alt={option.label}
+                            width={100}
+                            height={100}
+                            className="w-full h-full object-cover rounded-md"
+                          />
+                        </div>
+                        <span className="mt-2 text-xs font-medium text-gray-700 text-center">
+                          {option.label}
+                        </span>
                       </div>
-                      <span className="mt-2 text-xs font-medium text-gray-700 text-center">
-                        {option.label}
-                      </span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+
+                {/* Edges */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    EDGES
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      {
+                        id: "square-edges",
+                        label: "Square Edges",
+                        image: "/placeholder.svg?height=100&width=100",
+                      },
+                      {
+                        id: "rounded-edges",
+                        label: "Rounded Edges",
+                        image: "/placeholder.svg?height=100&width=100",
+                      },
+                    ].map((option) => (
+                      <div
+                        key={option.id}
+                        className="flex flex-col items-center"
+                      >
+                        <div
+                          onClick={() => handleSpecChange("edges", option.id)}
+                          className={`aspect-square bg-gray-200 rounded-sm cursor-pointer hover:border-2 transition-colors w-full ${
+                            selectedSpecs.edges === option.id
+                              ? "border-red-600"
+                              : "border-transparent"
+                          }`}
+                        >
+                          <Image
+                            src={option.image}
+                            alt={option.label}
+                            width={100}
+                            height={100}
+                            className="w-full h-full object-cover rounded-md"
+                          />
+                        </div>
+                        <span className="mt-2 text-xs font-medium text-gray-700 text-center">
+                          {option.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Lamination */}
               <div className="mb-10">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   LAMINATION
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-6">
                   {[
                     {
                       id: "matte-lamination",
@@ -278,51 +329,8 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         onClick={() =>
                           handleSpecChange("lamination", option.id)
                         }
-                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
+                        className={`aspect-square bg-gray-200 rounded-sm cursor-pointer border-2 transition-colors w-full ${
                           selectedSpecs.lamination === option.id
-                            ? "border-red-600"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <Image
-                          src={option.image}
-                          alt={option.label}
-                          width={100}
-                          height={100}
-                          className="w-full h-full object-cover rounded-md"
-                        />
-                      </div>
-                      <span className="mt-2 text-xs font-medium text-gray-700 text-center">
-                        {option.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Edges */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  EDGES
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    {
-                      id: "square-edges",
-                      label: "Square Edges",
-                      image: "/placeholder.svg?height=100&width=100",
-                    },
-                    {
-                      id: "rounded-edges",
-                      label: "Rounded Edges",
-                      image: "/placeholder.svg?height=100&width=100",
-                    },
-                  ].map((option) => (
-                    <div key={option.id} className="flex flex-col items-center">
-                      <div
-                        onClick={() => handleSpecChange("edges", option.id)}
-                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
-                          selectedSpecs.edges === option.id
                             ? "border-red-600"
                             : "border-transparent"
                         }`}
@@ -370,7 +378,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                   <div key={option.id} className="flex flex-col items-center">
                     <div
                       onClick={() => handleSpecChange("shipping", option.id)}
-                      className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-20 h-20 flex items-center justify-center ${
+                      className={`aspect-square bg-gray-200 rounded-sm cursor-pointer border-2 transition-colors w-full flex items-center justify-center ${
                         selectedSpecs.shipping === option.id
                           ? "border-red-600"
                           : "border-transparent"
