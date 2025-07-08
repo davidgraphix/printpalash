@@ -1,4 +1,4 @@
-import { Printer, Clock, Shield } from "lucide-react"
+import { Printer, Clock, Shield } from "lucide-react";
 
 export default function Features() {
   return (
@@ -12,10 +12,12 @@ export default function Features() {
               <Printer className="w-8 h-8 text-red-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Quality Printing</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                Quality Printing
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Experience the transformative power of quality print - where every detail elevates your vision from
-                ordinary.
+                Experience the transformative power of quality print - where
+                every detail elevates your vision from ordinary.
               </p>
             </div>
           </div>
@@ -26,9 +28,12 @@ export default function Features() {
               <Clock className="w-8 h-8 text-red-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Rapid Turnaround</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                Rapid Turnaround
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Our order are completed within 3 to 7 business days, with quality always guaranteed.
+                Our order are completed within 3 to 7 business days, with
+                quality always guaranteed.
               </p>
             </div>
           </div>
@@ -39,21 +44,23 @@ export default function Features() {
               <Shield className="w-8 h-8 text-red-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Money Back Guarantee</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                Money Back Guarantee
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                While most clients arrive to resolve issues with buyers, we offer a refund if a satisfactory solution
-                cannot be achieved.
+                While most clients arrive to resolve issues with buyers, we
+                offer a refund if a satisfactory solution cannot be achieved.
               </p>
             </div>
           </div>
         </div>
+        <div className="border-t border-gray-300 my-0"></div>
 
-        {/* Bottom Banner */}
+        {/* Bottom Banner
         <div className=" text-white text-center py-4 rounded-lg">
           <p className="font-bold text-gray-700 text-lg">Free Shipping within Lagos for Order Above ₦20,0000</p>
-            <div className="border-t border-gray-300 my-4"></div>
-        </div>
+          </div> */}
       </div>
     </section>
-  )
+  );
 }

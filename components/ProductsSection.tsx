@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Printer, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -232,8 +232,8 @@ export default function ProductsSection() {
               {/* Quality Printing */}
               <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs">✓</span>
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full">
+                    <Printer className="w-8 h-8 text-red-600" />
                   </div>
                 </div>
                 <div>
@@ -360,11 +360,11 @@ export default function ProductsSection() {
                       {/* Action Buttons */}
                       <div className="flex space-x-2">
                         <button className="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded transition-colors">
-                          Add to Cart
+                          Order Now
                         </button>
-                        <button className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition-colors">
+                        {/* <button className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition-colors">
                           <span className="text-gray-600">♡</span>
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>

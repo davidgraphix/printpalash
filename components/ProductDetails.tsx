@@ -201,134 +201,192 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
             </div>
           </div>
         </div>
-
         {/* Specifications Section */}
-        <div className="mt-16 grid lg:grid-cols-2 gap-12">
+        <div className="mt-16 grid lg:grid-cols-[2fr_1fr] gap-12">
           {/* Specifications */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red-1000">
               SPECIFICATIONS
             </h2>
 
-            {/* Paper Thickness */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                PAPER THICKNESS
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { id: "thick-300gsm", label: "Thick 300gsm" },
-                  { id: "super-thick-600gsm", label: "Super Thick 600gsm" },
-                ].map((option) => (
-                  <div
-                    key={option.id}
-                    onClick={() =>
-                      handleSpecChange("paperThickness", option.id)
-                    }
-                    className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors ${
-                      selectedSpecs.paperThickness === option.id
-                        ? "border-red-600"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <div className="w-full h-full flex items-end p-4">
-                      <span className="text-sm font-medium text-gray-700">
+            <div className="grid grid-cols-2 gap-6">
+              {/* Paper Thickness */}
+              <div className="mb-10">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  PAPER THICKNESS
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    {
+                      id: "thick-300gsm",
+                      label: "Thick 300gsm",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                    {
+                      id: "super-thick-600gsm",
+                      label: "Super Thick 600gsm",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                  ].map((option) => (
+                    <div key={option.id} className="flex flex-col items-center">
+                      <div
+                        onClick={() =>
+                          handleSpecChange("paperThickness", option.id)
+                        }
+                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
+                          selectedSpecs.paperThickness === option.id
+                            ? "border-red-600"
+                            : "border-transparent"
+                        }`}
+                      >
+                        <Image
+                          src={option.image}
+                          alt={option.label}
+                          width={100}
+                          height={100}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                      <span className="mt-2 text-xs font-medium text-gray-700 text-center">
                         {option.label}
                       </span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Lamination */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                LAMINATION
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { id: "matte-lamination", label: "Matte Lamination" },
-                  { id: "gloss-lamination", label: "Gloss Lamination" },
-                ].map((option) => (
-                  <div
-                    key={option.id}
-                    onClick={() => handleSpecChange("lamination", option.id)}
-                    className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors ${
-                      selectedSpecs.lamination === option.id
-                        ? "border-red-600"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <div className="w-full h-full flex items-end p-4">
-                      <span className="text-sm font-medium text-gray-700">
+              {/* Lamination */}
+              <div className="mb-10">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  LAMINATION
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    {
+                      id: "matte-lamination",
+                      label: "Matte Lamination",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                    {
+                      id: "gloss-lamination",
+                      label: "Gloss Lamination",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                  ].map((option) => (
+                    <div key={option.id} className="flex flex-col items-center">
+                      <div
+                        onClick={() =>
+                          handleSpecChange("lamination", option.id)
+                        }
+                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
+                          selectedSpecs.lamination === option.id
+                            ? "border-red-600"
+                            : "border-transparent"
+                        }`}
+                      >
+                        <Image
+                          src={option.image}
+                          alt={option.label}
+                          width={100}
+                          height={100}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                      <span className="mt-2 text-xs font-medium text-gray-700 text-center">
                         {option.label}
                       </span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Edges */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                EDGES
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { id: "square-edges", label: "Square Edges" },
-                  { id: "rounded-edges", label: "Rounded Edges" },
-                ].map((option) => (
-                  <div
-                    key={option.id}
-                    onClick={() => handleSpecChange("edges", option.id)}
-                    className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors ${
-                      selectedSpecs.edges === option.id
-                        ? "border-red-600"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <div className="w-full h-full flex items-end p-4">
-                      <span className="text-sm font-medium text-gray-700">
+              {/* Edges */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  EDGES
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    {
+                      id: "square-edges",
+                      label: "Square Edges",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                    {
+                      id: "rounded-edges",
+                      label: "Rounded Edges",
+                      image: "/placeholder.svg?height=100&width=100",
+                    },
+                  ].map((option) => (
+                    <div key={option.id} className="flex flex-col items-center">
+                      <div
+                        onClick={() => handleSpecChange("edges", option.id)}
+                        className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-full ${
+                          selectedSpecs.edges === option.id
+                            ? "border-red-600"
+                            : "border-transparent"
+                        }`}
+                      >
+                        <Image
+                          src={option.image}
+                          alt={option.label}
+                          width={100}
+                          height={100}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                      <span className="mt-2 text-xs font-medium text-gray-700 text-center">
                         {option.label}
                       </span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Shipping */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red6900">
               SHIPPING
             </h2>
-
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 SHIPPING
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { id: "standard", label: "Standard" },
-                  { id: "express", label: "Express" },
+                  {
+                    id: "standard",
+                    label: "Standard",
+                    image: "/placeholder.svg?height=100&width=100",
+                  },
+                  {
+                    id: "express",
+                    label: "Express",
+                    image: "/placeholder.svg?height=100&width=100",
+                  },
                 ].map((option) => (
-                  <div
-                    key={option.id}
-                    onClick={() => handleSpecChange("shipping", option.id)}
-                    className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors ${
-                      selectedSpecs.shipping === option.id
-                        ? "border-red-600"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <div className="w-full h-full flex items-end p-4">
-                      <span className="text-sm font-medium text-gray-700">
-                        {option.label}
-                      </span>
+                  <div key={option.id} className="flex flex-col items-center">
+                    <div
+                      onClick={() => handleSpecChange("shipping", option.id)}
+                      className={`aspect-square bg-gray-200 rounded-lg cursor-pointer border-2 transition-colors w-20 h-20 flex items-center justify-center ${
+                        selectedSpecs.shipping === option.id
+                          ? "border-red-600"
+                          : "border-transparent"
+                      }`}
+                    >
+                      <Image
+                        src={option.image}
+                        alt={option.label}
+                        width={100}
+                        height={100}
+                        className="w-full h-full object-cover rounded-"
+                      />
                     </div>
+                    <span className="mt-2 text-xs font-medium text-gray-700 text-center">
+                      {option.label}
+                    </span>
                   </div>
                 ))}
               </div>
