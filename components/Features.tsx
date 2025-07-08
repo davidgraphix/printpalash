@@ -2,7 +2,7 @@ import { Printer, Clock, Shield } from "lucide-react";
 
 export default function Features() {
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="py-12 bg-gray-200">
       <div className="container mx-auto px-4">
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">

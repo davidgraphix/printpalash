@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -44,27 +44,33 @@ const testimonials = [
       "PrintPalash transformed our marketing materials. The vibrant colors and sharp prints really make our brand stand out. Truly the print kings of Nigeria!",
     rating: 5,
   },
-]
+];
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-slide functionality
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1))
-    }, 4000) // Change slide every 4 seconds
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1
+      );
+    }, 4000); // Change slide every 4 seconds
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1))
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1
+    );
+  };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 3 : prevIndex - 1))
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 3 : prevIndex - 1
+    );
+  };
 
   return (
     <section className="py-16 bg-white">
@@ -72,9 +78,11 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
-            <div className="flex-1 h-px bg-gray-300"></div>
-            <h2 className="px-8 text-2xl font-bold text-gray-900">What customers say about us</h2>
-            <div className="flex-1 h-px bg-gray-300"></div>
+            <div className="flex-1 h-px bg-gray-500"></div>
+            <h2 className="px-8 text-2xl font-bold text-gray-900">
+              What customers say about us
+            </h2>
+            <div className="flex-1 h-px bg-gray-500"></div>
           </div>
         </div>
 
@@ -91,19 +99,29 @@ export default function Testimonials() {
                     {/* Rating Stars */}
                     <div className="flex mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                        <svg
+                          key={i}
+                          className="w-5 h-5 text-yellow-400 fill-current"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                         </svg>
                       ))}
                     </div>
 
                     {/* Testimonial Content */}
-                    <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.content}"</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      "{testimonial.content}"
+                    </p>
 
                     {/* Customer Info */}
                     <div>
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.company}</p>
+                      <h4 className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {testimonial.company}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -141,5 +159,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import { Search } from "lucide-react"
-import Image from "next/image"
-import heroBackground from "../public/assests/heroBg.png"
-import productOneImg from "../public/assests/image-items/product1.png"
-import productTwoImg from "../public/assests/image-items/product2.png"
-import productThree from "../public/assests/image-items/product3.png"
+import { Search } from "lucide-react";
+import Image from "next/image";
+import heroBackground from "../public/assests/heroBg.png";
+import productOneImg from "../public/assests/image-items/product1.png";
+import productTwoImg from "../public/assests/image-items/product2.png";
+import productThree from "../public/assests/image-items/product3.png";
 
 export default function Hero() {
   return (
@@ -13,26 +13,31 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-4">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Transforming Your <span className="text-red-600">Vision</span> into Vibrant{" "}
+              <h1 className="text-lg md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+                Transforming Your <br />{" "}
+                <span className="text-red-600">Vision</span> into Vibrant <br />
                 <span className="text-red-600">Reality</span>
               </h1>
-              <p className="text-lg text-gray-600 font-medium">Where Every Print Tells Your Story</p>
+              <p className="text-lg text-gray-600 font-medium">
+                Where Every Print Tells Your Story
+              </p>
             </div>
 
             {/* Get Started Button */}
-            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
               Get Started
             </button>
 
             {/* Search Bar */}
             <div className="space-y-3">
-              <p className="text-gray-700 font-medium">What are you printing today?</p>
+              <p className="text-gray-700 font-medium">
+                What are you printing today?
+              </p>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="search for flyers, paper bag, business card, e.t.c."
-                  className="w-full py-3 px-5 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400"
+                  className="w-full py-3 px-5 pr-12 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400"
                 />
                 <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               </div>
@@ -47,15 +52,15 @@ export default function Hero() {
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-red-600 rounded-full -z-10"></div>
 
               {/* Main Person Image */}
-              <div className="relative z-10">
-              <Image
-                src={heroBackground}
-                alt="Person with VR headset"
-                width={750}
-                height={800}
-                className="mx-auto"
-                priority
-              />
+              <div className="relative ">
+                <Image
+                  src={heroBackground}
+                  alt="Person with VR headset"
+                  width={750}
+                  height={800}
+                  className="mx-auto"
+                  priority
+                />
               </div>
             </div>
 
@@ -63,13 +68,13 @@ export default function Hero() {
             {/* Bag */}
             <div className="absolute top-8 left-8 animate-bounce">
               {/* <div className="bg-white rounded-lg shadow-lg p-"> */}
-                <Image
-                  src={productOneImg}
-                  alt="Custom Bag"
-                  width={120}
-                  height={120}
-                  className="rounded"
-                />
+              <Image
+                src={productOneImg}
+                alt="Custom Bag"
+                width={120}
+                height={120}
+                className="rounded"
+              />
               {/* </div> */}
             </div>
 
@@ -92,13 +97,13 @@ export default function Hero() {
             {/* T-Shirt */}
             <div className="absolute bottom-20 left-4 animate-bounce delay-300">
               {/* <div className="bg-white rounded-lg shadow-lg p-3"> */}
-                <Image
-                  src={productTwoImg}
-                  alt="Custom T-Shirt"
-                  width={60}
-                  height={70}
-                  className="rounded"
-                />
+              <Image
+                src={productTwoImg}
+                alt="Custom T-Shirt"
+                width={60}
+                height={70}
+                className="rounded"
+              />
               {/* </div> */}
             </div>
 
@@ -109,5 +114,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
