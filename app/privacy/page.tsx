@@ -1,7 +1,7 @@
-import Footer from '@/components/Footer'
-import PrivacyPolicy from '@/components/PrivacyPolicyPage'
-import TrustedBrands from '@/components/TrustedBrands'
-import React from 'react'
+import Footer from "@/components/Footer/Footer";
+import PrivacyPolicy from "@/components/Privacy-policy/PrivacyPolicyPage";
+import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
+import React from "react";
 
 const page = () => {
   return (
@@ -10,7 +10,7 @@ const page = () => {
       <TrustedBrands />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

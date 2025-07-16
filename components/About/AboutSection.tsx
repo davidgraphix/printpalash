@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AboutImageBg from "@/public/assests/about-image/about-bg-img.png";
 import woodenImg from "@/public/assests/about-image/Group 22.png";
-import Features from "@/components/Features";
+import Features from "@/components/Features/Features";
 
 export default function AboutSection() {
   return (

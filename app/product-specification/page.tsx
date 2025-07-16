@@ -1,6 +1,6 @@
-import Features from "@/components/Features";
-import Footer from "@/components/Footer";
-import ProductDetails from "@/components/ProductDetails";
+import Features from "@/components/Features/Features";
+import Footer from "@/components/Footer/Footer";
+import ProductDetails from "@/components/Products/ProductDetails";
 import React from "react";
 
 const productSpecification = () => {

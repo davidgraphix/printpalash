@@ -7,12 +7,12 @@ import productThree from "../public/assests/image-items/product3.png";
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-pink-50 to-white overflow-hidden">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative bg-pink-100 to-pink overflow-hidden">
+      <div className="">
+        <div className="container mx-auto pt-16  grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-4">
-            <div className="space-y-4">
+          <div className="space-y-6">
+            <div className="space-y-2">
               <h1 className="text-lg md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
                 Transforming Your <br />{" "}
                 <span className="text-red-600">Vision</span> into Vibrant <br />
@@ -21,15 +21,15 @@ export default function Hero() {
               <p className="text-lg text-gray-600 font-medium">
                 Where Every Print Tells Your Story
               </p>
+
+              {/* Get Started Button */}
+              <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
+                Get Started
+              </button>
             </div>
 
-            {/* Get Started Button */}
-            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
-              Get Started
-            </button>
-
             {/* Search Bar */}
-            <div className="space-y-3">
+            <div className="space-y-1">
               <p className="text-gray-700 font-medium">
                 What are you printing today?
               </p>
@@ -49,15 +49,14 @@ export default function Hero() {
             {/* Main Hero Image with Red Circle Background */}
             <div className="relative mt-16 scale-10">
               {/* Red Circle Background */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-red-600 rounded-full -z-10"></div>
 
               {/* Main Person Image */}
-              <div className="relative ">
+              <div className="relative">
                 <Image
                   src={heroBackground}
                   alt="Person with VR headset"
-                  width={750}
-                  height={800}
+                  width={950}
+                  height={1000}
                   className="mx-auto"
                   priority
                 />

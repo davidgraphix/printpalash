@@ -1,9 +1,9 @@
-import Hero from "@/components/Hero"
-import Features from "@/components/Features"
-import PopularProducts from "@/components/PopularProducts"
-import TrustedBrands from "@/components/TrustedBrands"
-import Testimonials from "@/components/Textimonials"
-import Footer from "@/components/Footer"
+import Hero from "@/components/Home/Hero";
+import Features from "@/components/Features/Features";
+import PopularProducts from "@/components/Products/PopularProducts";
+import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
+import Testimonials from "@/components/Testimonials/Testimonials";
+import Footer from "@/components/Footer/Footer";
 
 export default function HomePage() {
   return (
@@ -15,5 +15,5 @@ export default function HomePage() {
       <Testimonials />
       <Footer />
     </div>
-  )
+  );
 }

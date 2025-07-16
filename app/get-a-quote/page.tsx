@@ -1,16 +1,16 @@
-import Features from '@/components/Features';
-import Footer from '@/components/Footer';
-import GetQuoteSection from '@/components/GetQuoteSection';
-import React from 'react'
+import Features from "@/components/Features/Features";
+import Footer from "@/components/Footer/Footer";
+import GetQuoteSection from "@/components/Quote/GetQuoteSection";
+import React from "react";
 
 const QuotePage = () => {
   return (
     <div>
       <GetQuoteSection />
-       <Features />
+      <Features />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default QuotePage;
