@@ -1,8 +1,8 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
-import heroBackground from "../public/assests/heroBg.png";
-import productOneImg from "../public/assests/image-items/product1.png";
-import productTwoImg from "../public/assests/image-items/product2.png";
+import heroBg from "@/public/assests/heroBg.png";
+import productOneImg from "@/public/assests/image-items/product1.png";
+import productTwoImg from "@/public/assests/image-items/product2.png";
 import productThree from "../public/assests/image-items/product3.png";
 
 export default function Hero() {
@@ -53,7 +53,7 @@ export default function Hero() {
               {/* Main Person Image */}
               <div className="relative">
                 <Image
-                  src={heroBackground}
+                  src={heroBg}
                   alt="Person with VR headset"
                   width={950}
                   height={1000}
