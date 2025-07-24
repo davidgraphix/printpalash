@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Printer, Search } from "lucide-react";
+// import { generateSlug } from "@/utils/slug";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,11 +36,17 @@ const categories = [
   "Wedding Stationery",
 ];
 
-// Sample products data organized by category
+const generateSlug = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
+
 const productsData = {
   "Business Cards": [
     {
       name: "Standard Business Cards",
+      slug: generateSlug("Standard Business Cards"),
       price: "₦15,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -47,6 +54,7 @@ const productsData = {
     },
     {
       name: "Premium Business Cards",
+      slug: generateSlug("Premium Business Cards"),
       price: "₦25,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -54,6 +62,7 @@ const productsData = {
     },
     {
       name: "Embossed Business Cards",
+      slug: generateSlug("Embossed Business Cards"),
       price: "₦35,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -61,6 +70,7 @@ const productsData = {
     },
     {
       name: "Foil Stamped Business Cards",
+      slug: generateSlug("Foil Stamped Business Cards"),
       price: "₦40,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -70,6 +80,7 @@ const productsData = {
   Bags: [
     {
       name: "A4 Paper Bag (Branded)",
+      slug: generateSlug("A4 Paper Bag (Branded)"),
       price: "₦90,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -77,6 +88,7 @@ const productsData = {
     },
     {
       name: "Courier Bags",
+      slug: generateSlug("Courier Bags"),
       price: "₦25,500",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -84,6 +96,7 @@ const productsData = {
     },
     {
       name: "Medium Brown Bags",
+      slug: generateSlug("Medium Brown Bags"),
       price: "₦70,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -91,6 +104,7 @@ const productsData = {
     },
     {
       name: "Nylon Bags (Branded)",
+      slug: generateSlug("Nylon Bags (Branded)"),
       price: "₦22,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -100,6 +114,7 @@ const productsData = {
   "Flyers & Handbills": [
     {
       name: "A5 Flyer (Single Sided)",
+      slug: generateSlug("A5 Flyer (Single Sided)"),
       price: "₦13,500",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -107,6 +122,7 @@ const productsData = {
     },
     {
       name: "A5 Flyer (Double Sided)",
+      slug: generateSlug("A5 Flyer (Double Sided)"),
       price: "₦18,500",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -114,6 +130,7 @@ const productsData = {
     },
     {
       name: "A4 Flyer (Single Sided)",
+      slug: generateSlug("A4 Flyer (Single Sided)"),
       price: "₦20,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -121,6 +138,7 @@ const productsData = {
     },
     {
       name: "A4 Flyer (Double Sided)",
+      slug: generateSlug("A4 Flyer (Double Sided)"),
       price: "₦28,000",
       unit: "per 100",
       image: "/placeholder.svg?height=200&width=200",
@@ -130,6 +148,7 @@ const productsData = {
   "Clothing & Apparel": [
     {
       name: "T-shirt (Cotton)",
+      slug: generateSlug("T-shirt (Cotton)"),
       price: "₦6,000",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -137,6 +156,7 @@ const productsData = {
     },
     {
       name: "T-shirt (Polo)",
+      slug: generateSlug("T-shirt (Polo)"),
       price: "₦8,500",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -144,6 +164,7 @@ const productsData = {
     },
     {
       name: "Hoodies",
+      slug: generateSlug("Hoodies"),
       price: "₦15,000",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -151,6 +172,7 @@ const productsData = {
     },
     {
       name: "Corporate Shirts",
+      slug: generateSlug("Corporate Shirts"),
       price: "₦12,000",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -160,6 +182,7 @@ const productsData = {
   Mugs: [
     {
       name: "Mugs (Simple & Magic)",
+      slug: generateSlug("Mugs (Simple & Magic)"),
       price: "₦4,500",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -167,6 +190,7 @@ const productsData = {
     },
     {
       name: "Ceramic Mugs",
+      slug: generateSlug("Ceramic Mugs (Simple & Magic)"),
       price: "₦3,500",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
@@ -174,6 +198,7 @@ const productsData = {
     },
     {
       name: "Travel Mugs",
+      slug: generateSlug("Travel Mugs"),
       price: "₦8,000",
       unit: "per 1",
       image: "/placeholder.svg?height=200&width=200",
