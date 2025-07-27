@@ -1,10 +1,9 @@
 "use client";
-
 import { useState } from "react";
 import { Printer, Search } from "lucide-react";
-// import { generateSlug } from "@/utils/slug";
 import Image from "next/image";
 import Link from "next/link";
+import { getProductsByCategory } from "@/lib/products-data";
 
 // Product categories data
 const categories = [
@@ -36,184 +35,12 @@ const categories = [
   "Wedding Stationery",
 ];
 
-const generateSlug = (name: string) =>
-  name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]/g, "");
-
-const productsData = {
-  "Business Cards": [
-    {
-      name: "Standard Business Cards",
-      slug: generateSlug("Standard Business Cards"),
-      price: "₦15,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Premium quality standard business cards",
-    },
-    {
-      name: "Premium Business Cards",
-      slug: generateSlug("Premium Business Cards"),
-      price: "₦25,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Luxury finish business cards with special coating",
-    },
-    {
-      name: "Embossed Business Cards",
-      slug: generateSlug("Embossed Business Cards"),
-      price: "₦35,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Raised text business cards for premium feel",
-    },
-    {
-      name: "Foil Stamped Business Cards",
-      slug: generateSlug("Foil Stamped Business Cards"),
-      price: "₦40,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Gold/Silver foil stamped business cards",
-    },
-  ],
-  Bags: [
-    {
-      name: "A4 Paper Bag (Branded)",
-      slug: generateSlug("A4 Paper Bag (Branded)"),
-      price: "₦90,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom branded A4 paper bags",
-    },
-    {
-      name: "Courier Bags",
-      slug: generateSlug("Courier Bags"),
-      price: "₦25,500",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Durable courier bags for shipping",
-    },
-    {
-      name: "Medium Brown Bags",
-      slug: generateSlug("Medium Brown Bags"),
-      price: "₦70,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Medium sized brown paper bags",
-    },
-    {
-      name: "Nylon Bags (Branded)",
-      slug: generateSlug("Nylon Bags (Branded)"),
-      price: "₦22,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom branded nylon bags",
-    },
-  ],
-  "Flyers & Handbills": [
-    {
-      name: "A5 Flyer (Single Sided)",
-      slug: generateSlug("A5 Flyer (Single Sided)"),
-      price: "₦13,500",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Single sided A5 flyers",
-    },
-    {
-      name: "A5 Flyer (Double Sided)",
-      slug: generateSlug("A5 Flyer (Double Sided)"),
-      price: "₦18,500",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Double sided A5 flyers",
-    },
-    {
-      name: "A4 Flyer (Single Sided)",
-      slug: generateSlug("A4 Flyer (Single Sided)"),
-      price: "₦20,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Single sided A4 flyers",
-    },
-    {
-      name: "A4 Flyer (Double Sided)",
-      slug: generateSlug("A4 Flyer (Double Sided)"),
-      price: "₦28,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Double sided A4 flyers",
-    },
-  ],
-  "Clothing & Apparel": [
-    {
-      name: "T-shirt (Cotton)",
-      slug: generateSlug("T-shirt (Cotton)"),
-      price: "₦6,000",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "100% cotton custom printed t-shirts",
-    },
-    {
-      name: "T-shirt (Polo)",
-      slug: generateSlug("T-shirt (Polo)"),
-      price: "₦8,500",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Premium polo t-shirts with custom printing",
-    },
-    {
-      name: "Hoodies",
-      slug: generateSlug("Hoodies"),
-      price: "₦15,000",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom printed hoodies",
-    },
-    {
-      name: "Corporate Shirts",
-      slug: generateSlug("Corporate Shirts"),
-      price: "₦12,000",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Professional corporate shirts with logo",
-    },
-  ],
-  Mugs: [
-    {
-      name: "Mugs (Simple & Magic)",
-      slug: generateSlug("Mugs (Simple & Magic)"),
-      price: "₦4,500",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom printed mugs - simple and magic mugs",
-    },
-    {
-      name: "Ceramic Mugs",
-      slug: generateSlug("Ceramic Mugs (Simple & Magic)"),
-      price: "₦3,500",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "High quality ceramic mugs",
-    },
-    {
-      name: "Travel Mugs",
-      slug: generateSlug("Travel Mugs"),
-      price: "₦8,000",
-      unit: "per 1",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Insulated travel mugs with custom design",
-    },
-  ],
-};
-
 export default function ProductsSection() {
   const [selectedCategory, setSelectedCategory] = useState("Bags");
   const [searchTerm, setSearchTerm] = useState("");
 
   // Get products for selected category
-  const currentProducts =
-    productsData[selectedCategory as keyof typeof productsData] || [];
+  const currentProducts = getProductsByCategory(selectedCategory);
 
   // Filter products based on search term
   const filteredProducts = currentProducts.filter((product) =>
@@ -236,7 +63,6 @@ export default function ProductsSection() {
                 <span>Shop</span>
               </nav>
             </div>
-
             {/* Search Bar */}
             <div className="relative w-96">
               <input
@@ -270,7 +96,6 @@ export default function ProductsSection() {
                   </p>
                 </div>
               </div>
-
               {/* Rapid Turnaround */}
               <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
@@ -286,7 +111,6 @@ export default function ProductsSection() {
                   </p>
                 </div>
               </div>
-
               {/* Money Back Guarantee */}
               <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
@@ -344,7 +168,6 @@ export default function ProductsSection() {
                 {selectedCategory}
               </h2>
             </div>
-
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProducts.map((product, index) => (
@@ -361,7 +184,6 @@ export default function ProductsSection() {
                         className="object-cover"
                       />
                     </div>
-
                     {/* Product Info */}
                     <div className="p-4">
                       <h3 className="font-semibold text-gray-900 mb-2">
@@ -381,15 +203,16 @@ export default function ProductsSection() {
                       <p className="text-sm text-gray-600 mb-4">
                         {product.description}
                       </p>
-
                       {/* Action Buttons */}
                       <div className="flex space-x-2">
-                        <button className="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded transition-colors">
-                          Order Now
-                        </button>
-                        {/* <button className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition-colors">
-                          <span className="text-gray-600">♡</span>
-                        </button> */}
+                        <Link
+                          href={`/products/${product.slug}`}
+                          className="flex-1"
+                        >
+                          <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded transition-colors">
+                            Order Now
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

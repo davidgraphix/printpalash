@@ -1,42 +1,32 @@
 "use client";
-
 import { useState } from "react";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProductDetailProps {
+interface Product {
+  name: string;
   slug: string;
+  price: string;
+  unit: string;
+  image: string;
+  description: string;
+  category: string;
+  keyFeatures: string;
+  delivery: {
+    lagos: string;
+    others: string;
+  };
+  priceNumeric: number;
+  tax: number;
+  images: string[];
 }
 
-// Mock product data - in real app, this would come from API/database
-const getProductData = (slug: string) => {
-  const products = {
-    "business-cards": {
-      title: "Business Cards",
-      description:
-        "Elevate your professional presence with our custom business cards. Each card is meticulously designed to reflect your unique brand identity, ensuring you make a lasting impression.",
-      keyFeatures:
-        "Printed on high-quality cardstock, our cards feature vibrant colors and sharp details, available in various finishes to suit your style.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      price: 11000,
-      tax: 850,
-      images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-      ],
-    },
-  };
+interface ProductDetailProps {
+  product: Product;
+}
 
-  return products[slug as keyof typeof products] || products["business-cards"];
-};
-
-export default function ProductDetail({ slug }: ProductDetailProps) {
+export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedQuantity, setSelectedQuantity] = useState("100");
   const [selectedSpecs, setSelectedSpecs] = useState({
     paperThickness: "thick-300gsm",
@@ -44,8 +34,6 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
     edges: "square-edges",
     shipping: "standard",
   });
-
-  const product = getProductData(slug);
 
   const handleSpecChange = (category: string, value: string) => {
     setSelectedSpecs((prev) => ({
@@ -71,7 +59,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
               All Products
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
-            <span className="text-red-600 font-medium">{product.title}</span>
+            <span className="text-red-600 font-medium">{product.name}</span>
           </nav>
         </div>
       </div>
@@ -102,14 +90,13 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
             {/* Main Image */}
             <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
               <Image
-                src={product.images[0] || "/placeholder.svg"}
-                alt={product.title}
+                src={product.images[0] || product.image}
+                alt={product.name}
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"
               />
             </div>
-
             {/* Thumbnail Images */}
             <div className="grid grid-cols-3 gap-4">
               {product.images.slice(1).map((image, index) => (
@@ -119,7 +106,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                 >
                   <Image
                     src={image || "/placeholder.svg"}
-                    alt={`${product.title} ${index + 2}`}
+                    alt={`${product.name} ${index + 2}`}
                     width={100}
                     height={100}
                     className="w-full h-full object-cover"
@@ -133,7 +120,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
           <div className="space-y-6">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                {product.title}
+                {product.name}
               </h1>
               <p className="text-gray-600 leading-relaxed">
                 {product.description}
@@ -186,21 +173,23 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
                   <span className="text-2xl font-bold text-gray-900">
-                    ₦{product.price.toLocaleString()}
+                    ₦{product.priceNumeric.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Tax</span>
-                  <span className="text-gray-500">{product.tax}</span>
+                  <span className="text-gray-500">
+                    ₦{product.tax.toLocaleString()}
+                  </span>
                 </div>
               </div>
-
               <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg mt-6 text-lg transition-colors duration-200">
                 ORDER NOW
               </button>
             </div>
           </div>
         </div>
+
         {/* Specifications Section */}
         <div className="mt-16 grid lg:grid-cols-[2fr_1fr] gap-24">
           {/* Specifications */}
@@ -208,7 +197,6 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
             <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red-600">
               SPECIFICATIONS
             </h2>
-
             <div className="grid grid-cols-2 gap-16">
               {/* Paper Thickness */}
               <div>
@@ -244,7 +232,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           }`}
                         >
                           <Image
-                            src={option.image}
+                            src={option.image || "/placeholder.svg"}
                             alt={option.label}
                             width={100}
                             height={100}
@@ -290,7 +278,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                           }`}
                         >
                           <Image
-                            src={option.image}
+                            src={option.image || "/placeholder.svg"}
                             alt={option.label}
                             width={100}
                             height={100}
@@ -336,7 +324,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                         }`}
                       >
                         <Image
-                          src={option.image}
+                          src={option.image || "/placeholder.svg"}
                           alt={option.label}
                           width={100}
                           height={100}
@@ -355,7 +343,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
 
           {/* Shipping */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red6900">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2 border-b-2 border-red-600">
               SHIPPING
             </h2>
             <div>
@@ -385,11 +373,11 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                       }`}
                     >
                       <Image
-                        src={option.image}
+                        src={option.image || "/placeholder.svg"}
                         alt={option.label}
                         width={100}
                         height={100}
-                        className="w-full h-full object-cover rounded-"
+                        className="w-full h-full object-cover rounded-md"
                       />
                     </div>
                     <span className="mt-2 text-xs font-medium text-gray-700 text-center">

@@ -4,6 +4,7 @@ import heroBg from "@/public/assests/heroBg.png";
 import productOneImg from "@/public/assests/image-items/product1.png";
 import productTwoImg from "@/public/assests/image-items/product2.png";
 import productThree from "../public/assests/image-items/product3.png";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -23,9 +24,11 @@ export default function Hero() {
               </p>
 
               {/* Get Started Button */}
-              <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
-                Get Started
-              </button>
+              <Link href="/products">
+                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
+                  Get Started
+                </button>
+              </Link>
             </div>
 
             {/* Search Bar */}
