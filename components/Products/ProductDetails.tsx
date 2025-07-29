@@ -4,23 +4,24 @@ import { ChevronRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Product {
-  name: string;
-  slug: string;
-  price: string;
-  unit: string;
-  image: string;
-  description: string;
-  category: string;
-  keyFeatures: string;
-  delivery: {
-    lagos: string;
-    others: string;
-  };
-  priceNumeric: number;
-  tax: number;
-  images: string[];
-}
+// interface Product {
+//   name: string;
+//   slug: string;
+//   price: string;
+//   unit: string;
+//   image: string;
+//   description: string;
+//   category: string;
+//   keyFeatures: string;
+//   delivery: {
+//     lagos: string;
+//     others: string;
+//   };
+//   priceNumeric: number;
+//   tax: number;
+//   images: string[];
+// }
+import type { Product } from "@/lib/products-data";
 
 interface ProductDetailProps {
   product: Product;

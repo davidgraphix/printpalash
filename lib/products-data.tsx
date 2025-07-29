@@ -1,3 +1,22 @@
+export interface Product {
+  name: string;
+  slug: string;
+  price: string;
+  unit: string;
+  image: string;
+  description: string;
+  category: string;
+  popular?: boolean;
+  keyFeatures: string;
+  delivery: {
+    lagos: string;
+    others: string;
+  };
+  priceNumeric: number;
+  tax: number;
+  images: string[];
+}
+
 // Shared product data that can be used across components
 export const generateSlug = (name: string) =>
   name
@@ -15,6 +34,7 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Premium quality standard business cards",
       category: "Business Cards",
+      popular: true,
       // Additional details for product page
       keyFeatures:
         "Printed on high-quality cardstock with vibrant colors and sharp details, available in various finishes to suit your style.",
@@ -62,6 +82,7 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Raised text business cards for premium feel",
       category: "Business Cards",
+      popular: true,
       keyFeatures:
         "Raised text and designs create a tactile experience that sets your cards apart from the competition.",
       delivery: {
@@ -133,6 +154,7 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Durable courier bags for shipping",
       category: "Bags",
+      popular: true,
       keyFeatures:
         "Heavy-duty courier bags designed for secure shipping and delivery of documents and small items.",
       delivery: {
@@ -344,6 +366,7 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom printed hoodies",
       category: "Clothing & Apparel",
+      popular: true,
       keyFeatures:
         "Comfortable hoodies with custom printing, perfect for casual wear and promotional merchandise.",
       delivery: {
@@ -438,6 +461,7 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Insulated travel mugs with custom design",
       category: "Mugs",
+      popular: true,
       keyFeatures:
         "Insulated travel mugs with custom design, perfect for on-the-go professionals.",
       delivery: {
@@ -457,17 +481,22 @@ export const productsData = {
 };
 
 // Helper function to get all products as a flat array
-export const getAllProducts = () => {
+export const getAllProducts = (): Product[] => {
   return Object.values(productsData).flat();
 };
 
 // Helper function to find a product by slug
-export const getProductBySlug = (slug: string) => {
+export const getProductBySlug = (slug: string): Product | undefined => {
   const allProducts = getAllProducts();
   return allProducts.find((product) => product.slug === slug);
 };
 
 // Helper function to get products by category
-export const getProductsByCategory = (category: string) => {
+export const getProductsByCategory = (category: string): Product[] => {
   return productsData[category as keyof typeof productsData] || [];
+};
+
+export const getPopularProducts = (): Product[] => {
+  const allProducts = getAllProducts();
+  return allProducts.filter((product) => product.popular === true);
 };
