@@ -4,8 +4,119 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="container mx-auto px-4 py-10">
-        <div className="grid md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-8 lg:py-10">
+        {/* Mobile Layout */}
+        <div className="lg:hidden space-y-8">
+          {/* Company Logo */}
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <div className="bg-red-600 p-2 rounded">
+                <span className="text-white font-bold text-xl">P</span>
+              </div>
+              <span className="text-red-600 font-bold text-lg">
+                De palash ltd.
+              </span>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="grid grid-cols-2 gap-4 text-center">
+            <Link
+              href="/"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              About Us
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/track-order"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Track Order
+            </Link>
+            <Link
+              href="/blog"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/terms"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Terms
+            </Link>
+          </div>
+
+          {/* Social Media */}
+          <div className="text-center space-y-4">
+            <h3 className="text-white font-semibold underline">Social Media</h3>
+            <p className="text-gray-300 text-sm px-4">
+              Stay connected with us on social media. Give us a review, Rate us
+              and let us know how we can improve. Thank you.
+            </p>
+            <div className="flex justify-center space-x-6">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="space-y-4">
+            <h3 className="text-white font-semibold underline text-center">
+              Newsletter
+            </h3>
+            <p className="text-gray-300 text-sm text-center">
+              Get the latest news, events & more delivered to your inbox.
+            </p>
+            <div className="space-y-3">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-red-600 text-white placeholder-gray-400"
+              />
+              <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded transition-colors duration-200">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -25,7 +136,6 @@ export default function Footer() {
             </address>
           </div>
 
-        
           <div className="">
             {/* Navigation Links */}
             <div className="pr-2">
@@ -78,44 +188,42 @@ export default function Footer() {
 
           {/* Social Media */}
           <div className="space-y-4">
-            
-              <h3 className="text-white font-semibold mb-4 underline">
-                Social Media
-              </h3>
-              <p className="text-gray-300 text-sm mb-4">
-                Stay connected with us on social media.
-                <br />
-                Give us a review. Rate us and let us know
-                <br />
-                how we can improve. Thank you.
-              </p>
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  <Facebook className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  <Twitter className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  <Instagram className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-              </div>
-            
+            <h3 className="text-white font-semibold mb-4 underline">
+              Social Media
+            </h3>
+            <p className="text-gray-300 text-sm mb-4">
+              Stay connected with us on social media.
+              <br />
+              Give us a review. Rate us and let us know
+              <br />
+              how we can improve. Thank you.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </div>
           </div>
 
           {/* Newsletter */}
@@ -144,7 +252,7 @@ export default function Footer() {
       <div className="bg-red-600 py-3">
         <div className="container mx-auto px-4">
           <p className="text-center text-white text-sm">
-            Copyright © 2023 DePalashltd. All rights reserved.
+            Copyright © 2024 DePalashltd. All rights reserved.
           </p>
         </div>
       </div>

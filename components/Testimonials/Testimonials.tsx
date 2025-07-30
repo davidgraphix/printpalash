@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -53,41 +52,99 @@ export default function Testimonials() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Change slide every 4 seconds
-
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 3 : prevIndex - 1
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 lg:py-16 bg-pink-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <div className="flex-1 h-px bg-gray-500"></div>
-            <h2 className="px-8 text-2xl font-bold text-gray-900">
-              What customers say about us
-            </h2>
-            <div className="flex-1 h-px bg-gray-500"></div>
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+            What customers say about us
+          </h2>
+        </div>
+
+        {/* Mobile: Single Testimonial */}
+        <div className="lg:hidden">
+          <div className="bg-white rounded-lg p-6 shadow-md">
+            {/* Rating Stars */}
+            <div className="flex justify-center mb-4">
+              {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                <svg
+                  key={i}
+                  className="w-5 h-5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                </svg>
+              ))}
+            </div>
+
+            {/* Testimonial Content */}
+            <p className="text-gray-700 mb-6 leading-relaxed text-center">
+              "{testimonials[currentIndex].content}"
+            </p>
+
+            {/* Customer Info */}
+            <div className="text-center">
+              <h4 className="font-semibold text-gray-900">
+                {testimonials[currentIndex].name}
+              </h4>
+              <p className="text-sm text-gray-600">
+                {testimonials[currentIndex].company}
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="flex justify-center items-center mt-6 space-x-4">
+            <button
+              onClick={prevSlide}
+              className="bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                    index === currentIndex ? "bg-red-600" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
           </div>
         </div>
 
-        {/* Testimonials Slider */}
-        <div className="relative">
+        {/* Desktop: Multiple Testimonials */}
+        <div className="hidden lg:block relative">
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -95,7 +152,7 @@ export default function Testimonials() {
             >
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-1/3 flex-shrink-0 px-4">
-                  <div className="bg-gray-50 rounded-lg p-6 h-full">
+                  <div className="bg-white rounded-lg p-6 h-full shadow-md">
                     {/* Rating Stars */}
                     <div className="flex mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -129,33 +186,32 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
+          {/* Desktop Navigation Buttons */}
           <button
             onClick={prevSlide}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
           >
             <ChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
-
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
           >
             <ChevronRight className="w-6 h-6 text-gray-600" />
           </button>
-        </div>
 
-        {/* Slide Indicators */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {[...Array(testimonials.length - 2)].map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                index === currentIndex ? "bg-red-600" : "bg-gray-300"
-              }`}
-            />
-          ))}
+          {/* Desktop Slide Indicators */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {[...Array(testimonials.length - 2)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                  index === currentIndex ? "bg-red-600" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
