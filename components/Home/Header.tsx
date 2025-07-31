@@ -1,4 +1,5 @@
 import { Clock, Monitor, Phone, MessageCircle } from "lucide-react"
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -27,7 +28,7 @@ export default function Header() {
               <div className="flex flex-col">
                 <span className="text-sm text-gray-700 font-medium">Online 24/7</span>
                 <div className="w-16 h-1 bg-blue-500 rounded-full"></div>
-              </div>
+              </div>  
             </div>
 
             {/* Phone Number */}
@@ -37,10 +38,12 @@ export default function Header() {
             </div>
 
             {/* WhatsApp Chat */}
+           <Link href="https://wa.me/+2347039017359">
             <div className="flex items-center space-x-2 bg-green-500 text-white px-3 py-2 rounded-md">
               <MessageCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Chat with us</span>
             </div>
+           </Link>
 
             {/* Country Selector */}
             <div className="flex items-center space-x-2">
