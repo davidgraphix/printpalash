@@ -1,4 +1,5 @@
 import { Phone, MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -37,10 +38,11 @@ export default function Header() {
             </div>
 
             {/* Chat with us Button */}
-            <div className="flex items-center space-x-2 bg-green-500 text-white px-3 py-2 rounded-md">
+            <Link href="https://wa.me/2347035017359" target="_blank" rel="noopener noreferrer">
+            <div className="flex items-center space-x-2 bg-green-500 cursor: pointer; text-white px-3 py-2 rounded-md">
               <MessageCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Chat with us</span>
-            </div>
+            </div></Link>
           </div>
         </div>
       </div>
