@@ -12,60 +12,57 @@ export default function Hero() {
     <section className="relative bg-pink-100 overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Mobile Layout (visible on screens smaller than lg) */}
-        <div className="lg:hidden pt-8 pb-16">
+        <div className="lg:hidden pt-8 pb-4 mr-0 pr-0">
           {/* Top row: Text content on left, Mobile Hero Image on right */}
           <div className="flex items-start justify-between gap-0 mb-6">
             {" "}
             {/* Reduced mb to mb-6 */}
             {/* Left Content: Heading, Description, Button */}
-            <div className="flex-1 space-y-3 text-left min-w-0 pr-2">
+            <div className="flex-1 space-y-3 text-left min-w-0 pr-1">
               {" "}
               {/* Adjusted space-y to space-y-3 */}
-              <h1 className="text-2xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-[20px] font-bold text-gray-900 leading-tight">
                 Transforming Your <br />
                 <span className="text-red-600">Vision</span> into Vibrant <br />
                 <span className="text-red-600">Reality</span>
               </h1>
-              <p className="text-base text-gray-600 font-medium">
+              <p className=" text-[12px] text-base text-gray-600 font-medium">
                 Where Every Print Tells Your Story
               </p>
               {/* Get Started Button */}
               <Link href="/products">
-                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg text-sm transition-colors duration-200 shadow-lg hover:shadow-xl">
+                <button className="text-[13px] bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs transition-colors duration-200 shadow hover:shadow-md">
                   Get Started
                 </button>
               </Link>
+              <p className="text-gray-700 font-medium text-left">
+                What are you printing today?
+              </p>
             </div>
             {/* Right Content: Mobile Hero Image */}
-            <div className="flex-shrink-0 relative w-[220px] h-[240px] sm:w-[280px] sm:h-[300px]">
+            <div className="w-[200px] h-[210px] relative -mt-4 -mr-4">
               <Image
                 src={
                   mobileHeroImg ||
-                  "/placeholder.svg?height=300&width=280&query=mobile hero image with products"
+                  "/placeholder.svg?height=200&width=210&query=mobile hero image with products"
                 }
                 alt="Mobile Hero Image"
                 fill
-                className="object-contain"
+                className="object-cover flex-shrink-0 rounded-1"
                 priority
               />
             </div>
           </div>
 
           {/* Bottom row: Search Bar (below text and image) */}
-          <div className="space-y-2">
-            {" "}
-            {/* Adjusted space-y to space-y-2 */}
-            <p className="text-gray-700 font-medium text-left">
-              What are you printing today?
-            </p>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for flyers, paper bag, business card, e.t.c."
-                className="w-full py-3 px-4 pr-12 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400 text-sm" // Changed py to py-3
-              />
-              <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            </div>
+
+          <div className="relative -mt-6 group">
+            <input
+              type="text"
+              placeholder="Search for flyers, paper bag, business card, e.t.c."
+              className="w-full py-3 px-4 pr-12 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400 text-sm shadow"
+            />
+            <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-red-600 cursor-pointer transition-colors duration-200" />
           </div>
         </div>
 
@@ -102,7 +99,7 @@ export default function Hero() {
                   placeholder="search for flyers, paper bag, business card, e.t.c."
                   className="w-full py-3 px-5 pr-12 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400"
                 />
-                <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 hover:text-red-600 cursor-pointer transition-colors duration-200" />
               </div>
             </div>
           </div>
