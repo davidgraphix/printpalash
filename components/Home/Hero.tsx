@@ -23,10 +23,10 @@ export default function Hero() {
               {/* Adjusted space-y to space-y-3 */}
               <h1 className="text-[20px] font-bold text-gray-900 leading-tight">
                 Transforming Your <br />
-                <span className="text-red-600">Vision</span> into Vibrant <br />
+                Vision into Vibrant <br />
                 <span className="text-red-600">Reality</span>
               </h1>
-              <p className=" text-[12px] text-base text-gray-600 font-medium">
+              <p className=" text-[12px] text-gray-600 font-medium">
                 Where Every Print Tells Your Story
               </p>
               {/* Get Started Button */}
@@ -35,9 +35,7 @@ export default function Hero() {
                   Get Started
                 </button>
               </Link>
-              <p className="text-gray-700 font-medium text-left">
-                What are you printing today?
-              </p>
+              
             </div>
             {/* Right Content: Mobile Hero Image */}
             <div className="w-[200px] h-[210px] relative -mt-4 -mr-4">
@@ -57,6 +55,9 @@ export default function Hero() {
           {/* Bottom row: Search Bar (below text and image) */}
 
           <div className="relative -mt-6 group">
+            <p className="text-[15px] text-gray-700 font-medium text-left">
+                What are you printing today?
+              </p>
             <input
               type="text"
               placeholder="Search for flyers, paper bag, business card, e.t.c."
