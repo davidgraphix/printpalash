@@ -43,7 +43,7 @@ export const productsData = {
       priceNumeric: 90000,
       tax: 7200,
       images: [
-        "/branded-paper-bag.png",
+        "/product-images/Bags/branded-paper-bag.jpeg",
         "/paper-bag-handle.png",
         "/paper-bag-bottom.png",
         "/paper-bag-logo.png",
@@ -66,7 +66,7 @@ export const productsData = {
       priceNumeric: 25500,
       tax: 2040,
       images: [
-        "/courier-shipping-bag.png",
+        "/product-images/Bags/brown-paper-bag.jpeg",
         "/courier-bag-seal.png",
         "/courier-bag-label.png",
         "/courier-bag-security.png",
@@ -88,7 +88,7 @@ export const productsData = {
       priceNumeric: 70000,
       tax: 5600,
       images: [
-        "/brown-paper-bag-medium.png",
+        "/product-images/Bags/courier-shipping-bag.jpg",
         "/brown-bag-handle.png",
         "/brown-bag-texture.png",
         "/brown-bag-eco-friendly.png",
@@ -110,7 +110,7 @@ export const productsData = {
       priceNumeric: 22000,
       tax: 1760,
       images: [
-        "/branded-nylon-bag.png",
+        "/product-images/Bags/shoping-bag.jpeg",
         "/nylon-bag-logo.png",
         "/nylon-bag-handle.png",
         "/placeholder.svg?height=100&width=100",
