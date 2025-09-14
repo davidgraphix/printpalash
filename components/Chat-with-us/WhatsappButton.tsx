@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
   return (
     <button
       onClick={openWhatsApp}
-      className="fixed bottom-20 right-40 flex items-center gap-2 px-3 py-2 rounded-full
+      className="fixed bottom-5 right-5 flex items-center gap-2 px-3 py-2 rounded-full
                  bg-green-500 text-white font-medium shadow-lg
                  animate-bounce hover:bg-green-600 transition-all z-50
                  text-sm sm:text-base sm:px-5 sm:py-3"
