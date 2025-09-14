@@ -81,14 +81,14 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Center Buttons */}
-          <div className="md:hidden flex items-center space-x-2">
+          {/* <div className="md:hidden flex items-center space-x-2">
             <button className="bg-white text-red-600 px-3 py-1 rounded text-sm font-medium">
               Get A Quote
             </button>
             <button className="border border-white text-white px-3 py-1 rounded text-sm font-medium">
               Sign In
             </button>
-          </div>
+          </div> */}
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">

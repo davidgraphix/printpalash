@@ -5,9 +5,9 @@ import Link from "next/link";
 import backgroundImg from "@/public/assests/img-background.png";
 import mobileHeroImg from "@/public/assests/mobile-hero-img.png";
 // import desktopHeroImg from "@/public/assests/heroBg.png";
-import productOneImg from "@/public/assests/image-items/product1.png";
-import productTwoImg from "@/public/assests/image-items/product2.png";
-import productThreeImg from "@/public/assests/image-items/product3.png";
+// import productOneImg from "@/public/assests/image-items/product1.png";
+// import productTwoImg from "@/public/assests/image-items/product2.png";
+// import productThreeImg from "@/public/assests/image-items/product3.png";
 
 export default function Hero() {
   return (
@@ -25,8 +25,9 @@ export default function Hero() {
               {/* Adjusted space-y to space-y-3 */}
               <h1 className="text-[20px] font-bold text-gray-900 leading-tight">
                 Transforming Your <br />
-                Vision into Vibrant <br />
-                <span className="text-red-600">Reality</span>
+                <span className="text-red-600">Vision </span> into Vibrant{" "}
+                <br />
+                Reality
               </h1>
               <p className=" text-[12px] text-gray-600 font-medium">
                 Where Every Print Tells Your Story

@@ -23,9 +23,12 @@ export default function Header() {
             </div>
             <div className="flex flex-col">
               <span className="text-xs text-gray-500">Need help? Call:</span>
-              <span className="text-[10px] text-gray-900 font-medium">
+              <a
+                href="tel:+2347035017359"
+                className="text-[10px] text-gray-900 font-medium cursor-pointer hover:underline"
+              >
                 +234 703 501 7359
-              </span>
+              </a>
             </div>
           </div>
 
@@ -36,9 +39,22 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex items-center space-x-2 bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 transition-colors">
+              <div
+                className="flex items-center space-x-2 bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 transition-colors"
+                onClick={() => {
+                  window.open(
+                    "https://wa.me/2347035017359?text=" +
+                      encodeURIComponent(
+                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life."
+                      ),
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <MessageCircle className="w-3 h-3" />
-                <span className="text-[10px] font-medium">Chat with us</span>
+                <span className="text-[10px] font-medium">Chat</span>
               </div>
             </Link>
           </div>
