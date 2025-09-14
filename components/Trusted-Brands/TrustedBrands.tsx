@@ -25,8 +25,8 @@ export default function TrustedBrands() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-wrap lg:justify-center items-center gap-8 lg:gap-12 xl:gap-16">
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">
             <Image
-              src={trustedBrand1 || "/placeholder.svg"}
-              alt="IITA - Transforming African Agriculture"
+              src={trustedBrand4 || "/placeholder.svg"}
+              alt="Master card foundation"
               width={120}
               height={60}
               className="h-8 lg:h-12 w-auto"
@@ -35,7 +35,7 @@ export default function TrustedBrands() {
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">
             <Image
               src={trustedBrand2 || "/placeholder.svg"}
-              alt="Mastercard Foundation"
+              alt="IITA"
               width={120}
               height={60}
               className="h-8 lg:h-12 w-auto"
@@ -44,28 +44,30 @@ export default function TrustedBrands() {
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">
             <Image
               src={trustedBrand3 || "/placeholder.svg"}
-              alt="Kkwhnnies Naturals"
+              alt="Kehnnies Naturals"
               width={120}
               height={60}
               className="h-8 lg:h-12 w-auto"
             />
           </div>
+
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">
             <Image
-              src={trustedBrand4 || "/placeholder.svg"}
-              alt="Reflection Universe"
+              src={trustedBrand1 || "/placeholder.svg"}
+              alt="IITA - Transforming African Agriculture"
               width={120}
               height={60}
               className="h-8 lg:h-12 w-auto"
             />
           </div>
+
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">
             <Image
               src={trustedBrand5 || "/placeholder.svg"}
               alt="Hernicky"
               width={120}
               height={60}
-              className="h-8 lg:h-12 w-auto"
+              className="h-10 lg:h-15 w-auto"
             />
           </div>
           <div className="flex justify-center hover:grayscale-0 transition-all duration-300">

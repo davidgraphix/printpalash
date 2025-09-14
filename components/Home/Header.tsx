@@ -62,7 +62,7 @@ export default function Header() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm font-semibold text-gray-900">
-                  8:00AM - 6:00PM
+                  8:00AM - 8:00PM
                 </span>
                 <span className="text-xs text-gray-500">
                   Monday to Saturday
@@ -94,9 +94,12 @@ export default function Header() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Need help? Call</span>
-                <span className="text-sm text-gray-900 font-semibold">
+                <a
+                  href="tel:+2347035017359"
+                  className="text-sm text-gray-900 font-semibold cursor-pointer hover:underline"
+                >
                   +234 703 501 7359
-                </span>
+                </a>
               </div>
             </div>
           </div>

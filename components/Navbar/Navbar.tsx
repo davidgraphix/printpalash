@@ -93,7 +93,7 @@ export default function Navbar() {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             {/* Desktop Sign in/Create Account */}
-            <div className="hidden md:flex items-center space-x-4">
+            {/* <div className="hidden md:flex items-center space-x-4">
               <Link
                 href="/signin"
                 className="text-white hover:text-red-200 font-medium text-sm"
@@ -106,7 +106,7 @@ export default function Navbar() {
               >
                 Create Account
               </Link>
-            </div>
+            </div> */}
 
             {/* Wishlist */}
             <button className="text-white hover:text-red-200 relative">
@@ -186,7 +186,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Mobile Sign in/Create Account */}
-                <div className="border-t border-red-500 pt-4 mt-4">
+                {/* <div className="border-t border-red-500 pt-4 mt-4">
                   <Link
                     href="/signin"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -201,7 +201,7 @@ export default function Navbar() {
                   >
                     Create Account
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
