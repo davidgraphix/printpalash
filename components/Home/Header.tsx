@@ -1,3 +1,4 @@
+"use client";
 import { Phone, MessageCircle, Clock } from "lucide-react";
 import Link from "next/link";
 
@@ -112,7 +113,20 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors">
+              <div
+                className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
+                onClick={() => {
+                  window.open(
+                    "https://wa.me/2347035017359?text=" +
+                      encodeURIComponent(
+                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life."
+                      ),
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <MessageCircle className="w-4 h-4" />
                 <span className="text-sm font-medium">Chat with us</span>
               </div>

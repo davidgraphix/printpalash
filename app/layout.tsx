@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar/Navbar";
 
 import "@fontsource/aileron";
 import "@fontsource/aileron/700.css";
+import WhatsAppButton from "@/components/Chat-with-us/WhatsappButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         <TopBar />
         <Header />
         <Navbar />
+        <WhatsAppButton />
         <main>{children}</main>
       </body>
     </html>
