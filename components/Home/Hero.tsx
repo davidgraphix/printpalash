@@ -2,10 +2,12 @@ import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import backgroundImg from "@/public/assests/img-background.png";
 import mobileHeroImg from "@/public/assests/mobile-hero-img.png";
-import desktopHeroImg from "@/public/assests/heroBg.png";
+// import desktopHeroImg from "@/public/assests/heroBg.png";
 import productOneImg from "@/public/assests/image-items/product1.png";
 import productTwoImg from "@/public/assests/image-items/product2.png";
+import productThreeImg from "@/public/assests/image-items/product3.png";
 
 export default function Hero() {
   return (
@@ -35,7 +37,6 @@ export default function Hero() {
                   Get Started
                 </button>
               </Link>
-              
             </div>
             {/* Right Content: Mobile Hero Image */}
             <div className="w-[200px] h-[210px] relative -mt-4 -mr-4">
@@ -56,8 +57,8 @@ export default function Hero() {
 
           <div className="relative -mt-6 group">
             <p className="text-[15px] text-gray-700 font-medium text-left">
-                What are you printing today?
-              </p>
+              What are you printing today?
+            </p>
             <input
               type="text"
               placeholder="Search for flyers, paper bag, business card, e.t.c."
@@ -72,18 +73,18 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-6">
             <div className="space-y-2">
-              <h1 className="text-lg md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-lg md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Transforming Your <br />
                 <span className="text-red-600">Vision</span> into Vibrant <br />
-                <span className="text-red-600">Reality</span>
+                Reality
               </h1>
-              <p className="text-lg text-gray-600 font-medium">
+              <p className="text-2xl text-gray-600 font-medium">
                 Where Every Print Tells Your Story
               </p>
 
               {/* Get Started Button */}
               <Link href="/products">
-                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200 shadow-lg hover:shadow-xl">
+                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-xl transition-colors duration-200 shadow-lg hover:shadow-xl">
                   Get Started
                 </button>
               </Link>
@@ -111,7 +112,7 @@ export default function Hero() {
               <div className="relative">
                 <Image
                   src={
-                    desktopHeroImg ||
+                    backgroundImg ||
                     "/placeholder.svg?height=1000&width=950&query=desktop hero image"
                   }
                   alt="Person with VR headset"
@@ -124,7 +125,7 @@ export default function Hero() {
             </div>
 
             {/* Floating Product Items for Desktop */}
-            <div className="absolute top-8 left-8 animate-bounce">
+            {/* <div className="absolute top-8 left-8 animate-bounce">
               <Image
                 src={productOneImg || "/placeholder.svg"}
                 alt="Custom Bag"
@@ -134,7 +135,7 @@ export default function Hero() {
               />
             </div>
 
-            <div className="absolute bottom-20 left-4 animate-bounce delay-300">
+            <div className="absolute bottom-15 left-4 animate-bounce delay-300">
               <Image
                 src={productTwoImg || "/placeholder.svg"}
                 alt="Custom T-Shirt"
@@ -143,6 +144,16 @@ export default function Hero() {
                 className="rounded"
               />
             </div>
+
+            <div className="absolute bottom-20 left-4 animate-bounce delay-300">
+              <Image
+                src={productThreeImg || "/placeholder.svg"}
+                alt="Custom Mug"
+                width={60}
+                height={70}
+                className="rounded"
+              />
+            </div> */}
 
             <div className="absolute top-32 right-16 w-4 h-4 bg-red-400 rounded-full animate-ping"></div>
             <div className="absolute bottom-32 right-8 w-3 h-3 bg-pink-400 rounded-full animate-pulse"></div>

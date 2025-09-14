@@ -17,6 +17,21 @@ export default function Footer() {
                 De palash ltd.
               </span>
             </div>
+            <address className="text-gray-300 not-italic leading-relaxed">
+              29 Shipeolu street, elediye
+              <br />
+              roundabout, onipanu, shomolu,
+              <br />
+              lagos, nigeria.
+            </address>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=29+Shipeolu+street,+elediye+roundabout,+onipanu,+shomolu,+lagos,+nigeria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
+            >
+              Click here for directions
+            </a>
           </div>
 
           {/* Navigation Links */}
@@ -134,6 +149,14 @@ export default function Footer() {
               <br />
               lagos, nigeria.
             </address>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=29+Shipeolu+street,+elediye+roundabout,+onipanu,+shomolu,+lagos,+nigeria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
+            >
+              Click here for directions
+            </a>
           </div>
 
           <div className="">

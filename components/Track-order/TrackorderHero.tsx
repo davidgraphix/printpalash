@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
-import Image from "next/image"
-import trackOrderImage from "@/public/assests/red-delivery-car-deliver-express-shipping-fast-delivery-with-arrow-graph-background-3d-rendering 1.png"
+import { useState } from "react";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import trackOrderImage from "@/public/assests/red-delivery-car-deliver-express-shipping-fast-delivery-with-arrow-graph-background-3d-rendering 1.png";
 
 export default function TrackOrderHero() {
-  const [orderNumber, setOrderNumber] = useState("")
+  const [orderNumber, setOrderNumber] = useState("");
 
   const handleTrackOrder = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (orderNumber.trim()) {
       // Handle order tracking logic here
-      console.log("Tracking order:", orderNumber)
+      console.log("Tracking order:", orderNumber);
       // You can add API call or redirect to tracking results
     }
-  }
+  };
 
   return (
     <section className="bg-gradient-to-br from-pink-50 to-white py-16">
@@ -33,10 +33,7 @@ export default function TrackOrderHero() {
             {/* Mobile Phone with Tracking Steps */}
             <div className="relative z-10 flex items-center justify-center">
               <div className="relative">
-                <Image 
-               src={trackOrderImage}
-               alt="" 
-                />
+                <Image src={trackOrderImage} alt="" />
               </div>
             </div>
           </div>
@@ -44,10 +41,12 @@ export default function TrackOrderHero() {
           {/* Right Side - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Track your print order</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+                Track your print order
+              </h1>
               <p className="text-lg text-gray-600">
-                Easily track the status of your order using your order number and see step by step progress on your
-                order.
+                Easily track the status of your order using your order number
+                and see step by step progress on your order.
               </p>
             </div>
 
@@ -74,13 +73,23 @@ export default function TrackOrderHero() {
             {/* Contact Information */}
             <div className="bg-gray-50 p-6 rounded-lg">
               <p className="text-gray-700 leading-relaxed">
-                If you would prefer to speak to someone personally about the status of your order, please reach out via
-                whatsApp <span className="font-semibold text-red-600">+234 703 501 7359</span>
+                If you would prefer to speak to someone personally about the
+                status of your order, please reach out via WhatsApp{" "}
+                <a
+                  href={`https://wa.me/2347035017359?text=${encodeURIComponent(
+                    "Hello, I would like to inquire about the status of my print order. Could you please assist me?"
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-red-600 underline hover:text-red-700"
+                >
+                  +234 703 501 7359
+                </a>
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -200,16 +200,16 @@ export default function AboutSection() {
 
           {/* Join the Family Section */}
           <div className="bg-gray-50 rounded-lg p-8 md:p-12 mb-16">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid md:grid-cols-2 -gap-2 items-center">
               {/* Image */}
               <div className="relative">
-                <div className=" rounded-lg p-4 inline-block mb-4">
-                  <div className=" rounded p-6">
+                <div className=" rounded-lg p-2 inline-block mb-4">
+                  <div className=" rounded p-4">
                     <Image
                       src={woodenImg}
                       alt="Wooden figurines representing community and teamwork"
-                      width={250}
-                      height={300}
+                      width={350}
+                      height={400}
                       className="rounded"
                     />
                   </div>
