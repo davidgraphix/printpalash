@@ -1,5 +1,6 @@
 "use client";
 import { Printer, Clock, Shield } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 import { useState, useEffect } from "react";
@@ -20,8 +21,18 @@ const features = [
   {
     icon: Shield,
     title: "Money Back Guarantee",
-    description:
-      "While most clients arrive to resolve issues with buyers, we offer a refund if a satisfactory solution cannot be achieved.",
+    description: (
+      <>
+        While most clients arrive to resolve issues with buyers, we offer a
+        refund if a satisfactory solution cannot be achieved.{" "}
+        <Link
+          href="money-back"
+          className="text-red-600 underline hover:text-red-800 text-sm"
+        >
+          Terms and Conditions applied
+        </Link>
+      </>
+    ),
   },
 ];
 
