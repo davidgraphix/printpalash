@@ -1,4 +1,3 @@
-
 export interface Product {
   name: string;
   slug: string;
@@ -35,7 +34,8 @@ export const productsData = {
       image: "/product-images/Bags/branded-paper-bag.jpeg",
       description: "Custom branded A4 paper bags",
       category: "Bags",
-      keyFeatures: "Durable A4-sized paper bags with custom branding, perfect for retail and promotional use.",
+      keyFeatures:
+        "Durable A4-sized paper bags with custom branding, perfect for retail and promotional use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -58,7 +58,8 @@ export const productsData = {
       description: "Durable courier bags for shipping",
       category: "Bags",
       popular: true,
-      keyFeatures: "Heavy-duty courier bags designed for secure shipping and delivery of documents and small items.",
+      keyFeatures:
+        "Heavy-duty courier bags designed for secure shipping and delivery of documents and small items.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -80,7 +81,8 @@ export const productsData = {
       image: "/product-images/Bags/courier-shipping-bag.jpg",
       description: "Medium sized brown paper bags",
       category: "Bags",
-      keyFeatures: "Eco-friendly medium brown paper bags, perfect for retail stores and gift packaging.",
+      keyFeatures:
+        "Eco-friendly medium brown paper bags, perfect for retail stores and gift packaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -102,7 +104,8 @@ export const productsData = {
       image: "/product-images/Bags/shoping-bag.jpeg",
       description: "Custom branded nylon bags",
       category: "Bags",
-      keyFeatures: "Durable nylon bags with custom branding, reusable and perfect for promotional campaigns.",
+      keyFeatures:
+        "Durable nylon bags with custom branding, reusable and perfect for promotional campaigns.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -124,7 +127,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Luxury gift bags with ribbon handles",
       category: "Bags",
-      keyFeatures: "Premium gift bags with elegant ribbon handles and glossy finish, perfect for special occasions.",
+      keyFeatures:
+        "Premium gift bags with elegant ribbon handles and glossy finish, perfect for special occasions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -146,7 +150,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large capacity shopping bags",
       category: "Bags",
-      keyFeatures: "Large capacity shopping bags with reinforced handles, ideal for retail stores and supermarkets.",
+      keyFeatures:
+        "Large capacity shopping bags with reinforced handles, ideal for retail stores and supermarkets.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -168,11 +173,12 @@ export const productsData = {
       slug: generateSlug("Vinyl Banner Standard"),
       price: "₦8,500",
       unit: "per sqm",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/product-images/Banners&LargeFormat/banner-2.jpg",
       description: "Weather-resistant vinyl banners",
       category: "Banners & Large Format",
       popular: true,
-      keyFeatures: "Durable vinyl banners with weather-resistant coating, perfect for outdoor advertising and events.",
+      keyFeatures:
+        "Durable vinyl banners with weather-resistant coating, perfect for outdoor advertising and events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -180,7 +186,7 @@ export const productsData = {
       priceNumeric: 8500,
       tax: 680,
       images: [
-        "/placeholder.svg?height=400&width=400",
+        "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
@@ -191,7 +197,7 @@ export const productsData = {
       slug: generateSlug("Mesh Banner"),
       price: "₦12,000",
       unit: "per sqm",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/product-images/Banners&LargeFormat/banner-1.jpg",
       description: "Wind-resistant mesh banners",
       category: "Banners & Large Format",
       keyFeatures:
@@ -203,10 +209,10 @@ export const productsData = {
       priceNumeric: 12000,
       tax: 960,
       images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
+        "/product-images/Banners&LargeFormat/banner-1.png",
+        "/product-images/Banners&LargeFormat/Free_Roll_Up_Mockup_1.png",
+        "/product-images/Banners&LargeFormat/Free_Roll_Up_Mockup_2.png",
+        "/product-images/Banners&LargeFormat/Free_Roll_Up_Mockup_.png",
       ],
     },
     {
@@ -214,7 +220,7 @@ export const productsData = {
       slug: generateSlug("Fabric Banner"),
       price: "₦15,000",
       unit: "per sqm",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/product-images/Banners&LargeFormat/banner-3.jpg",
       description: "Premium fabric banners for indoor use",
       category: "Banners & Large Format",
       keyFeatures:
@@ -226,7 +232,7 @@ export const productsData = {
       priceNumeric: 15000,
       tax: 1200,
       images: [
-        "/placeholder.svg?height=400&width=400",
+        "/product-images/Banners&LargeFormat/banner-3.jpeg",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
@@ -237,7 +243,7 @@ export const productsData = {
       slug: generateSlug("Roll-up Banner"),
       price: "₦25,000",
       unit: "per piece",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/product-images/Banners&LargeFormat/banner-4.jpeg",
       description: "Portable roll-up banner stands",
       category: "Banners & Large Format",
       keyFeatures:
@@ -249,7 +255,7 @@ export const productsData = {
       priceNumeric: 25000,
       tax: 2000,
       images: [
-        "/placeholder.svg?height=400&width=400",
+        "/product-images/Banners&LargeFormat/banner-5.jpeg",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
         "/placeholder.svg?height=100&width=100",
@@ -336,7 +342,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Simple bi-fold brochures",
       category: "Brochures",
-      keyFeatures: "Simple bi-fold brochures with clean design, ideal for service descriptions and event information.",
+      keyFeatures:
+        "Simple bi-fold brochures with clean design, ideal for service descriptions and event information.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -358,7 +365,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Accordion-style Z-fold brochures",
       category: "Brochures",
-      keyFeatures: "Accordion-style Z-fold brochures with unique presentation format, great for step-by-step guides.",
+      keyFeatures:
+        "Accordion-style Z-fold brochures with unique presentation format, great for step-by-step guides.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -380,7 +388,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Premium gate-fold brochures",
       category: "Brochures",
-      keyFeatures: "Premium gate-fold brochures with dramatic reveal effect, perfect for luxury products and services.",
+      keyFeatures:
+        "Premium gate-fold brochures with dramatic reveal effect, perfect for luxury products and services.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -522,7 +531,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Gold/Silver foil stamped business cards",
       category: "Business Cards",
-      keyFeatures: "Elegant gold or silver foil stamping adds a luxurious touch to your professional image.",
+      keyFeatures:
+        "Elegant gold or silver foil stamping adds a luxurious touch to your professional image.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -567,7 +577,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom shaped die-cut business cards",
       category: "Business Cards",
-      keyFeatures: "Custom shaped business cards cut to your unique design, making your brand truly memorable.",
+      keyFeatures:
+        "Custom shaped business cards cut to your unique design, making your brand truly memorable.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -639,7 +650,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Small portable pocket calendars",
       category: "Calendars",
-      keyFeatures: "Small portable pocket calendars perfect for wallets and purses, great for promotional giveaways.",
+      keyFeatures:
+        "Small portable pocket calendars perfect for wallets and purses, great for promotional giveaways.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -661,7 +673,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom photo calendars",
       category: "Calendars",
-      keyFeatures: "Custom photo calendars featuring your personal or business images, perfect for gifts and branding.",
+      keyFeatures:
+        "Custom photo calendars featuring your personal or business images, perfect for gifts and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -706,7 +719,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Daily tear-off calendars",
       category: "Calendars",
-      keyFeatures: "Daily tear-off calendars with perforated pages, featuring quotes, tips, or daily information.",
+      keyFeatures:
+        "Daily tear-off calendars with perforated pages, featuring quotes, tips, or daily information.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -778,7 +792,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large campaign banners for events",
       category: "Campaign Materials",
-      keyFeatures: "Large campaign banners with bold graphics and messages, ideal for rallies and public events.",
+      keyFeatures:
+        "Large campaign banners with bold graphics and messages, ideal for rallies and public events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -823,7 +838,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Campaign branded t-shirts",
       category: "Campaign Materials",
-      keyFeatures: "Campaign branded t-shirts with candidate logos and slogans, perfect for volunteers and supporters.",
+      keyFeatures:
+        "Campaign branded t-shirts with candidate logos and slogans, perfect for volunteers and supporters.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -845,7 +861,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Branded campaign caps and hats",
       category: "Campaign Materials",
-      keyFeatures: "Branded campaign caps and hats with embroidered logos, excellent for outdoor events and rallies.",
+      keyFeatures:
+        "Branded campaign caps and hats with embroidered logos, excellent for outdoor events and rallies.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -917,7 +934,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Sun protection bucket hats",
       category: "Caps & Hats",
-      keyFeatures: "Sun protection bucket hats with wide brims, ideal for outdoor activities and beach events.",
+      keyFeatures:
+        "Sun protection bucket hats with wide brims, ideal for outdoor activities and beach events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -939,7 +957,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Mesh back trucker caps",
       category: "Caps & Hats",
-      keyFeatures: "Mesh back trucker caps with foam front panel, providing ventilation and classic American style.",
+      keyFeatures:
+        "Mesh back trucker caps with foam front panel, providing ventilation and classic American style.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -961,7 +980,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Knitted beanie hats for winter",
       category: "Caps & Hats",
-      keyFeatures: "Knitted beanie hats for winter warmth, available in various colors with custom embroidery options.",
+      keyFeatures:
+        "Knitted beanie hats for winter warmth, available in various colors with custom embroidery options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -983,7 +1003,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Open-top visor caps",
       category: "Caps & Hats",
-      keyFeatures: "Open-top visor caps for sun protection while maintaining airflow, perfect for tennis and golf.",
+      keyFeatures:
+        "Open-top visor caps for sun protection while maintaining airflow, perfect for tennis and golf.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1032,7 +1053,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Cost-effective printed clothing tags",
       category: "ClothesTag",
-      keyFeatures: "Cost-effective printed clothing tags with vibrant colors and detailed information printing.",
+      keyFeatures:
+        "Cost-effective printed clothing tags with vibrant colors and detailed information printing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1054,7 +1076,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Iron-on heat transfer labels",
       category: "ClothesTag",
-      keyFeatures: "Iron-on heat transfer labels that bond permanently with fabric, ideal for seamless branding.",
+      keyFeatures:
+        "Iron-on heat transfer labels that bond permanently with fabric, ideal for seamless branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1076,7 +1099,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Standard size indication labels",
       category: "ClothesTag",
-      keyFeatures: "Standard size indication labels with clear size markings, essential for retail clothing.",
+      keyFeatures:
+        "Standard size indication labels with clear size markings, essential for retail clothing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1098,7 +1122,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Washing and care instruction labels",
       category: "ClothesTag",
-      keyFeatures: "Washing and care instruction labels with international symbols, required for garment compliance.",
+      keyFeatures:
+        "Washing and care instruction labels with international symbols, required for garment compliance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1120,7 +1145,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Decorative hang tags with strings",
       category: "ClothesTag",
-      keyFeatures: "Decorative hang tags with strings for pricing and branding, adds professional retail appearance.",
+      keyFeatures:
+        "Decorative hang tags with strings for pricing and branding, adds professional retail appearance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1145,7 +1171,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "100% cotton custom printed t-shirts",
       category: "Clothing & Apparel",
-      keyFeatures: "100% cotton t-shirts with custom printing, comfortable fit and durable fabric that lasts.",
+      keyFeatures:
+        "100% cotton t-shirts with custom printing, comfortable fit and durable fabric that lasts.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1167,7 +1194,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Premium polo t-shirts with custom printing",
       category: "Clothing & Apparel",
-      keyFeatures: "Premium polo t-shirts with collar, perfect for corporate events and professional settings.",
+      keyFeatures:
+        "Premium polo t-shirts with collar, perfect for corporate events and professional settings.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1190,7 +1218,8 @@ export const productsData = {
       description: "Custom printed hoodies",
       category: "Clothing & Apparel",
       popular: true,
-      keyFeatures: "Comfortable hoodies with custom printing, perfect for casual wear and promotional merchandise.",
+      keyFeatures:
+        "Comfortable hoodies with custom printing, perfect for casual wear and promotional merchandise.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1212,7 +1241,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Professional corporate shirts with logo",
       category: "Clothing & Apparel",
-      keyFeatures: "Professional corporate shirts with custom logo embroidery, perfect for office uniforms.",
+      keyFeatures:
+        "Professional corporate shirts with custom logo embroidery, perfect for office uniforms.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1234,7 +1264,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom branded aprons",
       category: "Clothing & Apparel",
-      keyFeatures: "Custom branded aprons for restaurants, cafes, and promotional events with adjustable straps.",
+      keyFeatures:
+        "Custom branded aprons for restaurants, cafes, and promotional events with adjustable straps.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1256,7 +1287,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom embroidered jackets",
       category: "Clothing & Apparel",
-      keyFeatures: "Custom embroidered jackets with premium materials, ideal for corporate gifts and team uniforms.",
+      keyFeatures:
+        "Custom embroidered jackets with premium materials, ideal for corporate gifts and team uniforms.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1351,7 +1383,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Character-themed sticker packs",
       category: "Comic Republic",
-      keyFeatures: "Character-themed sticker packs with die-cut shapes and weather-resistant vinyl material.",
+      keyFeatures:
+        "Character-themed sticker packs with die-cut shapes and weather-resistant vinyl material.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1373,7 +1406,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Licensed comic merchandise",
       category: "Comic Republic",
-      keyFeatures: "Licensed comic merchandise including t-shirts, mugs, and accessories featuring popular characters.",
+      keyFeatures:
+        "Licensed comic merchandise including t-shirts, mugs, and accessories featuring popular characters.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1422,7 +1456,8 @@ export const productsData = {
       description: "Luxury executive pen sets",
       category: "Corporate Gifts",
       popular: true,
-      keyFeatures: "Luxury executive pen sets with custom engraving, presented in elegant gift boxes for VIP clients.",
+      keyFeatures:
+        "Luxury executive pen sets with custom engraving, presented in elegant gift boxes for VIP clients.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1444,7 +1479,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom branded power banks",
       category: "Corporate Gifts",
-      keyFeatures: "Custom branded power banks with high capacity batteries, practical gifts for modern professionals.",
+      keyFeatures:
+        "Custom branded power banks with high capacity batteries, practical gifts for modern professionals.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1512,7 +1548,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Engraved crystal awards and trophies",
       category: "Corporate Gifts",
-      keyFeatures: "Engraved crystal awards and trophies for recognition ceremonies, adding prestige to achievements.",
+      keyFeatures:
+        "Engraved crystal awards and trophies for recognition ceremonies, adding prestige to achievements.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1534,7 +1571,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Curated corporate gift hampers",
       category: "Corporate Gifts",
-      keyFeatures: "Curated corporate gift hampers with premium items, perfect for client appreciation and holidays.",
+      keyFeatures:
+        "Curated corporate gift hampers with premium items, perfect for client appreciation and holidays.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1583,7 +1621,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Envelopes with transparent windows",
       category: "Envelopes",
-      keyFeatures: "Envelopes with transparent windows for address visibility, ideal for invoices and statements.",
+      keyFeatures:
+        "Envelopes with transparent windows for address visibility, ideal for invoices and statements.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1605,7 +1644,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Vibrant colored envelopes",
       category: "Envelopes",
-      keyFeatures: "Vibrant colored envelopes in various shades, perfect for invitations and special announcements.",
+      keyFeatures:
+        "Vibrant colored envelopes in various shades, perfect for invitations and special announcements.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1650,7 +1690,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Bubble-lined padded envelopes",
       category: "Envelopes",
-      keyFeatures: "Bubble-lined padded envelopes for fragile item protection, perfect for shipping delicate products.",
+      keyFeatures:
+        "Bubble-lined padded envelopes for fragile item protection, perfect for shipping delicate products.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1698,7 +1739,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Single sided A5 flyers",
       category: "Flyers & Handbills",
-      keyFeatures: "High-quality single-sided A5 flyers printed on premium paper stock with vibrant colors.",
+      keyFeatures:
+        "High-quality single-sided A5 flyers printed on premium paper stock with vibrant colors.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1720,7 +1762,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Double sided A5 flyers",
       category: "Flyers & Handbills",
-      keyFeatures: "Double-sided A5 flyers maximizing your marketing message with print on both sides.",
+      keyFeatures:
+        "Double-sided A5 flyers maximizing your marketing message with print on both sides.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1742,7 +1785,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Single sided A4 flyers",
       category: "Flyers & Handbills",
-      keyFeatures: "Large format A4 flyers perfect for detailed promotional content and event announcements.",
+      keyFeatures:
+        "Large format A4 flyers perfect for detailed promotional content and event announcements.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1764,7 +1808,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Double sided A4 flyers",
       category: "Flyers & Handbills",
-      keyFeatures: "Double-sided A4 flyers providing maximum space for your marketing content and messaging.",
+      keyFeatures:
+        "Double-sided A4 flyers providing maximum space for your marketing content and messaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1786,7 +1831,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Slim DL format flyers",
       category: "Flyers & Handbills",
-      keyFeatures: "Slim DL format flyers perfect for rack displays and direct mail campaigns with compact design.",
+      keyFeatures:
+        "Slim DL format flyers perfect for rack displays and direct mail campaigns with compact design.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1835,7 +1881,8 @@ export const productsData = {
       description: "Wooden A4 photo frames",
       category: "Frames & Wall Arts",
       popular: true,
-      keyFeatures: "Wooden A4 photo frames with glass protection, perfect for certificates and important documents.",
+      keyFeatures:
+        "Wooden A4 photo frames with glass protection, perfect for certificates and important documents.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1880,7 +1927,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Modern clear acrylic frames",
       category: "Frames & Wall Arts",
-      keyFeatures: "Modern clear acrylic frames with contemporary design, ideal for modern offices and galleries.",
+      keyFeatures:
+        "Modern clear acrylic frames with contemporary design, ideal for modern offices and galleries.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1902,7 +1950,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Sleek aluminum metal frames",
       category: "Frames & Wall Arts",
-      keyFeatures: "Sleek aluminum metal frames with brushed finish, providing durability and professional appearance.",
+      keyFeatures:
+        "Sleek aluminum metal frames with brushed finish, providing durability and professional appearance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1924,7 +1973,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Removable vinyl wall decals",
       category: "Frames & Wall Arts",
-      keyFeatures: "Removable vinyl wall decals with custom designs, easy to apply and remove without damage.",
+      keyFeatures:
+        "Removable vinyl wall decals with custom designs, easy to apply and remove without damage.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1946,7 +1996,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large format poster prints",
       category: "Frames & Wall Arts",
-      keyFeatures: "Large format poster prints with high-resolution quality, perfect for advertising and decoration.",
+      keyFeatures:
+        "Large format poster prints with high-resolution quality, perfect for advertising and decoration.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2018,7 +2069,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Festive Christmas greeting cards",
       category: "Greeting Cards",
-      keyFeatures: "Festive Christmas greeting cards with holiday themes and warm messages for seasonal greetings.",
+      keyFeatures:
+        "Festive Christmas greeting cards with holiday themes and warm messages for seasonal greetings.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2063,7 +2115,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Healing get well soon cards",
       category: "Greeting Cards",
-      keyFeatures: "Healing get well soon cards with comforting messages and gentle designs for recovery wishes.",
+      keyFeatures:
+        "Healing get well soon cards with comforting messages and gentle designs for recovery wishes.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2085,7 +2138,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Success congratulations cards",
       category: "Greeting Cards",
-      keyFeatures: "Success congratulations cards with celebratory designs, perfect for achievements and milestones.",
+      keyFeatures:
+        "Success congratulations cards with celebratory designs, perfect for achievements and milestones.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2157,7 +2211,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Temporary visitor ID cards",
       category: "ID Cards",
-      keyFeatures: "Temporary visitor ID cards with adhesive backing and expiry dates for security management.",
+      keyFeatures:
+        "Temporary visitor ID cards with adhesive backing and expiry dates for security management.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2179,7 +2234,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Club membership cards",
       category: "ID Cards",
-      keyFeatures: "Club membership cards with magnetic strips and barcode options for access control systems.",
+      keyFeatures:
+        "Club membership cards with magnetic strips and barcode options for access control systems.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2201,7 +2257,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Premium VIP cards with gold finish",
       category: "ID Cards",
-      keyFeatures: "Premium VIP cards with gold finish and special printing, creating exclusive membership experience.",
+      keyFeatures:
+        "Premium VIP cards with gold finish and special printing, creating exclusive membership experience.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2223,7 +2280,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "RFID access control cards",
       category: "ID Cards",
-      keyFeatures: "RFID access control cards with proximity technology for secure building and room access.",
+      keyFeatures:
+        "RFID access control cards with proximity technology for secure building and room access.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2249,7 +2307,8 @@ export const productsData = {
       description: "Custom product labeling stickers",
       category: "Labels",
       popular: true,
-      keyFeatures: "Custom product labeling stickers with waterproof material and strong adhesive for retail products.",
+      keyFeatures:
+        "Custom product labeling stickers with waterproof material and strong adhesive for retail products.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2271,7 +2330,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Mailing address labels",
       category: "Labels",
-      keyFeatures: "Mailing address labels with clear printing and easy-peel backing for efficient mail processing.",
+      keyFeatures:
+        "Mailing address labels with clear printing and easy-peel backing for efficient mail processing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2339,7 +2399,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Food packaging and nutrition labels",
       category: "Labels",
-      keyFeatures: "Food packaging and nutrition labels with FDA-compliant printing and food-safe materials.",
+      keyFeatures:
+        "Food packaging and nutrition labels with FDA-compliant printing and food-safe materials.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2361,7 +2422,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Asset tracking labels",
       category: "Labels",
-      keyFeatures: "Asset tracking labels with tamper-evident features and sequential numbering for inventory control.",
+      keyFeatures:
+        "Asset tracking labels with tamper-evident features and sequential numbering for inventory control.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2387,7 +2449,8 @@ export const productsData = {
       description: "Professional business letterhead",
       category: "Letterhead",
       popular: true,
-      keyFeatures: "Professional business letterhead with company logo and contact details on premium paper stock.",
+      keyFeatures:
+        "Professional business letterhead with company logo and contact details on premium paper stock.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2409,7 +2472,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Luxury executive letterhead",
       category: "Letterhead",
-      keyFeatures: "Luxury executive letterhead with embossed logo and watermark paper for prestigious correspondence.",
+      keyFeatures:
+        "Luxury executive letterhead with embossed logo and watermark paper for prestigious correspondence.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2431,7 +2495,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Full-color design letterhead",
       category: "Letterhead",
-      keyFeatures: "Full-color design letterhead with vibrant graphics and brand colors for creative businesses.",
+      keyFeatures:
+        "Full-color design letterhead with vibrant graphics and brand colors for creative businesses.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2476,7 +2541,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Letterhead with tear-off sections",
       category: "Letterhead",
-      keyFeatures: "Letterhead with tear-off sections and perforations for reply cards or detachable portions.",
+      keyFeatures:
+        "Letterhead with tear-off sections and perforations for reply cards or detachable portions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2498,7 +2564,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Coordinated multi-page letterhead sets",
       category: "Letterhead",
-      keyFeatures: "Coordinated multi-page letterhead sets with matching second sheets and continuation pages.",
+      keyFeatures:
+        "Coordinated multi-page letterhead sets with matching second sheets and continuation pages.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2523,7 +2590,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom printed mugs - simple and magic mugs",
       category: "Mugs",
-      keyFeatures: "Custom printed mugs available in simple and magic varieties, perfect for promotional gifts.",
+      keyFeatures:
+        "Custom printed mugs available in simple and magic varieties, perfect for promotional gifts.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2545,7 +2613,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "High quality ceramic mugs",
       category: "Mugs",
-      keyFeatures: "High quality ceramic mugs with smooth finish, perfect for daily use and corporate gifts.",
+      keyFeatures:
+        "High quality ceramic mugs with smooth finish, perfect for daily use and corporate gifts.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2568,7 +2637,8 @@ export const productsData = {
       description: "Insulated travel mugs with custom design",
       category: "Mugs",
       popular: true,
-      keyFeatures: "Insulated travel mugs with custom design, perfect for on-the-go professionals.",
+      keyFeatures:
+        "Insulated travel mugs with custom design, perfect for on-the-go professionals.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2590,7 +2660,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Clear glass mugs with etching",
       category: "Mugs",
-      keyFeatures: "Clear glass mugs with custom etching and elegant appearance, ideal for premium presentations.",
+      keyFeatures:
+        "Clear glass mugs with custom etching and elegant appearance, ideal for premium presentations.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2635,7 +2706,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Personalized photo mugs",
       category: "Mugs",
-      keyFeatures: "Personalized photo mugs with high-resolution image printing, perfect for gifts and memories.",
+      keyFeatures:
+        "Personalized photo mugs with high-resolution image printing, perfect for gifts and memories.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2684,7 +2756,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Small pocket-sized jotters",
       category: "Notepads and Jotters",
-      keyFeatures: "Small pocket-sized jotters with compact design, ideal for quick notes and on-the-go writing.",
+      keyFeatures:
+        "Small pocket-sized jotters with compact design, ideal for quick notes and on-the-go writing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2706,7 +2779,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Professional hardcover notebooks",
       category: "Notepads and Jotters",
-      keyFeatures: "Professional hardcover notebooks with durable binding and premium paper, perfect for executives.",
+      keyFeatures:
+        "Professional hardcover notebooks with durable binding and premium paper, perfect for executives.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2728,7 +2802,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Adhesive sticky note pads",
       category: "Notepads and Jotters",
-      keyFeatures: "Adhesive sticky note pads with custom printing and repositionable adhesive for reminders.",
+      keyFeatures:
+        "Adhesive sticky note pads with custom printing and repositionable adhesive for reminders.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2750,7 +2825,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large desk pads with calendar",
       category: "Notepads and Jotters",
-      keyFeatures: "Large desk pads with calendar and planning sections, perfect for desk organization and scheduling.",
+      keyFeatures:
+        "Large desk pads with calendar and planning sections, perfect for desk organization and scheduling.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2772,7 +2848,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Shorthand reporter notepads",
       category: "Notepads and Jotters",
-      keyFeatures: "Shorthand reporter notepads with narrow ruling and flip-top design for professional interviews.",
+      keyFeatures:
+        "Shorthand reporter notepads with narrow ruling and flip-top design for professional interviews.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2821,7 +2898,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large A2 format posters",
       category: "Posters",
-      keyFeatures: "Large A2 format posters with professional printing quality, perfect for advertising and displays.",
+      keyFeatures:
+        "Large A2 format posters with professional printing quality, perfect for advertising and displays.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2843,7 +2921,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Extra large A1 posters",
       category: "Posters",
-      keyFeatures: "Extra large A1 posters with maximum impact printing, ideal for trade shows and exhibitions.",
+      keyFeatures:
+        "Extra large A1 posters with maximum impact printing, ideal for trade shows and exhibitions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2865,7 +2944,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Cinema-style movie posters",
       category: "Posters",
-      keyFeatures: "Cinema-style movie posters with glossy finish and premium paper, perfect for entertainment venues.",
+      keyFeatures:
+        "Cinema-style movie posters with glossy finish and premium paper, perfect for entertainment venues.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2960,7 +3040,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Document storage pocket folders",
       category: "Presentation Folders",
-      keyFeatures: "Document storage pocket folders with multiple compartments for organized file management.",
+      keyFeatures:
+        "Document storage pocket folders with multiple compartments for organized file management.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -2982,7 +3063,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large legal size document folders",
       category: "Presentation Folders",
-      keyFeatures: "Large legal size document folders accommodating oversized papers and legal documents.",
+      keyFeatures:
+        "Large legal size document folders accommodating oversized papers and legal documents.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3004,7 +3086,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Heavy-duty reinforced folders",
       category: "Presentation Folders",
-      keyFeatures: "Heavy-duty reinforced folders with extra durability for frequent use and heavy documents.",
+      keyFeatures:
+        "Heavy-duty reinforced folders with extra durability for frequent use and heavy documents.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3026,7 +3109,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom shaped die-cut folders",
       category: "Presentation Folders",
-      keyFeatures: "Custom shaped die-cut folders with unique designs that make your presentations stand out.",
+      keyFeatures:
+        "Custom shaped die-cut folders with unique designs that make your presentations stand out.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3048,7 +3132,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Glossy laminated presentation folders",
       category: "Presentation Folders",
-      keyFeatures: "Glossy laminated presentation folders with water-resistant coating and premium appearance.",
+      keyFeatures:
+        "Glossy laminated presentation folders with water-resistant coating and premium appearance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3074,7 +3159,8 @@ export const productsData = {
       description: "Custom branded promotional pens",
       category: "Promotional Items",
       popular: true,
-      keyFeatures: "Custom branded promotional pens with company logos, perfect for giveaways and marketing campaigns.",
+      keyFeatures:
+        "Custom branded promotional pens with company logos, perfect for giveaways and marketing campaigns.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3096,7 +3182,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom metal and plastic keychains",
       category: "Promotional Items",
-      keyFeatures: "Custom metal and plastic keychains with various shapes and designs for brand recognition.",
+      keyFeatures:
+        "Custom metal and plastic keychains with various shapes and designs for brand recognition.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3118,7 +3205,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Branded USB flash drives",
       category: "Promotional Items",
-      keyFeatures: "Branded USB flash drives with custom shapes and data storage, practical promotional gifts.",
+      keyFeatures:
+        "Branded USB flash drives with custom shapes and data storage, practical promotional gifts.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3163,7 +3251,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Canvas promotional tote bags",
       category: "Promotional Items",
-      keyFeatures: "Canvas promotional tote bags with custom printing, eco-friendly and reusable marketing tools.",
+      keyFeatures:
+        "Canvas promotional tote bags with custom printing, eco-friendly and reusable marketing tools.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3212,7 +3301,8 @@ export const productsData = {
       description: "Waterproof vinyl stickers",
       category: "Stickers",
       popular: true,
-      keyFeatures: "Waterproof vinyl stickers with strong adhesive and fade-resistant colors for outdoor use.",
+      keyFeatures:
+        "Waterproof vinyl stickers with strong adhesive and fade-resistant colors for outdoor use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3280,7 +3370,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Custom shaped die-cut stickers",
       category: "Stickers",
-      keyFeatures: "Custom shaped die-cut stickers with precise cutting and unique designs for brand differentiation.",
+      keyFeatures:
+        "Custom shaped die-cut stickers with precise cutting and unique designs for brand differentiation.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3352,7 +3443,8 @@ export const productsData = {
       description: "Large branded golf umbrellas",
       category: "Umbrella",
       popular: true,
-      keyFeatures: "Large branded golf umbrellas with wind-resistant design and custom printing for corporate events.",
+      keyFeatures:
+        "Large branded golf umbrellas with wind-resistant design and custom printing for corporate events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3374,7 +3466,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Foldable travel umbrellas",
       category: "Umbrella",
-      keyFeatures: "Foldable travel umbrellas with compact design and automatic open/close mechanism for convenience.",
+      keyFeatures:
+        "Foldable travel umbrellas with compact design and automatic open/close mechanism for convenience.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3396,7 +3489,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Large beach sun umbrellas",
       category: "Umbrella",
-      keyFeatures: "Large beach sun umbrellas with UV protection and sand anchor base for outdoor recreation.",
+      keyFeatures:
+        "Large beach sun umbrellas with UV protection and sand anchor base for outdoor recreation.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3418,7 +3512,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Outdoor patio dining umbrellas",
       category: "Umbrella",
-      keyFeatures: "Outdoor patio dining umbrellas with tilt mechanism and fade-resistant fabric for restaurants.",
+      keyFeatures:
+        "Outdoor patio dining umbrellas with tilt mechanism and fade-resistant fabric for restaurants.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3440,7 +3535,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Colorful children's umbrellas",
       category: "Umbrella",
-      keyFeatures: "Colorful children's umbrellas with cartoon designs and safety features for young users.",
+      keyFeatures:
+        "Colorful children's umbrellas with cartoon designs and safety features for young users.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3462,7 +3558,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Transparent dome umbrellas",
       category: "Umbrella",
-      keyFeatures: "Transparent dome umbrellas with clear canopy providing visibility while staying dry and stylish.",
+      keyFeatures:
+        "Transparent dome umbrellas with clear canopy providing visibility while staying dry and stylish.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3488,7 +3585,8 @@ export const productsData = {
       description: "Elegant wedding invitation cards",
       category: "Wedding Stationery",
       popular: true,
-      keyFeatures: "Elegant wedding invitation cards with premium paper and romantic designs for special celebrations.",
+      keyFeatures:
+        "Elegant wedding invitation cards with premium paper and romantic designs for special celebrations.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3510,7 +3608,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Pre-wedding save the date cards",
       category: "Wedding Stationery",
-      keyFeatures: "Pre-wedding save the date cards with beautiful designs to announce your special day in advance.",
+      keyFeatures:
+        "Pre-wedding save the date cards with beautiful designs to announce your special day in advance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3532,7 +3631,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Wedding response RSVP cards",
       category: "Wedding Stationery",
-      keyFeatures: "Wedding response RSVP cards with reply information and postage for guest convenience.",
+      keyFeatures:
+        "Wedding response RSVP cards with reply information and postage for guest convenience.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3554,7 +3654,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Ceremony program booklets",
       category: "Wedding Stationery",
-      keyFeatures: "Ceremony program booklets with order of service and wedding party information for guests.",
+      keyFeatures:
+        "Ceremony program booklets with order of service and wedding party information for guests.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3576,7 +3677,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Post-wedding thank you cards",
       category: "Wedding Stationery",
-      keyFeatures: "Post-wedding thank you cards with heartfelt messages to express gratitude to wedding guests.",
+      keyFeatures:
+        "Post-wedding thank you cards with heartfelt messages to express gratitude to wedding guests.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3598,7 +3700,8 @@ export const productsData = {
       image: "/placeholder.svg?height=200&width=200",
       description: "Reception dinner menu cards",
       category: "Wedding Stationery",
-      keyFeatures: "Reception dinner menu cards with elegant typography and meal descriptions for wedding dining.",
+      keyFeatures:
+        "Reception dinner menu cards with elegant typography and meal descriptions for wedding dining.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -3613,7 +3716,7 @@ export const productsData = {
       ],
     },
   ],
-}
+};
 
 // Helper function to get all products as a flat array
 export const getAllProducts = (): Product[] => {

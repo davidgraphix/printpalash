@@ -144,11 +144,11 @@ export default function ProductsSection() {
 
           {/* Products Grid - Single Column on Mobile */}
           {filteredProducts.length > 0 ? (
-            <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-4">
               {filteredProducts.map((product, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+                  className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
                 >
                   {/* Product Image */}
                   <div className="aspect-square bg-gray-200 relative">
@@ -160,27 +160,30 @@ export default function ProductsSection() {
                     />
                   </div>
                   {/* Product Info */}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2">
+                  <div className="p-4 flex flex-col flex-1">
+                    <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                       {product.name}
                     </h3>
                     <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">
                       STARTING AT
                     </p>
                     <div className="flex items-baseline space-x-1 mb-3">
-                      <span className="text-xl font-bold text-red-600">
+                      <span className="text-lg font-bold text-red-600">
                         {product.price}
                       </span>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-xs text-gray-500">
                         {product.unit}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-xs text-gray-600 mb-4 line-clamp-2">
                       {product.description}
                     </p>
                     {/* Action Button */}
-                    <Link href={`/products/${product.slug}`} className="block">
-                      <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-4 rounded transition-colors">
+                    <Link
+                      href={`/products/${product.slug}`}
+                      className="block mt-auto"
+                    >
+                      <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-3 rounded text-xs transition-colors">
                         Order Now
                       </button>
                     </Link>
