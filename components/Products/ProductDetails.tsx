@@ -18,11 +18,75 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     shipping: "standard",
   });
 
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Calculate total price
+  const quantityNumber = Number(selectedQuantity);
+  const unitPrice = product.priceNumeric || 0;
+  const totalPrice = unitPrice * quantityNumber;
+
   const handleSpecChange = (category: string, value: string) => {
     setSelectedSpecs((prev) => ({
       ...prev,
       [category]: value,
     }));
+  };
+
+  // Handle Order function to send order details to API and redirect to WhatsApp
+  const handleOrder = async () => {
+    setError(null);
+    setIsLoading(true);
+
+    const orderPayload = {
+      productName: product.name,
+      productId: product.slug ?? undefined,
+      quantity: quantityNumber,
+      unitPrice,
+      totalPrice,
+      tax: product.tax,
+      specs: selectedSpecs,
+      customer: { name: customerName, phone: customerPhone },
+    };
+
+    try {
+      const resp = await fetch("/api/send-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderPayload),
+      });
+
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data?.message || "Failed to place order");
+
+      const whatsAppNumber =
+        process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2347035017359";
+
+      const specsText = Object.entries(selectedSpecs)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join(", ");
+
+      const message = `Hello, my name is ${
+        orderPayload.customer.name
+      }, phone: ${orderPayload.customer.phone}. I just ordered ${
+        orderPayload.quantity
+      } x ${
+        orderPayload.productName
+      } (${specsText}). Total: ₦${orderPayload.totalPrice.toLocaleString()}.`;
+
+      const waUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.location.href = waUrl;
+    } catch (err: any) {
+      console.error("Order error", err);
+      setError(err?.message || "Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -149,9 +213,21 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <div className="bg-gray-50 p-4 rounded-lg">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="text-2xl font-bold text-gray-900">
-                    ₦{product.priceNumeric.toLocaleString()}
+                  <span className="text-gray-600">Unit Price</span>
+                  <span className="text-lg font-bold text-gray-900">
+                    ₦{unitPrice.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Quantity</span>
+                  <span className="text-lg font-bold text-gray-900">
+                    {quantityNumber}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Total</span>
+                  <span className="text-2xl font-bold text-red-600">
+                    ₦{totalPrice.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
@@ -161,9 +237,40 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </span>
                 </div>
               </div>
-              <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-4 text-lg transition-colors duration-200">
-                ORDER NOW
+              <div className="mt-4 space-y-3">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
+                  required
+                />
+
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={customerPhone}
+                  onChange={(e) => setCustomerPhone(e.target.value)}
+                  className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
+                  required
+                />
+              </div>
+
+              <button
+                onClick={() => {
+                  if (!customerName.trim() || !customerPhone.trim()) {
+                    setError("Please fill in your name and phone number.");
+                    return;
+                  }
+                  handleOrder();
+                }}
+                disabled={isLoading}
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-4 text-lg transition-colors duration-200"
+              >
+                {isLoading ? "Placing Order..." : "ORDER NOW"}
               </button>
+              {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
             </div>
           </div>
 
@@ -481,10 +588,22 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {/* Pricing */}
               <div className="bg-gray-50 p-6 rounded-lg">
                 <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
-                    <span className="text-2xl font-bold text-gray-900">
-                      ₦{product.priceNumeric.toLocaleString()}
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Unit Price</span>
+                    <span className="text-lg font-bold text-gray-900">
+                      ₦{unitPrice.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Quantity</span>
+                    <span className="text-lg font-bold text-gray-900">
+                      {quantityNumber}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Total</span>
+                    <span className="text-2xl font-bold text-red-600">
+                      ₦{totalPrice.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
@@ -494,9 +613,40 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </span>
                   </div>
                 </div>
-                <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg mt-6 text-lg transition-colors duration-200">
-                  ORDER NOW
+                <div className="mt-4 space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
+                    required
+                  />
+
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
+                    required
+                  />
+                </div>
+
+                <button
+                  onClick={() => {
+                    if (!customerName.trim() || !customerPhone.trim()) {
+                      setError("Please fill in your name and phone number.");
+                      return;
+                    }
+                    handleOrder();
+                  }}
+                  disabled={isLoading}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg mt-6 text-lg transition-colors duration-200"
+                >
+                  {isLoading ? "Placing Order..." : "ORDER NOW"}
                 </button>
+                {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
               </div>
             </div>
           </div>
