@@ -19,14 +19,15 @@ export default function Hero() {
           <div className="flex flex-col items-center justify-center gap-0 mb-6 text-center w-full">
             {/* Left Content: Heading, Description */}
             <div className="space-y-3 w-full">
-              <h1 className="text-[30px] font-bold text-gray-900 leading-tight w-full">
-                Transforming Your <br />
-                <span className="text-red-600">Vision </span> into Vibrant{" "}
+              <h1 className="text-[28px] font-bold text-gray-900 leading-tight w-full">
+                <span className="text-red-600"> Stand Out</span>
                 <br />
-                Reality
+                With Premium Prints <br /> That Matters.
               </h1>
-              <p className="text-[18px] text-gray-600 font-semibold w-full text-center">
-                Where Every Print Tells Your Story
+              <p className="text-[16px] text-gray-600 font-semibold w-full text-center">
+                Flyers, Jotters, Business Cards, Banners, T-Shirts & More <br />
+                -<span className="text-red-600">Fast & Reliable.</span> <br />
+                <br />
               </p>
               {/* Get Started Button removed */}
             </div>
@@ -90,7 +91,7 @@ export default function Hero() {
 
             {/* Search Bar */}
             <div className="space-y-1">
-              <p className="text-gray-700 font-medium">
+              <p className="text-gray-700 font-small">
                 What are you printing today?
               </p>
               <div className="relative">

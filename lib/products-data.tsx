@@ -3436,6 +3436,91 @@ export const productsData = {
       images: ["/product-images/wedding-stationery/wedding-stationery-8.jpg"],
     },
   ],
+  // Added categories requested by user
+  "Office Stationery": [
+    {
+      name: "Letterhead (A4) - Branded",
+      slug: generateSlug("Letterhead (A4) - Branded"),
+      price: "₦6,000",
+      unit: "per 100",
+      image: "/placeholder.svg?height=200&width=200",
+      description: "Custom branded A4 letterheads for official correspondence.",
+      category: "Office Stationery",
+      keyFeatures:
+        "High-quality A4 letterheads with full-colour branding and sharp print quality.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 6000,
+      tax: 480,
+      images: ["/placeholder.svg?height=400&width=400"],
+    },
+  ],
+
+  Invitations: [
+    {
+      name: "Acrylic Invite Card",
+      slug: generateSlug("Acrylic Invite Card"),
+      price: "₦35,000",
+      unit: "per 50",
+      image: "/placeholder.svg?height=200&width=200",
+      description: "Premium acrylic invitation cards for weddings and events.",
+      category: "Invitations",
+      keyFeatures:
+        "Durable acrylic invites with laser-cut finish and premium print quality.",
+      delivery: {
+        lagos: "5-7 Working Days for order within Lagos",
+        others: "7-10 Working Days for Order from other state",
+      },
+      priceNumeric: 35000,
+      tax: 2800,
+      images: ["/placeholder.svg?height=400&width=400"],
+    },
+  ],
+
+  "Box & Packaging": [
+    {
+      name: "Food Pack Box (Single)",
+      slug: generateSlug("Food Pack Box (Single)"),
+      price: "₦250",
+      unit: "per piece",
+      image: "/placeholder.svg?height=200&width=200",
+      description:
+        "Single compartment food pack box for takeaway and delivery.",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Sturdy food-grade packaging with grease-resistant lining, available in custom branding.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 250,
+      tax: 20,
+      images: ["/placeholder.svg?height=400&width=400"],
+    },
+  ],
+
+  "Events & Souvenirs": [
+    {
+      name: "Event Wristband (Silicone)",
+      slug: generateSlug("Event Wristband (Silicone)"),
+      price: "₦1,200",
+      unit: "per 100",
+      image: "/placeholder.svg?height=200&width=200",
+      description: "Custom silicone wristbands for events and promotions.",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable silicone wristbands with debossed or printed branding options.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 1200,
+      tax: 96,
+      images: ["/placeholder.svg?height=400&width=400"],
+    },
+  ],
 };
 
 // Helper function to get all products as a flat array
