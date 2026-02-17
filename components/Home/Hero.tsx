@@ -4,10 +4,7 @@ import Link from "next/link";
 
 import backgroundImg from "@/public/assests/img-background.png";
 import mobileHeroImg from "@/public/assests/mobile-hero-img.png";
-// import desktopHeroImg from "@/public/assests/heroBg.png";
-// import productOneImg from "@/public/assests/image-items/product1.png";
-// import productTwoImg from "@/public/assests/image-items/product2.png";
-// import productThreeImg from "@/public/assests/image-items/product3.png";
+
 
 export default function Hero() {
   return (
@@ -29,26 +26,9 @@ export default function Hero() {
                 -<span className="text-red-600">Fast & Reliable.</span> <br />
                 <br />
               </p>
-              {/* Get Started Button removed */}
             </div>
-            {/* Right Content: Mobile Hero Image (commented out) */}
-            {/*
-            <div className="w-[200px] h-[210px] relative -mt-4 -mr-4">
-              <Image
-                src={
-                  mobileHeroImg ||
-                  "/placeholder.svg?height=200&width=210&query=mobile hero image with products"
-                }
-                alt="Mobile Hero Image"
-                fill
-                className="object-cover flex-shrink-0 rounded-1"
-                priority
-              />
-            </div>
-            */}
           </div>
 
-          {/* Bottom row: Search Bar (below text and image) */}
 
           <div className="relative -mt-6 group flex flex-col items-center w-full">
             <p className="text-[17px] text-gray-700 font-semibold text-center w-full mb-2">
@@ -59,7 +39,7 @@ export default function Hero() {
                 type="text"
                 placeholder="Search for flyers, paper bag, business card, e.t.c."
                 className="w-full max-w-md py-3 px-4 pr-12 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-700 placeholder-gray-400 text-base shadow text-center"
-                // TODO: Add onChange handler for search functionality
+              // TODO: Add onChange handler for search functionality
               />
               <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400 group-hover:text-red-600 cursor-pointer transition-colors duration-200" />
             </div>
@@ -122,37 +102,6 @@ export default function Hero() {
                 />
               </div>
             </div>
-
-            {/* Floating Product Items for Desktop */}
-            {/* <div className="absolute top-8 left-8 animate-bounce">
-              <Image
-                src={productOneImg || "/placeholder.svg"}
-                alt="Custom Bag"
-                width={120}
-                height={120}
-                className="rounded"
-              />
-            </div>
-
-            <div className="absolute bottom-15 left-4 animate-bounce delay-300">
-              <Image
-                src={productTwoImg || "/placeholder.svg"}
-                alt="Custom T-Shirt"
-                width={60}
-                height={70}
-                className="rounded"
-              />
-            </div>
-
-            <div className="absolute bottom-20 left-4 animate-bounce delay-300">
-              <Image
-                src={productThreeImg || "/placeholder.svg"}
-                alt="Custom Mug"
-                width={60}
-                height={70}
-                className="rounded"
-              />
-            </div> */}
 
             <div className="absolute top-32 right-16 w-4 h-4 bg-red-400 rounded-full animate-ping"></div>
             <div className="absolute bottom-32 right-8 w-3 h-3 bg-pink-400 rounded-full animate-pulse"></div>
