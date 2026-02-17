@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={biorhyme.variable}>
+    <html lang="en" className={biorhyme.variable}>
+      <body className={inter.className}>
         <TopBar />
         <Header />
         <Navbar />

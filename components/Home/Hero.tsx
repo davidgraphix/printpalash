@@ -112,15 +112,15 @@ export default function Hero() {
                 <div className="hidden lg:grid grid-cols-2 gap-10 items-center">
                   {/* Left */}
                   <div>
-                    <h1 className="font-biorhyme font-extrabold leading-[0.95] tracking-tight">
-                      <span className="text-red-600 text-6xl">{s.titleRed}</span>
+                    <h1 className="font-biorhyme font-extrabold text-[96px] leading-[0.95] tracking-[0%]">
+                      <span className="text-red-600 text-7xl">{s.titleRed}</span>
                       <br />
                       <span className="text-black text-6xl">{s.titleBlack}</span>
                     </h1>
 
                     <p className="mt-3 text-base text-gray-700">{s.subtitle}</p>
 
-                    <div className="mt-8 text-[12px] leading-5 text-gray-600 max-w-lg">
+                    <div className="mt-8 text-[16px] leading-5 text-gray-600 max-w-lg">
                       {s.description}
                     </div>
 
@@ -174,7 +174,7 @@ export default function Hero() {
                   </div>
 
                   <div className="mt-8">
-                    <h2 className="font-biorhyme font-extrabold leading-[0.95] tracking-tight">
+                    <h2 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
                       <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
                       <span className="text-black text-3xl">{s.titleBlack}</span>
                     </h2>
