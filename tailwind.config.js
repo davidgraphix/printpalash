@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         aileron: ["Aileron", "sans-serif"],
-        BioRhyme: ["var(--font-biorhyme)", "serif"]
+        BioRhyme: ["var(--font-biorhyme)", "serif"],
       },
     },
   },
