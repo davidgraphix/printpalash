@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Arial", "Helvetica", "sans-serif"],
+        sans: ["Aileron", "sans-serif"], // ✅ default body font
+        biorhyme: ["var(--font-biorhyme)", "serif"], // ✅ headings
       },
     },
   },
