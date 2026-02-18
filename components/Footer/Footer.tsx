@@ -150,7 +150,7 @@ export default function Footer() {
               lagos, nigeria.
             </address>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=29+Shipeolu+street,+elediye+roundabout,+onipanu,+shomolu,+lagos,+nigeria"
+              href="https://maps.app.goo.gl/R4baNsY7v71JPG3Z9?g_st=ic"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
