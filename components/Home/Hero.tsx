@@ -1,16 +1,14 @@
 "use client";
 
+import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { Search } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import React from "react";
 
 import slide1Img from "@/public/assests/hero-slide-1.png";
 import slide2Img from "@/public/assests/hero-slide-2.png";
 import slide3Img from "@/public/assests/hero-slide-3.png";
-
-
 
 type Slide = {
   titleRed: string;
@@ -27,7 +25,7 @@ const SLIDES: Slide[] = [
     subtitle: "shipped fast to your doorstep",
     description: (
       <>
-        From Flyers, Jotters, Business Cards, Banners, T-Shirts & More. <br />
+        From Flyers, Jotters, Business Cards, Banners, T-Shirts &amp; More. <br />
         We Deliver Premium Print For Business And Personal Projects
         <br />
         <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
@@ -69,13 +67,16 @@ const SLIDES: Slide[] = [
 ];
 
 export default function Hero() {
-  const autoplay = React.useRef(
-    Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })
-  );
-
+  // ✅ Autoplay (slides by itself)
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
-    [autoplay.current]
+    [
+      Autoplay({
+        delay: 3500,
+        stopOnInteraction: false,
+        stopOnMouseEnter: false,
+      }),
+    ]
   );
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -100,13 +101,28 @@ export default function Hero() {
   return (
     <section className="bg-white">
       <div className="container mx-auto px-8">
+        <div className="relative z-10 -mb-10 lg:-mb-14 pt-4 -lg:pt-6">
+          <p className="text-sm font-semibold text-gray-900 mb-2">
+            Start Printing Today
+          </p>
+
+          <div className="relative max-w-md">
+            <input
+              type="text"
+              placeholder="search for flyers, paper bag, business card, e.t.c."
+              className="w-full border border-gray-200 bg-gray-50 px-4 py-3 pr-12 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          </div>
+        </div>
+
         {/* Carousel viewport */}
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden w-full" ref={emblaRef}>
           <div className="flex">
             {SLIDES.map((s, i) => (
               <div
                 key={i}
-                className="min-w-0 flex-[0_0_100%] py-10 lg:py-14"
+                className="min-w-0 flex-[0_0_100%] pt-16 pb-10 lg:pt-20 lg:pb-14"
               >
                 {/* DESKTOP */}
                 <div className="hidden lg:grid grid-cols-2 gap-10 items-center">
@@ -120,23 +136,8 @@ export default function Hero() {
 
                     <p className="mt-3 text-base text-gray-700">{s.subtitle}</p>
 
-                    <div className="mt-8 text-[16px] leading-5 text-gray-600 max-w-lg">
+                    <div className="mt-8 text-[16px] leading-6 text-gray-600 max-w-lg">
                       {s.description}
-                    </div>
-
-                    <div className="mt-10">
-                      <p className="text-sm font-semibold text-gray-900 mb-2">
-                        Start Printing Today
-                      </p>
-
-                      <div className="relative max-w-md">
-                        <input
-                          type="text"
-                          placeholder="search for flyers, paper bag, business card, e.t.c."
-                          className="w-full border border-gray-200 bg-gray-50 px-4 py-3 pr-12 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                        />
-                        <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                      </div>
                     </div>
                   </div>
 
@@ -154,25 +155,10 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 {/* MOBILE */}
                 <div className="lg:hidden">
-                  {/* Mobile header row like your screenshot */}
-                  <div className="mb-3 text-sm font-semibold text-gray-900">
-                    Start printing today
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search for flyers, paper bag, business card, e.t.c."
-                      className="w-full border border-gray-200 bg-gray-50 px-4 py-3 pr-12 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                    <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-
                   <div className="mt-8">
                     <h2 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
                       <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
@@ -194,7 +180,6 @@ export default function Hero() {
                         priority={i === 0}
                       />
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -202,7 +187,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Dots (like your screenshot) */}
+        {/* Dots */}
         <div className="flex items-center justify-center gap-2 pb-10">
           {SLIDES.map((_, i) => (
             <button
