@@ -1,19 +1,19 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
-// import { Inter, BioRhyme } from "next/font/google";lkgr
+import { Inter, BioRhyme } from "next/font/google";
 
 import TopBar from "@/components/Home/Topbar";
 import Header from "@/components/Home/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import WhatsAppButton from "@/components/Chat-with-us/WhatsappButton";
 
-// const biorhyme = BioRhyme({
-//   subsets: ["latin"],
-//   weight: ["400", "700", "800"],
-//   variable: "--font-biorhyme",
-//   display: "swap",
-// });
+const biorhyme = BioRhyme({
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  variable: "--font-biorhyme",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://printpalash.com"),
@@ -100,7 +100,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" >
+    <html lang="en" className={biorhyme.variable}>
       <body className="font-sans antialiased">
         {/* Local Business Schema */}
         <script
