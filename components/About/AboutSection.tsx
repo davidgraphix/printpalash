@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import AboutImageBg from "@/public/assests/about-image/about-bg-img.png";
-import woodenImg from "@/public/assests/about-image/Group 22.png";
 import Features from "@/components/Features/Features";
 
 export default function AboutSection() {
@@ -12,7 +10,7 @@ export default function AboutSection() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={AboutImageBg}
+            src="/assests/about-image/about-bg-img.png"
             alt="Professional printing machine with colorful prints"
             fill
             className="object-cover opacity-100"
@@ -206,7 +204,7 @@ export default function AboutSection() {
                 <div className=" rounded-lg p-2 inline-block mb-4">
                   <div className=" rounded p-4">
                     <Image
-                      src={woodenImg}
+                      src="/assests/about-image/Group 22.png"
                       alt="Wooden figurines representing community and teamwork"
                       width={350}
                       height={400}
