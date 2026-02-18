@@ -8,12 +8,6 @@ import Header from "@/components/Home/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import WhatsAppButton from "@/components/Chat-with-us/WhatsappButton";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 const biorhyme = BioRhyme({
   subsets: ["latin"],
   weight: ["400", "700", "800"],
@@ -106,7 +100,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${biorhyme.variable}`}>
+    <html lang="en" className={biorhyme.variable}>
       <body className="font-sans antialiased">
         {/* Local Business Schema */}
         <script
