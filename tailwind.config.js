@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["sans-serif"],
-        biorhyme: ["sans-serif"],
+        sans: ["Arial", "Helvetica", "sans-serif"],
       },
     },
   },
