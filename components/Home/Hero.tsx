@@ -121,7 +121,7 @@ export default function Hero() {
             {SLIDES.map((s, i) => (
               <div
                 key={i}
-                className="min-w-0 flex-[0_0_100%] pt-16 pb-10 lg:pt-8 lg:pb-2"
+                className="min-w-0 flex-[0_0_100%] pt-16 pb-2 lg:pt-8 lg:pb-2"
               >
                 {/* DESKTOP */}
                 <div className="hidden lg:grid grid-cols-2 gap-10 items-center">
