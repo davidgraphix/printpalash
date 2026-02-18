@@ -67,7 +67,6 @@ const SLIDES: Slide[] = [
 ];
 
 export default function Hero() {
-  // ✅ Autoplay (slides by itself)
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
     [
@@ -122,7 +121,7 @@ export default function Hero() {
             {SLIDES.map((s, i) => (
               <div
                 key={i}
-                className="min-w-0 flex-[0_0_100%] pt-16 pb-10 lg:pt-20 lg:pb-14"
+                className="min-w-0 flex-[0_0_100%] pt-16 pb-10 lg:pt-8 lg:pb-2"
               >
                 {/* DESKTOP */}
                 <div className="hidden lg:grid grid-cols-2 gap-10 items-center">
@@ -159,7 +158,7 @@ export default function Hero() {
 
                 {/* MOBILE */}
                 <div className="lg:hidden">
-                  <div className="mt-8">
+                  <div className="mt-1">
                     <h2 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
                       <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
                       <span className="text-black text-3xl">{s.titleBlack}</span>
@@ -188,7 +187,7 @@ export default function Hero() {
         </div>
 
         {/* Dots */}
-        <div className="flex items-center justify-center gap-2 pb-10">
+        <div className="flex items-center justify-center gap-2 pb-6">
           {SLIDES.map((_, i) => (
             <button
               key={i}
