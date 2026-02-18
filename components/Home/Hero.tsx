@@ -71,7 +71,7 @@ export default function Hero() {
     { loop: true, align: "start" },
     [
       Autoplay({
-        delay: 3500,
+        delay: 10000,
         stopOnInteraction: false,
         stopOnMouseEnter: false,
       }),
