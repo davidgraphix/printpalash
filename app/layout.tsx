@@ -100,7 +100,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={biorhyme.variable}>
+    <html lang="en" >
+      {/* className={biorhyme.variable} */}
       <body className="font-sans antialiased">
         {/* Local Business Schema */}
         <script
