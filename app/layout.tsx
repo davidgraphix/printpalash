@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, BioRhyme } from "next/font/google";
+import { BioRhyme } from "next/font/google";
 
 import TopBar from "@/components/Home/Topbar";
 import Header from "@/components/Home/Header";
@@ -102,7 +102,8 @@ export default function RootLayout({
   return (
     <html lang="en" >
       {/* className={biorhyme.variable} */}
-      <body className="font-sans antialiased">
+      <body
+        className={biorhyme.variable}>
         {/* Local Business Schema */}
         <script
           type="application/ld+json"
