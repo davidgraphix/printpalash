@@ -571,6 +571,103 @@ export const productsData = {
     },
   ],
 
+  "Box & Packaging": [
+    {
+      name: "Drawer Box",
+      slug: generateSlug("Drawer Box"),
+      price: "₦3,500",
+      unit: "per piece",
+      image: "/product-images/box&packaging/drawer-box.png",
+      description: "Premium drawer packaging boxes",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Luxury drawer boxes suitable for gifts, accessories, and premium packaging.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 3500,
+      tax: 280,
+      images: ["/product-images/box&packaging/drawer-box.png"],
+    },
+
+    {
+      name: "Food Pack",
+      slug: generateSlug("Food Pack"),
+      price: "₦250",
+      unit: "per piece",
+      image: "/product-images/box&packaging/food-pack.png",
+      description: "Food takeaway packaging boxes",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Food-grade packaging suitable for takeaway and food delivery.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 250,
+      tax: 20,
+      images: ["/product-images/box&packaging/food-pack.png"],
+    },
+
+    {
+      name: "Magnetic Flip Pack",
+      slug: generateSlug("Magnetic Flip Pack"),
+      price: "₦5,000",
+      unit: "per piece",
+      image: "/product-images/box&packaging/magnetic-flip-pack.png",
+      description: "Luxury magnetic flip packaging boxes",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Elegant magnetic closure boxes for premium products and gift items.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 5000,
+      tax: 400,
+      images: ["/product-images/box&packaging/magnetic-flip-pack.png"],
+    },
+
+    {
+      name: "Mailer Box",
+      slug: generateSlug("Mailer Box"),
+      price: "₦2,500",
+      unit: "per piece",
+      image: "/product-images/box&packaging/mailer-box.jpeg",
+      description: "Durable mailer packaging boxes",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Strong corrugated mailer boxes for shipping and ecommerce packaging.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2500,
+      tax: 200,
+      images: ["/product-images/box&packaging/mailer-box.jpeg"],
+    },
+
+    {
+      name: "Pizza Box",
+      slug: generateSlug("Pizza Box"),
+      price: "₦800",
+      unit: "per piece",
+      image: "/product-images/box&packaging/pizza-box.jpeg",
+      description: "Custom pizza packaging boxes",
+      category: "Box & Packaging",
+      keyFeatures:
+        "Food-safe pizza boxes designed for heat retention and delivery.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 800,
+      tax: 64,
+      images: ["/product-images/box&packaging/pizza-box.jpeg"],
+    },
+  ],
+
   Brochures: [
     {
       name: "Tri-Fold Brochures",
@@ -3680,28 +3777,6 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/placeholder.svg?height=400&width=400"],
-    },
-  ],
-
-  "Box & Packaging": [
-    {
-      name: "Food Pack Box (Single)",
-      slug: generateSlug("Food Pack Box (Single)"),
-      price: "₦250",
-      unit: "per piece",
-      image: "/placeholder.svg?height=200&width=200",
-      description:
-        "Single compartment food pack box for takeaway and delivery.",
-      category: "Box & Packaging",
-      keyFeatures:
-        "Sturdy food-grade packaging with grease-resistant lining, available in custom branding.",
-      delivery: {
-        lagos: "2-4 Working Days for order within Lagos",
-        others: "4-7 Working Days for Order from other state",
-      },
-      priceNumeric: 250,
-      tax: 20,
       images: ["/placeholder.svg?height=400&width=400"],
     },
   ],
