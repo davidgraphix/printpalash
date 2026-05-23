@@ -15,28 +15,13 @@ const categories = [
   "Calendars",
   "Campaign Materials",
   "Caps & Hats",
-  "ClothesTag",
   "Clothing & Apparel",
-  "Comic Republic",
-  "Corporate Gifts",
+  "ClothesTag",
   "Envelopes",
   "Events & Souvenirs",
-  "Flyers & Handbills",
-  "Frames & Wall Arts",
-  "Greeting Cards",
-  "ID Cards",
+  "Flyers & Posters",
   "Invitations",
-  "Labels",
-  "Letterhead",
-  "Mugs",
-  "Notepads and Jotters",
   "Office Stationery",
-  "Posters",
-  "Presentation Folders",
-  "Promotional Items",
-  "Stickers",
-  "Umbrella",
-  "Wedding Stationery",
 ];
 
 export default function ProductsSection() {
@@ -49,7 +34,7 @@ export default function ProductsSection() {
 
   // Filter products based on search term
   const filteredProducts = currentProducts.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleCategorySelect = (category: string) => {

@@ -1110,134 +1110,176 @@ export const productsData = {
     },
   ],
 
-  "Clothes Tag": [
-    {
-      name: "Hang Tags",
-      slug: generateSlug("Hang Tags"),
-      price: "₦3,000",
-      unit: "per 100",
-      image: "/product-images/clothesTag/clothestags-1.jpg",
-      description: "Custom clothing hang tags",
-      category: "Clothes Tag",
-      keyFeatures:
-        "Custom printed hang tags for clothing with various shapes and finishes available.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 3000,
-      tax: 240,
-      images: [
-        "/product-images/clothestag/clothestags-1.jpg",
-        "/product-images/clothestag/clothestags-2-1.jpg",
-      ],
-    },
-    {
-      name: "Woven Labels",
-      slug: generateSlug("Woven Labels"),
-      price: "₦4,500",
-      unit: "per 100",
-      image: "/product-images/clothestag/clothestags-2.jpg",
-      description: "Premium woven clothing labels",
-      category: "Clothes Tag",
-      keyFeatures:
-        "High-quality woven labels with detailed designs, perfect for premium clothing brands.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 4500,
-      tax: 360,
-      images: [
-        "/product-images/clothestag/clothestags-2.jpg",
-        "/product-images/clothestag/clothestags-2-2.jpg",
-      ],
-    },
-    {
-      name: "Care Labels",
-      slug: generateSlug("Care Labels"),
-      price: "₦2,500",
-      unit: "per 100",
-      image: "/product-images/clothestag/clothestags-3.jpg",
-      description: "Washing instruction care labels",
-      category: "Clothes Tag",
-      keyFeatures:
-        "Durable care labels with washing instructions and fabric composition information.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 2500,
-      tax: 200,
-      images: ["/product-images/clothestag/clothestags-3.jpg"],
-    },
-    {
-      name: "Size Labels",
-      slug: generateSlug("Size Labels"),
-      price: "₦2,000",
-      unit: "per 100",
-      image: "/product-images/clothestag/clothestags-4.jpg",
-      description: "Clothing size labels",
-      category: "Clothes Tag",
-      keyFeatures:
-        "Clear and durable size labels for clothing with various size options and designs.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 2000,
-      tax: 160,
-      images: [
-        "/product-images/clothestag/clothestags-4.jpg",
-        "/product-images/clothestag/clothestags-4-1.jpg",
-        "/product-images/clothestag/clothestags-4-2.jpg",
-      ],
-    },
-  ],
-
   "Clothing & Apparel": [
     {
-      name: "Custom T-Shirts",
-      slug: generateSlug("Custom T-Shirts"),
-      price: "₦8,000",
+      name: "Printivo Merch",
+      slug: generateSlug("Printivo Merch"),
+      price: "₦10,000",
       unit: "each",
-      image: "/product-images/clothing-apparel/clothing-1.jpg",
-      description: "Custom printed t-shirts",
+      image: "/product-images/clothing-apparel/printivo-mech.jpg",
+      description: "Custom branded merch apparel",
       category: "Clothing & Apparel",
       popular: true,
       keyFeatures:
-        "High-quality cotton t-shirts with custom printing, available in various colors and sizes.",
+        "Premium branded merch apparel suitable for businesses and events.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 10000,
+      tax: 800,
+      images: ["/product-images/clothing-apparel/printivo-merch.png"],
+    },
+
+    {
+      name: "Apron",
+      slug: generateSlug("Apron"),
+      price: "₦6,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/apron.png",
+      description: "Custom branded aprons",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "Durable aprons suitable for restaurants, salons, and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 6000,
+      tax: 480,
+      images: ["/product-images/clothing-apparel/apron.png"],
+    },
+
+    {
+      name: "Face Towel",
+      slug: generateSlug("Face Towel"),
+      price: "₦3,500",
+      unit: "each",
+      image: "/product-images/clothing-apparel/face-towel.png",
+      description: "Soft branded face towels",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "High-quality face towels suitable for branding and promotional use.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 3500,
+      tax: 280,
+      images: ["/product-images/clothing-apparel/face-towel.png"],
+    },
+
+    {
+      name: "Folded Round Neck",
+      slug: generateSlug("Folded Round Neck"),
+      price: "₦8,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/folded-round-neck.png",
+      description: "Custom folded round neck shirts",
+      category: "Clothing & Apparel",
+      keyFeatures: "Comfortable round neck shirts with premium cotton fabric.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 8000,
       tax: 640,
-      images: [
-        "/product-images/clothing-apparel/clothing-1.jpg",
-        "/product-images/clothing-apparel/clothing-1-2.jpg",
-      ],
+      images: ["/product-images/clothing-apparel/folded-round-neck.png"],
     },
+
     {
-      name: "Polo Shirts",
-      slug: generateSlug("Polo Shirts"),
-      price: "₦12,000",
+      name: "Hoodie",
+      slug: generateSlug("Hoodie"),
+      price: "₦15,000",
       unit: "each",
-      image: "/product-images/clothing-apparel/clothing-2.jpg",
-      description: "Custom embroidered polo shirts",
+      image: "/product-images/clothing-apparel/hoodie.png",
+      description: "Custom branded hoodies",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Professional polo shirts with custom embroidery, perfect for corporate uniforms and events.",
+        "Warm and stylish hoodies suitable for casual wear and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/clothing-apparel/hoodie.png"],
+    },
+
+    {
+      name: "Round Neck Polo",
+      slug: generateSlug("Round Neck Polo"),
+      price: "₦12,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/round-neck-polo.png",
+      description: "Custom round neck polo shirts",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "Professional polo shirts suitable for uniforms and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 12000,
       tax: 960,
-      images: [
-        "/product-images/clothing-apparel/clothing-2.jpg",
-        "/product-images/clothing-apparel/clothing-2-1.jpg",
-      ],
+      images: ["/product-images/clothing-apparel/round-neck-polo.png"],
+    },
+
+    {
+      name: "Safety Jacket",
+      slug: generateSlug("Safety Jacket"),
+      price: "₦9,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/safety-jacket.png",
+      description: "Reflective safety jackets",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "High-visibility safety jackets suitable for industrial and outdoor work.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 9000,
+      tax: 720,
+      images: ["/product-images/clothing-apparel/safety-jacket.png"],
+    },
+
+    {
+      name: "Sweatshirt",
+      slug: generateSlug("Sweatshirt"),
+      price: "₦13,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/sweatshirt.png",
+      description: "Custom sweatshirts",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "Comfortable sweatshirts suitable for casual wear and corporate branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 13000,
+      tax: 1040,
+      images: ["/product-images/clothing-apparel/sweatshirt.png"],
+    },
+
+    {
+      name: "Versity Jacket",
+      slug: generateSlug("Versity Jacket"),
+      price: "₦20,000",
+      unit: "each",
+      image: "/product-images/clothing-apparel/versity-jacket.png",
+      description: "Stylish varsity jackets",
+      category: "Clothing & Apparel",
+      keyFeatures:
+        "Premium varsity jackets with modern design and durable fabric.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 20000,
+      tax: 1600,
+      images: ["/product-images/clothing-apparel/versity-jacket.png"],
     },
   ],
 
