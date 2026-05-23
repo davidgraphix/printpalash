@@ -905,16 +905,17 @@ export const productsData = {
 
   "Campaign Materials": [
     {
-      name: "Campaign Posters A2",
-      slug: generateSlug("Campaign Posters A2"),
+      name: "A2-A3 Political Campaign Poster",
+      slug: generateSlug("A2-A3 Political Campaign Poster"),
       price: "₦5,500",
       unit: "per piece",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Large A2 campaign posters",
+      image:
+        "/product-images/campaign-materials/a2-a3-political-campaign-poster.png",
+      description: "Large political campaign posters",
       category: "Campaign Materials",
       popular: true,
       keyFeatures:
-        "Large A2 campaign posters with weather-resistant coating, perfect for outdoor political advertising.",
+        "High-quality A2 and A3 campaign posters for rallies and outdoor promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -922,45 +923,40 @@ export const productsData = {
       priceNumeric: 5500,
       tax: 440,
       images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
+        "/product-images/campaign-materials/a2-a3-political-campaign-poster.png",
       ],
     },
+
     {
-      name: "Campaign Flyers",
-      slug: generateSlug("Campaign Flyers"),
+      name: "A5 Flyer",
+      slug: generateSlug("A5 Flyer"),
       price: "₦12,000",
       unit: "per 500",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Political campaign flyers and handbills",
+      image: "/product-images/campaign-materials/a5-flyer.png",
+      description: "Political campaign flyers",
       category: "Campaign Materials",
       keyFeatures:
-        "High-quality campaign flyers for door-to-door distribution and event handouts with compelling designs.",
+        "Premium A5 flyers suitable for campaign promotions and handouts.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 12000,
       tax: 960,
-      images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-      ],
+      images: ["/product-images/campaign-materials/a5-flyer.png"],
     },
+
     {
-      name: "Campaign Banners",
-      slug: generateSlug("Campaign Banners"),
+      name: "Political Campaign Banners",
+      slug: generateSlug("Political Campaign Banners"),
       price: "₦18,000",
       unit: "per sqm",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Large campaign banners for events",
+      image:
+        "/product-images/campaign-materials/political-campaign-banners.png",
+      description: "Large campaign banners",
       category: "Campaign Materials",
       keyFeatures:
-        "Large campaign banners with bold graphics and messages, ideal for rallies and public events.",
+        "Durable campaign banners perfect for rallies, events, and public displays.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -968,68 +964,20 @@ export const productsData = {
       priceNumeric: 18000,
       tax: 1440,
       images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
+        "/product-images/campaign-materials/political-campaign-banners.png",
       ],
     },
+
     {
-      name: "Campaign Stickers",
-      slug: generateSlug("Campaign Stickers"),
-      price: "₦8,000",
-      unit: "per 1000",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Adhesive campaign stickers",
-      category: "Campaign Materials",
-      keyFeatures:
-        "Adhesive campaign stickers with strong adhesive backing, perfect for supporter distribution and branding.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 8000,
-      tax: 640,
-      images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-      ],
-    },
-    {
-      name: "Campaign T-shirts",
-      slug: generateSlug("Campaign T-shirts"),
-      price: "₦4,500",
-      unit: "per piece",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Campaign branded t-shirts",
-      category: "Campaign Materials",
-      keyFeatures:
-        "Campaign branded t-shirts with candidate logos and slogans, perfect for volunteers and supporters.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 4500,
-      tax: 360,
-      images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-      ],
-    },
-    {
-      name: "Campaign Caps",
-      slug: generateSlug("Campaign Caps"),
+      name: "Political Campaign Caps",
+      slug: generateSlug("Political Campaign Caps"),
       price: "₦3,500",
       unit: "per piece",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Branded campaign caps and hats",
+      image: "/product-images/campaign-materials/political-campaign-caps.png",
+      description: "Custom political campaign caps",
       category: "Campaign Materials",
       keyFeatures:
-        "Branded campaign caps and hats with embroidered logos, excellent for outdoor events and rallies.",
+        "Branded campaign caps ideal for supporters, rallies, and promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1037,10 +985,29 @@ export const productsData = {
       priceNumeric: 3500,
       tax: 280,
       images: [
-        "/placeholder.svg?height=400&width=400",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
-        "/placeholder.svg?height=100&width=100",
+        "/product-images/campaign-materials/political-campaign-caps.png",
+      ],
+    },
+
+    {
+      name: "Political Campaign T-Shirt",
+      slug: generateSlug("Political Campaign T-Shirt"),
+      price: "₦4,500",
+      unit: "per piece",
+      image:
+        "/product-images/campaign-materials/political-campaign-t-shirt.png",
+      description: "Custom campaign t-shirts",
+      category: "Campaign Materials",
+      keyFeatures:
+        "High-quality branded t-shirts suitable for campaign events and supporters.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4500,
+      tax: 360,
+      images: [
+        "/product-images/campaign-materials/political-campaign-t-shirt.png",
       ],
     },
   ],
