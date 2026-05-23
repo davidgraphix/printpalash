@@ -19,6 +19,7 @@ const categories = [
   "ClothesTag",
   "Envelopes",
   "Events & Souvenirs",
+  "Event Tag",
   "Flyers & Posters",
   "Invitations",
   "Office Stationery",
