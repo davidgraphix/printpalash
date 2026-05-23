@@ -809,47 +809,97 @@ export const productsData = {
 
   Calendars: [
     {
-      name: "Wall Calendar A3",
-      slug: generateSlug("Wall Calendar A3"),
-      price: "₦12,000",
+      name: "A2 multiple page Wall Calendar",
+      slug: generateSlug("A2 multiple page Wall Calendar"),
+      price: "₦15,000",
       unit: "each",
-      image: "/product-images/calendars/calendar-1.jpg",
-      description: "Large A3 wall calendars",
+      image: "/product-images/calendars/a2-multiple-page-wall-calendar.png",
+      description: "Large A2 wall calendars",
       category: "Calendars",
       keyFeatures:
-        "Large A3 wall calendars with high-quality printing and durable binding, perfect for offices and homes.",
+        "Large A2 wall calendars with premium print quality and durable finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
-      priceNumeric: 12000,
-      tax: 960,
-      images: [
-        "/product-images/calendars/calendar-1.jpg",
-        "/product-images/calendars/calendar-1-2.jpg",
-      ],
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/calendars/a2-multiple-page-wall-calendar.png"],
     },
     {
-      name: "Desk Calendar",
-      slug: generateSlug("Desk Calendar"),
+      name: "A2 single page Wall Calendar",
+      slug: generateSlug("A2 single page Wall Calendar"),
+      price: "₦15,000",
+      unit: "each",
+      image: "/product-images/calendars/a2-single-page-wall-calendar.png",
+      description: "Large A2 wall calendars",
+      category: "Calendars",
+      keyFeatures:
+        "Large A2 wall calendars with premium print quality and durable finishing.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/calendars/a2-single-page-wall-calendar.png"],
+    },
+
+    {
+      name: "A3 multiple page Wall Calendar",
+      slug: generateSlug("A3 multiple page Wall Calendar"),
+      price: "₦15,000",
+      unit: "each",
+      image: "/product-images/calendars/a3-multiple-page-wall-calendar.png",
+      description: "Large A3 wall calendars",
+      category: "Calendars",
+      keyFeatures:
+        "Large A3 wall calendars with premium print quality and durable finishing.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/calendars/a3-multiple-page-wall-calendar.png"],
+    },
+    {
+      name: "A3 single page Wall Calendar",
+      slug: generateSlug("A3 single page Wall Calendar"),
+      price: "₦15,000",
+      unit: "each",
+      image: "/product-images/calendars/a3-single-page-wall-calendar.png",
+      description: "Large A3 wall calendars",
+      category: "Calendars",
+      keyFeatures:
+        "Large A3 wall calendars with premium print quality and durable finishing.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/calendars/a3-single-page-wall-calendar.png"],
+    },
+
+    {
+      name: "Table Calendar",
+      slug: generateSlug("Table Calendar"),
       price: "₦8,000",
       unit: "each",
-      image: "/product-images/calendars/calendar-2.jpg",
-      description: "Compact desk calendars",
+      image: "/product-images/calendars/table-calendar.jpeg",
+      description: "Compact table calendars",
       category: "Calendars",
       popular: true,
       keyFeatures:
-        "Compact desk calendars with spiral binding, perfect for office desks and workspaces.",
+        "Compact table calendars perfect for office desks and workspaces.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 8000,
       tax: 640,
-      images: [
-        "/product-images/calendars/calendar-2.jpg",
-        "/product-images/calendars/calendar-2-1.jpg",
-      ],
+      images: ["/product-images/calendars/table-calendar.png"],
     },
   ],
 
