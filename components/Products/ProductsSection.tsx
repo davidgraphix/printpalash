@@ -154,17 +154,7 @@ export default function ProductsSection() {
                     <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">
-                      STARTING AT
-                    </p>
-                    <div className="flex items-baseline space-x-1 mb-3">
-                      <span className="text-lg font-bold text-red-600">
-                        {product.price}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {product.unit}
-                      </span>
-                    </div>
+
                     <p className="text-xs text-gray-600 mb-4 line-clamp-2">
                       {product.description}
                     </p>
@@ -342,17 +332,7 @@ export default function ProductsSection() {
                         <h3 className="font-semibold text-gray-900 mb-2">
                           {product.name}
                         </h3>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">
-                          STARTING AT
-                        </p>
-                        <div className="flex items-baseline space-x-1 mb-3">
-                          <span className="text-xl font-bold text-red-600">
-                            {product.price}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {product.unit}
-                          </span>
-                        </div>
+
                         <p className="text-sm text-gray-600 mb-4">
                           {product.description}
                         </p>
