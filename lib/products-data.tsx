@@ -1419,6 +1419,323 @@ export const productsData = {
     },
   ],
 
+  "Events & Souvenirs": [
+    {
+      name: "Big Magic Mug",
+      slug: generateSlug("Big Magic Mug"),
+      price: "₦6,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/big-magic-mug.png",
+      description: "Large heat-sensitive magic mugs",
+      category: "Events & Souvenirs",
+      keyFeatures: "Custom heat-changing mugs perfect for gifts and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 6500,
+      tax: 520,
+      images: ["/product-images/events&souvenirs/big-magic-mug.png"],
+    },
+
+    {
+      name: "Big White Mug",
+      slug: generateSlug("Big White Mug"),
+      price: "₦5,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/big-white-mug.jpeg",
+      description: "Large custom white mugs",
+      category: "Events & Souvenirs",
+      keyFeatures: "Premium white mugs suitable for branding and gifting.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 5000,
+      tax: 400,
+      images: ["/product-images/events&souvenirs/big-white-mug.png"],
+    },
+
+    {
+      name: "Dummy Cheque",
+      slug: generateSlug("Dummy Cheque"),
+      price: "₦15,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/dummy-cheque.jpeg",
+      description: "Custom presentation dummy cheques",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Large presentation cheques perfect for events and award ceremonies.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 15000,
+      tax: 1200,
+      images: ["/product-images/events&souvenirs/dummy-cheque.png"],
+    },
+
+    {
+      name: "Dummy Currency Note",
+      slug: generateSlug("Dummy Currency Note"),
+      price: "₦10,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/dummy-currency-note.png",
+      description: "Custom oversized currency notes",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "High-quality custom currency notes for events and presentations.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 10000,
+      tax: 800,
+      images: ["/product-images/events&souvenirs/dummy-currency-note.png"],
+    },
+
+    {
+      name: "A5 Notebook",
+      slug: generateSlug("A5 Notebook"),
+      price: "₦4,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/a5-notebook.jpeg",
+      description: "Premium A5 notebooks",
+      category: "Events & Souvenirs",
+      keyFeatures: "Durable A5 notepads suitable for offices and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4500,
+      tax: 360,
+      images: ["/product-images/events&souvenirs/a5-notebook.png"],
+    },
+    {
+      name: "Engraved Notebook",
+      slug: generateSlug("Engraved Notebook"),
+      price: "₦4,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/engraved-notebook.jpeg",
+      description: "Premium engraved notebooks",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable engraved notepads suitable for offices and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4500,
+      tax: 360,
+      images: ["/product-images/events&souvenirs/engraved-notebook.png"],
+    },
+    {
+      name: "Corporate Notebook",
+      slug: generateSlug("Corporate Notebook"),
+      price: "₦4,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/corporate-notebook.jpeg",
+      description: "Premium corporate notebooks",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable corporate notepads suitable for offices and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4500,
+      tax: 360,
+      images: ["/product-images/events&souvenirs/corporate-notebook.png"],
+    },
+
+    {
+      name: "Metallic Keyring",
+      slug: generateSlug("Metallic Keyring"),
+      price: "₦2,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/metallic-keyring.jpeg",
+      description: "Premium metallic keyrings",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable metallic keyrings suitable for branding and souvenirs.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2500,
+      tax: 200,
+      images: ["/product-images/events&souvenirs/metallic-keyring.png"],
+    },
+
+    {
+      name: "Party Event Handband",
+      slug: generateSlug("Party Event Handband"),
+      price: "₦1,500",
+      unit: "per 100",
+      image: "/product-images/events&souvenirs/party-event-handband.jpeg",
+      description: "Custom event handbands",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Comfortable event handbands suitable for parties and access control.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 1500,
+      tax: 120,
+      images: ["/product-images/events&souvenirs/party-event-handband.png"],
+    },
+
+    {
+      name: "Party Paper Cup",
+      slug: generateSlug("Party Paper Cup"),
+      price: "₦3,000",
+      unit: "per pack",
+      image: "/product-images/events&souvenirs/party-paper-cup.jpeg",
+      description: "Custom printed party paper cups",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Disposable paper cups suitable for events and celebrations.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 3000,
+      tax: 240,
+      images: ["/product-images/events&souvenirs/party-paper-cup.png"],
+    },
+
+    {
+      name: "Pop Socket",
+      slug: generateSlug("Pop Socket"),
+      price: "₦2,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/pop-socket.jpeg",
+      description: "Custom phone pop sockets",
+      category: "Events & Souvenirs",
+      keyFeatures: "Stylish phone grips suitable for branding and daily use.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2000,
+      tax: 160,
+      images: ["/product-images/events&souvenirs/pop-socket.png"],
+    },
+
+    {
+      name: "Small Magic Mug",
+      slug: generateSlug("Small Magic Mug"),
+      price: "₦5,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/small-magic-mug.jpeg",
+      description: "Small heat-sensitive magic mugs",
+      category: "Events & Souvenirs",
+      keyFeatures: "Custom heat-changing mugs suitable for gifts and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 5500,
+      tax: 440,
+      images: ["/product-images/events&souvenirs/small-magic-mug.png"],
+    },
+
+    {
+      name: "Small White Mug",
+      slug: generateSlug("Small White Mug"),
+      price: "₦4,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/small-white-mug.jpeg",
+      description: "Small custom white mugs",
+      category: "Events & Souvenirs",
+      keyFeatures: "Compact white mugs suitable for gifts and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4000,
+      tax: 320,
+      images: ["/product-images/events&souvenirs/small-white-mug.png"],
+    },
+
+    {
+      name: "Throwpillow",
+      slug: generateSlug("Throwpillow"),
+      price: "₦7,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/throwpillow.jpg",
+      description: "Custom printed throw pillows",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Soft decorative throw pillows suitable for gifts and interior décor.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 7500,
+      tax: 600,
+      images: ["/product-images/events&souvenirs/throwpillow.png"],
+    },
+
+    {
+      name: " Compact Umbrella",
+      slug: generateSlug(" Compact Umbrella"),
+      price: "₦8,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/compact-umbrella.jpg",
+      description: "Custom branded umbrellas",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable umbrellas suitable for promotional branding and outdoor use.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 8500,
+      tax: 680,
+      images: ["/product-images/events&souvenirs/compact-umbrella.png"],
+    },
+
+    {
+      name: " Universal Umbrella",
+      slug: generateSlug(" Universal Umbrella"),
+      price: "₦8,500",
+      unit: "each",
+      image: "/product-images/events&souvenirs/universal-umbrella.png",
+      description: "Custom branded umbrellas",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Durable umbrellas suitable for promotional branding and outdoor use.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 8500,
+      tax: 680,
+      images: ["/product-images/events&souvenirs/universal-umbrella.png"],
+    },
+
+    {
+      name: "Wooden Keyring",
+      slug: generateSlug("Wooden Keyring"),
+      price: "₦2,000",
+      unit: "each",
+      image: "/product-images/events&souvenirs/wooden-keyring.jpeg",
+      description: "Custom wooden keyrings",
+      category: "Events & Souvenirs",
+      keyFeatures:
+        "Eco-friendly wooden keyrings suitable for souvenirs and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2000,
+      tax: 160,
+      images: ["/product-images/events&souvenirs/wooden-keyring.png"],
+    },
+  ],
+
   "Flyers & Posters": [
     {
       name: "A5 Flyers",
@@ -1688,27 +2005,6 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/placeholder.svg?height=400&width=400"],
-    },
-  ],
-
-  "Events & Souvenirs": [
-    {
-      name: "Event Wristband (Silicone)",
-      slug: generateSlug("Event Wristband (Silicone)"),
-      price: "₦1,200",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom silicone wristbands for events and promotions.",
-      category: "Events & Souvenirs",
-      keyFeatures:
-        "Durable silicone wristbands with debossed or printed branding options.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 1200,
-      tax: 96,
       images: ["/placeholder.svg?height=400&width=400"],
     },
   ],
