@@ -1908,46 +1908,256 @@ export const productsData = {
       images: ["/product-images/flyers-posters/dl-trifold-flyer.png"],
     },
   ],
-
-  "Office Stationery": [
-    {
-      name: "Letterhead (A4) - Branded",
-      slug: generateSlug("Letterhead (A4) - Branded"),
-      price: "₦6,000",
-      unit: "per 100",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Custom branded A4 letterheads for official correspondence.",
-      category: "Office Stationery",
-      keyFeatures:
-        "High-quality A4 letterheads with full-colour branding and sharp print quality.",
-      delivery: {
-        lagos: "2-4 Working Days for order within Lagos",
-        others: "4-7 Working Days for Order from other state",
-      },
-      priceNumeric: 6000,
-      tax: 480,
-      images: ["/placeholder.svg?height=400&width=400"],
-    },
-  ],
-
   Invitations: [
     {
-      name: "Acrylic Invite Card",
-      slug: generateSlug("Acrylic Invite Card"),
+      name: "Acrylic Invitation",
+      slug: generateSlug("Acrylic Invitation"),
       price: "₦35,000",
       unit: "per 50",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Premium acrylic invitation cards for weddings and events.",
+      image: "/product-images/invitations/acrylic-invitation.jpeg",
+      description: "Premium acrylic invitation cards",
       category: "Invitations",
       keyFeatures:
-        "Durable acrylic invites with laser-cut finish and premium print quality.",
+        "Luxury acrylic invitation cards with premium transparent finish and elegant print quality.",
       delivery: {
         lagos: "5-7 Working Days for order within Lagos",
         others: "7-10 Working Days for Order from other state",
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/placeholder.svg?height=400&width=400"],
+      images: ["/product-images/invitations/acrylic-invitation.png"],
+    },
+
+    {
+      name: "Card Invitation",
+      slug: generateSlug("Card Invitation"),
+      price: "₦20,000",
+      unit: "per 100",
+      image: "/product-images/invitations/card-invitation.jpeg",
+      description: "Classic card invitation prints",
+      category: "Invitations",
+      keyFeatures:
+        "Elegant printed invitation cards suitable for weddings, birthdays, and events.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 20000,
+      tax: 1600,
+      images: ["/product-images/invitations/card-invitation.png"],
+    },
+
+    {
+      name: "Wedding Program",
+      slug: generateSlug("Wedding Program"),
+      price: "₦18,000",
+      unit: "per 100",
+      image: "/product-images/invitations/wedding-program.jpeg",
+      description: "Custom wedding program booklets",
+      category: "Invitations",
+      keyFeatures:
+        "Beautifully designed wedding programs with premium print finish for ceremonies and receptions.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 18000,
+      tax: 1440,
+      images: ["/product-images/invitations/wedding-program.png"],
+    },
+  ],
+
+  "Office Stationery": [
+    {
+      name: "Block Pad",
+      slug: generateSlug("Block Pad"),
+      price: "₦5,000",
+      unit: "per 50",
+      image: "/product-images/office-stationery/block-pad.png",
+      description: "Custom branded block pads",
+      category: "Office Stationery",
+      keyFeatures:
+        "High-quality block pads perfect for office notes, meetings, and branding.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 5000,
+      tax: 400,
+      images: ["/product-images/office-stationery/block-pad.png"],
+    },
+
+    {
+      name: "Computer Mouse",
+      slug: generateSlug("Computer Mouse"),
+      price: "₦8,000",
+      unit: "each",
+      image: "/product-images/office-stationery/computer-mouse.png",
+      description: "Wireless computer mouse",
+      category: "Office Stationery",
+      keyFeatures:
+        "Smooth and responsive computer mouse suitable for office and personal use.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 8000,
+      tax: 640,
+      images: ["/product-images/office-stationery/computer-mouse.png"],
+    },
+
+    {
+      name: "Custom Lanyard",
+      slug: generateSlug("Custom Lanyard"),
+      price: "₦3,500",
+      unit: "per 50",
+      image: "/product-images/office-stationery/custom-lanyard.jpg",
+      description: "Branded custom lanyards",
+      category: "Office Stationery",
+      keyFeatures:
+        "Durable custom lanyards ideal for ID cards, events, and office branding.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 3500,
+      tax: 280,
+      images: ["/product-images/office-stationery/custom-lanyard.png"],
+    },
+
+    {
+      name: "File Presentation Folder",
+      slug: generateSlug("File Presentation Folder"),
+      price: "₦12,000",
+      unit: "per 100",
+      image: "/product-images/office-stationery/file-presentation-folder.jpeg",
+      description: "Professional presentation folders",
+      category: "Office Stationery",
+      keyFeatures:
+        "Custom printed presentation folders for documents, proposals, and branding.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 12000,
+      tax: 960,
+      images: [
+        "/product-images/office-stationery/file-presentation-folder.png",
+      ],
+    },
+
+    {
+      name: "ID Card",
+      slug: generateSlug("ID Card"),
+      price: "₦2,500",
+      unit: "each",
+      image: "/product-images/office-stationery/id-card.jpg",
+      description: "Custom staff ID cards",
+      category: "Office Stationery",
+      keyFeatures:
+        "Durable PVC ID cards with sharp print quality for staff and events.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2500,
+      tax: 200,
+      images: ["/product-images/office-stationery/id-card.png"],
+    },
+
+    {
+      name: "Invoice Receipt",
+      slug: generateSlug("Invoice Receipt"),
+      price: "₦6,500",
+      unit: "per 100",
+      image: "/product-images/office-stationery/invoice-receipt.jpeg",
+      description: "Custom invoice receipt booklets",
+      category: "Office Stationery",
+      keyFeatures:
+        "Professionally printed invoice and receipt booklets for businesses.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 6500,
+      tax: 520,
+      images: ["/product-images/office-stationery/invoice-receipt.png"],
+    },
+
+    {
+      name: "Letterheads",
+      slug: generateSlug("Letterheads"),
+      price: "₦6,000",
+      unit: "per 100",
+      image: "/product-images/office-stationery/letterheads.png",
+      description: "Custom branded letterheads",
+      category: "Office Stationery",
+      keyFeatures:
+        "Premium branded letterheads for official business correspondence.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 6000,
+      tax: 480,
+      images: ["/product-images/office-stationery/letterheads.png"],
+    },
+
+    {
+      name: "Metallic Pen",
+      slug: generateSlug("Metallic Pen"),
+      price: "₦4,000",
+      unit: "per 20",
+      image: "/product-images/office-stationery/metallic-pen.jpeg",
+      description: "Premium metallic branded pens",
+      category: "Office Stationery",
+      keyFeatures:
+        "Elegant metallic pens suitable for corporate branding and gifts.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 4000,
+      tax: 320,
+      images: ["/product-images/office-stationery/metallic-pen.png"],
+    },
+
+    {
+      name: "Mousepad",
+      slug: generateSlug("Mousepad"),
+      price: "₦3,000",
+      unit: "each",
+      image: "/product-images/office-stationery/mousepad.png",
+      description: "Custom printed mousepads",
+      category: "Office Stationery",
+      keyFeatures:
+        "Smooth surface mousepads with custom branding and vibrant print quality.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 3000,
+      tax: 240,
+      images: ["/product-images/office-stationery/mousepad.png"],
+    },
+
+    {
+      name: "Plastic Pen",
+      slug: generateSlug("Plastic Pen"),
+      price: "₦2,500",
+      unit: "per 20",
+      image: "/product-images/office-stationery/plastic-pen.jpeg",
+      description: "Custom branded plastic pens",
+      category: "Office Stationery",
+      keyFeatures:
+        "Affordable plastic pens ideal for promotions, branding, and giveaways.",
+      delivery: {
+        lagos: "2-4 Working Days for order within Lagos",
+        others: "4-7 Working Days for Order from other state",
+      },
+      priceNumeric: 2500,
+      tax: 200,
+      images: ["/product-images/office-stationery/plastic-pen.jpeg"],
     },
   ],
 };
