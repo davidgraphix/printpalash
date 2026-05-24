@@ -300,31 +300,30 @@ export const productsData = {
     {
       name: "Big Base Rollup",
       slug: generateSlug("Big Base Rollup"),
-      price: "₦35,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/big-base-rollup.jpeg",
-      description: "Premium big base rollup banner",
+      description:
+        "Premium big base rollup banners designed for exhibitions, events, and business promotions.",
       category: "Banners & Large Format",
       keyFeatures:
-        "Strong and portable rollup banners for events and branding.",
+        "Strong and portable rollup banners suitable for indoor displays and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/banners&largeformat/big-base-rollup.png"],
+      images: ["/product-images/banners&largeformat/big-base-rollup.jpeg"],
     },
 
     {
       name: "Dispatch Box",
       slug: generateSlug("Dispatch Box"),
-      price: "₦15,000",
-      unit: "each",
-      image: "/product-images/banners&largeformat/dispatch-boxes.png",
-      description: "Custom dispatch boxes",
+      image: "/product-images/banners&largeformat/dispatch-box.png",
+      description:
+        "Durable dispatch boxes designed for secure packaging, shipping, and delivery services.",
       category: "Banners & Large Format",
-      keyFeatures: "Durable dispatch boxes for packaging and delivery.",
+      keyFeatures:
+        "Strong dispatch boxes suitable for ecommerce, logistics, and product packaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -337,12 +336,12 @@ export const productsData = {
     {
       name: "Dummy Cheque",
       slug: generateSlug("Dummy Cheque"),
-      price: "₦18,000",
-      unit: "each",
-      image: "/product-images/banners&largeformat/dummy-cheques.png",
-      description: "Large presentation dummy cheque",
+      image: "/product-images/banners&largeformat/dummy-cheque.png",
+      description:
+        "Professional dummy cheques ideal for presentations, award ceremonies, and events.",
       category: "Banners & Large Format",
-      keyFeatures: "Perfect for award ceremonies and presentations.",
+      keyFeatures:
+        "Large presentation cheques with high-quality print and durable finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -355,12 +354,12 @@ export const productsData = {
     {
       name: "Event Backdrop",
       slug: generateSlug("Event Backdrop"),
-      price: "₦45,000",
-      unit: "per sqm",
-      image: "/product-images/banners&largeformat/event-backdrops.png",
-      description: "Large event backdrop banners",
+      image: "/product-images/banners&largeformat/event-backdrop.png",
+      description:
+        "Large-format event backdrops suitable for weddings, conferences, branding, and photo sessions.",
       category: "Banners & Large Format",
-      keyFeatures: "Professional backdrop banners for events and ceremonies.",
+      keyFeatures:
+        "Professional backdrop banners with vibrant print quality for events and ceremonies.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -373,12 +372,12 @@ export const productsData = {
     {
       name: "Flag Banner",
       slug: generateSlug("Flag Banner"),
-      price: "₦28,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/flag-banner.png",
-      description: "Outdoor flag banners",
+      description:
+        "Custom flag banners for outdoor branding, advertising, and promotional events.",
       category: "Banners & Large Format",
-      keyFeatures: "Eye-catching flag banners for outdoor branding.",
+      keyFeatures:
+        "Eye-catching flag banners designed for maximum visibility and outdoor use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -391,12 +390,12 @@ export const productsData = {
     {
       name: "Gazebo Tent",
       slug: generateSlug("Gazebo Tent"),
-      price: "₦120,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/gazebo-tent.png",
-      description: "Custom branded gazebo tents",
+      description:
+        "Custom branded gazebo tents ideal for outdoor events, exhibitions, and promotions.",
       category: "Banners & Large Format",
-      keyFeatures: "Durable tents for outdoor promotions and events.",
+      keyFeatures:
+        "Durable and spacious tents suitable for corporate branding and marketing campaigns.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -409,12 +408,12 @@ export const productsData = {
     {
       name: "Instagram Frame Board",
       slug: generateSlug("Instagram Frame Board"),
-      price: "₦22,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/instagram-frame-board.png",
-      description: "Custom Instagram frame boards",
+      description:
+        "Custom Instagram frame boards perfect for social events, activations, and photo branding.",
       category: "Banners & Large Format",
-      keyFeatures: "Fun branded Instagram boards for events and activations.",
+      keyFeatures:
+        "Fun and engaging frame boards designed for events and social media photos.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -427,12 +426,12 @@ export const productsData = {
     {
       name: "Lampost Banner",
       slug: generateSlug("Lampost Banner"),
-      price: "₦30,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/lampost-banner.png",
-      description: "Street lampost banners",
+      description:
+        "High-visibility lamp post banners suitable for street advertising and outdoor promotions.",
       category: "Banners & Large Format",
-      keyFeatures: "Vertical banners mounted on street lamp posts.",
+      keyFeatures:
+        "Durable vertical banners designed for outdoor campaigns and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -445,12 +444,12 @@ export const productsData = {
     {
       name: "Pop Stand Banner",
       slug: generateSlug("Pop Stand Banner"),
-      price: "₦25,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/pop-stand-banner.png",
-      description: "Portable pop stand banners",
+      description:
+        "Portable pop stand banners designed for exhibitions, trade shows, and promotions.",
       category: "Banners & Large Format",
-      keyFeatures: "Portable promotional stand banners for displays.",
+      keyFeatures:
+        "Lightweight display stands suitable for indoor branding and marketing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -463,12 +462,12 @@ export const productsData = {
     {
       name: "Small Base Rollup",
       slug: generateSlug("Small Base Rollup"),
-      price: "₦28,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/small-base-rollup.png",
-      description: "Compact rollup banner stands",
+      description:
+        "Compact rollup banners suitable for indoor promotions, displays, and branding.",
       category: "Banners & Large Format",
-      keyFeatures: "Portable rollup banners for indoor displays.",
+      keyFeatures:
+        "Portable rollup banner stands with premium print quality and durability.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -481,12 +480,12 @@ export const productsData = {
     {
       name: "Snapper Frame",
       slug: generateSlug("Snapper Frame"),
-      price: "₦35,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/snapper-frame.png",
-      description: "Aluminium snapper frames",
+      description:
+        "Professional snapper frames for displaying posters, adverts, and promotional materials.",
       category: "Banners & Large Format",
-      keyFeatures: "Professional snapper frames for poster displays.",
+      keyFeatures:
+        "Easy-to-use aluminium frames with durable and stylish finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -499,12 +498,12 @@ export const productsData = {
     {
       name: "Sticker Print",
       slug: generateSlug("Sticker Print"),
-      price: "₦12,000",
-      unit: "per sqm",
       image: "/product-images/banners&largeformat/sticker-print.jpeg",
-      description: "Custom sticker printing",
+      description:
+        "High-quality sticker printing for branding, packaging, labels, and promotions.",
       category: "Banners & Large Format",
-      keyFeatures: "High-quality sticker prints for branding and packaging.",
+      keyFeatures:
+        "Durable custom stickers with vibrant colors and premium finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -517,12 +516,12 @@ export const productsData = {
     {
       name: "Teardrop Banner",
       slug: generateSlug("Teardrop Banner"),
-      price: "₦28,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/teardrop-banner.png",
-      description: "Teardrop promotional banners",
+      description:
+        "Eye-catching teardrop banners designed for outdoor promotions and events.",
       category: "Banners & Large Format",
-      keyFeatures: "Outdoor teardrop banners for advertising and events.",
+      keyFeatures:
+        "Durable outdoor banners suitable for branding, campaigns, and exhibitions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -535,12 +534,12 @@ export const productsData = {
     {
       name: "Vehicle Branding",
       slug: generateSlug("Vehicle Branding"),
-      price: "₦85,000",
-      unit: "per vehicle",
       image: "/product-images/banners&largeformat/vehicle-branding.png",
-      description: "Custom vehicle branding services",
+      description:
+        "Professional vehicle branding services for business advertising and brand visibility.",
       category: "Banners & Large Format",
-      keyFeatures: "Professional vehicle wraps and branding solutions.",
+      keyFeatures:
+        "High-quality vehicle wraps and graphics suitable for mobile advertising.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -553,12 +552,12 @@ export const productsData = {
     {
       name: "X-Banner",
       slug: generateSlug("X-Banner"),
-      price: "₦20,000",
-      unit: "each",
       image: "/product-images/banners&largeformat/x-banner.png",
-      description: "Portable X-banner stands",
+      description:
+        "Portable X-banners suitable for indoor advertising, exhibitions, and events.",
       category: "Banners & Large Format",
-      keyFeatures: "Lightweight X-banner stands for indoor promotions.",
+      keyFeatures:
+        "Lightweight banner stands with vibrant print quality for business promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -573,13 +572,12 @@ export const productsData = {
     {
       name: "Drawer Box",
       slug: generateSlug("Drawer Box"),
-      price: "₦3,500",
-      unit: "per piece",
       image: "/product-images/box&packaging/drawer-box.png",
-      description: "Premium drawer packaging boxes",
+      description:
+        "Luxury drawer boxes designed for premium packaging, gifting, and product presentation.",
       category: "Box & Packaging",
       keyFeatures:
-        "Luxury drawer boxes suitable for gifts, accessories, and premium packaging.",
+        "Elegant drawer boxes suitable for jewelry, accessories, and luxury packaging.",
       delivery: {
         lagos: "2-4 Working Days for order within Lagos",
         others: "4-7 Working Days for Order from other state",
@@ -592,13 +590,12 @@ export const productsData = {
     {
       name: "Food Pack",
       slug: generateSlug("Food Pack"),
-      price: "₦250",
-      unit: "per piece",
       image: "/product-images/box&packaging/food-pack.png",
-      description: "Food takeaway packaging boxes",
+      description:
+        "Food-grade packaging boxes suitable for takeaway meals, restaurants, and food delivery.",
       category: "Box & Packaging",
       keyFeatures:
-        "Food-grade packaging suitable for takeaway and food delivery.",
+        "Durable and hygienic food packs designed for safe food packaging and branding.",
       delivery: {
         lagos: "2-4 Working Days for order within Lagos",
         others: "4-7 Working Days for Order from other state",
@@ -611,13 +608,12 @@ export const productsData = {
     {
       name: "Magnetic Flip Pack",
       slug: generateSlug("Magnetic Flip Pack"),
-      price: "₦5,000",
-      unit: "per piece",
       image: "/product-images/box&packaging/magnetic-flip-pack.png",
-      description: "Luxury magnetic flip packaging boxes",
+      description:
+        "Premium magnetic flip boxes designed for luxury packaging and special gift presentation.",
       category: "Box & Packaging",
       keyFeatures:
-        "Elegant magnetic closure boxes for premium products and gift items.",
+        "Elegant magnetic closure boxes suitable for premium products and corporate gifts.",
       delivery: {
         lagos: "2-4 Working Days for order within Lagos",
         others: "4-7 Working Days for Order from other state",
@@ -630,13 +626,12 @@ export const productsData = {
     {
       name: "Mailer Box",
       slug: generateSlug("Mailer Box"),
-      price: "₦2,500",
-      unit: "per piece",
       image: "/product-images/box&packaging/mailer-box.jpeg",
-      description: "Durable mailer packaging boxes",
+      description:
+        "Strong corrugated mailer boxes suitable for ecommerce packaging and shipping.",
       category: "Box & Packaging",
       keyFeatures:
-        "Strong corrugated mailer boxes for shipping and ecommerce packaging.",
+        "Durable mailer boxes designed for product protection, delivery, and branding.",
       delivery: {
         lagos: "2-4 Working Days for order within Lagos",
         others: "4-7 Working Days for Order from other state",
@@ -649,13 +644,12 @@ export const productsData = {
     {
       name: "Pizza Box",
       slug: generateSlug("Pizza Box"),
-      price: "₦800",
-      unit: "per piece",
       image: "/product-images/box&packaging/pizza-box.jpeg",
-      description: "Custom pizza packaging boxes",
+      description:
+        "Custom pizza boxes designed for restaurants, food delivery, and takeaway packaging.",
       category: "Box & Packaging",
       keyFeatures:
-        "Food-safe pizza boxes designed for heat retention and delivery.",
+        "Food-safe pizza boxes with durable material for heat retention and branding.",
       delivery: {
         lagos: "2-4 Working Days for order within Lagos",
         others: "4-7 Working Days for Order from other state",
@@ -670,14 +664,13 @@ export const productsData = {
     {
       name: "A4 Landscape Brochure",
       slug: generateSlug("A4 Landscape Brochure"),
-      price: "₦15,000",
-      unit: "per 500",
       image: "/product-images/brochures/a4-landscape-brochure.png",
-      description: "Professional landscape brochures",
+      description:
+        "Professional landscape brochures designed for marketing, branding, and business promotions.",
       category: "Brochures",
       popular: true,
       keyFeatures:
-        "High-quality landscape brochures perfect for marketing and promotions.",
+        "High-quality landscape brochures with vibrant colors and premium finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -690,13 +683,12 @@ export const productsData = {
     {
       name: "A4 Portrait Brochure",
       slug: generateSlug("A4 Portrait Brochure"),
-      price: "₦12,000",
-      unit: "per 500",
       image: "/product-images/brochures/a4-portrait-brochure.png",
-      description: "Professional portrait brochures",
+      description:
+        "Clean and professional portrait brochures suitable for advertising and company profiles.",
       category: "Brochures",
       keyFeatures:
-        "Clean portrait brochures with premium print quality and layout.",
+        "Premium portrait brochures with sharp print quality and elegant layout.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -709,32 +701,30 @@ export const productsData = {
     {
       name: "Funeral Brochure",
       slug: generateSlug("Funeral Brochure"),
-      price: "₦16,000",
-      unit: "per 500",
       image: "/product-images/brochures/funeral-brochure.jpeg",
-      description: "Elegant funeral brochures",
+      description:
+        "Elegant funeral brochures designed for memorial services and remembrance events.",
       category: "Brochures",
       keyFeatures:
-        "Beautifully designed funeral brochures suitable for memorial services.",
+        "Beautifully printed funeral brochures with respectful and premium finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 16000,
       tax: 1280,
-      images: ["/product-images/brochures/funeral-brochure.png"],
+      images: ["/product-images/brochures/funeral-brochure.jpeg"],
     },
 
     {
       name: "Tri-Fold Brochure",
       slug: generateSlug("Tri-Fold Brochure"),
-      price: "₦18,000",
-      unit: "per 500",
       image: "/product-images/brochures/trifold.png",
-      description: "Classic tri-fold brochures",
+      description:
+        "Professional tri-fold brochures perfect for detailed marketing and business promotions.",
       category: "Brochures",
       keyFeatures:
-        "Professional tri-fold brochures ideal for promotions and advertisements.",
+        "Structured tri-fold brochures ideal for presenting products and services clearly.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -749,33 +739,31 @@ export const productsData = {
     {
       name: "Thank You Business Card",
       slug: generateSlug("Thank You Business Card"),
-      price: "₦15,000",
-      unit: "per 100",
       image: "/product-images/business-cards/thank-you-business-card.jpeg",
-      description: "Custom thank you business cards",
+      description:
+        "Elegant thank you business cards designed for customer appreciation and brand loyalty.",
       category: "Business Cards",
       popular: true,
       keyFeatures:
-        "Elegant thank you business cards perfect for customer appreciation and branding.",
+        "Premium thank you cards with professional finishing for businesses and events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/business-cards/thank-you-business-card.png"],
+      images: ["/product-images/business-cards/thank-you-business-card.jpeg"],
     },
 
     {
       name: "Premium Business Card",
       slug: generateSlug("Premium Business Card"),
-      price: "₦25,000",
-      unit: "per 100",
       image: "/product-images/business-cards/premium-business-card.png",
-      description: "Luxury premium business cards",
+      description:
+        "Luxury business cards designed for professionals, brands, and corporate identity.",
       category: "Business Cards",
       keyFeatures:
-        "Premium quality cardstock with luxury finish and sharp print details.",
+        "High-quality cardstock with premium finishing and sharp print details.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -788,13 +776,12 @@ export const productsData = {
     {
       name: "Top Quality Business Card",
       slug: generateSlug("Top Quality Business Card"),
-      price: "₦35,000",
-      unit: "per 100",
       image: "/product-images/business-cards/top-quality-business-card.png",
-      description: "Top quality professional business cards",
+      description:
+        "Top-grade professional business cards created for lasting impressions and executive branding.",
       category: "Business Cards",
       keyFeatures:
-        "High-end business cards with premium finishing for a lasting impression.",
+        "Premium finishing with durable material and luxury print quality.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -809,13 +796,12 @@ export const productsData = {
     {
       name: "A2 multiple page Wall Calendar",
       slug: generateSlug("A2 multiple page Wall Calendar"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/calendars/a2-multiple-page-wall-calendar.png",
-      description: "Large A2 wall calendars",
+      description:
+        "Large A2 multiple-page wall calendars suitable for advertising, branding, and office use.",
       category: "Calendars",
       keyFeatures:
-        "Large A2 wall calendars with premium print quality and durable finishing.",
+        "Premium wall calendars with durable finishing and vibrant print quality.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -824,16 +810,16 @@ export const productsData = {
       tax: 1200,
       images: ["/product-images/calendars/a2-multiple-page-wall-calendar.png"],
     },
+
     {
       name: "A2 single page Wall Calendar",
       slug: generateSlug("A2 single page Wall Calendar"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/calendars/a2-single-page-wall-calendar.png",
-      description: "Large A2 wall calendars",
+      description:
+        "Oversized A2 single-page wall calendars designed for visibility and brand promotion.",
       category: "Calendars",
       keyFeatures:
-        "Large A2 wall calendars with premium print quality and durable finishing.",
+        "Large-format calendars ideal for offices, businesses, and marketing campaigns.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -846,13 +832,12 @@ export const productsData = {
     {
       name: "A3 multiple page Wall Calendar",
       slug: generateSlug("A3 multiple page Wall Calendar"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/calendars/a3-multiple-page-wall-calendar.png",
-      description: "Large A3 wall calendars",
+      description:
+        "Professional A3 wall calendars with multiple pages for branding and daily planning.",
       category: "Calendars",
       keyFeatures:
-        "Large A3 wall calendars with premium print quality and durable finishing.",
+        "Durable calendars with premium print quality suitable for offices and promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -861,16 +846,16 @@ export const productsData = {
       tax: 1200,
       images: ["/product-images/calendars/a3-multiple-page-wall-calendar.png"],
     },
+
     {
       name: "A3 single page Wall Calendar",
       slug: generateSlug("A3 single page Wall Calendar"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/calendars/a3-single-page-wall-calendar.png",
-      description: "Large A3 wall calendars",
+      description:
+        "Large A3 single-page wall calendars suitable for business visibility and promotions.",
       category: "Calendars",
       keyFeatures:
-        "Large A3 wall calendars with premium print quality and durable finishing.",
+        "Premium wall calendars with clear layout and vibrant printing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -883,21 +868,20 @@ export const productsData = {
     {
       name: "Table Calendar",
       slug: generateSlug("Table Calendar"),
-      price: "₦8,000",
-      unit: "each",
       image: "/product-images/calendars/table-calendar.jpeg",
-      description: "Compact table calendars",
+      description:
+        "Compact desk calendars designed for offices, workspaces, and corporate branding.",
       category: "Calendars",
       popular: true,
       keyFeatures:
-        "Compact table calendars perfect for office desks and workspaces.",
+        "Professional table calendars suitable for planning, promotions, and daily use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/calendars/table-calendar.png"],
+      images: ["/product-images/calendars/table-calendar.jpeg"],
     },
   ],
 
@@ -905,15 +889,14 @@ export const productsData = {
     {
       name: "A2-A3 Political Campaign Poster",
       slug: generateSlug("A2-A3 Political Campaign Poster"),
-      price: "₦5,500",
-      unit: "per piece",
       image:
         "/product-images/campaign-materials/a2-a3-political-campaign-poster.png",
-      description: "Large political campaign posters",
+      description:
+        "Large-format political campaign posters designed for rallies, awareness campaigns, and outdoor promotions.",
       category: "Campaign Materials",
       popular: true,
       keyFeatures:
-        "High-quality A2 and A3 campaign posters for rallies and outdoor promotions.",
+        "High-quality campaign posters with vibrant printing for maximum visibility and engagement.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -928,13 +911,12 @@ export const productsData = {
     {
       name: "A5 Flyer",
       slug: generateSlug("A5 Flyer"),
-      price: "₦12,000",
-      unit: "per 500",
       image: "/product-images/campaign-materials/a5-flyer.png",
-      description: "Political campaign flyers",
+      description:
+        "Professional A5 flyers suitable for campaign promotions, handouts, and event advertising.",
       category: "Campaign Materials",
       keyFeatures:
-        "Premium A5 flyers suitable for campaign promotions and handouts.",
+        "Premium printed flyers with sharp colors and durable paper quality for effective marketing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -947,14 +929,13 @@ export const productsData = {
     {
       name: "Political Campaign Banners",
       slug: generateSlug("Political Campaign Banners"),
-      price: "₦18,000",
-      unit: "per sqm",
       image:
         "/product-images/campaign-materials/political-campaign-banners.png",
-      description: "Large campaign banners",
+      description:
+        "Durable campaign banners designed for rallies, outdoor advertising, and political promotions.",
       category: "Campaign Materials",
       keyFeatures:
-        "Durable campaign banners perfect for rallies, events, and public displays.",
+        "Weather-resistant banners with high-resolution printing for maximum outdoor visibility.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -969,13 +950,12 @@ export const productsData = {
     {
       name: "Political Campaign Caps",
       slug: generateSlug("Political Campaign Caps"),
-      price: "₦3,500",
-      unit: "per piece",
       image: "/product-images/campaign-materials/political-campaign-caps.png",
-      description: "Custom political campaign caps",
+      description:
+        "Custom branded campaign caps suitable for rallies, supporters, and political awareness campaigns.",
       category: "Campaign Materials",
       keyFeatures:
-        "Branded campaign caps ideal for supporters, rallies, and promotions.",
+        "Comfortable and stylish campaign caps designed for branding and outdoor use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -990,14 +970,13 @@ export const productsData = {
     {
       name: "Political Campaign T-Shirt",
       slug: generateSlug("Political Campaign T-Shirt"),
-      price: "₦4,500",
-      unit: "per piece",
       image:
         "/product-images/campaign-materials/political-campaign-t-shirt.png",
-      description: "Custom campaign t-shirts",
+      description:
+        "Custom campaign t-shirts designed for political branding, rallies, and supporter engagement.",
       category: "Campaign Materials",
       keyFeatures:
-        "High-quality branded t-shirts suitable for campaign events and supporters.",
+        "High-quality branded t-shirts with comfortable fabric and durable print finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1014,14 +993,13 @@ export const productsData = {
     {
       name: "Baseball Cap",
       slug: generateSlug("Baseball Cap"),
-      price: "₦5,000",
-      unit: "each",
       image: "/product-images/caps&hats/baseball-cap.png",
-      description: "Custom embroidered baseball caps",
+      description:
+        "Classic baseball caps designed for branding, casual wear, and promotional events.",
       category: "Caps & Hats",
       popular: true,
       keyFeatures:
-        "High-quality baseball caps with adjustable strap and premium embroidery.",
+        "Premium baseball caps with adjustable fitting and durable embroidery options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1034,13 +1012,12 @@ export const productsData = {
     {
       name: "Beanie",
       slug: generateSlug("Beanie"),
-      price: "₦4,500",
-      unit: "each",
       image: "/product-images/caps&hats/beanie.png",
-      description: "Warm custom beanies",
+      description:
+        "Warm and stylish beanies suitable for fashion brands, outdoor use, and casual wear.",
       category: "Caps & Hats",
       keyFeatures:
-        "Comfortable and stylish beanies suitable for branding and casual wear.",
+        "Comfortable knitted beanies with premium finishing and branding options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1053,13 +1030,12 @@ export const productsData = {
     {
       name: "Snapback Cap",
       slug: generateSlug("Snapback Cap"),
-      price: "₦6,500",
-      unit: "each",
       image: "/product-images/caps&hats/snapback-cap.png",
-      description: "Stylish snapback caps",
+      description:
+        "Modern snapback caps designed for streetwear fashion, branding, and promotional campaigns.",
       category: "Caps & Hats",
       keyFeatures:
-        "Premium snapback caps with flat brim and adjustable snap closure.",
+        "Flat-brim snapback caps with adjustable closure and premium embroidery finish.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1072,13 +1048,12 @@ export const productsData = {
     {
       name: "Trucker Cap",
       slug: generateSlug("Trucker Cap"),
-      price: "₦5,500",
-      unit: "each",
       image: "/product-images/caps&hats/trucker-cap.png",
-      description: "Breathable trucker caps",
+      description:
+        "Breathable trucker caps suitable for outdoor activities, branding, and casual fashion.",
       category: "Caps & Hats",
       keyFeatures:
-        "Mesh-back trucker caps designed for comfort and outdoor use.",
+        "Mesh-back trucker caps designed for comfort, airflow, and durable everyday use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1091,13 +1066,12 @@ export const productsData = {
     {
       name: "Custom Bucket Hat",
       slug: generateSlug("Custom Bucket Hat"),
-      price: "₦6,000",
-      unit: "each",
       image: "/product-images/caps&hats/custom-bucket-hat.png",
-      description: "Custom branded bucket hats",
+      description:
+        "Stylish custom bucket hats designed for branding, fashion, and outdoor events.",
       category: "Caps & Hats",
       keyFeatures:
-        "Stylish bucket hats suitable for fashion, branding, and outdoor activities.",
+        "Premium bucket hats with comfortable fit and durable custom printing options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1112,14 +1086,13 @@ export const productsData = {
     {
       name: "Printivo Merch",
       slug: generateSlug("Printivo Merch"),
-      price: "₦10,000",
-      unit: "each",
-      image: "/product-images/clothing-apparel/printivo-mech.jpg",
-      description: "Custom branded merch apparel",
+      image: "/product-images/clothing-apparel/printivo-merch.png",
+      description:
+        "Premium branded merch apparel suitable for businesses, events, and promotional campaigns.",
       category: "Clothing & Apparel",
       popular: true,
       keyFeatures:
-        "Premium branded merch apparel suitable for businesses and events.",
+        "High-quality custom merch with durable fabric and professional branding finish.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1132,13 +1105,12 @@ export const productsData = {
     {
       name: "Apron",
       slug: generateSlug("Apron"),
-      price: "₦6,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/apron.png",
-      description: "Custom branded aprons",
+      description:
+        "Custom branded aprons designed for restaurants, salons, catering, and professional services.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Durable aprons suitable for restaurants, salons, and branding.",
+        "Durable aprons with quality fabric suitable for workwear and promotional branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1151,13 +1123,12 @@ export const productsData = {
     {
       name: "Face Towel",
       slug: generateSlug("Face Towel"),
-      price: "₦3,500",
-      unit: "each",
       image: "/product-images/clothing-apparel/face-towel.png",
-      description: "Soft branded face towels",
+      description:
+        "Soft branded face towels suitable for hotels, gyms, spas, and promotional branding.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "High-quality face towels suitable for branding and promotional use.",
+        "Absorbent face towels with premium material and long-lasting print quality.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1170,12 +1141,12 @@ export const productsData = {
     {
       name: "Folded Round Neck",
       slug: generateSlug("Folded Round Neck"),
-      price: "₦8,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/folded-round-neck.png",
-      description: "Custom folded round neck shirts",
+      description:
+        "Comfortable round neck shirts suitable for casual wear, branding, and promotional use.",
       category: "Clothing & Apparel",
-      keyFeatures: "Comfortable round neck shirts with premium cotton fabric.",
+      keyFeatures:
+        "Premium cotton round neck shirts with quality stitching and custom branding options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1188,13 +1159,12 @@ export const productsData = {
     {
       name: "Hoodie",
       slug: generateSlug("Hoodie"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/hoodie.png",
-      description: "Custom branded hoodies",
+      description:
+        "Custom hoodies designed for fashion brands, casual wear, and corporate merchandising.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Warm and stylish hoodies suitable for casual wear and branding.",
+        "Warm and stylish hoodies with premium fabric and durable print finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1207,13 +1177,12 @@ export const productsData = {
     {
       name: "Round Neck Polo",
       slug: generateSlug("Round Neck Polo"),
-      price: "₦12,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/round-neck-polo.png",
-      description: "Custom round neck polo shirts",
+      description:
+        "Professional polo shirts suitable for corporate branding, uniforms, and events.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Professional polo shirts suitable for uniforms and branding.",
+        "Premium polo shirts with comfortable fabric and high-quality embroidery options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1226,13 +1195,12 @@ export const productsData = {
     {
       name: "Safety Jacket",
       slug: generateSlug("Safety Jacket"),
-      price: "₦9,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/safety-jacket.png",
-      description: "Reflective safety jackets",
+      description:
+        "Reflective safety jackets designed for construction, industrial, and outdoor work environments.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "High-visibility safety jackets suitable for industrial and outdoor work.",
+        "High-visibility safety jackets with reflective material for improved workplace safety.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1245,13 +1213,12 @@ export const productsData = {
     {
       name: "Sweatshirt",
       slug: generateSlug("Sweatshirt"),
-      price: "₦13,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/sweatshirt.png",
-      description: "Custom sweatshirts",
+      description:
+        "Comfortable sweatshirts suitable for casual fashion, branding, and corporate merchandise.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Comfortable sweatshirts suitable for casual wear and corporate branding.",
+        "Premium sweatshirts with soft fabric and long-lasting custom print quality.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1264,13 +1231,12 @@ export const productsData = {
     {
       name: "Versity Jacket",
       slug: generateSlug("Versity Jacket"),
-      price: "₦20,000",
-      unit: "each",
       image: "/product-images/clothing-apparel/versity-jacket.png",
-      description: "Stylish varsity jackets",
+      description:
+        "Stylish varsity jackets designed for fashion brands, schools, and corporate wear.",
       category: "Clothing & Apparel",
       keyFeatures:
-        "Premium varsity jackets with modern design and durable fabric.",
+        "Premium varsity jackets with durable fabric and modern custom branding finish.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1280,17 +1246,17 @@ export const productsData = {
       images: ["/product-images/clothing-apparel/versity-jacket.png"],
     },
   ],
+
   ClothesTag: [
     {
       name: "Cloth Paper Tag",
       slug: generateSlug("Cloth Paper Tag"),
-      price: "₦8,000",
-      unit: "per 100",
       image: "/product-images/clothestag/cloth-paper-tag.png",
-      description: "Custom paper clothing tags",
+      description:
+        "Premium paper clothing tags designed for fashion branding and product presentation.",
       category: "ClothesTag",
       keyFeatures:
-        "Premium paper tags suitable for fashion branding and clothing labels.",
+        "Durable paper tags suitable for fashion brands, retail stores, and clothing labels.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1303,58 +1269,55 @@ export const productsData = {
     {
       name: "Woven Label",
       slug: generateSlug("Woven Label"),
-      price: "₦10,000",
-      unit: "per 100",
       image: "/product-images/clothestag/woven-label.jpeg",
-      description: "Custom woven clothing labels",
+      description:
+        "Custom woven labels suitable for fashion brands, garments, and premium clothing lines.",
       category: "ClothesTag",
       keyFeatures:
-        "Durable woven labels with premium stitching for fashion brands.",
+        "Durable woven labels with professional stitching and long-lasting finishing.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/clothestag/woven-label.png"],
+      images: ["/product-images/clothestag/woven-label.jpeg"],
     },
 
     {
       name: "Custom Clothing Labels",
       slug: generateSlug("Custom Clothing Labels"),
-      price: "₦12,000",
-      unit: "per 100",
       image: "/product-images/clothestag/custom-clothing-labels.jpeg",
-      description: "Personalized clothing labels",
+      description:
+        "Personalized clothing labels designed for fashion branding and garment identification.",
       category: "ClothesTag",
       keyFeatures:
-        "High-quality custom labels suitable for all clothing types and branding.",
+        "High-quality custom labels suitable for all clothing categories and fashion brands.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/clothestag/custom-clothing-labels.png"],
+      images: ["/product-images/clothestag/custom-clothing-labels.jpeg"],
     },
 
     {
       name: "Convincing Sweatshirt Labels",
       slug: generateSlug("Convincing Sweatshirt Labels"),
-      price: "₦9,500",
-      unit: "per 100",
       image: "/product-images/clothestag/convincing-sweatshirt-labels.jpeg",
-      description: "Premium sweatshirt labels",
+      description:
+        "Premium sweatshirt labels designed for fashion brands and custom apparel collections.",
       category: "ClothesTag",
       keyFeatures:
-        "Stylish sweatshirt labels with durable print and premium finish.",
+        "Durable sweatshirt labels with premium finishing and stylish branding appearance.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 9500,
       tax: 760,
-      images: ["/product-images/clothestag/convincing-sweatshirt-labels.png"],
+      images: ["/product-images/clothestag/convincing-sweatshirt-labels.jpeg"],
     },
   ],
 
@@ -1362,58 +1325,55 @@ export const productsData = {
     {
       name: "C4 Envelope",
       slug: generateSlug("C4 Envelope"),
-      price: "₦5,000",
-      unit: "per 100",
       image: "/product-images/envelopes/c4-envelope.jpeg",
-      description: "Professional C4 envelopes",
+      description:
+        "Professional C4 envelopes suitable for official documents, office use, and corporate branding.",
       category: "Envelopes",
       keyFeatures:
-        "High-quality C4 envelopes suitable for office documents and corporate branding.",
+        "High-quality envelopes with durable paper finish for secure document packaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/envelopes/c4-envelope.png"],
+      images: ["/product-images/envelopes/c4-envelope.jpeg"],
     },
 
     {
       name: "DL Small Envelope",
       slug: generateSlug("DL Small Envelope"),
-      price: "₦4,500",
-      unit: "per 100",
       image: "/product-images/envelopes/dl-small-envelope.jpeg",
-      description: "Compact DL envelopes",
+      description:
+        "Compact DL envelopes suitable for invoices, letters, receipts, and business correspondence.",
       category: "Envelopes",
       keyFeatures:
-        "Professional DL envelopes suitable for letters, invoices, and documents.",
+        "Professional DL envelopes with clean finishing and secure document protection.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/envelopes/dl-small-envelope.png"],
+      images: ["/product-images/envelopes/dl-small-envelope.jpeg"],
     },
 
     {
       name: "Window Envelope",
       slug: generateSlug("Window Envelope"),
-      price: "₦6,000",
-      unit: "per 100",
       image: "/product-images/envelopes/window-envelope.jpeg",
-      description: "Envelopes with transparent window",
+      description:
+        "Professional window envelopes designed for invoices, billing statements, and office mailing.",
       category: "Envelopes",
       keyFeatures:
-        "Professional window envelopes suitable for invoices, billing, and statements.",
+        "Premium envelopes with transparent display window for organized document presentation.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 6000,
       tax: 480,
-      images: ["/product-images/envelopes/window-envelope.png"],
+      images: ["/product-images/envelopes/window-envelope.jpeg"],
     },
   ],
 
