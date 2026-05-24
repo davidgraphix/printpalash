@@ -1,12 +1,9 @@
 export interface Product {
   name: string;
   slug: string;
-  price: string;
-  unit: string;
   image: string;
   description: string;
   category: string;
-  popular?: boolean;
   keyFeatures: string;
   delivery: {
     lagos: string;
@@ -15,10 +12,11 @@ export interface Product {
   priceNumeric: number;
   tax: number;
   images: string[];
+  popular?: boolean;
 }
 
 // Shared product data that can be used across components
-export const generateSlug = (name: string) =>
+export const generateSlug = (name: string): string =>
   name
     .toLowerCase()
     .replace(/\s+/g, "-")
@@ -29,85 +27,85 @@ export const productsData = {
     {
       name: "A2 Paper Bag",
       slug: generateSlug("A2 Paper Bag"),
-      price: "₦120,000",
-      unit: "per 100",
       image: "/product-images/bags/a2-paper-bagee.png",
-      description: "Large A2 paper bags",
+      description:
+        "Premium A2 paper bags designed for luxury packaging, shopping, and corporate branding with durable finishing.",
       category: "Bags",
-      keyFeatures: "Durable A2 paper bags for packaging and branding.",
+      keyFeatures:
+        "Strong and spacious A2 paper bags suitable for retail packaging, gifting, and business promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 120000,
       tax: 9600,
-      images: ["/product-images/bags/a2-paper-bag.png"],
+      images: ["/product-images/bags/a2-paper-bagee.png"],
     },
 
     {
       name: "A3 Paper Bag",
       slug: generateSlug("A3 Paper Bag"),
-      price: "₦100,000",
-      unit: "per 100",
       image: "/product-images/bags/a3-paper-bag.jpg",
-      description: "Medium A3 paper bags",
+      description:
+        "High-quality A3 paper bags for premium packaging, shopping brands, and retail businesses.",
       category: "Bags",
-      keyFeatures: "Strong A3 paper bags for shopping and retail.",
+      keyFeatures:
+        "Durable A3 paper bags perfect for luxury packaging and corporate branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 100000,
       tax: 8000,
-      images: ["/product-images/bags/a3-paper-bag.png"],
+      images: ["/product-images/bags/a3-paper-bag.jpg"],
     },
 
     {
       name: "A4 Paper Bag",
       slug: generateSlug("A4 Paper Bag"),
-      price: "₦90,000",
-      unit: "per 100",
       image: "/product-images/bags/a4-paper-bag.jpg",
-      description: "Custom branded A4 paper bags",
+      description:
+        "Custom A4 paper bags ideal for retail packaging, shopping, and brand visibility.",
       category: "Bags",
-      keyFeatures: "Durable A4 paper bags with custom branding.",
+      keyFeatures:
+        "Durable A4 paper bags with premium finishing for packaging and promotions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 90000,
       tax: 7200,
-      images: ["/product-images/bags/a4-paper-bag.png"],
+      images: ["/product-images/bags/a4-paper-bag.jpg"],
     },
 
     {
       name: "A5 Paper Bag",
       slug: generateSlug("A5 Paper Bag"),
-      price: "₦75,000",
-      unit: "per 100",
       image: "/product-images/bags/a5-paper-bag.jpg",
-      description: "Compact A5 paper bags",
+      description:
+        "Compact and stylish A5 paper bags suitable for lightweight packaging and gifting.",
       category: "Bags",
-      keyFeatures: "Portable A5 paper bags for lightweight packaging.",
+      keyFeatures:
+        "Portable A5 paper bags perfect for events, boutiques, and promotional packaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 75000,
       tax: 6000,
-      images: ["/product-images/bags/a5-paper-bag.png"],
+      images: ["/product-images/bags/a5-paper-bag.jpg"],
     },
 
     {
       name: "Courier Bag",
       slug: generateSlug("Courier Bag"),
-      price: "₦25,500",
-      unit: "per 100",
       image: "/product-images/bags/courier-bag.png",
-      description: "Durable courier bags",
+      description:
+        "Strong and branded courier bags for delivery services, logistics, and ecommerce packaging.",
       category: "Bags",
       popular: true,
-      keyFeatures: "Secure courier bags for shipping and logistics.",
+      keyFeatures:
+        "Secure courier bags suitable for shipping, packaging, and product delivery.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -120,30 +118,30 @@ export const productsData = {
     {
       name: "Drawstring Bag",
       slug: generateSlug("Drawstring Bag"),
-      price: "₦40,000",
-      unit: "per 50",
       image: "/product-images/bags/drawstring-bags.png",
-      description: "Custom drawstring bags",
+      description:
+        "Lightweight and branded drawstring bags perfect for events, schools, and giveaways.",
       category: "Bags",
-      keyFeatures: "Lightweight drawstring bags for schools and events.",
+      keyFeatures:
+        "Comfortable drawstring bags ideal for promotions, branding, and everyday use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 40000,
       tax: 3200,
-      images: ["/product-images/bags/drawstring-bag.png"],
+      images: ["/product-images/bags/drawstring-bags.png"],
     },
 
     {
       name: "Fanny Waist Pack",
       slug: generateSlug("Fanny Waist Pack"),
-      price: "₦35,000",
-      unit: "per 50",
       image: "/product-images/bags/fanny-waist-pack.png",
-      description: "Stylish waist packs",
+      description:
+        "Modern and stylish waist packs designed for travel, fashion, and promotional branding.",
       category: "Bags",
-      keyFeatures: "Comfortable waist packs for travel and casual use.",
+      keyFeatures:
+        "Comfortable waist packs with secure storage for casual and outdoor use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -156,12 +154,12 @@ export const productsData = {
     {
       name: "Jute Bag",
       slug: generateSlug("Jute Bag"),
-      price: "₦50,000",
-      unit: "per 100",
       image: "/product-images/bags/jute-bag.png",
-      description: "Eco-friendly jute bags",
+      description:
+        "Eco-friendly and reusable jute bags ideal for sustainable packaging and branding.",
       category: "Bags",
-      keyFeatures: "Reusable jute bags perfect for shopping and branding.",
+      keyFeatures:
+        "Durable jute bags suitable for shopping, promotions, and corporate gifting.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -174,12 +172,12 @@ export const productsData = {
     {
       name: "Kraft Bag",
       slug: generateSlug("Kraft Bag"),
-      price: "₦45,000",
-      unit: "per 100",
       image: "/product-images/bags/kraft-bag.png",
-      description: "Brown kraft paper bags",
+      description:
+        "Strong kraft paper bags designed for eco-friendly packaging and premium branding.",
       category: "Bags",
-      keyFeatures: "Eco-friendly kraft bags for packaging and retail.",
+      keyFeatures:
+        "Stylish kraft bags suitable for retail packaging, gifting, and shopping.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -192,12 +190,12 @@ export const productsData = {
     {
       name: "Pillow Bags (A4)",
       slug: generateSlug("Pillow Bags (A4)"),
-      price: "₦60,000",
-      unit: "per 100",
       image: "/product-images/bags/pillow-bags-a4.png",
-      description: "Premium pillow bags",
+      description:
+        "Elegant pillow bags suitable for gift packaging, souvenirs, and premium product presentation.",
       category: "Bags",
-      keyFeatures: "Elegant pillow bags suitable for gifts and packaging.",
+      keyFeatures:
+        "Luxury pillow bags with attractive finishing for stylish packaging solutions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -210,12 +208,12 @@ export const productsData = {
     {
       name: "Poly Bag",
       slug: generateSlug("Poly Bag"),
-      price: "₦30,000",
-      unit: "per 100",
       image: "/product-images/bags/poly-bag.png",
-      description: "Transparent poly bags",
+      description:
+        "Durable poly bags designed for packaging, storage, and everyday retail use.",
       category: "Bags",
-      keyFeatures: "Strong poly bags for storage and packaging.",
+      keyFeatures:
+        "Strong transparent poly bags suitable for product packaging and protection.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -228,12 +226,12 @@ export const productsData = {
     {
       name: "Singlet Nylon",
       slug: generateSlug("Singlet Nylon"),
-      price: "₦20,000",
-      unit: "per 100",
       image: "/product-images/bags/singlet-nylon.png",
-      description: "Durable singlet nylon bags",
+      description:
+        "Affordable and durable shopping nylon bags for retail packaging and daily use.",
       category: "Bags",
-      keyFeatures: "Strong nylon bags suitable for shopping and packaging.",
+      keyFeatures:
+        "Strong nylon bags suitable for supermarkets, stores, and product packaging.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -246,12 +244,12 @@ export const productsData = {
     {
       name: "Sublimation Tote Bag",
       slug: generateSlug("Sublimation Tote Bag"),
-      price: "₦55,000",
-      unit: "per 50",
       image: "/product-images/bags/sublimation-tote-bag.png",
-      description: "Custom sublimation tote bags",
+      description:
+        "Custom sublimation tote bags with vibrant full-color printing for branding and fashion.",
       category: "Bags",
-      keyFeatures: "Perfect tote bags for custom printing and branding.",
+      keyFeatures:
+        "Perfect tote bags for custom artwork, promotions, and personalized branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -264,12 +262,12 @@ export const productsData = {
     {
       name: "Tote Bag",
       slug: generateSlug("Tote Bag"),
-      price: "₦45,000",
-      unit: "per 50",
       image: "/product-images/bags/tote-bag.png",
-      description: "Reusable tote bags",
+      description:
+        "Stylish and reusable tote bags suitable for branding, shopping, and promotional campaigns.",
       category: "Bags",
-      keyFeatures: "Stylish reusable tote bags for shopping and branding.",
+      keyFeatures:
+        "Durable tote bags perfect for everyday use, events, and corporate branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -282,12 +280,12 @@ export const productsData = {
     {
       name: "Wine Paper Bag",
       slug: generateSlug("Wine Paper Bag"),
-      price: "₦50,000",
-      unit: "per 100",
       image: "/product-images/bags/wine-paper-bag.png",
-      description: "Elegant wine paper bags",
+      description:
+        "Premium wine paper bags designed for gifting, packaging, and luxury presentation.",
       category: "Bags",
-      keyFeatures: "Premium wine paper bags for gifting and packaging.",
+      keyFeatures:
+        "Elegant wine bags with durable handles and premium finishing for special occasions.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1752,7 +1750,7 @@ export const productsData = {
       },
       priceNumeric: 3500,
       tax: 280,
-      images: ["/product-images/event-tag/event-tag.png"],
+      images: ["/product-images/event-tag/event-tag.jpeg"],
     },
   ],
   "Flyers & Posters": [
