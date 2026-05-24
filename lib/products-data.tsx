@@ -1381,10 +1381,9 @@ export const productsData = {
     {
       name: "Big Magic Mug",
       slug: generateSlug("Big Magic Mug"),
-      price: "₦6,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/big-magic-mug.png",
-      description: "Large heat-sensitive magic mugs",
+      description:
+        "Large heat-sensitive magic mugs that reveal custom designs when hot liquid is added. Perfect for gifts, souvenirs, branding, and promotional campaigns.",
       category: "Events & Souvenirs",
       keyFeatures: "Custom heat-changing mugs perfect for gifts and branding.",
       delivery: {
@@ -1399,10 +1398,9 @@ export const productsData = {
     {
       name: "Big White Mug",
       slug: generateSlug("Big White Mug"),
-      price: "₦5,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/big-white-mug.jpeg",
-      description: "Large custom white mugs",
+      description:
+        "Large premium white mugs suitable for custom printing, branding, corporate gifts, and everyday use.",
       category: "Events & Souvenirs",
       keyFeatures: "Premium white mugs suitable for branding and gifting.",
       delivery: {
@@ -1411,16 +1409,15 @@ export const productsData = {
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/events&souvenirs/big-white-mug.png"],
+      images: ["/product-images/events&souvenirs/big-white-mug.jpeg"],
     },
 
     {
       name: "Dummy Cheque",
       slug: generateSlug("Dummy Cheque"),
-      price: "₦15,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/dummy-cheque.jpeg",
-      description: "Custom presentation dummy cheques",
+      description:
+        "Large customized presentation cheques ideal for award ceremonies, donations, contests, corporate events, and media presentations.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Large presentation cheques perfect for events and award ceremonies.",
@@ -1430,16 +1427,15 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/events&souvenirs/dummy-cheque.png"],
+      images: ["/product-images/events&souvenirs/dummy-cheque.jpeg"],
     },
 
     {
       name: "Dummy Currency Note",
       slug: generateSlug("Dummy Currency Note"),
-      price: "₦10,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/dummy-currency-note.png",
-      description: "Custom oversized currency notes",
+      description:
+        "Custom oversized currency notes designed for presentations, surprise gifts, promotional events, and social celebrations.",
       category: "Events & Souvenirs",
       keyFeatures:
         "High-quality custom currency notes for events and presentations.",
@@ -1455,10 +1451,9 @@ export const productsData = {
     {
       name: "A5 Notebook",
       slug: generateSlug("A5 Notebook"),
-      price: "₦4,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/a5-notebook.jpeg",
-      description: "Premium A5 notebooks",
+      description:
+        "Premium A5 notebooks suitable for office use, conferences, training programs, branding, and promotional events.",
       category: "Events & Souvenirs",
       keyFeatures: "Durable A5 notepads suitable for offices and branding.",
       delivery: {
@@ -1467,15 +1462,15 @@ export const productsData = {
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/events&souvenirs/a5-notebook.png"],
+      images: ["/product-images/events&souvenirs/a5-notebook.jpeg"],
     },
+
     {
       name: "Engraved Notebook",
       slug: generateSlug("Engraved Notebook"),
-      price: "₦4,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/engraved-notebook.jpeg",
-      description: "Premium engraved notebooks",
+      description:
+        "Stylish engraved notebooks with premium finishing, ideal for executive branding, gifting, conferences, and corporate events.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Durable engraved notepads suitable for offices and branding.",
@@ -1485,15 +1480,15 @@ export const productsData = {
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/events&souvenirs/engraved-notebook.png"],
+      images: ["/product-images/events&souvenirs/engraved-notebook.jpeg"],
     },
+
     {
       name: "Corporate Notebook",
       slug: generateSlug("Corporate Notebook"),
-      price: "₦4,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/corporate-notebook.jpeg",
-      description: "Premium corporate notebooks",
+      description:
+        "Professional corporate notebooks designed for meetings, seminars, office branding, and executive use.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Durable corporate notepads suitable for offices and branding.",
@@ -1503,16 +1498,15 @@ export const productsData = {
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/events&souvenirs/corporate-notebook.png"],
+      images: ["/product-images/events&souvenirs/corporate-notebook.jpeg"],
     },
 
     {
       name: "Metallic Keyring",
       slug: generateSlug("Metallic Keyring"),
-      price: "₦2,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/metallic-keyring.jpeg",
-      description: "Premium metallic keyrings",
+      description:
+        "Premium metallic keyrings with custom branding options suitable for souvenirs, corporate gifts, and promotional campaigns.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Durable metallic keyrings suitable for branding and souvenirs.",
@@ -1522,16 +1516,15 @@ export const productsData = {
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/events&souvenirs/metallic-keyring.png"],
+      images: ["/product-images/events&souvenirs/metallic-keyring.jpeg"],
     },
 
     {
       name: "Party Event Handband",
       slug: generateSlug("Party Event Handband"),
-      price: "₦1,500",
-      unit: "per 100",
       image: "/product-images/events&souvenirs/party-event-handband.jpeg",
-      description: "Custom event handbands",
+      description:
+        "Custom event handbands ideal for parties, concerts, access control, festivals, and special events.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Comfortable event handbands suitable for parties and access control.",
@@ -1541,16 +1534,15 @@ export const productsData = {
       },
       priceNumeric: 1500,
       tax: 120,
-      images: ["/product-images/events&souvenirs/party-event-handband.png"],
+      images: ["/product-images/events&souvenirs/party-event-handband.jpeg"],
     },
 
     {
       name: "Party Paper Cup",
       slug: generateSlug("Party Paper Cup"),
-      price: "₦3,000",
-      unit: "per pack",
       image: "/product-images/events&souvenirs/party-paper-cup.jpeg",
-      description: "Custom printed party paper cups",
+      description:
+        "Custom printed disposable paper cups suitable for parties, birthdays, weddings, and branded events.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Disposable paper cups suitable for events and celebrations.",
@@ -1560,16 +1552,15 @@ export const productsData = {
       },
       priceNumeric: 3000,
       tax: 240,
-      images: ["/product-images/events&souvenirs/party-paper-cup.png"],
+      images: ["/product-images/events&souvenirs/party-paper-cup.jpeg"],
     },
 
     {
       name: "Pop Socket",
       slug: generateSlug("Pop Socket"),
-      price: "₦2,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/pop-socket.jpeg",
-      description: "Custom phone pop sockets",
+      description:
+        "Custom phone pop sockets that provide better grip and support while adding stylish branding to mobile devices.",
       category: "Events & Souvenirs",
       keyFeatures: "Stylish phone grips suitable for branding and daily use.",
       delivery: {
@@ -1578,16 +1569,15 @@ export const productsData = {
       },
       priceNumeric: 2000,
       tax: 160,
-      images: ["/product-images/events&souvenirs/pop-socket.png"],
+      images: ["/product-images/events&souvenirs/pop-socket.jpeg"],
     },
 
     {
       name: "Small Magic Mug",
       slug: generateSlug("Small Magic Mug"),
-      price: "₦5,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/small-magic-mug.jpeg",
-      description: "Small heat-sensitive magic mugs",
+      description:
+        "Compact heat-sensitive mugs that reveal custom prints when filled with hot drinks, suitable for gifts and promotions.",
       category: "Events & Souvenirs",
       keyFeatures: "Custom heat-changing mugs suitable for gifts and branding.",
       delivery: {
@@ -1596,16 +1586,15 @@ export const productsData = {
       },
       priceNumeric: 5500,
       tax: 440,
-      images: ["/product-images/events&souvenirs/small-magic-mug.png"],
+      images: ["/product-images/events&souvenirs/small-magic-mug.jpeg"],
     },
 
     {
       name: "Small White Mug",
       slug: generateSlug("Small White Mug"),
-      price: "₦4,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/small-white-mug.jpeg",
-      description: "Small custom white mugs",
+      description:
+        "Compact white mugs perfect for custom branding, promotional giveaways, gifts, and everyday beverage use.",
       category: "Events & Souvenirs",
       keyFeatures: "Compact white mugs suitable for gifts and branding.",
       delivery: {
@@ -1614,16 +1603,15 @@ export const productsData = {
       },
       priceNumeric: 4000,
       tax: 320,
-      images: ["/product-images/events&souvenirs/small-white-mug.png"],
+      images: ["/product-images/events&souvenirs/small-white-mug.jpeg"],
     },
 
     {
       name: "Throwpillow",
       slug: generateSlug("Throwpillow"),
-      price: "₦7,500",
-      unit: "each",
       image: "/product-images/events&souvenirs/throwpillow.jpg",
-      description: "Custom printed throw pillows",
+      description:
+        "Soft decorative throw pillows with custom printing suitable for interior décor, gifts, and personalized branding.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Soft decorative throw pillows suitable for gifts and interior décor.",
@@ -1633,16 +1621,15 @@ export const productsData = {
       },
       priceNumeric: 7500,
       tax: 600,
-      images: ["/product-images/events&souvenirs/throwpillow.png"],
+      images: ["/product-images/events&souvenirs/throwpillow.jpg"],
     },
 
     {
-      name: " Compact Umbrella",
-      slug: generateSlug(" Compact Umbrella"),
-      price: "₦8,500",
-      unit: "each",
+      name: "Compact Umbrella",
+      slug: generateSlug("Compact Umbrella"),
       image: "/product-images/events&souvenirs/compact-umbrella.jpg",
-      description: "Custom branded umbrellas",
+      description:
+        "Portable branded umbrellas designed for convenience, outdoor protection, promotional campaigns, and corporate branding.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Durable umbrellas suitable for promotional branding and outdoor use.",
@@ -1652,16 +1639,15 @@ export const productsData = {
       },
       priceNumeric: 8500,
       tax: 680,
-      images: ["/product-images/events&souvenirs/compact-umbrella.png"],
+      images: ["/product-images/events&souvenirs/compact-umbrella.jpg"],
     },
 
     {
-      name: " Universal Umbrella",
-      slug: generateSlug(" Universal Umbrella"),
-      price: "₦8,500",
-      unit: "each",
+      name: "Universal Umbrella",
+      slug: generateSlug("Universal Umbrella"),
       image: "/product-images/events&souvenirs/universal-umbrella.png",
-      description: "Custom branded umbrellas",
+      description:
+        "Durable custom umbrellas suitable for promotional branding, outdoor activities, corporate events, and giveaways.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Durable umbrellas suitable for promotional branding and outdoor use.",
@@ -1677,10 +1663,9 @@ export const productsData = {
     {
       name: "Wooden Keyring",
       slug: generateSlug("Wooden Keyring"),
-      price: "₦2,000",
-      unit: "each",
       image: "/product-images/events&souvenirs/wooden-keyring.jpeg",
-      description: "Custom wooden keyrings",
+      description:
+        "Eco-friendly wooden keyrings with customizable designs suitable for souvenirs, branding, and promotional gifts.",
       category: "Events & Souvenirs",
       keyFeatures:
         "Eco-friendly wooden keyrings suitable for souvenirs and branding.",
@@ -1690,17 +1675,16 @@ export const productsData = {
       },
       priceNumeric: 2000,
       tax: 160,
-      images: ["/product-images/events&souvenirs/wooden-keyring.png"],
+      images: ["/product-images/events&souvenirs/wooden-keyring.jpeg"],
     },
   ],
   "Event Tag": [
     {
       name: "Event Tag",
       slug: generateSlug("Event Tag"),
-      price: "₦3,500",
-      unit: "per 100",
       image: "/product-images/event-tag/event-tag.jpeg",
-      description: "Custom event identification tags",
+      description:
+        "Custom event identification tags suitable for conferences, parties, seminars, concerts, and access control management.",
       category: "Event Tag",
       keyFeatures:
         "High-quality custom event tags suitable for conferences, parties, and access control.",
@@ -1713,14 +1697,14 @@ export const productsData = {
       images: ["/product-images/event-tag/event-tag.jpeg"],
     },
   ],
+
   "Flyers & Posters": [
     {
       name: "A1 Posters",
       slug: generateSlug("A1 Posters"),
-      price: "₦25,000",
-      unit: "per 100",
       image: "/product-images/flyers-posters/a1-posters.jpg",
-      description: "Large format A1 posters",
+      description:
+        "Large format A1 posters with vibrant full-color printing suitable for advertising, promotions, campaigns, and events.",
       category: "Flyers & Posters",
       keyFeatures:
         "High-quality A1 posters perfect for advertising, events, and promotions.",
@@ -1730,16 +1714,15 @@ export const productsData = {
       },
       priceNumeric: 25000,
       tax: 2000,
-      images: ["/product-images/flyers-posters/a1-posters.png"],
+      images: ["/product-images/flyers-posters/a1-posters.jpg"],
     },
 
     {
       name: "A2 Posters",
       slug: generateSlug("A2 Posters"),
-      price: "₦20,000",
-      unit: "per 100",
       image: "/product-images/flyers-posters/a2-posters.jpg",
-      description: "Professional A2 posters",
+      description:
+        "Professional A2 posters designed for campaigns, indoor promotions, events, and business advertisements.",
       category: "Flyers & Posters",
       keyFeatures:
         "Premium A2 posters with vibrant printing for campaigns and promotions.",
@@ -1749,16 +1732,15 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/flyers-posters/a2-posters.png"],
+      images: ["/product-images/flyers-posters/a2-posters.jpg"],
     },
 
     {
       name: "A3 Posters",
       slug: generateSlug("A3 Posters"),
-      price: "₦15,000",
-      unit: "per 100",
       image: "/product-images/flyers-posters/a3-posters.webp",
-      description: "Compact A3 posters",
+      description:
+        "Compact A3 posters with sharp and colorful printing suitable for indoor advertising, events, and product promotions.",
       category: "Flyers & Posters",
       keyFeatures:
         "Sharp and colorful A3 posters suitable for indoor promotions.",
@@ -1768,16 +1750,15 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/flyers-posters/a3-posters.png"],
+      images: ["/product-images/flyers-posters/a3-posters.webp"],
     },
 
     {
       name: "A5 Flyer",
       slug: generateSlug("A5 Flyer"),
-      price: "₦12,000",
-      unit: "per 1000",
       image: "/product-images/flyers-posters/a5-flyers.png",
-      description: "Standard A5 promotional flyers",
+      description:
+        "Premium A5 flyers suitable for promotions, business advertising, campaigns, church programs, and event handouts.",
       category: "Flyers & Posters",
       keyFeatures:
         "High-quality A5 flyers perfect for promotions, campaigns, and events.",
@@ -1787,16 +1768,15 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/flyers-posters/a5-flyer.png"],
+      images: ["/product-images/flyers-posters/a5-flyers.png"],
     },
 
     {
       name: "A6 Flyer",
       slug: generateSlug("A6 Flyer"),
-      price: "₦10,000",
-      unit: "per 1000",
       image: "/product-images/flyers-posters/a6-flyer.jpeg",
-      description: "Compact A6 flyers",
+      description:
+        "Compact A6 flyers ideal for promotional handouts, invitations, mini adverts, and quick marketing campaigns.",
       category: "Flyers & Posters",
       keyFeatures:
         "Portable A6 flyers ideal for handouts and quick promotions.",
@@ -1806,16 +1786,15 @@ export const productsData = {
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/flyers-posters/a6-flyer.png"],
+      images: ["/product-images/flyers-posters/a6-flyer.jpeg"],
     },
 
     {
       name: "DL Bifold Flyer",
       slug: generateSlug("DL Bifold Flyer"),
-      price: "₦16,000",
-      unit: "per 1000",
       image: "/product-images/flyers-posters/dl-bifold-flyer.jpeg",
-      description: "DL bifold promotional flyers",
+      description:
+        "Professional DL bifold flyers with extra space for menus, business information, promotions, and marketing campaigns.",
       category: "Flyers & Posters",
       keyFeatures:
         "Professional DL bifold flyers with extra space for detailed information.",
@@ -1831,10 +1810,9 @@ export const productsData = {
     {
       name: "DL Flyer",
       slug: generateSlug("DL Flyer"),
-      price: "₦8,000",
-      unit: "per 1000",
       image: "/product-images/flyers-posters/dl-flyer.jpeg",
-      description: "Compact DL size flyers",
+      description:
+        "Compact DL flyers suitable for direct marketing, promotional campaigns, invitations, and event advertising.",
       category: "Flyers & Posters",
       keyFeatures:
         "DL flyers perfect for direct marketing and event promotions.",
@@ -1844,16 +1822,15 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/flyers-posters/dl-flyer.png"],
+      images: ["/product-images/flyers-posters/dl-flyer.jpeg"],
     },
 
     {
       name: "DL Trifold Flyer",
       slug: generateSlug("DL Trifold Flyer"),
-      price: "₦18,000",
-      unit: "per 1000",
       image: "/product-images/flyers-posters/dl-trifold-flyer.jpeg",
-      description: "DL trifold flyers",
+      description:
+        "Elegant DL trifold flyers with multiple panels suitable for brochures, menus, corporate promotions, and marketing materials.",
       category: "Flyers & Posters",
       keyFeatures:
         "Elegant DL trifold flyers with multiple panels for marketing content.",
@@ -1863,17 +1840,16 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/flyers-posters/dl-trifold-flyer.png"],
+      images: ["/product-images/flyers-posters/dl-trifold-flyer.jpeg"],
     },
   ],
   Invitations: [
     {
       name: "Acrylic Invitation",
       slug: generateSlug("Acrylic Invitation"),
-      price: "₦35,000",
-      unit: "per 50",
       image: "/product-images/invitations/acrylic-invitation.jpeg",
-      description: "Premium acrylic invitation cards",
+      description:
+        "Premium acrylic invitation cards with elegant transparent finishing suitable for weddings, birthdays, luxury events, and corporate ceremonies.",
       category: "Invitations",
       keyFeatures:
         "Luxury acrylic invitation cards with premium transparent finish and elegant print quality.",
@@ -1883,16 +1859,15 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/invitations/acrylic-invitation.png"],
+      images: ["/product-images/invitations/acrylic-invitation.jpeg"],
     },
 
     {
       name: "Card Invitation",
       slug: generateSlug("Card Invitation"),
-      price: "₦20,000",
-      unit: "per 100",
       image: "/product-images/invitations/card-invitation.jpeg",
-      description: "Classic card invitation prints",
+      description:
+        "Classic printed invitation cards suitable for weddings, birthdays, naming ceremonies, parties, and special events.",
       category: "Invitations",
       keyFeatures:
         "Elegant printed invitation cards suitable for weddings, birthdays, and events.",
@@ -1902,16 +1877,15 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/invitations/card-invitation.png"],
+      images: ["/product-images/invitations/card-invitation.jpeg"],
     },
 
     {
       name: "Wedding Program",
       slug: generateSlug("Wedding Program"),
-      price: "₦18,000",
-      unit: "per 100",
       image: "/product-images/invitations/wedding-program.jpeg",
-      description: "Custom wedding program booklets",
+      description:
+        "Beautifully designed wedding program booklets suitable for church weddings, receptions, engagement ceremonies, and special occasions.",
       category: "Invitations",
       keyFeatures:
         "Beautifully designed wedding programs with premium print finish for ceremonies and receptions.",
@@ -1921,7 +1895,7 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/invitations/wedding-program.png"],
+      images: ["/product-images/invitations/wedding-program.jpeg"],
     },
   ],
 
@@ -1929,10 +1903,9 @@ export const productsData = {
     {
       name: "Block Pad",
       slug: generateSlug("Block Pad"),
-      price: "₦5,000",
-      unit: "per 50",
       image: "/product-images/office-stationery/block-pad.png",
-      description: "Custom branded block pads",
+      description:
+        "Custom branded block pads suitable for office notes, meetings, schools, conferences, and business branding.",
       category: "Office Stationery",
       keyFeatures:
         "High-quality block pads perfect for office notes, meetings, and branding.",
@@ -1948,10 +1921,9 @@ export const productsData = {
     {
       name: "Computer Mouse",
       slug: generateSlug("Computer Mouse"),
-      price: "₦8,000",
-      unit: "each",
       image: "/product-images/office-stationery/computer-mouse.png",
-      description: "Wireless computer mouse",
+      description:
+        "Smooth and responsive computer mouse suitable for office work, gaming, personal use, and corporate branding.",
       category: "Office Stationery",
       keyFeatures:
         "Smooth and responsive computer mouse suitable for office and personal use.",
@@ -1967,10 +1939,9 @@ export const productsData = {
     {
       name: "Custom Lanyard",
       slug: generateSlug("Custom Lanyard"),
-      price: "₦3,500",
-      unit: "per 50",
       image: "/product-images/office-stationery/custom-lanyard.jpg",
-      description: "Branded custom lanyards",
+      description:
+        "Durable custom lanyards suitable for ID cards, conferences, schools, offices, and corporate events.",
       category: "Office Stationery",
       keyFeatures:
         "Durable custom lanyards ideal for ID cards, events, and office branding.",
@@ -1980,16 +1951,15 @@ export const productsData = {
       },
       priceNumeric: 3500,
       tax: 280,
-      images: ["/product-images/office-stationery/custom-lanyard.png"],
+      images: ["/product-images/office-stationery/custom-lanyard.jpg"],
     },
 
     {
       name: "File Presentation Folder",
       slug: generateSlug("File Presentation Folder"),
-      price: "₦12,000",
-      unit: "per 100",
       image: "/product-images/office-stationery/file-presentation-folder.jpeg",
-      description: "Professional presentation folders",
+      description:
+        "Professional presentation folders suitable for proposals, office documents, reports, and corporate branding.",
       category: "Office Stationery",
       keyFeatures:
         "Custom printed presentation folders for documents, proposals, and branding.",
@@ -2000,17 +1970,16 @@ export const productsData = {
       priceNumeric: 12000,
       tax: 960,
       images: [
-        "/product-images/office-stationery/file-presentation-folder.png",
+        "/product-images/office-stationery/file-presentation-folder.jpeg",
       ],
     },
 
     {
       name: "ID Card",
       slug: generateSlug("ID Card"),
-      price: "₦2,500",
-      unit: "each",
       image: "/product-images/office-stationery/id-card.jpg",
-      description: "Custom staff ID cards",
+      description:
+        "Durable PVC ID cards suitable for staff identification, schools, offices, events, and organizations.",
       category: "Office Stationery",
       keyFeatures:
         "Durable PVC ID cards with sharp print quality for staff and events.",
@@ -2020,16 +1989,15 @@ export const productsData = {
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/office-stationery/id-card.png"],
+      images: ["/product-images/office-stationery/id-card.jpg"],
     },
 
     {
       name: "Invoice Receipt",
       slug: generateSlug("Invoice Receipt"),
-      price: "₦6,500",
-      unit: "per 100",
       image: "/product-images/office-stationery/invoice-receipt.jpeg",
-      description: "Custom invoice receipt booklets",
+      description:
+        "Professionally printed invoice and receipt booklets suitable for businesses, stores, offices, and financial record keeping.",
       category: "Office Stationery",
       keyFeatures:
         "Professionally printed invoice and receipt booklets for businesses.",
@@ -2039,16 +2007,15 @@ export const productsData = {
       },
       priceNumeric: 6500,
       tax: 520,
-      images: ["/product-images/office-stationery/invoice-receipt.png"],
+      images: ["/product-images/office-stationery/invoice-receipt.jpeg"],
     },
 
     {
       name: "Letterheads",
       slug: generateSlug("Letterheads"),
-      price: "₦6,000",
-      unit: "per 100",
       image: "/product-images/office-stationery/letterheads.png",
-      description: "Custom branded letterheads",
+      description:
+        "Premium branded letterheads suitable for official correspondence, corporate communication, and business documentation.",
       category: "Office Stationery",
       keyFeatures:
         "Premium branded letterheads for official business correspondence.",
@@ -2064,10 +2031,9 @@ export const productsData = {
     {
       name: "Metallic Pen",
       slug: generateSlug("Metallic Pen"),
-      price: "₦4,000",
-      unit: "per 20",
       image: "/product-images/office-stationery/metallic-pen.jpeg",
-      description: "Premium metallic branded pens",
+      description:
+        "Elegant metallic pens suitable for corporate branding, office use, conferences, and promotional giveaways.",
       category: "Office Stationery",
       keyFeatures:
         "Elegant metallic pens suitable for corporate branding and gifts.",
@@ -2077,16 +2043,15 @@ export const productsData = {
       },
       priceNumeric: 4000,
       tax: 320,
-      images: ["/product-images/office-stationery/metallic-pen.png"],
+      images: ["/product-images/office-stationery/metallic-pen.jpeg"],
     },
 
     {
       name: "Mousepad",
       slug: generateSlug("Mousepad"),
-      price: "₦3,000",
-      unit: "each",
       image: "/product-images/office-stationery/mousepad.png",
-      description: "Custom printed mousepads",
+      description:
+        "Custom printed mousepads with smooth surface suitable for offices, gaming setups, and promotional branding.",
       category: "Office Stationery",
       keyFeatures:
         "Smooth surface mousepads with custom branding and vibrant print quality.",
@@ -2102,10 +2067,9 @@ export const productsData = {
     {
       name: "Plastic Pen",
       slug: generateSlug("Plastic Pen"),
-      price: "₦2,500",
-      unit: "per 20",
       image: "/product-images/office-stationery/plastic-pen.jpeg",
-      description: "Custom branded plastic pens",
+      description:
+        "Affordable plastic pens suitable for office use, school activities, promotions, branding, and giveaways.",
       category: "Office Stationery",
       keyFeatures:
         "Affordable plastic pens ideal for promotions, branding, and giveaways.",
