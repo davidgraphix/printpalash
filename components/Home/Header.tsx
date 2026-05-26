@@ -1,6 +1,7 @@
 "use client";
 import { Phone, MessageCircle, Clock } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -11,8 +12,13 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-lg font-bold text-black">
-              print<span className="text-red-600">palash</span>
-              <span className="text-xs text-gray-500">.com</span>
+              <Image
+                src="/assests/printpalash-logo.png"
+                alt="PrintPalash Logo"
+                width={280}
+                height={280}
+                className="w-32 sm:w-40 md:w-52 lg:w-72 h-auto object-contain"
+              />
             </h1>
           </div>
 
@@ -45,10 +51,10 @@ export default function Header() {
                   window.open(
                     "https://wa.me/2347035017359?text=" +
                       encodeURIComponent(
-                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life."
+                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
                       ),
                     "_blank",
-                    "noopener,noreferrer"
+                    "noopener,noreferrer",
                   );
                 }}
                 style={{ cursor: "pointer" }}
@@ -65,8 +71,13 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-bold text-black">
-              print<span className="text-red-600">palash</span>
-              <span className="text-sm text-gray-500">.com</span>
+              <Image
+                src="/assests/printpalash-logo.png"
+                alt="PrintPalash Logo"
+                width={280}
+                height={280}
+                className="w-50 h-auto object-contain"
+              />
             </h1>
           </div>
 
@@ -135,10 +146,10 @@ export default function Header() {
                   window.open(
                     "https://wa.me/2347035017359?text=" +
                       encodeURIComponent(
-                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life."
+                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
                       ),
                     "_blank",
-                    "noopener,noreferrer"
+                    "noopener,noreferrer",
                   );
                 }}
                 style={{ cursor: "pointer" }}

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import trustedBrand1 from "@/public/assests/trusted-brands-img/HERNICKY 1.svg";
+import trustedBrand1 from "@/public/assests/trusted-brands-img/ILE agoyinn.png";
 import trustedBrand2 from "@/public/assests/trusted-brands-img/IITA 1.svg";
 import trustedBrand3 from "@/public/assests/trusted-brands-img/kehnnies brand.svg";
 import trustedBrand4 from "@/public/assests/trusted-brands-img/MASTERCARD 1.svg";
 import trustedBrand5 from "@/public/assests/trusted-brands-img/REFLECTION 1.svg";
-import trustedBrand6 from "@/public/assests/trusted-brands-img/ROSEWOOD CARGO LOGO 1.svg";
+import trustedBrand6 from "@/public/assests/trusted-brands-img/lolytee catering services.png";
 
 export default function TrustedBrands() {
   return (
