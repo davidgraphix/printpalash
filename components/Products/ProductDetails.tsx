@@ -1,17 +1,108 @@
 "use client";
-import { useState } from "react";
-import { ChevronRight, ChevronDown, Search } from "lucide-react";
+
+import { useMemo, useState } from "react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ImageIcon,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Star,
+  Truck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/lib/products-data";
+import {
+  getAllProducts,
+  getProductsByCategory,
+  type Product,
+} from "@/lib/products-data";
 
 interface ProductDetailProps {
   product: Product;
 }
 
+function ProductStars({ rating = 4.8 }: { rating?: number }) {
+  return (
+    <div
+      className="flex items-center gap-1"
+      aria-label={`${rating} star rating`}
+    >
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star
+          key={index}
+          className={`h-4 w-4 ${index < Math.round(rating)
+              ? "fill-orange-400 text-orange-400"
+              : "text-orange-300"
+            }`}
+        />
+      ))}
+      <span className="ml-2 text-sm font-medium text-gray-600">{rating}</span>
+    </div>
+  );
+}
+
+function RelatedProductCard({ product }: { product: Product }) {
+  const productImage =
+    product.images?.[0] || product.image || "/placeholder.svg";
+
+  const imageCount = product.images?.length || 1;
+
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <Link href={`/products/${product.slug}`} className="block">
+        <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+          <Image
+            src={productImage}
+            alt={product.name}
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+
+          {imageCount > 1 && (
+            <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
+              <ImageIcon className="h-3.5 w-3.5" />
+              {imageCount}
+            </div>
+          )}
+        </div>
+      </Link>
+
+      <div className="flex flex-1 flex-col p-4">
+        <ProductStars rating={product.rating || 4.8} />
+
+        <Link href={`/products/${product.slug}`}>
+          <h3 className="mt-3 line-clamp-2 text-sm font-black leading-snug text-gray-900 transition group-hover:text-red-600 lg:text-base">
+            {product.name}
+          </h3>
+        </Link>
+
+        <p className="mt-3 font-black text-red-600">
+          Starting at ₦{product.priceNumeric.toLocaleString()}
+        </p>
+
+        <Link href={`/products/${product.slug}`} className="mt-4">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-50 px-4 py-2 text-sm font-black text-red-600 transition hover:bg-red-600 hover:text-white"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Place Order
+          </button>
+        </Link>
+      </div>
+    </article>
+  );
+}
+
 export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedQuantity, setSelectedQuantity] = useState("100");
-  const [selectedSpecs, setSelectedSpecs] = useState({
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const [selectedSpecs] = useState({
     paperThickness: "thick-300gsm",
     lamination: "matte-lamination",
     edges: "square-edges",
@@ -20,184 +111,272 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Calculate total price
+  const productImages = useMemo(() => {
+    if (product.images && product.images.length > 0) return product.images;
+    if (product.image) return [product.image];
+    return ["/placeholder.svg"];
+  }, [product.image, product.images]);
+
+  const activeImage = productImages[activeImageIndex] || productImages[0];
+
   const quantityNumber = Number(selectedQuantity);
   const unitPrice = product.priceNumeric || 0;
   const totalPrice = unitPrice * quantityNumber;
 
-  const handleSpecChange = (category: string, value: string) => {
-    setSelectedSpecs((prev) => ({
-      ...prev,
-      [category]: value,
-    }));
+  const relatedProducts = useMemo(() => {
+    const sameCategoryProducts = getProductsByCategory(product.category).filter(
+      (item) => item.slug !== product.slug
+    );
+
+    if (sameCategoryProducts.length >= 4) {
+      return sameCategoryProducts.slice(0, 4);
+    }
+
+    const fallbackProducts = getAllProducts().filter(
+      (item) =>
+        item.slug !== product.slug &&
+        !sameCategoryProducts.some((related) => related.slug === item.slug)
+    );
+
+    return [...sameCategoryProducts, ...fallbackProducts].slice(0, 4);
+  }, [product.category, product.slug]);
+
+  const goToPreviousImage = () => {
+    setActiveImageIndex((prev) =>
+      prev === 0 ? productImages.length - 1 : prev - 1
+    );
   };
 
-  // Handle Order function to send order details to API and redirect to WhatsApp
+  const goToNextImage = () => {
+    setActiveImageIndex((prev) =>
+      prev === productImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
   const handleOrder = async () => {
     setError(null);
+
+    if (!customerName.trim() || !customerPhone.trim()) {
+      setError("Please fill in your name and phone number.");
+      return;
+    }
+
     setIsLoading(true);
 
     const orderPayload = {
       productName: product.name,
-      productId: product.slug ?? undefined,
+      productId: product.slug,
       quantity: quantityNumber,
       unitPrice,
       totalPrice,
       tax: product.tax,
       specs: selectedSpecs,
-      customer: { name: customerName, phone: customerPhone },
+      customer: {
+        name: customerName,
+        phone: customerPhone,
+      },
     };
 
     try {
       const resp = await fetch("/api/send-order", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(orderPayload),
       });
 
       const data = await resp.json();
-      if (!resp.ok) throw new Error(data?.message || "Failed to place order");
+
+      if (!resp.ok) {
+        throw new Error(data?.message || "Failed to place order");
+      }
 
       const whatsAppNumber =
         process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2347035017359";
 
       const specsText = Object.entries(selectedSpecs)
-        .map(([k, v]) => `${k}: ${v}`)
+        .map(([key, value]) => `${key}: ${value}`)
         .join(", ");
 
-      const message = `Hello, my name is ${
-        orderPayload.customer.name
-      }, phone: ${orderPayload.customer.phone}. I just ordered ${
-        orderPayload.quantity
-      } x ${
-        orderPayload.productName
-      } (${specsText}). Total: ₦${orderPayload.totalPrice.toLocaleString()}.`;
+      const message = `Hello, my name is ${orderPayload.customer.name
+        }, phone: ${orderPayload.customer.phone}. I want to order ${orderPayload.quantity
+        } x ${orderPayload.productName
+        }. Specs: ${specsText}. Total: ₦${orderPayload.totalPrice.toLocaleString()}.`;
 
       const waUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(
-        message,
+        message
       )}`;
+
       window.location.href = waUrl;
-    } catch (err: any) {
-      console.error("Order error", err);
-      setError(err?.message || "Something went wrong");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Something went wrong";
+      setError(message);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="bg-white">
-      {/* Mobile Layout */}
-      <div className="lg:hidden">
-        {/* Breadcrumb */}
-        <div className="bg-gray-50 py-3 px-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-gray-700">
+    <main className="bg-white">
+      <section className="border-b bg-gray-50">
+        <div className="container mx-auto px-4 py-4">
+          <nav className="flex flex-wrap items-center gap-2 text-sm">
+            <Link href="/" className="text-gray-500 hover:text-red-600">
               Home
             </Link>
-            <ChevronRight className="w-3 h-3 text-gray-400" />
-            <Link
-              href="/products"
-              className="text-gray-500 hover:text-gray-700"
-            >
+            <ChevronRight className="h-4 w-4 text-gray-400" />
+            <Link href="/products" className="text-gray-500 hover:text-red-600">
               All Products
             </Link>
-            <ChevronRight className="w-3 h-3 text-gray-400" />
-            <span className="text-red-600 font-medium">{product.name}</span>
+            <ChevronRight className="h-4 w-4 text-gray-400" />
+            <span className="font-medium text-red-600">{product.name}</span>
           </nav>
         </div>
+      </section>
 
-        {/* Search Bar */}
-        <div className="bg-white border-b py-3 px-4">
-          <div className="flex">
+      <section className="border-b bg-white py-4">
+        <div className="container mx-auto px-4">
+          <div className="ml-auto flex max-w-md">
             <input
               type="text"
-              placeholder="Search for any products"
-              className="flex-1 py-2 px-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
+              placeholder="Search for any product"
+              className="flex-1 rounded-l-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
             />
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-r-lg">
-              <Search className="w-4 h-4" />
+            <button
+              type="button"
+              className="rounded-r-xl bg-red-600 px-5 text-white transition hover:bg-red-700"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
             </button>
           </div>
         </div>
+      </section>
 
-        {/* Product Content */}
-        <div className="px-4 py-6">
-          {/* Product Images */}
-          <div className="mb-6">
-            {/* Main Image */}
-            <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden mb-4">
+      <section className="container mx-auto px-4 py-8 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="space-y-4">
+            <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
               <Image
-                src={product.images[0] || product.image || "/placeholder.svg"}
-                alt={product.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
+                src={activeImage}
+                alt={`${product.name} preview ${activeImageIndex + 1}`}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
+
+              {productImages.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={goToPreviousImage}
+                    className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-gray-900" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={goToNextImage}
+                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="h-5 w-5 text-gray-900" />
+                  </button>
+
+                  <div className="absolute bottom-3 right-3 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
+                    {activeImageIndex + 1} / {productImages.length}
+                  </div>
+                </>
+              )}
             </div>
-            {/* Thumbnail Images */}
-            <div className="grid grid-cols-3 gap-3">
-              {product.images.slice(1, 4).map((image, index) => (
-                <div
-                  key={index}
-                  className="aspect-square bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:opacity-80"
-                >
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    alt={`${product.name} ${index + 2}`}
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+
+            {productImages.length > 1 && (
+              <div className="flex gap-3 overflow-x-auto pb-2">
+                {productImages.map((image, index) => (
+                  <button
+                    key={`${image}-${index}`}
+                    type="button"
+                    onClick={() => setActiveImageIndex(index)}
+                    className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border-2 bg-gray-100 transition ${activeImageIndex === index
+                        ? "border-red-600"
+                        : "border-transparent hover:border-gray-300"
+                      }`}
+                    aria-label={`View image ${index + 1}`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`${product.name} thumbnail ${index + 1}`}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-3">
+              <ProductStars rating={product.rating || 4.8} />
+
+              <h1 className="mt-3 text-2xl font-bold text-gray-900 lg:text-3xl">
                 {product.name}
               </h1>
-              <p className="text-gray-600 leading-relaxed text-sm">
+
+              <p className="mt-4 leading-relaxed text-gray-600">
                 {product.description}
               </p>
             </div>
 
-            {/* Key Features */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Key Features
-              </h3>
-              <p className="text-gray-600 text-sm">{product.keyFeatures}</p>
-            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border border-gray-200 bg-white p-4">
+                <div className="mb-2 flex items-center gap-2">
+                  <ShieldCheck className="h-5 w-5 text-red-600" />
+                  <h3 className="font-bold text-gray-900">Key Features</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {product.keyFeatures}
+                </p>
+              </div>
 
-            {/* Delivery */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Delivery
-              </h3>
-              <div className="space-y-1 text-gray-600 text-sm">
-                <p>{product.delivery.lagos}</p>
-                <p>{product.delivery.others}</p>
+              <div className="rounded-xl border border-gray-200 bg-white p-4">
+                <div className="mb-2 flex items-center gap-2">
+                  <Truck className="h-5 w-5 text-red-600" />
+                  <h3 className="font-bold text-gray-900">Delivery</h3>
+                </div>
+                <div className="space-y-1 text-sm leading-relaxed text-gray-600">
+                  <p>{product.delivery.lagos}</p>
+                  <p>{product.delivery.others}</p>
+                </div>
               </div>
             </div>
 
-            {/* Quantity */}
+            <div className="rounded-2xl border border-red-100 bg-red-50 p-4">
+              <h3 className="font-black text-gray-900">Need custom design?</h3>
+              <p className="mt-1 text-sm text-gray-600">
+                You can upload your design or request help from our team after
+                placing your order.
+              </p>
+            </div>
+
             <div>
-              <label className="block text-lg font-semibold text-gray-900 mb-3">
+              <label className="mb-2 block font-bold text-gray-900">
                 Quantity
               </label>
               <div className="relative">
                 <select
                   value={selectedQuantity}
                   onChange={(e) => setSelectedQuantity(e.target.value)}
-                  className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none bg-white"
+                  className="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
                 >
                   <option value="50">50 pieces</option>
                   <option value="100">100 pieces</option>
@@ -205,46 +384,49 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <option value="500">500 pieces</option>
                   <option value="1000">1000 pieces</option>
                 </select>
-                <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+
+                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
               </div>
             </div>
 
-            {/* Pricing */}
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 lg:p-6">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
                   <span className="text-gray-600">Unit Price</span>
-                  <span className="text-lg font-bold text-gray-900">
+                  <span className="font-bold text-gray-900">
                     ₦{unitPrice.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex justify-between items-center">
+
+                <div className="flex items-center justify-between">
                   <span className="text-gray-600">Quantity</span>
-                  <span className="text-lg font-bold text-gray-900">
+                  <span className="font-bold text-gray-900">
                     {quantityNumber}
                   </span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Total</span>
-                  <span className="text-2xl font-bold text-red-600">
+
+                <div className="flex items-center justify-between border-t pt-3">
+                  <span className="font-bold text-gray-900">Total</span>
+                  <span className="text-2xl font-black text-red-600">
                     ₦{totalPrice.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm">
+
+                <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-500">Tax</span>
                   <span className="text-gray-500">
                     ₦{product.tax.toLocaleString()}
                   </span>
                 </div>
               </div>
-              <div className="mt-4 space-y-3">
+
+              <div className="mt-5 space-y-3">
                 <input
                   type="text"
                   placeholder="Your Name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
-                  required
+                  className="w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
                 />
 
                 <input
@@ -252,222 +434,61 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   placeholder="Phone Number"
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
-                  required
+                  className="w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
                 />
               </div>
 
               <button
-                onClick={() => {
-                  if (!customerName.trim() || !customerPhone.trim()) {
-                    setError("Please fill in your name and phone number.");
-                    return;
-                  }
-                  handleOrder();
-                }}
+                type="button"
+                onClick={handleOrder}
                 disabled={isLoading}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-4 text-lg transition-colors duration-200"
+                className="mt-5 w-full rounded-xl bg-red-600 px-6 py-4 font-black text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {isLoading ? "Placing Order..." : "ORDER NOW"}
+                {isLoading ? "PLACING ORDER..." : "ORDER NOW"}
               </button>
-              {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
+
+              {error && (
+                <p className="mt-3 text-sm font-medium text-red-600">
+                  {error}
+                </p>
+              )}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Desktop Layout */}
-      <div className="hidden lg:block">
-        {/* Breadcrumb */}
-        <div className="bg-gray-50 py-4">
+      {relatedProducts.length > 0 && (
+        <section className="border-t bg-gray-50 py-12 lg:py-16">
           <div className="container mx-auto px-4">
-            <nav className="flex items-center space-x-2 text-sm">
-              <Link href="/" className="text-gray-500 hover:text-gray-700">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4 text-gray-400" />
-              <Link
-                href="/products"
-                className="text-gray-500 hover:text-gray-700"
-              >
-                All Products
-              </Link>
-              <ChevronRight className="w-4 h-4 text-gray-400" />
-              <span className="text-red-600 font-medium">{product.name}</span>
-            </nav>
-          </div>
-        </div>
-
-        {/* Search Bar */}
-        <div className="bg-white border-b py-4">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-end">
-              <div className="flex w-80">
-                <input
-                  type="text"
-                  placeholder="Search for any Products"
-                  className="flex-1 py-2 px-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                />
-                <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-r-lg">
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Product Details */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Product Images */}
-            <div className="space-y-4">
-              {/* Main Image */}
-              <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-                <Image
-                  src={product.images[0] || product.image}
-                  alt={product.name}
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Thumbnail Images */}
-              <div className="grid grid-cols-3 gap-4">
-                {product.images.slice(1).map((image, index) => (
-                  <div
-                    key={index}
-                    className="aspect-square bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:opacity-80"
-                  >
-                    <Image
-                      src={image || "/placeholder.svg"}
-                      alt={`${product.name} ${index + 2}`}
-                      width={100}
-                      height={100}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Product Info */}
-            <div className="space-y-6">
+            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                  {product.name}
-                </h1>
-                <p className="text-gray-600 leading-relaxed">
-                  {product.description}
+                <h2 className="text-2xl font-black text-gray-900 lg:text-3xl">
+                  Related Products
+                </h2>
+                <p className="mt-2 text-sm text-gray-600">
+                  More products customers usually check in this category.
                 </p>
               </div>
 
-              {/* Key Features */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Key Features
-                </h3>
-                <p className="text-gray-600">{product.keyFeatures}</p>
-              </div>
+              <Link
+                href="/products"
+                className="font-bold text-red-600 hover:text-red-700"
+              >
+                View all products
+              </Link>
+            </div>
 
-              {/* Delivery */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Delivery
-                </h3>
-                <div className="space-y-1 text-gray-600">
-                  <p>{product.delivery.lagos}</p>
-                  <p>{product.delivery.others}</p>
-                </div>
-              </div>
-
-              {/* Quantity */}
-              <div>
-                <label className="block text-lg font-semibold text-gray-900 mb-2">
-                  Quantity
-                </label>
-                <div className="relative">
-                  <select
-                    value={selectedQuantity}
-                    onChange={(e) => setSelectedQuantity(e.target.value)}
-                    className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none bg-white"
-                  >
-                    <option value="50">50 pieces</option>
-                    <option value="100">100 pieces</option>
-                    <option value="250">250 pieces</option>
-                    <option value="500">500 pieces</option>
-                    <option value="1000">1000 pieces</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
-                </div>
-              </div>
-
-              {/* Pricing */}
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Unit Price</span>
-                    <span className="text-lg font-bold text-gray-900">
-                      ₦{unitPrice.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Quantity</span>
-                    <span className="text-lg font-bold text-gray-900">
-                      {quantityNumber}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total</span>
-                    <span className="text-2xl font-bold text-red-600">
-                      ₦{totalPrice.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Tax</span>
-                    <span className="text-gray-500">
-                      ₦{product.tax.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-4 space-y-3">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={customerName}
-                    onChange={(e) => setCustomerName(e.target.value)}
-                    className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
-                    required
-                  />
-
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    value={customerPhone}
-                    onChange={(e) => setCustomerPhone(e.target.value)}
-                    className="w-full border rounded-lg p-3 text-base focus:ring-2 focus:ring-red-500"
-                    required
-                  />
-                </div>
-
-                <button
-                  onClick={() => {
-                    if (!customerName.trim() || !customerPhone.trim()) {
-                      setError("Please fill in your name and phone number.");
-                      return;
-                    }
-                    handleOrder();
-                  }}
-                  disabled={isLoading}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg mt-6 text-lg transition-colors duration-200"
-                >
-                  {isLoading ? "Placing Order..." : "ORDER NOW"}
-                </button>
-                {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
-              </div>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+              {relatedProducts.map((relatedProduct) => (
+                <RelatedProductCard
+                  key={relatedProduct.slug}
+                  product={relatedProduct}
+                />
+              ))}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      )}
+    </main>
   );
 }

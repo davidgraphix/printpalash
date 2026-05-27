@@ -13,6 +13,8 @@ export interface Product {
   tax: number;
   images: string[];
   popular?: boolean;
+  rating?: number;
+  reviewCount?: number;
 }
 
 // Shared product data that can be used across components

@@ -6,9 +6,12 @@ import { Search } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-import slide1Img from "@/public/assests/hero-slide-1.png";
+import slide1Img from "@/public/assests/hero-slide1.PNG";
 import slide2Img from "@/public/assests/hero-slide-2.png";
-import slide3Img from "@/public/assests/hero-slide-3.png";
+import slide3Img from "@/public/assests/hero-slide3.PNG";
+import slide4Img from "@/public/assests/hero-slide4.PNG";
+
+
 
 type Slide = {
   titleRed: string;
@@ -64,6 +67,20 @@ const SLIDES: Slide[] = [
     ),
     image: slide3Img,
   },
+  {
+    titleRed: "Custom",
+    titleBlack: "Print Solutions",
+    subtitle: "From concept to delivery, we've got you covered.",
+    description: (
+      <>
+        Whether You're Looking For Flyers, Banners, Business Cards, Or T-Shirts,
+        Our Custom Print Solutions Are Designed To Bring Your Ideas To Life.
+        <br />
+        <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
+      </>
+    ),
+    image: slide4Img,
+  }
 ];
 
 export default function Hero() {
