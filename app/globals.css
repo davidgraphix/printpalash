@@ -124,3 +124,22 @@
 .hero-gradient {
   background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%);
 }
+
+
+@keyframes trusted-brand-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-trusted-brand-marquee {
+  animation: trusted-brand-marquee 35s linear infinite;
+}
+
+.animate-trusted-brand-marquee:hover {
+  animation-play-state: paused;
+}

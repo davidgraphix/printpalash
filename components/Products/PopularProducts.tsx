@@ -40,7 +40,7 @@ export default function PopularProducts() {
 
           <Link
             href="/products"
-            className="font-bold text-red-600 hover:text-red-700"
+            className="text-xl font-bold text-red-600 hover:text-red-700"
           >
             See all products
           </Link>

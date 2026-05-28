@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,13 +10,14 @@ export default function Footer() {
         <div className="lg:hidden space-y-8">
           {/* Company Logo */}
           <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="bg-red-600 p-2 rounded">
-                <span className="text-white font-bold text-xl">P</span>
-              </div>
-              <span className="text-red-600 font-bold text-lg">
-                De palash ltd.
-              </span>
+            <div className="flex items-center justify-center mb-4">
+              <Image
+                src="/printpalash-logo-footer.png"
+                alt="PrintPalash logo"
+                width={140}
+                height={48}
+                className="object-contain"
+              />
             </div>
             <address className="text-gray-300 not-italic leading-relaxed">
               29 Shipeolu street, elediye
