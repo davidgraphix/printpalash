@@ -12,13 +12,15 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-lg font-bold text-black">
-              <Image
-                src="/assests/printpalash-logo.png"
-                alt="PrintPalash Logo"
-                width={280}
-                height={280}
-                className="w-32 sm:w-40 md:w-52 lg:w-72 h-auto object-contain"
-              />
+              <Link href="/" aria-label="Go to homepage">
+                <Image
+                  src="/assests/printpalash-logo.png"
+                  alt="PrintPalash Logo"
+                  width={280}
+                  height={280}
+                  className="w-32 sm:w-40 md:w-52 lg:w-72 h-auto object-contain"
+                />
+              </Link>
             </h1>
           </div>
 
@@ -50,9 +52,9 @@ export default function Header() {
                 onClick={() => {
                   window.open(
                     "https://wa.me/2347035017359?text=" +
-                      encodeURIComponent(
-                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
-                      ),
+                    encodeURIComponent(
+                      "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
+                    ),
                     "_blank",
                     "noopener,noreferrer",
                   );
@@ -71,13 +73,15 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-bold text-black">
-              <Image
-                src="/assests/printpalash-logo.png"
-                alt="PrintPalash Logo"
-                width={280}
-                height={280}
-                className="w-50 h-auto object-contain"
-              />
+              <Link href="/" aria-label="Go to homepage">
+                <Image
+                  src="/assests/printpalash-logo.png"
+                  alt="PrintPalash Logo"
+                  width={280}
+                  height={280}
+                  className="w-50 h-auto object-contain"
+                />
+              </Link>
             </h1>
           </div>
 
@@ -145,9 +149,9 @@ export default function Header() {
                 onClick={() => {
                   window.open(
                     "https://wa.me/2347035017359?text=" +
-                      encodeURIComponent(
-                        "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
-                      ),
+                    encodeURIComponent(
+                      "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
+                    ),
                     "_blank",
                     "noopener,noreferrer",
                   );

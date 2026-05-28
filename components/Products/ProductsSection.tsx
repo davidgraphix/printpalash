@@ -48,8 +48,8 @@ function ProductStars({ rating = 4.8 }: { rating?: number }) {
         <Star
           key={index}
           className={`h-4 w-4 ${index < Math.round(rating)
-              ? "fill-orange-400 text-orange-400"
-              : "text-orange-300"
+            ? "fill-red-600 text-red-600"
+            : "text-red-300"
             }`}
         />
       ))}
@@ -273,8 +273,8 @@ export default function ProductsSection() {
                     type="button"
                     onClick={() => handleCategorySelect(category)}
                     className={`block w-full rounded-lg px-4 py-3 text-left transition ${selectedCategory === category
-                        ? "bg-red-50 font-bold text-red-600"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-red-600"
+                      ? "bg-red-50 font-bold text-red-600"
+                      : "text-gray-700 hover:bg-gray-50 hover:text-red-600"
                       }`}
                   >
                     {category}
@@ -301,8 +301,8 @@ export default function ProductsSection() {
                     type="button"
                     onClick={() => setSelectedCategory(category)}
                     className={`block w-full rounded-lg px-3 py-2 text-left transition ${selectedCategory === category
-                        ? "bg-red-50 font-bold text-red-600"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-red-600"
+                      ? "bg-red-50 font-bold text-red-600"
+                      : "text-gray-700 hover:bg-gray-50 hover:text-red-600"
                       }`}
                   >
                     {category}

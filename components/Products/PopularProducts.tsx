@@ -10,8 +10,8 @@ function ProductStars({ rating = 4.8 }: { rating?: number }) {
         <Star
           key={index}
           className={`h-4 w-4 ${index < Math.round(rating)
-              ? "fill-orange-400 text-orange-400"
-              : "text-orange-300"
+            ? "fill-red-600 text-red-600"
+            : "text-red-300"
             }`}
         />
       ))}

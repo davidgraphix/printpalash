@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@fontsource aileron;
-@fontsource aileron/700.css;
+@fontsource/poppins;
+@fontsource/poppins/700.css;
 
 @layer utilities {
   .text-balance {
@@ -95,7 +95,7 @@
 
 @layer base {
   body {
-    font-family: "Aileron";
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 }
 
