@@ -29,7 +29,7 @@ export const productsData = {
     {
       name: "A2 Paper Bag",
       slug: generateSlug("A2 Paper Bag"),
-      image: "/product-images/bags/a2-paper-bagee.png",
+      image: "/product-images/bags/a2-paper-bag-2.png",
       description:
         "Premium A2 paper bags designed for luxury packaging, shopping, and corporate branding with durable finishing.",
       category: "Bags",
@@ -41,7 +41,12 @@ export const productsData = {
       },
       priceNumeric: 120000,
       tax: 9600,
-      images: ["/product-images/bags/a2-paper-bagee.png"],
+      images: [
+        "/product-images/bags/a2-paper-bag-2.png",
+        "/product-images/bags/a2-paper-bagee.png",
+        "/product-images/bags/a2-paper-bag-3.png",
+        "/product-images/bags/a2-paper-bag-4.png",
+      ],
     },
 
     {
@@ -59,7 +64,11 @@ export const productsData = {
       },
       priceNumeric: 100000,
       tax: 8000,
-      images: ["/product-images/bags/a3-paper-bag.jpg"],
+      images: [
+        "/product-images/bags/a3-paper-bag.jpg",
+        "/product-images/bags/a3-paper-bag-2.png",
+        "/product-images/bags/a3-paper-bag-3.png",
+      ],
     },
 
     {
@@ -77,7 +86,11 @@ export const productsData = {
       },
       priceNumeric: 90000,
       tax: 7200,
-      images: ["/product-images/bags/a4-paper-bag.jpg"],
+      images: [
+        "/product-images/bags/a4-paper-bag.jpg",
+        "/product-images/bags/a4-paper-bag-2.jpg",
+        "/product-images/bags/a4-paper-bag-3.jpg",
+      ],
     },
 
     {
@@ -95,7 +108,11 @@ export const productsData = {
       },
       priceNumeric: 75000,
       tax: 6000,
-      images: ["/product-images/bags/a5-paper-bag.jpg"],
+      images: [
+        "/product-images/bags/a5-paper-bag.jpg",
+        "/product-images/bags/a5-paper-bag-2.jpg",
+        "/product-images/bags/a5-paper-bag-3.jpg",
+      ],
     },
 
     {
@@ -114,7 +131,11 @@ export const productsData = {
       },
       priceNumeric: 25500,
       tax: 2040,
-      images: ["/product-images/bags/courier-bag.png"],
+      images: [
+        "/product-images/bags/courier-bag.png",
+        "/product-images/bags/courier-bag-2.png",
+        "/product-images/bags/courier-bag-3.png",
+      ],
     },
 
     {
@@ -132,7 +153,12 @@ export const productsData = {
       },
       priceNumeric: 40000,
       tax: 3200,
-      images: ["/product-images/bags/drawstring-bags.png"],
+      images: [
+        "/product-images/bags/drawstring-bags.png",
+        "/product-images/bags/drawstring-bags-2.png",
+        "/product-images/bags/drawstring-bags-3.png",
+        "/product-images/bags/drawstring-bags-4.png",
+      ],
     },
 
     {
@@ -150,7 +176,11 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/bags/fanny-waist-pack.png"],
+      images: [
+        "/product-images/bags/fanny-waist-pack.png",
+        "/product-images/bags/fanny-waist-pack-2.jpg",
+        "/product-images/bags/fanny-waist-pack-3.png",
+      ],
     },
 
     {
@@ -168,7 +198,11 @@ export const productsData = {
       },
       priceNumeric: 50000,
       tax: 4000,
-      images: ["/product-images/bags/jute-bag.png"],
+      images: [
+        "/product-images/bags/jute-bag.png",
+        "/product-images/bags/jute-bag-2.png",
+        "/product-images/bags/jute-bag-3.png",
+      ],
     },
 
     {
@@ -186,7 +220,12 @@ export const productsData = {
       },
       priceNumeric: 45000,
       tax: 3600,
-      images: ["/product-images/bags/kraft-bag.png"],
+      images: [
+        "/product-images/bags/kraft-bag.png",
+        "/product-images/bags/kraft-bag-2.png",
+        "/product-images/bags/kraft-bag-3.jpeg",
+        "/product-images/bags/kraft-bag-4.png",
+      ],
     },
 
     {
@@ -204,7 +243,10 @@ export const productsData = {
       },
       priceNumeric: 60000,
       tax: 4800,
-      images: ["/product-images/bags/pillow-bags-a4.png"],
+      images: [
+        "/product-images/bags/pillow-bags-a4.png",
+        "/product-images/bags/pillow-bags-a4-2.png",
+      ],
     },
 
     {
@@ -222,7 +264,10 @@ export const productsData = {
       },
       priceNumeric: 30000,
       tax: 2400,
-      images: ["/product-images/bags/poly-bag.png"],
+      images: [
+        "/product-images/bags/poly-bag.png",
+        "/product-images/bags/poly-bag-2.png",
+      ],
     },
 
     {
@@ -240,7 +285,11 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/bags/singlet-nylon.png"],
+      images: [
+        "/product-images/bags/singlet-nylon.png",
+        "/product-images/bags/singlet-nylon-2.png",
+        "/product-images/bags/singlet-nylon-3.png",
+      ],
     },
 
     {
@@ -258,7 +307,11 @@ export const productsData = {
       },
       priceNumeric: 55000,
       tax: 4400,
-      images: ["/product-images/bags/sublimation-tote-bag.png"],
+      images: [
+        "/product-images/bags/sublimation-tote-bag.png",
+        "/product-images/bags/sublimation-tote-bag-2.png",
+        "/product-images/bags/sublimation-tote-bag-3.png",
+      ],
     },
 
     {
@@ -276,7 +329,11 @@ export const productsData = {
       },
       priceNumeric: 45000,
       tax: 3600,
-      images: ["/product-images/bags/tote-bag.png"],
+      images: [
+        "/product-images/bags/tote-bag.png",
+        "/product-images/bags/tote-bag-2.png",
+        "/product-images/bags/tote-bag-3.png",
+      ],
     },
 
     {
@@ -294,7 +351,11 @@ export const productsData = {
       },
       priceNumeric: 50000,
       tax: 4000,
-      images: ["/product-images/bags/wine-paper-bag.png"],
+      images: [
+        "/product-images/bags/wine-paper-bag.png",
+        "/product-images/bags/wine-paper-bag-2.png",
+        "/product-images/bags/wine-paper-bag-3.png",
+      ],
     },
   ],
 
@@ -314,13 +375,17 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/banners&largeformat/big-base-rollup.jpeg"],
+      images: [
+        "/product-images/banners&largeformat/big-base-rollup.jpeg",
+        "/product-images/banners&largeformat/big-base-rollup-2.jpeg",
+        "/product-images/banners&largeformat/big-base-rollup-3.jpeg",
+      ],
     },
 
     {
       name: "Dispatch Box",
       slug: generateSlug("Dispatch Box"),
-      image: "/product-images/banners&largeformat/dispatch-box.png",
+      image: "/product-images/banners&largeformat/dispatch-boxes.png",
       description:
         "Durable dispatch boxes designed for secure packaging, shipping, and delivery services.",
       category: "Banners & Large Format",
@@ -332,13 +397,13 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/banners&largeformat/dispatch-box.png"],
+      images: ["/product-images/banners&largeformat/dispatch-boxes.png"],
     },
 
     {
       name: "Dummy Cheque",
       slug: generateSlug("Dummy Cheque"),
-      image: "/product-images/banners&largeformat/dummy-cheque.png",
+      image: "/product-images/banners&largeformat/dummy-cheques.png",
       description:
         "Professional dummy cheques ideal for presentations, award ceremonies, and events.",
       category: "Banners & Large Format",
@@ -350,13 +415,13 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/banners&largeformat/dummy-cheque.png"],
+      images: ["/product-images/banners&largeformat/dummy-cheques.png"],
     },
 
     {
       name: "Event Backdrop",
       slug: generateSlug("Event Backdrop"),
-      image: "/product-images/banners&largeformat/event-backdrop.png",
+      image: "/product-images/banners&largeformat/event-backdrops.png",
       description:
         "Large-format event backdrops suitable for weddings, conferences, branding, and photo sessions.",
       category: "Banners & Large Format",
@@ -368,7 +433,12 @@ export const productsData = {
       },
       priceNumeric: 45000,
       tax: 3600,
-      images: ["/product-images/banners&largeformat/event-backdrop.png"],
+      images: [
+        "/product-images/banners&largeformat/event-backdrops.png",
+        "/product-images/banners&largeformat/event-backdrop-2.png",
+        "/product-images/banners&largeformat/event-backdrop-3.png",
+        "/product-images/banners&largeformat/event-backdrop-4.png",
+      ],
     },
 
     {
@@ -404,7 +474,11 @@ export const productsData = {
       },
       priceNumeric: 120000,
       tax: 9600,
-      images: ["/product-images/banners&largeformat/gazebo-tent.png"],
+      images: [
+        "/product-images/banners&largeformat/gazebo-tent.png",
+        "/product-images/banners&largeformat/gazebo-tent-2.png",
+        "/product-images/banners&largeformat/gazebo-tent-3.png",
+      ],
     },
 
     {
@@ -422,9 +496,11 @@ export const productsData = {
       },
       priceNumeric: 22000,
       tax: 1760,
-      images: ["/product-images/banners&largeformat/instagram-frame-board.png"],
+      images: [
+        "/product-images/banners&largeformat/instagram-frame-board.png",
+        "/product-images/banners&largeformat/instagram-frame-board-2.png",
+      ],
     },
-
     {
       name: "Lampost Banner",
       slug: generateSlug("Lampost Banner"),
@@ -440,7 +516,10 @@ export const productsData = {
       },
       priceNumeric: 30000,
       tax: 2400,
-      images: ["/product-images/banners&largeformat/lampost-banner.png"],
+      images: [
+        "/product-images/banners&largeformat/lampost-banner.png",
+        "/product-images/banners&largeformat/lampost-banner-2.png",
+      ],
     },
 
     {
@@ -458,7 +537,12 @@ export const productsData = {
       },
       priceNumeric: 25000,
       tax: 2000,
-      images: ["/product-images/banners&largeformat/pop-stand-banner.png"],
+      images: [
+        "/product-images/banners&largeformat/pop-stand-banner.png",
+        "/product-images/banners&largeformat/pop-stand-banner-2.png",
+        "/product-images/banners&largeformat/pop-stand-banner-3.jpg",
+        "/product-images/banners&largeformat/pop-stand-banner-4.jpg",
+      ],
     },
 
     {
@@ -476,7 +560,11 @@ export const productsData = {
       },
       priceNumeric: 28000,
       tax: 2240,
-      images: ["/product-images/banners&largeformat/small-base-rollup.png"],
+      images: [
+        "/product-images/banners&largeformat/small-base-rollup.png",
+        "/product-images/banners&largeformat/small-base-rollup-2.png",
+        "/product-images/banners&largeformat/small-base-rollup-3.png",
+      ],
     },
 
     {
@@ -494,7 +582,11 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/banners&largeformat/snapper-frame.png"],
+      images: [
+        "/product-images/banners&largeformat/snapper-frame.png",
+        "/product-images/banners&largeformat/snapper-frame-2.png",
+        "/product-images/banners&largeformat/snapper-frame-3.png",
+      ],
     },
 
     {
@@ -512,7 +604,10 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/banners&largeformat/sticker-print.jpeg"],
+      images: [
+        "/product-images/banners&largeformat/sticker-print.jpeg",
+        "/product-images/banners&largeformat/sticker-print-2.jpeg",
+      ],
     },
 
     {
@@ -548,7 +643,11 @@ export const productsData = {
       },
       priceNumeric: 85000,
       tax: 6800,
-      images: ["/product-images/banners&largeformat/vehicle-branding.png"],
+      images: [
+        "/product-images/banners&largeformat/vehicle-branding.png",
+        "/product-images/banners&largeformat/vehicle-branding-2.png",
+        "/product-images/banners&largeformat/vehicle-branding-3.png",
+      ],
     },
 
     {
@@ -566,7 +665,10 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/banners&largeformat/x-banner.png"],
+      images: [
+        "/product-images/banners&largeformat/x-banner.png",
+        "/product-images/banners&largeformat/x-banner-2.png",
+      ],
     },
   ],
 
@@ -586,7 +688,12 @@ export const productsData = {
       },
       priceNumeric: 3500,
       tax: 280,
-      images: ["/product-images/box&packaging/drawer-box.png"],
+      images: [
+        "/product-images/box&packaging/drawer-box.png",
+        "/product-images/box&packaging/drawer-box-2.png",
+        "/product-images/box&packaging/drawer-box-3.png",
+        "/product-images/box&packaging/drawer-box-4.png",
+      ],
     },
 
     {
@@ -604,7 +711,12 @@ export const productsData = {
       },
       priceNumeric: 250,
       tax: 20,
-      images: ["/product-images/box&packaging/food-pack.png"],
+      images: [
+        "/product-images/box&packaging/food-pack.png",
+        "/product-images/box&packaging/food-pack-2.png",
+        "/product-images/box&packaging/food-pack-3.png",
+        "/product-images/box&packaging/food-pack-4.png",
+      ],
     },
 
     {
@@ -622,9 +734,13 @@ export const productsData = {
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/box&packaging/magnetic-flip-pack.png"],
+      images: [
+        "/product-images/box&packaging/magnetic-flip-pack.png",
+        "/product-images/box&packaging/magnetic-flip-pack-2.png",
+        "/product-images/box&packaging/magnetic-flip-pack-3.png",
+        "/product-images/box&packaging/magnetic-flip-pack-4.png",
+      ],
     },
-
     {
       name: "Mailer Box",
       slug: generateSlug("Mailer Box"),
@@ -640,7 +756,12 @@ export const productsData = {
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/box&packaging/mailer-box.jpeg"],
+      images: [
+        "/product-images/box&packaging/mailer-box.jpeg",
+        "/product-images/box&packaging/mailer-box-2.jpeg",
+        "/product-images/box&packaging/mailer-box-3.jpeg",
+        "/product-images/box&packaging/mailer-box-4.jpeg",
+      ],
     },
 
     {
@@ -658,7 +779,12 @@ export const productsData = {
       },
       priceNumeric: 800,
       tax: 64,
-      images: ["/product-images/box&packaging/pizza-box.jpeg"],
+      images: [
+        "/product-images/box&packaging/pizza-box.jpeg",
+        "/product-images/box&packaging/pizza-box-2.jpeg",
+        "/product-images/box&packaging/pizza-box-3.jpeg",
+        "/product-images/box&packaging/pizza-box-4.jpeg",
+      ],
     },
   ],
 
@@ -679,7 +805,12 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/brochures/a4-landscape-brochure.png"],
+      images: [
+        "/product-images/brochures/a4-landscape-brochure.png",
+        "/product-images/brochures/a4-landscape-brochure-2.png",
+        "/product-images/brochures/a4-landscape-brochure-3.png",
+        "/product-images/brochures/a4-landscape-brochure-4.png",
+      ],
     },
 
     {
@@ -697,7 +828,12 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/brochures/a4-portrait-brochure.png"],
+      images: [
+        "/product-images/brochures/a4-portrait-brochure.png",
+        "/product-images/brochures/a4-portrait-brochure-2.png",
+        "/product-images/brochures/a4-portrait-brochure-3.png",
+        "/product-images/brochures/a4-portrait-brochure-4.png",
+      ],
     },
 
     {
@@ -715,7 +851,12 @@ export const productsData = {
       },
       priceNumeric: 16000,
       tax: 1280,
-      images: ["/product-images/brochures/funeral-brochure.jpeg"],
+      images: [
+        "/product-images/brochures/funeral-brochure.jpeg",
+        "/product-images/brochures/funeral-brochure-2.jpeg",
+        "/product-images/brochures/funeral-brochure-3.jpeg",
+        "/product-images/brochures/funeral-brochure-4.jpeg",
+      ],
     },
 
     {
@@ -733,10 +874,14 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/brochures/trifold.png"],
+      images: [
+        "/product-images/brochures/trifold.png",
+        "/product-images/brochures/trifold-2.png",
+        "/product-images/brochures/trifold-3.png",
+        "/product-images/brochures/trifold-4.png",
+      ],
     },
   ],
-
   "Business Cards": [
     {
       name: "Thank You Business Card",
