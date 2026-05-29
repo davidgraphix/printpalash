@@ -691,8 +691,6 @@ export const productsData = {
       images: [
         "/product-images/box&packaging/drawer-box.png",
         "/product-images/box&packaging/drawer-box-2.png",
-        "/product-images/box&packaging/drawer-box-3.png",
-        "/product-images/box&packaging/drawer-box-4.png",
       ],
     },
 
@@ -715,7 +713,6 @@ export const productsData = {
         "/product-images/box&packaging/food-pack.png",
         "/product-images/box&packaging/food-pack-2.png",
         "/product-images/box&packaging/food-pack-3.png",
-        "/product-images/box&packaging/food-pack-4.png",
       ],
     },
 
@@ -737,14 +734,13 @@ export const productsData = {
       images: [
         "/product-images/box&packaging/magnetic-flip-pack.png",
         "/product-images/box&packaging/magnetic-flip-pack-2.png",
-        "/product-images/box&packaging/magnetic-flip-pack-3.png",
-        "/product-images/box&packaging/magnetic-flip-pack-4.png",
+        "/product-images/box&packaging/magnetic-flip-pack-3.jpeg",
       ],
     },
     {
       name: "Mailer Box",
       slug: generateSlug("Mailer Box"),
-      image: "/product-images/box&packaging/mailer-box.jpeg",
+      image: "/product-images/box&packaging/mailer-box-2.jpeg",
       description:
         "Strong corrugated mailer boxes suitable for ecommerce packaging and shipping.",
       category: "Box & Packaging",
@@ -757,8 +753,8 @@ export const productsData = {
       priceNumeric: 2500,
       tax: 200,
       images: [
-        "/product-images/box&packaging/mailer-box.jpeg",
         "/product-images/box&packaging/mailer-box-2.jpeg",
+        "/product-images/box&packaging/mailer-box.jpeg",
         "/product-images/box&packaging/mailer-box-3.jpeg",
         "/product-images/box&packaging/mailer-box-4.jpeg",
       ],
@@ -781,9 +777,8 @@ export const productsData = {
       tax: 64,
       images: [
         "/product-images/box&packaging/pizza-box.jpeg",
-        "/product-images/box&packaging/pizza-box-2.jpeg",
-        "/product-images/box&packaging/pizza-box-3.jpeg",
-        "/product-images/box&packaging/pizza-box-4.jpeg",
+        "/product-images/box&packaging/pizza-box-2.png",
+        "/product-images/box&packaging/pizza-box-3.png",
       ],
     },
   ],
@@ -808,8 +803,6 @@ export const productsData = {
       images: [
         "/product-images/brochures/a4-landscape-brochure.png",
         "/product-images/brochures/a4-landscape-brochure-2.png",
-        "/product-images/brochures/a4-landscape-brochure-3.png",
-        "/product-images/brochures/a4-landscape-brochure-4.png",
       ],
     },
 
@@ -831,15 +824,14 @@ export const productsData = {
       images: [
         "/product-images/brochures/a4-portrait-brochure.png",
         "/product-images/brochures/a4-portrait-brochure-2.png",
-        "/product-images/brochures/a4-portrait-brochure-3.png",
-        "/product-images/brochures/a4-portrait-brochure-4.png",
+        "/product-images/brochures/a4-portrait-brochure-3.jpeg",
       ],
     },
 
     {
       name: "Funeral Brochure",
       slug: generateSlug("Funeral Brochure"),
-      image: "/product-images/brochures/funeral-brochure.jpeg",
+      image: "/product-images/brochures/funeral-brochure-2.jpeg",
       description:
         "Elegant funeral brochures designed for memorial services and remembrance events.",
       category: "Brochures",
@@ -852,10 +844,10 @@ export const productsData = {
       priceNumeric: 16000,
       tax: 1280,
       images: [
-        "/product-images/brochures/funeral-brochure.jpeg",
         "/product-images/brochures/funeral-brochure-2.jpeg",
+        "/product-images/brochures/funeral-brochure.jpeg",
         "/product-images/brochures/funeral-brochure-3.jpeg",
-        "/product-images/brochures/funeral-brochure-4.jpeg",
+        "/product-images/brochures/funeral-brochure-4.png",
       ],
     },
 
@@ -877,8 +869,6 @@ export const productsData = {
       images: [
         "/product-images/brochures/trifold.png",
         "/product-images/brochures/trifold-2.png",
-        "/product-images/brochures/trifold-3.png",
-        "/product-images/brochures/trifold-4.png",
       ],
     },
   ],
