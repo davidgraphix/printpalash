@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Image
-                src="/printpalash-logo-footer.png"
+                src="/assets/printpalash-logo-footer.png"
                 alt="PrintPalash logo"
                 width={140}
                 height={48}
@@ -136,13 +136,14 @@ export default function Footer() {
         <div className="hidden lg:grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="bg-red-600 p-2 rounded">
-                <span className="text-white font-bold text-xl">P</span>
-              </div>
-              <span className="text-red-600 font-bold text-lg">
-                De palash ltd.
-              </span>
+            <div className="flex items-center justify-start mb-4">
+              <Image
+                src="/printpalash-logo-footer.png"
+                alt="PrintPalash logo"
+                width={140}
+                height={48}
+                className="object-contain"
+              />
             </div>
             <address className="text-gray-300 not-italic leading-relaxed">
               29 Shipeolu street, elediye
