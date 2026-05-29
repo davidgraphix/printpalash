@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@fontsource aileron;
-@fontsource aileron/700.css;
+@fontsource/poppins;
+@fontsource/poppins/700.css;
 
 @layer utilities {
   .text-balance {
@@ -95,7 +95,7 @@
 
 @layer base {
   body {
-    font-family: "Aileron";
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 }
 
@@ -123,4 +123,23 @@
 /* Custom gradient background */
 .hero-gradient {
   background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%);
+}
+
+
+@keyframes trusted-brand-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-trusted-brand-marquee {
+  animation: trusted-brand-marquee 35s linear infinite;
+}
+
+.animate-trusted-brand-marquee:hover {
+  animation-play-state: paused;
 }

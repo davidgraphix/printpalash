@@ -116,7 +116,7 @@ export default function Hero() {
 
   return (
     <section className="bg-white">
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-4">
         <div className="relative z-10 -mb-10 lg:-mb-14 pt-4 -lg:pt-6">
           <p className="text-sm font-semibold text-gray-900 mb-2">
             Start Printing Today

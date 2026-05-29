@@ -19,6 +19,7 @@ import {
   getProductsByCategory,
   type Product,
 } from "@/lib/products-data";
+import Footer from "../Footer/Footer";
 
 interface ProductDetailProps {
   product: Product;
@@ -34,8 +35,8 @@ function ProductStars({ rating = 4.8 }: { rating?: number }) {
         <Star
           key={index}
           className={`h-4 w-4 ${index < Math.round(rating)
-              ? "fill-orange-400 text-orange-400"
-              : "text-orange-300"
+            ? "fill-red-600 text-red-600"
+            : "text-red-300"
             }`}
         />
       ))}
@@ -306,8 +307,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     type="button"
                     onClick={() => setActiveImageIndex(index)}
                     className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border-2 bg-gray-100 transition ${activeImageIndex === index
-                        ? "border-red-600"
-                        : "border-transparent hover:border-gray-300"
+                      ? "border-red-600"
+                      : "border-transparent hover:border-gray-300"
                       }`}
                     aria-label={`View image ${index + 1}`}
                   >
@@ -489,6 +490,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
         </section>
       )}
+      <Footer />
+
     </main>
   );
 }
