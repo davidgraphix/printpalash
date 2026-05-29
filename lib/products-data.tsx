@@ -889,7 +889,10 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/business-cards/thank-you-business-card.jpeg"],
+      images: [
+        "/product-images/business-cards/thank-you-business-card.jpeg",
+        "/product-images/business-cards/thank-you-business-card-2.jpeg",
+      ],
     },
 
     {
@@ -907,35 +910,20 @@ export const productsData = {
       },
       priceNumeric: 25000,
       tax: 2000,
-      images: ["/product-images/business-cards/premium-business-card.png"],
-    },
-
-    {
-      name: "Top Quality Business Card",
-      slug: generateSlug("Top Quality Business Card"),
-      image: "/product-images/business-cards/top-quality-business-card.png",
-      description:
-        "Top-grade professional business cards created for lasting impressions and executive branding.",
-      category: "Business Cards",
-      keyFeatures:
-        "Premium finishing with durable material and luxury print quality.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 35000,
-      tax: 2800,
-      images: ["/product-images/business-cards/top-quality-business-card.png"],
+      images: [
+        "/product-images/business-cards/premium-business-card.png",
+        "/product-images/business-cards/top-quality-business-card.png",
+      ],
     },
   ],
 
   Calendars: [
     {
-      name: "A2 multiple page Wall Calendar",
-      slug: generateSlug("A2 multiple page Wall Calendar"),
+      name: "A2  Wall Calendar",
+      slug: generateSlug("A2  Wall Calendar"),
       image: "/product-images/calendars/a2-multiple-page-wall-calendar.png",
       description:
-        "Large A2 multiple-page wall calendars suitable for advertising, branding, and office use.",
+        "Large A2  wall calendars suitable for advertising, branding, and office use.",
       category: "Calendars",
       keyFeatures:
         "Premium wall calendars with durable finishing and vibrant print quality.",
@@ -945,33 +933,19 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/calendars/a2-multiple-page-wall-calendar.png"],
+      images: [
+        "/product-images/calendars/a2-multiple-page-wall-calendar.png",
+        "/product-images/calendars/a2-single-page-wall-calendar.png",
+        "/product-images/calendars/a2-wall-calendar-3.png",
+      ],
     },
 
     {
-      name: "A2 single page Wall Calendar",
-      slug: generateSlug("A2 single page Wall Calendar"),
-      image: "/product-images/calendars/a2-single-page-wall-calendar.png",
-      description:
-        "Oversized A2 single-page wall calendars designed for visibility and brand promotion.",
-      category: "Calendars",
-      keyFeatures:
-        "Large-format calendars ideal for offices, businesses, and marketing campaigns.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 15000,
-      tax: 1200,
-      images: ["/product-images/calendars/a2-single-page-wall-calendar.png"],
-    },
-
-    {
-      name: "A3 multiple page Wall Calendar",
-      slug: generateSlug("A3 multiple page Wall Calendar"),
+      name: "A3 Wall Calendar",
+      slug: generateSlug("A3 Wall Calendar"),
       image: "/product-images/calendars/a3-multiple-page-wall-calendar.png",
       description:
-        "Professional A3 wall calendars with multiple pages for branding and daily planning.",
+        "Professional A3 wall calendars for branding and daily planning.",
       category: "Calendars",
       keyFeatures:
         "Durable calendars with premium print quality suitable for offices and promotions.",
@@ -981,31 +955,17 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/calendars/a3-multiple-page-wall-calendar.png"],
-    },
-
-    {
-      name: "A3 single page Wall Calendar",
-      slug: generateSlug("A3 single page Wall Calendar"),
-      image: "/product-images/calendars/a3-single-page-wall-calendar.png",
-      description:
-        "Large A3 single-page wall calendars suitable for business visibility and promotions.",
-      category: "Calendars",
-      keyFeatures:
-        "Premium wall calendars with clear layout and vibrant printing.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 15000,
-      tax: 1200,
-      images: ["/product-images/calendars/a3-single-page-wall-calendar.png"],
+      images: [
+        "/product-images/calendars/a3-multiple-page-wall-calendar.png",
+        "/product-images/calendars/a3-single-page-wall-calendar.png",
+        "/product-images/calendars/a3-wall-calendar-3.jpeg",
+      ],
     },
 
     {
       name: "Table Calendar",
       slug: generateSlug("Table Calendar"),
-      image: "/product-images/calendars/table-calendar.jpeg",
+      image: "/product-images/calendars/table-calendar-2.png",
       description:
         "Compact desk calendars designed for offices, workspaces, and corporate branding.",
       category: "Calendars",
@@ -1018,7 +978,11 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/calendars/table-calendar.jpeg"],
+      images: [
+        "/product-images/calendars/table-calendar-2.png",
+        "/product-images/calendars/table-calendar.jpeg",
+        "/product-images/calendars/table-calendar-3.png",
+      ],
     },
   ],
 
@@ -1161,7 +1125,11 @@ export const productsData = {
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/caps&hats/beanie.png"],
+      images: [
+        "/product-images/caps&hats/beanie.png",
+        "/product-images/caps&hats/beanie-2.png",
+        "/product-images/caps&hats/beanie-3.png",
+      ],
     },
 
     {
@@ -1179,7 +1147,11 @@ export const productsData = {
       },
       priceNumeric: 6500,
       tax: 520,
-      images: ["/product-images/caps&hats/snapback-cap.png"],
+      images: [
+        "/product-images/caps&hats/snapback-cap.png",
+        "/product-images/caps&hats/snapback-cap-2.png",
+        "/product-images/caps&hats/snapback-cap-3.png",
+      ],
     },
 
     {
@@ -1197,7 +1169,10 @@ export const productsData = {
       },
       priceNumeric: 5500,
       tax: 440,
-      images: ["/product-images/caps&hats/trucker-cap.png"],
+      images: [
+        "/product-images/caps&hats/trucker-cap.png",
+        "/product-images/caps&hats/trucker-cap-2.png",
+      ],
     },
 
     {
@@ -1236,7 +1211,12 @@ export const productsData = {
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/clothing-apparel/printivo-merch.png"],
+      images: [
+        "/product-images/clothing-apparel/printivo-mech.jpg",
+        "/product-images/clothing-apparel/printivo-mech-2.jpg",
+        "/product-images/clothing-apparel/printivo-mech-3.jpg",
+        "/product-images/clothing-apparel/printivo-mech-4.jpg",
+      ],
     },
 
     {
@@ -1254,7 +1234,12 @@ export const productsData = {
       },
       priceNumeric: 6000,
       tax: 480,
-      images: ["/product-images/clothing-apparel/apron.png"],
+      images: [
+        "/product-images/clothing-apparel/apron.png",
+        "/product-images/clothing-apparel/apron-2.png",
+        "/product-images/clothing-apparel/apron-3.png",
+        "/product-images/clothing-apparel/apron-4.png",
+      ],
     },
 
     {
@@ -1278,7 +1263,7 @@ export const productsData = {
     {
       name: "Folded Round Neck",
       slug: generateSlug("Folded Round Neck"),
-      image: "/product-images/clothing-apparel/folded-round-neck.png",
+      image: "/product-images/clothing-apparel/folded-round-neck-2.png",
       description:
         "Comfortable round neck shirts suitable for casual wear, branding, and promotional use.",
       category: "Clothing & Apparel",
@@ -1290,7 +1275,12 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/clothing-apparel/folded-round-neck.png"],
+      images: [
+        "/product-images/clothing-apparel/folded-round-neck-2.png",
+        "/product-images/clothing-apparel/folded-round-neck.png",
+        "/product-images/clothing-apparel/folded-round-neck-3.png",
+        "/product-images/clothing-apparel/folded-round-neck-4.png",
+      ],
     },
 
     {
@@ -1326,7 +1316,11 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/clothing-apparel/round-neck-polo.png"],
+      images: [
+        "/product-images/clothing-apparel/folded-round-neck.png",
+        "/product-images/clothing-apparel/folded-round-neck-3.png",
+        "/product-images/clothing-apparel/folded-round-neck-4.png",
+      ],
     },
 
     {
@@ -1362,7 +1356,11 @@ export const productsData = {
       },
       priceNumeric: 13000,
       tax: 1040,
-      images: ["/product-images/clothing-apparel/sweatshirt.png"],
+      images: [
+        "/product-images/clothing-apparel/sweatshirt.png",
+        "/product-images/clothing-apparel/sweatshirt-2.png",
+        "/product-images/clothing-apparel/sweatshirt-3.png",
+      ],
     },
 
     {
@@ -1380,7 +1378,11 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/clothing-apparel/versity-jacket.png"],
+      images: [
+        "/product-images/clothing-apparel/versity-jacket.png",
+        "/product-images/clothing-apparel/versity-jacket-2.png",
+        "/product-images/clothing-apparel/versity-jacket-3.png",
+      ],
     },
   ],
 
@@ -1400,7 +1402,12 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/clothestag/cloth-paper-tag.png"],
+      images: [
+        "/product-images/clothestag/cloth-paper-tag.png",
+        "/product-images/clothestag/cloth-paper-tag-2.png",
+        "/product-images/clothestag/cloth-paper-tag-3.png",
+        "/product-images/clothestag/cloth-paper-tag-4.png",
+      ],
     },
 
     {
@@ -1418,7 +1425,12 @@ export const productsData = {
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/clothestag/woven-label.jpeg"],
+      images: [
+        "/product-images/clothestag/woven-label.jpeg",
+        "/product-images/clothestag/woven-label-2.jpeg",
+        "/product-images/clothestag/woven-label-3.jpeg",
+        "/product-images/clothestag/woven-label-4.jpeg",
+      ],
     },
 
     {
@@ -1436,7 +1448,12 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/clothestag/custom-clothing-labels.jpeg"],
+      images: [
+        "/product-images/clothestag/custom-clothing-labels.jpeg",
+        "/product-images/clothestag/custom-clothing-labels-2.jpeg",
+        "/product-images/clothestag/custom-clothing-labels-3.jpeg",
+        "/product-images/clothestag/custom-clothing-labels-4.jpeg",
+      ],
     },
 
     {
@@ -1454,7 +1471,12 @@ export const productsData = {
       },
       priceNumeric: 9500,
       tax: 760,
-      images: ["/product-images/clothestag/convincing-sweatshirt-labels.jpeg"],
+      images: [
+        "/product-images/clothestag/convincing-sweatshirt-labels.jpeg",
+        "/product-images/clothestag/convincing-sweatshirt-labels-2.jpeg",
+        "/product-images/clothestag/convincing-sweatshirt-labels-3.jpeg",
+        "/product-images/clothestag/convincing-sweatshirt-labels-4.jpeg",
+      ],
     },
   ],
 
@@ -1474,7 +1496,12 @@ export const productsData = {
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/envelopes/c4-envelope.jpeg"],
+      images: [
+        "/product-images/envelopes/c4-envelope.jpeg",
+        "/product-images/envelopes/c4-envelope-2.jpeg",
+        "/product-images/envelopes/c4-envelope-3.jpeg",
+        "/product-images/envelopes/c4-envelope-4.jpeg",
+      ],
     },
 
     {
@@ -1492,7 +1519,12 @@ export const productsData = {
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/envelopes/dl-small-envelope.jpeg"],
+      images: [
+        "/product-images/envelopes/dl-small-envelope.jpeg",
+        "/product-images/envelopes/dl-small-envelope-2.jpeg",
+        "/product-images/envelopes/dl-small-envelope-3.jpeg",
+        "/product-images/envelopes/dl-small-envelope-4.jpeg",
+      ],
     },
 
     {
@@ -1510,7 +1542,12 @@ export const productsData = {
       },
       priceNumeric: 6000,
       tax: 480,
-      images: ["/product-images/envelopes/window-envelope.jpeg"],
+      images: [
+        "/product-images/envelopes/window-envelope.jpeg",
+        "/product-images/envelopes/window-envelope-2.jpeg",
+        "/product-images/envelopes/window-envelope-3.jpeg",
+        "/product-images/envelopes/window-envelope-4.jpeg",
+      ],
     },
   ],
 
