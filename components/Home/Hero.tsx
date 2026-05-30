@@ -10,17 +10,12 @@ import Autoplay from "embla-carousel-autoplay";
 
 import { getAllProducts } from "@/lib/products-data";
 
-import slide1Img from "@/public/assests/hero-slide1.PNG";
-import slide2Img from "@/public/assests/hero-slide-2.png";
-import slide3Img from "@/public/assests/hero-slide3.PNG";
-import slide4Img from "@/public/assests/hero-slide4.PNG";
-
 type Slide = {
   titleRed: string;
   titleBlack: string;
   subtitle: string;
   description: React.ReactNode;
-  image: StaticImageData;
+  image: string;
 };
 
 const SLIDES: Slide[] = [
@@ -39,7 +34,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: slide1Img,
+    image: "/assests/hero-slide-1.PNG",
   },
   {
     titleRed: "Quality",
@@ -57,7 +52,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: slide2Img,
+    image: "/assests/hero-slide-2.png",
   },
   {
     titleRed: "Trade Show/",
@@ -74,7 +69,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: slide3Img,
+    image: "/assests/hero-slide-3.PNG",
   },
   {
     titleRed: " Custom",
@@ -91,7 +86,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: slide4Img,
+    image: "/assests/hero-slide-4.PNG",
   },
 ];
 
