@@ -1825,8 +1825,6 @@ export const productsData = {
       images: [
         "/product-images/event-tag/event-tag.jpeg",
         "/product-images/event-tag/event-tag-2.jpeg",
-        "/product-images/event-tag/event-tag-3.jpeg",
-        "/product-images/event-tag/event-tag-4.jpeg",
       ],
     },
   ],
@@ -1848,9 +1846,7 @@ export const productsData = {
       tax: 2000,
       images: [
         "/product-images/flyers-posters/a1-posters.jpg",
-        "/product-images/flyers-posters/a1-posters-2.jpg",
-        "/product-images/flyers-posters/a1-posters-3.jpg",
-        "/product-images/flyers-posters/a1-posters-4.jpg",
+        "/product-images/flyers-posters/a1-posters-2.png",
       ],
     },
 
@@ -1880,7 +1876,7 @@ export const productsData = {
     {
       name: "A3 Posters",
       slug: generateSlug("A3 Posters"),
-      image: "/product-images/flyers-posters/a3-posters.webp",
+      image: "/product-images/flyers-posters/a3-posters-2.jpeg",
       description:
         "Compact A3 posters with sharp and colorful printing suitable for indoor advertising, events, and product promotions.",
       category: "Flyers & Posters",
@@ -1893,10 +1889,10 @@ export const productsData = {
       priceNumeric: 15000,
       tax: 1200,
       images: [
+        "/product-images/flyers-posters/a3-posters-2.jpeg",
         "/product-images/flyers-posters/a3-posters.webp",
-        "/product-images/flyers-posters/a3-posters-2.webp",
-        "/product-images/flyers-posters/a3-posters-3.webp",
-        "/product-images/flyers-posters/a3-posters-4.webp",
+        "/product-images/flyers-posters/a3-posters-3.jpg",
+        "/product-images/flyers-posters/a3-posters-4.jpg",
       ],
     },
 
@@ -1917,9 +1913,8 @@ export const productsData = {
       tax: 960,
       images: [
         "/product-images/flyers-posters/a5-flyers.png",
-        "/product-images/flyers-posters/a5-flyers-2.png",
+        "/product-images/flyers-posters/a5-flyers-2.jpeg",
         "/product-images/flyers-posters/a5-flyers-3.png",
-        "/product-images/flyers-posters/a5-flyers-4.png",
       ],
     },
 
@@ -1941,8 +1936,6 @@ export const productsData = {
       images: [
         "/product-images/flyers-posters/a6-flyer.jpeg",
         "/product-images/flyers-posters/a6-flyer-2.jpeg",
-        "/product-images/flyers-posters/a6-flyer-3.jpeg",
-        "/product-images/flyers-posters/a6-flyer-4.jpeg",
       ],
     },
 
@@ -1964,8 +1957,6 @@ export const productsData = {
       images: [
         "/product-images/flyers-posters/dl-bifold-flyer.jpeg",
         "/product-images/flyers-posters/dl-bifold-flyer-2.jpeg",
-        "/product-images/flyers-posters/dl-bifold-flyer-3.jpeg",
-        "/product-images/flyers-posters/dl-bifold-flyer-4.jpeg",
       ],
     },
 
@@ -1988,7 +1979,6 @@ export const productsData = {
         "/product-images/flyers-posters/dl-flyer.jpeg",
         "/product-images/flyers-posters/dl-flyer-2.jpeg",
         "/product-images/flyers-posters/dl-flyer-3.jpeg",
-        "/product-images/flyers-posters/dl-flyer-4.jpeg",
       ],
     },
 
@@ -2020,7 +2010,8 @@ export const productsData = {
     {
       name: "Acrylic Invitation",
       slug: generateSlug("Acrylic Invitation"),
-      image: "/product-images/invitations/acrylic-invitation.jpeg",
+      image: "/product-images/invitations/acrylic-invitation-2.jpeg",
+
       description:
         "Premium acrylic invitation cards with elegant transparent finishing suitable for weddings, birthdays, luxury events, and corporate ceremonies.",
       category: "Invitations",
@@ -2033,8 +2024,8 @@ export const productsData = {
       priceNumeric: 35000,
       tax: 2800,
       images: [
-        "/product-images/invitations/acrylic-invitation.jpeg",
         "/product-images/invitations/acrylic-invitation-2.jpeg",
+        "/product-images/invitations/acrylic-invitation.jpeg",
         "/product-images/invitations/acrylic-invitation-3.jpeg",
         "/product-images/invitations/acrylic-invitation-4.jpeg",
       ],
@@ -2043,7 +2034,8 @@ export const productsData = {
     {
       name: "Card Invitation",
       slug: generateSlug("Card Invitation"),
-      image: "/product-images/invitations/card-invitation.jpeg",
+      image: "/product-images/invitations/card-invitation-2.jpeg",
+
       description:
         "Classic printed invitation cards suitable for weddings, birthdays, naming ceremonies, parties, and special events.",
       category: "Invitations",
@@ -2056,9 +2048,9 @@ export const productsData = {
       priceNumeric: 20000,
       tax: 1600,
       images: [
-        "/product-images/invitations/card-invitation.jpeg",
         "/product-images/invitations/card-invitation-2.jpeg",
         "/product-images/invitations/card-invitation-3.jpeg",
+        "/product-images/invitations/card-invitation.jpeg",
         "/product-images/invitations/card-invitation-4.jpeg",
       ],
     },
@@ -2066,7 +2058,8 @@ export const productsData = {
     {
       name: "Wedding Program",
       slug: generateSlug("Wedding Program"),
-      image: "/product-images/invitations/wedding-program.jpeg",
+      image: "/product-images/invitations/wedding-program-2.jpeg",
+
       description:
         "Beautifully designed wedding program booklets suitable for church weddings, receptions, engagement ceremonies, and special occasions.",
       category: "Invitations",
@@ -2079,8 +2072,8 @@ export const productsData = {
       priceNumeric: 18000,
       tax: 1440,
       images: [
-        "/product-images/invitations/wedding-program.jpeg",
         "/product-images/invitations/wedding-program-2.jpeg",
+        "/product-images/invitations/wedding-program.jpeg",
         "/product-images/invitations/wedding-program-3.jpeg",
         "/product-images/invitations/wedding-program-4.jpeg",
       ],
@@ -2091,7 +2084,7 @@ export const productsData = {
     {
       name: "Block Pad",
       slug: generateSlug("Block Pad"),
-      image: "/product-images/office-stationery/block-pad.png",
+      image: "/product-images/office-statione ry/block-pad.png",
       description:
         "Custom branded block pads suitable for office notes, meetings, schools, conferences, and business branding.",
       category: "Office Stationery",
@@ -2106,8 +2099,6 @@ export const productsData = {
       images: [
         "/product-images/office-stationery/block-pad.png",
         "/product-images/office-stationery/block-pad-2.png",
-        "/product-images/office-stationery/block-pad-3.png",
-        "/product-images/office-stationery/block-pad-4.png",
       ],
     },
 
@@ -2130,7 +2121,6 @@ export const productsData = {
         "/product-images/office-stationery/computer-mouse.png",
         "/product-images/office-stationery/computer-mouse-2.png",
         "/product-images/office-stationery/computer-mouse-3.png",
-        "/product-images/office-stationery/computer-mouse-4.png",
       ],
     },
 
@@ -2152,8 +2142,6 @@ export const productsData = {
       images: [
         "/product-images/office-stationery/custom-lanyard.jpg",
         "/product-images/office-stationery/custom-lanyard-2.jpg",
-        "/product-images/office-stationery/custom-lanyard-3.jpg",
-        "/product-images/office-stationery/custom-lanyard-4.jpg",
       ],
     },
 
@@ -2175,8 +2163,6 @@ export const productsData = {
       images: [
         "/product-images/office-stationery/file-presentation-folder.jpeg",
         "/product-images/office-stationery/file-presentation-folder-2.jpeg",
-        "/product-images/office-stationery/file-presentation-folder-3.jpeg",
-        "/product-images/office-stationery/file-presentation-folder-4.jpeg",
       ],
     },
 
@@ -2197,9 +2183,7 @@ export const productsData = {
       tax: 200,
       images: [
         "/product-images/office-stationery/id-card.jpg",
-        "/product-images/office-stationery/id-card-2.jpg",
-        "/product-images/office-stationery/id-card-3.jpg",
-        "/product-images/office-stationery/id-card-4.jpg",
+        "/product-images/office-stationery/id-card-2.jpeg",
       ],
     },
 
@@ -2222,7 +2206,6 @@ export const productsData = {
         "/product-images/office-stationery/invoice-receipt.jpeg",
         "/product-images/office-stationery/invoice-receipt-2.jpeg",
         "/product-images/office-stationery/invoice-receipt-3.jpeg",
-        "/product-images/office-stationery/invoice-receipt-4.jpeg",
       ],
     },
 
@@ -2243,8 +2226,8 @@ export const productsData = {
       tax: 480,
       images: [
         "/product-images/office-stationery/letterheads.png",
-        "/product-images/office-stationery/letterheads-2.png",
-        "/product-images/office-stationery/letterheads-3.png",
+        "/product-images/office-stationery/letterheads-2.jpeg",
+        "/product-images/office-stationery/letterheads-3.jpg",
         "/product-images/office-stationery/letterheads-4.png",
       ],
     },
@@ -2268,7 +2251,6 @@ export const productsData = {
         "/product-images/office-stationery/metallic-pen.jpeg",
         "/product-images/office-stationery/metallic-pen-2.jpeg",
         "/product-images/office-stationery/metallic-pen-3.jpeg",
-        "/product-images/office-stationery/metallic-pen-4.jpeg",
       ],
     },
 
@@ -2314,7 +2296,6 @@ export const productsData = {
         "/product-images/office-stationery/plastic-pen.jpeg",
         "/product-images/office-stationery/plastic-pen-2.jpeg",
         "/product-images/office-stationery/plastic-pen-3.jpeg",
-        "/product-images/office-stationery/plastic-pen-4.jpeg",
       ],
     },
   ],
