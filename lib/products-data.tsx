@@ -1390,7 +1390,7 @@ export const productsData = {
     {
       name: "Cloth Paper Tag",
       slug: generateSlug("Cloth Paper Tag"),
-      image: "/product-images/clothestag/cloth-paper-tag.png",
+      image: "/product-images/clothestag/cloth-paper-tag-2.png",
       description:
         "Premium paper clothing tags designed for fashion branding and product presentation.",
       category: "ClothesTag",
@@ -1403,10 +1403,9 @@ export const productsData = {
       priceNumeric: 8000,
       tax: 640,
       images: [
-        "/product-images/clothestag/cloth-paper-tag.png",
         "/product-images/clothestag/cloth-paper-tag-2.png",
+        "/product-images/clothestag/cloth-paper-tag.png",
         "/product-images/clothestag/cloth-paper-tag-3.png",
-        "/product-images/clothestag/cloth-paper-tag-4.png",
       ],
     },
 
@@ -1429,53 +1428,7 @@ export const productsData = {
         "/product-images/clothestag/woven-label.jpeg",
         "/product-images/clothestag/woven-label-2.jpeg",
         "/product-images/clothestag/woven-label-3.jpeg",
-        "/product-images/clothestag/woven-label-4.jpeg",
-      ],
-    },
-
-    {
-      name: "Custom Clothing Labels",
-      slug: generateSlug("Custom Clothing Labels"),
-      image: "/product-images/clothestag/custom-clothing-labels.jpeg",
-      description:
-        "Personalized clothing labels designed for fashion branding and garment identification.",
-      category: "ClothesTag",
-      keyFeatures:
-        "High-quality custom labels suitable for all clothing categories and fashion brands.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 12000,
-      tax: 960,
-      images: [
-        "/product-images/clothestag/custom-clothing-labels.jpeg",
-        "/product-images/clothestag/custom-clothing-labels-2.jpeg",
-        "/product-images/clothestag/custom-clothing-labels-3.jpeg",
-        "/product-images/clothestag/custom-clothing-labels-4.jpeg",
-      ],
-    },
-
-    {
-      name: "Convincing Sweatshirt Labels",
-      slug: generateSlug("Convincing Sweatshirt Labels"),
-      image: "/product-images/clothestag/convincing-sweatshirt-labels.jpeg",
-      description:
-        "Premium sweatshirt labels designed for fashion brands and custom apparel collections.",
-      category: "ClothesTag",
-      keyFeatures:
-        "Durable sweatshirt labels with premium finishing and stylish branding appearance.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 9500,
-      tax: 760,
-      images: [
         "/product-images/clothestag/convincing-sweatshirt-labels.jpeg",
-        "/product-images/clothestag/convincing-sweatshirt-labels-2.jpeg",
-        "/product-images/clothestag/convincing-sweatshirt-labels-3.jpeg",
-        "/product-images/clothestag/convincing-sweatshirt-labels-4.jpeg",
       ],
     },
   ],
@@ -1499,8 +1452,6 @@ export const productsData = {
       images: [
         "/product-images/envelopes/c4-envelope.jpeg",
         "/product-images/envelopes/c4-envelope-2.jpeg",
-        "/product-images/envelopes/c4-envelope-3.jpeg",
-        "/product-images/envelopes/c4-envelope-4.jpeg",
       ],
     },
 
@@ -1522,8 +1473,6 @@ export const productsData = {
       images: [
         "/product-images/envelopes/dl-small-envelope.jpeg",
         "/product-images/envelopes/dl-small-envelope-2.jpeg",
-        "/product-images/envelopes/dl-small-envelope-3.jpeg",
-        "/product-images/envelopes/dl-small-envelope-4.jpeg",
       ],
     },
 
@@ -1546,7 +1495,6 @@ export const productsData = {
         "/product-images/envelopes/window-envelope.jpeg",
         "/product-images/envelopes/window-envelope-2.jpeg",
         "/product-images/envelopes/window-envelope-3.jpeg",
-        "/product-images/envelopes/window-envelope-4.jpeg",
       ],
     },
   ],
@@ -1559,14 +1507,18 @@ export const productsData = {
       description:
         "Large heat-sensitive magic mugs that reveal custom designs when hot liquid is added. Perfect for gifts, souvenirs, branding, and promotional campaigns.",
       category: "Events & Souvenirs",
-      keyFeatures: "Custom heat-changing mugs perfect for gifts and branding.",
+      keyFeatures:
+        "Custom heat-changing mugs with vibrant printing, ideal for gifting, branding, and promotional campaigns.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 6500,
       tax: 520,
-      images: ["/product-images/events&souvenirs/big-magic-mug.png"],
+      images: [
+        "/product-images/events&souvenirs/big-magic-mug.png",
+        "/product-images/events&souvenirs/big-magic-mug-2.jpeg",
+      ],
     },
 
     {
@@ -1576,14 +1528,19 @@ export const productsData = {
       description:
         "Large premium white mugs suitable for custom printing, branding, corporate gifts, and everyday use.",
       category: "Events & Souvenirs",
-      keyFeatures: "Premium white mugs suitable for branding and gifting.",
+      keyFeatures:
+        "Premium ceramic mugs perfect for branding, gifting, and everyday beverage enjoyment.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/events&souvenirs/big-white-mug.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/big-white-mug.jpeg",
+        "/product-images/events&souvenirs/big-white-mug-2.jpeg",
+        "/product-images/events&souvenirs/big-white-mug-3.jpeg",
+      ],
     },
 
     {
@@ -1594,14 +1551,17 @@ export const productsData = {
         "Large customized presentation cheques ideal for award ceremonies, donations, contests, corporate events, and media presentations.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Large presentation cheques perfect for events and award ceremonies.",
+        "Professional oversized cheques suitable for presentations, awards, and corporate events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/events&souvenirs/dummy-cheque.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/dummy-cheque.jpeg",
+        "/product-images/events&souvenirs/dummy-cheque-2.jpeg",
+      ],
     },
 
     {
@@ -1612,14 +1572,17 @@ export const productsData = {
         "Custom oversized currency notes designed for presentations, surprise gifts, promotional events, and social celebrations.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "High-quality custom currency notes for events and presentations.",
+        "High-quality custom currency notes suitable for gifts, presentations, and events.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/events&souvenirs/dummy-currency-note.png"],
+      images: [
+        "/product-images/events&souvenirs/dummy-currency-note.png",
+        "/product-images/events&souvenirs/dummy-currency-note-2.png",
+      ],
     },
 
     {
@@ -1629,50 +1592,19 @@ export const productsData = {
       description:
         "Premium A5 notebooks suitable for office use, conferences, training programs, branding, and promotional events.",
       category: "Events & Souvenirs",
-      keyFeatures: "Durable A5 notepads suitable for offices and branding.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 4500,
-      tax: 360,
-      images: ["/product-images/events&souvenirs/a5-notebook.jpeg"],
-    },
-
-    {
-      name: "Engraved Notebook",
-      slug: generateSlug("Engraved Notebook"),
-      image: "/product-images/events&souvenirs/engraved-notebook.jpeg",
-      description:
-        "Stylish engraved notebooks with premium finishing, ideal for executive branding, gifting, conferences, and corporate events.",
-      category: "Events & Souvenirs",
       keyFeatures:
-        "Durable engraved notepads suitable for offices and branding.",
+        "Durable A5 notebooks with premium finishing for meetings, branding, and daily use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 4500,
       tax: 360,
-      images: ["/product-images/events&souvenirs/engraved-notebook.jpeg"],
-    },
-
-    {
-      name: "Corporate Notebook",
-      slug: generateSlug("Corporate Notebook"),
-      image: "/product-images/events&souvenirs/corporate-notebook.jpeg",
-      description:
-        "Professional corporate notebooks designed for meetings, seminars, office branding, and executive use.",
-      category: "Events & Souvenirs",
-      keyFeatures:
-        "Durable corporate notepads suitable for offices and branding.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 4500,
-      tax: 360,
-      images: ["/product-images/events&souvenirs/corporate-notebook.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/a5-notebook.jpeg",
+        "/product-images/events&souvenirs/engraved-notebook.jpeg",
+        "/product-images/events&souvenirs/corporate-notebook.jpeg",
+      ],
     },
 
     {
@@ -1683,14 +1615,17 @@ export const productsData = {
         "Premium metallic keyrings with custom branding options suitable for souvenirs, corporate gifts, and promotional campaigns.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Durable metallic keyrings suitable for branding and souvenirs.",
+        "Durable metallic keyrings with premium engraving and branding options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/events&souvenirs/metallic-keyring.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/metallic-keyring.jpeg",
+        "/product-images/events&souvenirs/metallic-keyring-2.jpeg",
+      ],
     },
 
     {
@@ -1701,14 +1636,19 @@ export const productsData = {
         "Custom event handbands ideal for parties, concerts, access control, festivals, and special events.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Comfortable event handbands suitable for parties and access control.",
+        "Comfortable and durable event wristbands suitable for crowd management and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 1500,
       tax: 120,
-      images: ["/product-images/events&souvenirs/party-event-handband.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/party-event-handband.jpeg",
+        "/product-images/events&souvenirs/party-event-handband-2.jpeg",
+        "/product-images/events&souvenirs/party-event-handband-3.jpeg",
+        "/product-images/events&souvenirs/party-event-handband-4.jpeg",
+      ],
     },
 
     {
@@ -1719,14 +1659,19 @@ export const productsData = {
         "Custom printed disposable paper cups suitable for parties, birthdays, weddings, and branded events.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Disposable paper cups suitable for events and celebrations.",
+        "Food-safe paper cups ideal for celebrations, branding, and event catering.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 3000,
       tax: 240,
-      images: ["/product-images/events&souvenirs/party-paper-cup.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/party-paper-cup.jpeg",
+        "/product-images/events&souvenirs/party-paper-cup-2.jpeg",
+        "/product-images/events&souvenirs/party-paper-cup-3.jpeg",
+        "/product-images/events&souvenirs/party-paper-cup-4.jpg",
+      ],
     },
 
     {
@@ -1736,14 +1681,19 @@ export const productsData = {
       description:
         "Custom phone pop sockets that provide better grip and support while adding stylish branding to mobile devices.",
       category: "Events & Souvenirs",
-      keyFeatures: "Stylish phone grips suitable for branding and daily use.",
+      keyFeatures:
+        "Customizable phone grips suitable for branding, promotions, and daily use.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 2000,
       tax: 160,
-      images: ["/product-images/events&souvenirs/pop-socket.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/pop-socket.jpeg",
+        "/product-images/events&souvenirs/pop-socket-2.jpeg",
+        "/product-images/events&souvenirs/pop-socket-3.jpeg",
+      ],
     },
 
     {
@@ -1753,14 +1703,18 @@ export const productsData = {
       description:
         "Compact heat-sensitive mugs that reveal custom prints when filled with hot drinks, suitable for gifts and promotions.",
       category: "Events & Souvenirs",
-      keyFeatures: "Custom heat-changing mugs suitable for gifts and branding.",
+      keyFeatures:
+        "Heat-changing mugs with vibrant custom prints for branding and gifting.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 5500,
       tax: 440,
-      images: ["/product-images/events&souvenirs/small-magic-mug.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/small-magic-mug.jpeg",
+        "/product-images/events&souvenirs/small-magic-mug-2.png",
+      ],
     },
 
     {
@@ -1770,14 +1724,20 @@ export const productsData = {
       description:
         "Compact white mugs perfect for custom branding, promotional giveaways, gifts, and everyday beverage use.",
       category: "Events & Souvenirs",
-      keyFeatures: "Compact white mugs suitable for gifts and branding.",
+      keyFeatures:
+        "Premium white mugs suitable for branding, souvenirs, and gift items.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 4000,
       tax: 320,
-      images: ["/product-images/events&souvenirs/small-white-mug.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/small-white-mug.jpeg",
+        "/product-images/events&souvenirs/small-white-mug-2.jpeg",
+        "/product-images/events&souvenirs/small-white-mug-3.jpeg",
+        "/product-images/events&souvenirs/small-white-mug-4.jpeg",
+      ],
     },
 
     {
@@ -1788,50 +1748,39 @@ export const productsData = {
         "Soft decorative throw pillows with custom printing suitable for interior décor, gifts, and personalized branding.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Soft decorative throw pillows suitable for gifts and interior décor.",
+        "Comfortable custom throw pillows perfect for décor, gifts, and branding.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 7500,
       tax: 600,
-      images: ["/product-images/events&souvenirs/throwpillow.jpg"],
+      images: [
+        "/product-images/events&souvenirs/throwpillow.jpg",
+        "/product-images/events&souvenirs/throwpillow-2.jpg",
+        "/product-images/events&souvenirs/throwpillow-3.jpg",
+      ],
     },
 
     {
-      name: "Compact Umbrella",
+      name: "Umbrella",
       slug: generateSlug("Compact Umbrella"),
       image: "/product-images/events&souvenirs/compact-umbrella.jpg",
       description:
         "Portable branded umbrellas designed for convenience, outdoor protection, promotional campaigns, and corporate branding.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Durable umbrellas suitable for promotional branding and outdoor use.",
+        "Portable umbrellas with durable construction and custom branding options.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 8500,
       tax: 680,
-      images: ["/product-images/events&souvenirs/compact-umbrella.jpg"],
-    },
-
-    {
-      name: "Universal Umbrella",
-      slug: generateSlug("Universal Umbrella"),
-      image: "/product-images/events&souvenirs/universal-umbrella.png",
-      description:
-        "Durable custom umbrellas suitable for promotional branding, outdoor activities, corporate events, and giveaways.",
-      category: "Events & Souvenirs",
-      keyFeatures:
-        "Durable umbrellas suitable for promotional branding and outdoor use.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 8500,
-      tax: 680,
-      images: ["/product-images/events&souvenirs/universal-umbrella.png"],
+      images: [
+        "/product-images/events&souvenirs/compact-umbrella.jpg",
+        "/product-images/events&souvenirs/universal-umbrella.png",
+      ],
     },
 
     {
@@ -1842,16 +1791,21 @@ export const productsData = {
         "Eco-friendly wooden keyrings with customizable designs suitable for souvenirs, branding, and promotional gifts.",
       category: "Events & Souvenirs",
       keyFeatures:
-        "Eco-friendly wooden keyrings suitable for souvenirs and branding.",
+        "Sustainable wooden keyrings ideal for gifting, branding, and souvenirs.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 2000,
       tax: 160,
-      images: ["/product-images/events&souvenirs/wooden-keyring.jpeg"],
+      images: [
+        "/product-images/events&souvenirs/wooden-keyring.jpeg",
+        "/product-images/events&souvenirs/wooden-keyring-2.jpeg",
+        "/product-images/events&souvenirs/wooden-keyring-3.jpeg",
+      ],
     },
   ],
+
   "Event Tag": [
     {
       name: "Event Tag",
@@ -1861,17 +1815,21 @@ export const productsData = {
         "Custom event identification tags suitable for conferences, parties, seminars, concerts, and access control management.",
       category: "Event Tag",
       keyFeatures:
-        "High-quality custom event tags suitable for conferences, parties, and access control.",
+        "High-quality event tags designed for identification, branding, and access control.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
       },
       priceNumeric: 3500,
       tax: 280,
-      images: ["/product-images/event-tag/event-tag.jpeg"],
+      images: [
+        "/product-images/event-tag/event-tag.jpeg",
+        "/product-images/event-tag/event-tag-2.jpeg",
+        "/product-images/event-tag/event-tag-3.jpeg",
+        "/product-images/event-tag/event-tag-4.jpeg",
+      ],
     },
   ],
-
   "Flyers & Posters": [
     {
       name: "A1 Posters",
@@ -1888,7 +1846,12 @@ export const productsData = {
       },
       priceNumeric: 25000,
       tax: 2000,
-      images: ["/product-images/flyers-posters/a1-posters.jpg"],
+      images: [
+        "/product-images/flyers-posters/a1-posters.jpg",
+        "/product-images/flyers-posters/a1-posters-2.jpg",
+        "/product-images/flyers-posters/a1-posters-3.jpg",
+        "/product-images/flyers-posters/a1-posters-4.jpg",
+      ],
     },
 
     {
@@ -1906,7 +1869,12 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/flyers-posters/a2-posters.jpg"],
+      images: [
+        "/product-images/flyers-posters/a2-posters.jpg",
+        "/product-images/flyers-posters/a2-posters-2.jpg",
+        "/product-images/flyers-posters/a2-posters-3.jpg",
+        "/product-images/flyers-posters/a2-posters-4.jpg",
+      ],
     },
 
     {
@@ -1924,7 +1892,12 @@ export const productsData = {
       },
       priceNumeric: 15000,
       tax: 1200,
-      images: ["/product-images/flyers-posters/a3-posters.webp"],
+      images: [
+        "/product-images/flyers-posters/a3-posters.webp",
+        "/product-images/flyers-posters/a3-posters-2.webp",
+        "/product-images/flyers-posters/a3-posters-3.webp",
+        "/product-images/flyers-posters/a3-posters-4.webp",
+      ],
     },
 
     {
@@ -1942,7 +1915,12 @@ export const productsData = {
       },
       priceNumeric: 12000,
       tax: 960,
-      images: ["/product-images/flyers-posters/a5-flyers.png"],
+      images: [
+        "/product-images/flyers-posters/a5-flyers.png",
+        "/product-images/flyers-posters/a5-flyers-2.png",
+        "/product-images/flyers-posters/a5-flyers-3.png",
+        "/product-images/flyers-posters/a5-flyers-4.png",
+      ],
     },
 
     {
@@ -1960,7 +1938,12 @@ export const productsData = {
       },
       priceNumeric: 10000,
       tax: 800,
-      images: ["/product-images/flyers-posters/a6-flyer.jpeg"],
+      images: [
+        "/product-images/flyers-posters/a6-flyer.jpeg",
+        "/product-images/flyers-posters/a6-flyer-2.jpeg",
+        "/product-images/flyers-posters/a6-flyer-3.jpeg",
+        "/product-images/flyers-posters/a6-flyer-4.jpeg",
+      ],
     },
 
     {
@@ -1978,7 +1961,12 @@ export const productsData = {
       },
       priceNumeric: 16000,
       tax: 1280,
-      images: ["/product-images/flyers-posters/dl-bifold-flyer.jpeg"],
+      images: [
+        "/product-images/flyers-posters/dl-bifold-flyer.jpeg",
+        "/product-images/flyers-posters/dl-bifold-flyer-2.jpeg",
+        "/product-images/flyers-posters/dl-bifold-flyer-3.jpeg",
+        "/product-images/flyers-posters/dl-bifold-flyer-4.jpeg",
+      ],
     },
 
     {
@@ -1996,7 +1984,12 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/flyers-posters/dl-flyer.jpeg"],
+      images: [
+        "/product-images/flyers-posters/dl-flyer.jpeg",
+        "/product-images/flyers-posters/dl-flyer-2.jpeg",
+        "/product-images/flyers-posters/dl-flyer-3.jpeg",
+        "/product-images/flyers-posters/dl-flyer-4.jpeg",
+      ],
     },
 
     {
@@ -2014,9 +2007,15 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/flyers-posters/dl-trifold-flyer.jpeg"],
+      images: [
+        "/product-images/flyers-posters/dl-trifold-flyer.jpeg",
+        "/product-images/flyers-posters/dl-trifold-flyer-2.jpeg",
+        "/product-images/flyers-posters/dl-trifold-flyer-3.jpeg",
+        "/product-images/flyers-posters/dl-trifold-flyer-4.jpeg",
+      ],
     },
   ],
+
   Invitations: [
     {
       name: "Acrylic Invitation",
@@ -2033,7 +2032,12 @@ export const productsData = {
       },
       priceNumeric: 35000,
       tax: 2800,
-      images: ["/product-images/invitations/acrylic-invitation.jpeg"],
+      images: [
+        "/product-images/invitations/acrylic-invitation.jpeg",
+        "/product-images/invitations/acrylic-invitation-2.jpeg",
+        "/product-images/invitations/acrylic-invitation-3.jpeg",
+        "/product-images/invitations/acrylic-invitation-4.jpeg",
+      ],
     },
 
     {
@@ -2051,7 +2055,12 @@ export const productsData = {
       },
       priceNumeric: 20000,
       tax: 1600,
-      images: ["/product-images/invitations/card-invitation.jpeg"],
+      images: [
+        "/product-images/invitations/card-invitation.jpeg",
+        "/product-images/invitations/card-invitation-2.jpeg",
+        "/product-images/invitations/card-invitation-3.jpeg",
+        "/product-images/invitations/card-invitation-4.jpeg",
+      ],
     },
 
     {
@@ -2069,7 +2078,12 @@ export const productsData = {
       },
       priceNumeric: 18000,
       tax: 1440,
-      images: ["/product-images/invitations/wedding-program.jpeg"],
+      images: [
+        "/product-images/invitations/wedding-program.jpeg",
+        "/product-images/invitations/wedding-program-2.jpeg",
+        "/product-images/invitations/wedding-program-3.jpeg",
+        "/product-images/invitations/wedding-program-4.jpeg",
+      ],
     },
   ],
 
@@ -2089,7 +2103,12 @@ export const productsData = {
       },
       priceNumeric: 5000,
       tax: 400,
-      images: ["/product-images/office-stationery/block-pad.png"],
+      images: [
+        "/product-images/office-stationery/block-pad.png",
+        "/product-images/office-stationery/block-pad-2.png",
+        "/product-images/office-stationery/block-pad-3.png",
+        "/product-images/office-stationery/block-pad-4.png",
+      ],
     },
 
     {
@@ -2107,7 +2126,12 @@ export const productsData = {
       },
       priceNumeric: 8000,
       tax: 640,
-      images: ["/product-images/office-stationery/computer-mouse.png"],
+      images: [
+        "/product-images/office-stationery/computer-mouse.png",
+        "/product-images/office-stationery/computer-mouse-2.png",
+        "/product-images/office-stationery/computer-mouse-3.png",
+        "/product-images/office-stationery/computer-mouse-4.png",
+      ],
     },
 
     {
@@ -2125,7 +2149,12 @@ export const productsData = {
       },
       priceNumeric: 3500,
       tax: 280,
-      images: ["/product-images/office-stationery/custom-lanyard.jpg"],
+      images: [
+        "/product-images/office-stationery/custom-lanyard.jpg",
+        "/product-images/office-stationery/custom-lanyard-2.jpg",
+        "/product-images/office-stationery/custom-lanyard-3.jpg",
+        "/product-images/office-stationery/custom-lanyard-4.jpg",
+      ],
     },
 
     {
@@ -2145,6 +2174,9 @@ export const productsData = {
       tax: 960,
       images: [
         "/product-images/office-stationery/file-presentation-folder.jpeg",
+        "/product-images/office-stationery/file-presentation-folder-2.jpeg",
+        "/product-images/office-stationery/file-presentation-folder-3.jpeg",
+        "/product-images/office-stationery/file-presentation-folder-4.jpeg",
       ],
     },
 
@@ -2163,7 +2195,12 @@ export const productsData = {
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/office-stationery/id-card.jpg"],
+      images: [
+        "/product-images/office-stationery/id-card.jpg",
+        "/product-images/office-stationery/id-card-2.jpg",
+        "/product-images/office-stationery/id-card-3.jpg",
+        "/product-images/office-stationery/id-card-4.jpg",
+      ],
     },
 
     {
@@ -2181,7 +2218,12 @@ export const productsData = {
       },
       priceNumeric: 6500,
       tax: 520,
-      images: ["/product-images/office-stationery/invoice-receipt.jpeg"],
+      images: [
+        "/product-images/office-stationery/invoice-receipt.jpeg",
+        "/product-images/office-stationery/invoice-receipt-2.jpeg",
+        "/product-images/office-stationery/invoice-receipt-3.jpeg",
+        "/product-images/office-stationery/invoice-receipt-4.jpeg",
+      ],
     },
 
     {
@@ -2199,7 +2241,12 @@ export const productsData = {
       },
       priceNumeric: 6000,
       tax: 480,
-      images: ["/product-images/office-stationery/letterheads.png"],
+      images: [
+        "/product-images/office-stationery/letterheads.png",
+        "/product-images/office-stationery/letterheads-2.png",
+        "/product-images/office-stationery/letterheads-3.png",
+        "/product-images/office-stationery/letterheads-4.png",
+      ],
     },
 
     {
@@ -2217,7 +2264,12 @@ export const productsData = {
       },
       priceNumeric: 4000,
       tax: 320,
-      images: ["/product-images/office-stationery/metallic-pen.jpeg"],
+      images: [
+        "/product-images/office-stationery/metallic-pen.jpeg",
+        "/product-images/office-stationery/metallic-pen-2.jpeg",
+        "/product-images/office-stationery/metallic-pen-3.jpeg",
+        "/product-images/office-stationery/metallic-pen-4.jpeg",
+      ],
     },
 
     {
@@ -2235,7 +2287,12 @@ export const productsData = {
       },
       priceNumeric: 3000,
       tax: 240,
-      images: ["/product-images/office-stationery/mousepad.png"],
+      images: [
+        "/product-images/office-stationery/mousepad.png",
+        "/product-images/office-stationery/mousepad-2.png",
+        "/product-images/office-stationery/mousepad-3.png",
+        "/product-images/office-stationery/mousepad-4.png",
+      ],
     },
 
     {
@@ -2253,7 +2310,12 @@ export const productsData = {
       },
       priceNumeric: 2500,
       tax: 200,
-      images: ["/product-images/office-stationery/plastic-pen.jpeg"],
+      images: [
+        "/product-images/office-stationery/plastic-pen.jpeg",
+        "/product-images/office-stationery/plastic-pen-2.jpeg",
+        "/product-images/office-stationery/plastic-pen-3.jpeg",
+        "/product-images/office-stationery/plastic-pen-4.jpeg",
+      ],
     },
   ],
 };
