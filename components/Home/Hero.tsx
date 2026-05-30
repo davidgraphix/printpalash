@@ -34,7 +34,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: "/assests/hero-slide-1.PNG",
+    image: "/assests/hero-slide-1.png",
   },
   {
     titleRed: "Quality",
@@ -69,7 +69,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: "/assests/hero-slide-3.PNG",
+    image: "/assests/hero-slide-3.png",
   },
   {
     titleRed: " Custom",
@@ -86,7 +86,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: "/assests/hero-slide-4.PNG",
+    image: "/assests/hero-slide-4.png",
   },
 ];
 
