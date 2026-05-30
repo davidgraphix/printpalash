@@ -9,8 +9,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const linkClass = (href: string) =>
-    `text-white hover:text-red-200 font-medium text-sm ${
-      pathname === href ? "border-b-2 border-white" : ""
+    `text-white hover:text-red-200 font-medium text-sm ${pathname === href ? "border-b-2 border-white" : ""
     }`;
 
   return (

@@ -2,16 +2,18 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { Search } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Search, X, ArrowUpRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+
+import { getAllProducts } from "@/lib/products-data";
 
 import slide1Img from "@/public/assests/hero-slide1.PNG";
 import slide2Img from "@/public/assests/hero-slide-2.png";
 import slide3Img from "@/public/assests/hero-slide3.PNG";
 import slide4Img from "@/public/assests/hero-slide4.PNG";
-
-
 
 type Slide = {
   titleRed: string;
@@ -28,10 +30,13 @@ const SLIDES: Slide[] = [
     subtitle: "shipped fast to your doorstep",
     description: (
       <>
-        From Flyers, Jotters, Business Cards, Banners, T-Shirts &amp; More. <br />
+        From Flyers, Jotters, Business Cards, Banners, T-Shirts &amp; More.{" "}
+        <br />
         We Deliver Premium Print For Business And Personal Projects
         <br />
-        <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
+        <span className="text-red-600 italic">
+          - Fast, Reliable &amp; Stress Free
+        </span>
       </>
     ),
     image: slide1Img,
@@ -47,7 +52,9 @@ const SLIDES: Slide[] = [
         Brands, Or Personal Use, We Deliver Clean Prints, Rich Colors, And
         Durable Fabrics That Last.
         <br />
-        <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
+        <span className="text-red-600 italic">
+          - Fast, Reliable &amp; Stress Free
+        </span>
       </>
     ),
     image: slide2Img,
@@ -62,28 +69,35 @@ const SLIDES: Slide[] = [
         Businesses Present Themselves Professionally At Events, Exhibitions, And
         Promotional Campaigns.
         <br />
-        <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
+        <span className="text-red-600 italic">
+          - Fast, Reliable &amp; Stress Free
+        </span>
       </>
     ),
     image: slide3Img,
   },
   {
-    titleRed: "Custom",
-    titleBlack: "Print Solutions",
+    titleRed: " Custom",
+    titleBlack: "Packaging Boxes",
     subtitle: "From concept to delivery, we've got you covered.",
     description: (
       <>
-        Whether You're Looking For Flyers, Banners, Business Cards, Or T-Shirts,
-        Our Custom Print Solutions Are Designed To Bring Your Ideas To Life.
+        Make your products stand out on the shelves with premium retail boxes.
+        Designed for stunning visual impact, our rigid or folding cartons offer high-quality printing,
+        sharp finishes, and flawless folding.
         <br />
-        <span className="text-red-600 italic">- Fast, Reliable &amp; Stress Free</span>
+        <span className="text-red-600 italic">
+          - Fast, Reliable &amp; Stress Free
+        </span>
       </>
     ),
     image: slide4Img,
-  }
+  },
 ];
 
 export default function Hero() {
+  const router = useRouter();
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
     [
@@ -96,16 +110,59 @@ export default function Hero() {
   );
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [isSearchFocused, setIsSearchFocused] = React.useState(false);
+
+  const allProducts = React.useMemo(() => getAllProducts(), []);
+
+  const filteredProducts = React.useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+
+    if (!term) return [];
+
+    return allProducts
+      .filter((product) => {
+        return (
+          product.name.toLowerCase().includes(term) ||
+          product.category.toLowerCase().includes(term) ||
+          product.description.toLowerCase().includes(term)
+        );
+      })
+      .slice(0, 6);
+  }, [allProducts, searchTerm]);
+
+  const showSearchResults =
+    isSearchFocused && searchTerm.trim().length > 0;
 
   const scrollTo = React.useCallback(
     (index: number) => emblaApi?.scrollTo(index),
     [emblaApi]
   );
 
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const firstProduct = filteredProducts[0];
+
+    if (firstProduct) {
+      router.push(`/products/${firstProduct.slug}`);
+      setSearchTerm("");
+      setIsSearchFocused(false);
+      return;
+    }
+
+    router.push(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+  };
+
   React.useEffect(() => {
     if (!emblaApi) return;
 
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+
     onSelect();
     emblaApi.on("select", onSelect);
 
@@ -117,47 +174,157 @@ export default function Hero() {
   return (
     <section className="bg-white">
       <div className="container mx-auto px-4">
-        <div className="relative z-10 -mb-10 lg:-mb-14 pt-4 -lg:pt-6">
-          <p className="text-sm font-semibold text-gray-900 mb-2">
+        <div className="relative z-20 -mb-10 pt-4 lg:-mb-14 lg:pt-6">
+          <p className="mb-2 text-sm font-semibold text-gray-900">
             Start Printing Today
           </p>
 
-          <div className="relative max-w-md">
-            <input
-              type="text"
-              placeholder="search for flyers, paper bag, business card, e.t.c."
-              className="w-full border border-gray-200 bg-gray-50 px-4 py-3 pr-12 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-          </div>
+          <form onSubmit={handleSearchSubmit} className="relative max-w-md">
+            <div className="relative">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                placeholder="Search for flyers, paper bag, business card..."
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 pr-20 text-sm text-gray-800 shadow-sm placeholder:text-gray-400 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-100"
+              />
+
+              {searchTerm && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+                  aria-label="Clear search"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-red-600"
+                aria-label="Search products"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </div>
+
+            {showSearchResults && (
+              <div
+                className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+                onMouseDown={(e) => e.preventDefault()}
+              >
+                {filteredProducts.length > 0 ? (
+                  <>
+                    <div className="border-b px-4 py-3">
+                      <p className="text-xs font-bold uppercase tracking-wide text-gray-500">
+                        Product results
+                      </p>
+                    </div>
+
+                    <div className="max-h-[360px] overflow-y-auto">
+                      {filteredProducts.map((product) => {
+                        const productImage =
+                          product.images?.[0] ||
+                          product.image ||
+                          "/placeholder.svg";
+
+                        return (
+                          <Link
+                            key={product.slug}
+                            href={`/products/${product.slug}`}
+                            onClick={() => {
+                              setSearchTerm("");
+                              setIsSearchFocused(false);
+                            }}
+                            className="flex items-center gap-3 border-b px-4 py-3 transition last:border-b-0 hover:bg-red-50"
+                          >
+                            <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                              <Image
+                                src={productImage}
+                                alt={product.name}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                              />
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <h3 className="truncate text-sm font-bold text-gray-900">
+                                {product.name}
+                              </h3>
+
+                              <p className="truncate text-xs text-gray-500">
+                                {product.category}
+                              </p>
+
+                              <p className="mt-1 text-sm font-black text-red-600">
+                                Starting at ₦
+                                {product.priceNumeric.toLocaleString()}
+                              </p>
+                            </div>
+
+                            <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    <Link
+                      href={`/products?search=${encodeURIComponent(
+                        searchTerm.trim()
+                      )}`}
+                      onClick={() => setIsSearchFocused(false)}
+                      className="block bg-gray-50 px-4 py-3 text-center text-sm font-bold text-red-600 transition hover:bg-red-50"
+                    >
+                      View all matching products
+                    </Link>
+                  </>
+                ) : (
+                  <div className="px-4 py-6 text-center">
+                    <p className="text-sm font-bold text-gray-800">
+                      No product found
+                    </p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      Try searching for flyers, bags, business cards, banners,
+                      shirts, or brochures.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+          </form>
         </div>
 
-        {/* Carousel viewport */}
-        <div className="overflow-hidden w-full" ref={emblaRef}>
+        <div className="w-full overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {SLIDES.map((s, i) => (
               <div
                 key={i}
-                className="min-w-0 flex-[0_0_100%] pt-16 pb-2 lg:pt-8 lg:pb-2"
+                className="min-w-0 flex-[0_0_100%] pb-2 pt-16 lg:pb-2 lg:pt-8"
               >
-                {/* DESKTOP */}
-                <div className="hidden lg:grid grid-cols-2 gap-10 items-center">
-                  {/* Left */}
+                <div className="hidden grid-cols-2 items-center gap-10 lg:grid">
                   <div>
-                    <h1 className="font-biorhyme font-extrabold text-[96px] leading-[0.95] tracking-[0%]">
-                      <span className="text-red-600 text-7xl">{s.titleRed}</span>
+                    <h1 className="font-biorhyme text-[96px] font-extrabold leading-[0.95] tracking-[0%]">
+                      <span className="text-7xl text-red-600">
+                        {s.titleRed}
+                      </span>
                       <br />
-                      <span className="text-black text-6xl">{s.titleBlack}</span>
+                      <span className="text-6xl text-black">
+                        {s.titleBlack}
+                      </span>
                     </h1>
 
-                    <p className="mt-3 text-base text-gray-700">{s.subtitle}</p>
+                    <p className="mt-3 text-base text-gray-700">
+                      {s.subtitle}
+                    </p>
 
-                    <div className="mt-8 text-[16px] leading-6 text-gray-600 max-w-lg">
+                    <div className="mt-8 max-w-lg text-[16px] leading-6 text-gray-600">
                       {s.description}
                     </div>
                   </div>
 
-                  {/* Right image */}
                   <div className="flex justify-end">
                     <div className="relative w-full max-w-[520px]">
                       <div className="relative aspect-[5/4] w-full">
@@ -173,12 +340,15 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* MOBILE */}
                 <div className="lg:hidden">
                   <div className="mt-1">
-                    <h2 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
-                      <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
-                      <span className="text-black text-3xl">{s.titleBlack}</span>
+                    <h2 className="font-biorhyme text-[42px] font-extrabold leading-[1]">
+                      <span className="text-4xl text-red-600">
+                        {s.titleRed}
+                      </span>{" "} <br />
+                      <span className="text-3xl text-black">
+                        {s.titleBlack}
+                      </span>
                     </h2>
 
                     <p className="mt-2 text-sm text-gray-700">{s.subtitle}</p>
@@ -187,7 +357,7 @@ export default function Hero() {
                       {s.description}
                     </div>
 
-                    <div className="mt-6 relative aspect-[4/3] w-full">
+                    <div className="relative mt-6 aspect-[4/3] w-full">
                       <Image
                         src={s.image}
                         alt={`${s.titleRed} ${s.titleBlack}`}
@@ -203,7 +373,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Dots */}
         <div className="flex items-center justify-center gap-2 pb-6">
           {SLIDES.map((_, i) => (
             <button

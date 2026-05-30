@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Filter,
   ImageIcon,
@@ -37,6 +38,8 @@ const categories = [
   "Invitations",
   "Office Stationery",
 ];
+
+const productCategories = categories.filter((category) => category !== "All");
 
 function ProductStars({ rating = 4.8 }: { rating?: number }) {
   return (
@@ -121,9 +124,52 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export default function ProductsSection() {
+  const searchParams = useSearchParams();
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  useEffect(() => {
+    const urlSearch = searchParams.get("search");
+
+    if (urlSearch) {
+      setSearchTerm(urlSearch);
+      setSelectedCategory("All");
+    }
+  }, [searchParams]);
+
+  const groupedProducts = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+
+    return productCategories
+      .map((category) => {
+        const categoryProducts = getProductsByCategory(category)
+          .filter((product) => product.category === category)
+          .filter((product) => {
+            if (!term) return true;
+
+            return (
+              product.name.toLowerCase().includes(term) ||
+              product.description.toLowerCase().includes(term) ||
+              product.category.toLowerCase().includes(term) ||
+              product.keyFeatures.toLowerCase().includes(term)
+            );
+          });
+
+        const uniqueProducts = Array.from(
+          new Map(
+            categoryProducts.map((product) => [product.slug, product])
+          ).values()
+        );
+
+        return {
+          category,
+          products: uniqueProducts,
+        };
+      })
+      .filter((group) => group.products.length > 0);
+  }, [searchTerm]);
 
   const visibleProducts = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
@@ -131,22 +177,47 @@ export default function ProductsSection() {
     const sourceProducts =
       selectedCategory === "All"
         ? getAllProducts()
-        : getProductsByCategory(selectedCategory);
+        : getProductsByCategory(selectedCategory).filter(
+          (product) => product.category === selectedCategory
+        );
 
-    if (!term) return sourceProducts;
+    const uniqueProducts = Array.from(
+      new Map(sourceProducts.map((product) => [product.slug, product])).values()
+    );
 
-    return sourceProducts.filter((product) => {
+    if (!term) return uniqueProducts;
+
+    return uniqueProducts.filter((product) => {
       return (
         product.name.toLowerCase().includes(term) ||
         product.description.toLowerCase().includes(term) ||
-        product.category.toLowerCase().includes(term)
+        product.category.toLowerCase().includes(term) ||
+        product.keyFeatures.toLowerCase().includes(term)
       );
     });
   }, [searchTerm, selectedCategory]);
 
+  const totalGroupedProducts = groupedProducts.reduce(
+    (total, group) => total + group.products.length,
+    0
+  );
+
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     setIsMobileFilterOpen(false);
+
+    if (searchTerm.trim()) {
+      setSearchTerm("");
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    setSelectedCategory("All");
+
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", "/products");
+    }
   };
 
   return (
@@ -178,10 +249,25 @@ export default function ProductsSection() {
                   type="text"
                   placeholder="Search for flyers, paper bag, business card..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setSelectedCategory("All");
+                  }}
                   className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pr-12 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
                 />
-                <Search className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+
+                {searchTerm.trim() ? (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-600"
+                    aria-label="Clear search"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <Search className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                )}
               </div>
             </div>
 
@@ -255,6 +341,7 @@ export default function ProductsSection() {
           <div className="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white shadow-xl">
             <div className="flex items-center justify-between border-b p-4">
               <h2 className="text-lg font-black text-gray-900">Categories</h2>
+
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
@@ -299,7 +386,7 @@ export default function ProductsSection() {
                   <button
                     key={category}
                     type="button"
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategorySelect(category)}
                     className={`block w-full rounded-lg px-3 py-2 text-left transition ${selectedCategory === category
                       ? "bg-red-50 font-bold text-red-600"
                       : "text-gray-700 hover:bg-gray-50 hover:text-red-600"
@@ -317,22 +404,30 @@ export default function ProductsSection() {
               <div>
                 <h2 className="text-xl font-black italic text-gray-900 lg:text-2xl">
                   {searchTerm.trim()
-                    ? "Search Results"
+                    ? `Search Results for "${searchTerm}"`
                     : selectedCategory === "All"
                       ? "All Products"
                       : selectedCategory}
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-500">
-                  {visibleProducts.length} product
-                  {visibleProducts.length === 1 ? "" : "s"} found
+                  {selectedCategory === "All"
+                    ? totalGroupedProducts
+                    : visibleProducts.length}{" "}
+                  product
+                  {(selectedCategory === "All"
+                    ? totalGroupedProducts
+                    : visibleProducts.length) === 1
+                    ? ""
+                    : "s"}{" "}
+                  found
                 </p>
               </div>
 
               {searchTerm.trim() && (
                 <button
                   type="button"
-                  onClick={() => setSearchTerm("")}
+                  onClick={clearSearch}
                   className="text-sm font-bold text-red-600 hover:text-red-700"
                 >
                   Clear search
@@ -340,7 +435,48 @@ export default function ProductsSection() {
               )}
             </div>
 
-            {visibleProducts.length > 0 ? (
+            {selectedCategory === "All" ? (
+              groupedProducts.length > 0 ? (
+                <div className="space-y-12">
+                  {groupedProducts.map((group) => (
+                    <section key={group.category} className="scroll-mt-24">
+                      <div className="sticky top-0 z-20 mb-5 rounded-2xl border border-gray-200 bg-white/90 px-4 py-4 shadow-sm backdrop-blur">
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-wide text-red-600">
+                              Category
+                            </p>
+                            <h3 className="text-xl font-black italic text-gray-900 lg:text-2xl">
+                              {group.category}
+                            </h3>
+                          </div>
+
+                          <p className="text-sm font-medium text-gray-500">
+                            {group.products.length} product
+                            {group.products.length === 1 ? "" : "s"}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+                        {group.products.map((product) => (
+                          <ProductCard key={product.slug} product={product} />
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-2xl bg-white px-6 py-16 text-center shadow-sm">
+                  <p className="text-lg font-bold text-gray-700">
+                    No products found.
+                  </p>
+                  <p className="mt-2 text-gray-500">
+                    Try another category or search keyword.
+                  </p>
+                </div>
+              )
+            ) : visibleProducts.length > 0 ? (
               <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
                 {visibleProducts.map((product) => (
                   <ProductCard key={product.slug} product={product} />

@@ -399,7 +399,6 @@ export const productsData = {
       tax: 1200,
       images: ["/product-images/banners&largeformat/dispatch-boxes.png"],
     },
-
     {
       name: "Dummy Cheque",
       slug: generateSlug("Dummy Cheque"),
@@ -723,6 +722,7 @@ export const productsData = {
       description:
         "Premium magnetic flip boxes designed for luxury packaging and special gift presentation.",
       category: "Box & Packaging",
+      popular: true,
       keyFeatures:
         "Elegant magnetic closure boxes suitable for premium products and corporate gifts.",
       delivery: {
@@ -740,7 +740,7 @@ export const productsData = {
     {
       name: "Mailer Box",
       slug: generateSlug("Mailer Box"),
-      image: "/product-images/box&packaging/mailer-box-2.jpeg",
+      image: "/product-images/box&packaging/mailer-box-3.jpeg",
       description:
         "Strong corrugated mailer boxes suitable for ecommerce packaging and shipping.",
       category: "Box & Packaging",
@@ -753,9 +753,9 @@ export const productsData = {
       priceNumeric: 2500,
       tax: 200,
       images: [
+        "/product-images/box&packaging/mailer-box-3.jpeg",
         "/product-images/box&packaging/mailer-box-2.jpeg",
         "/product-images/box&packaging/mailer-box.jpeg",
-        "/product-images/box&packaging/mailer-box-3.jpeg",
         "/product-images/box&packaging/mailer-box-4.jpeg",
       ],
     },
@@ -902,6 +902,7 @@ export const productsData = {
       description:
         "Luxury business cards designed for professionals, brands, and corporate identity.",
       category: "Business Cards",
+      popular: true,
       keyFeatures:
         "High-quality cardstock with premium finishing and sharp print details.",
       delivery: {
@@ -995,7 +996,6 @@ export const productsData = {
       description:
         "Large-format political campaign posters designed for rallies, awareness campaigns, and outdoor promotions.",
       category: "Campaign Materials",
-      popular: true,
       keyFeatures:
         "High-quality campaign posters with vibrant printing for maximum visibility and engagement.",
       delivery: {
@@ -1009,23 +1009,23 @@ export const productsData = {
       ],
     },
 
-    {
-      name: "A5 Flyer",
-      slug: generateSlug("A5 Flyer"),
-      image: "/product-images/campaign-materials/a5-flyer.png",
-      description:
-        "Professional A5 flyers suitable for campaign promotions, handouts, and event advertising.",
-      category: "Campaign Materials",
-      keyFeatures:
-        "Premium printed flyers with sharp colors and durable paper quality for effective marketing.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 12000,
-      tax: 960,
-      images: ["/product-images/campaign-materials/a5-flyer.png"],
-    },
+    // {
+    //   name: "A5 Flyer",
+    //   slug: generateSlug("A5 Flyer"),
+    //   image: "/product-images/campaign-materials/a5-flyer.png",
+    //   description:
+    //     "Professional A5 flyers suitable for campaign promotions, handouts, and event advertising.",
+    //   category: "Campaign Materials",
+    //   keyFeatures:
+    //     "Premium printed flyers with sharp colors and durable paper quality for effective marketing.",
+    //   delivery: {
+    //     lagos: "3-5 Working Days for order within Lagos",
+    //     others: "5-7 Working Days for Order from other state",
+    //   },
+    //   priceNumeric: 12000,
+    //   tax: 960,
+    //   images: ["/product-images/campaign-materials/a5-flyer.png"],
+    // },
 
     {
       name: "Political Campaign Banners",
@@ -1196,15 +1196,15 @@ export const productsData = {
 
   "Clothing & Apparel": [
     {
-      name: "Printivo Merch",
-      slug: generateSlug("Printivo Merch"),
-      image: "/product-images/clothing-apparel/printivo-merch.png",
+      name: "Branded Towel",
+      slug: generateSlug("Branded Towel6"),
+      image: "/product-images/clothing-apparel/branded-towel-lagos-nigeria.jpg",
       description:
-        "Premium branded merch apparel suitable for businesses, events, and promotional campaigns.",
+        "Premium branded towel apparel suitable for souvenirs, events, and promotional campaigns.",
       category: "Clothing & Apparel",
       popular: true,
       keyFeatures:
-        "High-quality custom merch with durable fabric and professional branding finish.",
+        "High-quality custom towels with durable fabric and professional branding finish.",
       delivery: {
         lagos: "3-5 Working Days for order within Lagos",
         others: "5-7 Working Days for Order from other state",
@@ -1212,10 +1212,10 @@ export const productsData = {
       priceNumeric: 10000,
       tax: 800,
       images: [
-        "/product-images/clothing-apparel/printivo-mech.jpg",
-        "/product-images/clothing-apparel/printivo-mech-2.jpg",
-        "/product-images/clothing-apparel/printivo-mech-3.jpg",
-        "/product-images/clothing-apparel/printivo-mech-4.jpg",
+        "/product-images/clothing-apparel/branded-towel-lagos-nigeria.jpg",
+        "/product-images/clothing-apparel/branded-towel2-lagos-nigeria.png",
+        "/product-images/clothing-apparel/branded-towel3-lagos-nigeria.png",
+        "/product-images/clothing-apparel/branded-towel4-lagos-nigeria.png",
       ],
     },
 
@@ -1261,12 +1261,13 @@ export const productsData = {
     },
 
     {
-      name: "Folded Round Neck",
-      slug: generateSlug("Folded Round Neck"),
-      image: "/product-images/clothing-apparel/folded-round-neck-2.png",
+      name: "Branded Polo Shirt",
+      slug: generateSlug("Branded Polo Shirt"),
+      image: "/product-images/clothing-apparel/branded-collar-t-shirt-lagos-nigeria.jpg",
       description:
-        "Comfortable round neck shirts suitable for casual wear, branding, and promotional use.",
+        "Professional polo shirts suitable for corporate branding, uniforms, and events.",
       category: "Clothing & Apparel",
+      popular: true,
       keyFeatures:
         "Premium cotton round neck shirts with quality stitching and custom branding options.",
       delivery: {
@@ -1276,10 +1277,9 @@ export const productsData = {
       priceNumeric: 8000,
       tax: 640,
       images: [
-        "/product-images/clothing-apparel/folded-round-neck-2.png",
-        "/product-images/clothing-apparel/folded-round-neck.png",
-        "/product-images/clothing-apparel/folded-round-neck-3.png",
-        "/product-images/clothing-apparel/folded-round-neck-4.png",
+        "/product-images/clothing-apparel/branded-collar-t-shirt-lagos-nigeria.jpg",
+        "/product-images/clothing-apparel/branded-collar-t-shirt-lagos-nigeria2.jpg",
+        "/product-images/clothing-apparel/branded-collar-t-shirt-lagos-nigeria3.jpg",
       ],
     },
 
@@ -1302,12 +1302,14 @@ export const productsData = {
     },
 
     {
-      name: "Round Neck Polo",
+      name: "Round Neck T-Shirt",
       slug: generateSlug("Round Neck Polo"),
       image: "/product-images/clothing-apparel/round-neck-polo.png",
       description:
         "Professional polo shirts suitable for corporate branding, uniforms, and events.",
       category: "Clothing & Apparel",
+      popular: true,
+
       keyFeatures:
         "Premium polo shirts with comfortable fabric and high-quality embroidery options.",
       delivery: {
@@ -1903,6 +1905,7 @@ export const productsData = {
       description:
         "Premium A5 flyers suitable for promotions, business advertising, campaigns, church programs, and event handouts.",
       category: "Flyers & Posters",
+      popular: true,
       keyFeatures:
         "High-quality A5 flyers perfect for promotions, campaigns, and events.",
       delivery: {
@@ -2015,6 +2018,7 @@ export const productsData = {
       description:
         "Premium acrylic invitation cards with elegant transparent finishing suitable for weddings, birthdays, luxury events, and corporate ceremonies.",
       category: "Invitations",
+      popular: true,
       keyFeatures:
         "Luxury acrylic invitation cards with premium transparent finish and elegant print quality.",
       delivery: {

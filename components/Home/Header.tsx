@@ -41,7 +41,7 @@ export default function Header() {
           </div>
 
           {/* Right Side - Chat Button */}
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             <Link
               href="https://wa.me/2347035017359"
               target="_blank"
@@ -65,7 +65,7 @@ export default function Header() {
                 <span className="text-[10px] font-medium">Chat</span>
               </div>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Desktop Layout */}
@@ -139,7 +139,7 @@ export default function Header() {
           {/* Right Side */}
           <div className="flex items-center space-x-4">
             {/* Chat Button */}
-            <Link
+            {/* <Link
               href="https://wa.me/2347035017359"
               target="_blank"
               rel="noopener noreferrer"
@@ -161,7 +161,7 @@ export default function Header() {
                 <MessageCircle className="w-4 h-4" />
                 <span className="text-sm font-medium">Chat with us</span>
               </div>
-            </Link>
+            </Link> */}
 
             {/* Nigeria Flag */}
             <div className="flex items-center space-x-2">
