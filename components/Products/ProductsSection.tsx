@@ -227,7 +227,7 @@ export default function ProductsSection() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h1 className="text-2xl font-black text-gray-900 lg:text-3xl">
-                All Products
+                Shop Our Products
               </h1>
 
               <nav className="mt-1 text-sm text-gray-600">
@@ -244,31 +244,7 @@ export default function ProductsSection() {
                 What are you printing today?
               </p>
 
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search for flyers, paper bag, business card..."
-                  value={searchTerm}
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    setSelectedCategory("All");
-                  }}
-                  className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pr-12 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
-                />
 
-                {searchTerm.trim() ? (
-                  <button
-                    type="button"
-                    onClick={clearSearch}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-600"
-                    aria-label="Clear search"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                ) : (
-                  <Search className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
-                )}
-              </div>
             </div>
 
             <button
@@ -424,15 +400,33 @@ export default function ProductsSection() {
                 </p>
               </div>
 
-              {searchTerm.trim() && (
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  className="text-sm font-bold text-red-600 hover:text-red-700"
-                >
-                  Clear search
-                </button>
-              )}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search for flyers, paper bag, business card..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setSelectedCategory("All");
+                  }}
+                  className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pr-12 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                />
+
+                {searchTerm.trim() ? (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-600"
+                    aria-label="Clear search"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <Search className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                )}
+              </div>
+
+
             </div>
 
             {selectedCategory === "All" ? (
