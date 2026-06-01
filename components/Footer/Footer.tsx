@@ -85,29 +85,29 @@ export default function Footer() {
             </p>
             <div className="flex justify-center space-x-6">
               <a
-                href="#"
+                href="https://www.facebook.com/share/1CXJmcKExu/?mibextid=wwXIfr"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Facebook className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Twitter className="w-6 h-6" />
-              </a>
+              </a> */}
               <a
-                href="#"
+                href="https://www.instagram.com/print_palash?igsh=Z3p3cXNiMXBvZ2xm&utm_source=qr"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Instagram className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Linkedin className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -226,29 +226,29 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/share/1CXJmcKExu/?mibextid=wwXIfr"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Facebook className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Twitter className="w-6 h-6" />
-              </a>
+              </a> */}
               <a
-                href="#"
+                href="https://www.instagram.com/print_palash?igsh=Z3p3cXNiMXBvZ2xm&utm_source=qr"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Instagram className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Linkedin className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </div>
 
