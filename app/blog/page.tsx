@@ -26,8 +26,6 @@ export default function BlogPage() {
   return (
     <div>
       <BlogSection />
-      <Features />
-      <Footer />
     </div>
   );
 }
