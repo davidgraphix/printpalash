@@ -4,7 +4,7 @@ export default function TopBar() {
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="text-xs sm:text-sm text-black font-medium">
-            Free Shipping within Lagos for Order Above ₦100,0000
+            Free shipping within Lagos for orders starting from 1,000,000
           </p>
         </div>
       </div>

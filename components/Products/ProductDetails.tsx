@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
+  ArrowUpRight,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -11,6 +13,7 @@ import {
   ShoppingCart,
   Star,
   Truck,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -109,6 +112,51 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     edges: "square-edges",
     shipping: "standard",
   });
+
+  const router = useRouter();
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  const allProducts = useMemo(() => getAllProducts(), []);
+
+  const filteredProducts = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+
+    if (!term) return [];
+
+    return allProducts
+      .filter((item) => {
+        return (
+          item.name.toLowerCase().includes(term) ||
+          item.category.toLowerCase().includes(term) ||
+          item.description.toLowerCase().includes(term) ||
+          item.keyFeatures.toLowerCase().includes(term)
+        );
+      })
+      .slice(0, 6);
+  }, [allProducts, searchTerm]);
+
+  const showSearchResults = isSearchFocused && searchTerm.trim().length > 0;
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const firstProduct = filteredProducts[0];
+
+    if (firstProduct) {
+      router.push(`/products/${firstProduct.slug}`);
+      setSearchTerm("");
+      setIsSearchFocused(false);
+      return;
+    }
+
+    router.push(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+  };
 
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
@@ -240,24 +288,122 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
       </section>
 
-      <section className="border-b bg-white py-4">
+      <section className="relative z-30 border-b bg-white py-4">
         <div className="container mx-auto px-4">
-          <div className="ml-auto flex max-w-md">
-            <input
-              type="text"
-              placeholder="Search for any product"
-              className="flex-1 rounded-l-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
-            />
-            <button
-              type="button"
-              className="rounded-r-xl bg-red-600 px-5 text-white transition hover:bg-red-700"
-              aria-label="Search"
-            >
-              <Search className="h-5 w-5" />
-            </button>
-          </div>
+          <form onSubmit={handleSearchSubmit} className="relative ml-auto max-w-md">
+            <div className="relative">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                placeholder="Search for any product"
+                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pr-20 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+              />
+
+              {searchTerm.trim() ? (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-600"
+                  aria-label="Clear search"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              ) : null}
+
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-red-600"
+                aria-label="Search products"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </div>
+
+            {showSearchResults && (
+              <div
+                className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+                onMouseDown={(e) => e.preventDefault()}
+              >
+                {filteredProducts.length > 0 ? (
+                  <>
+                    <div className="border-b px-4 py-3">
+                      <p className="text-xs font-bold uppercase tracking-wide text-gray-500">
+                        Product results
+                      </p>
+                    </div>
+
+                    <div className="max-h-[360px] overflow-y-auto">
+                      {filteredProducts.map((item) => {
+                        const productImage =
+                          item.images?.[0] || item.image || "/placeholder.svg";
+
+                        return (
+                          <Link
+                            key={item.slug}
+                            href={`/products/${item.slug}`}
+                            onClick={() => {
+                              setSearchTerm("");
+                              setIsSearchFocused(false);
+                            }}
+                            className="flex items-center gap-3 border-b px-4 py-3 transition last:border-b-0 hover:bg-red-50"
+                          >
+                            <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                              <Image
+                                src={productImage}
+                                alt={item.name}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                              />
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <h3 className="truncate text-sm font-bold text-gray-900">
+                                {item.name}
+                              </h3>
+
+                              <p className="truncate text-xs text-gray-500">
+                                {item.category}
+                              </p>
+
+                              <p className="mt-1 text-sm font-black text-red-600">
+                                Starting at ₦{item.priceNumeric.toLocaleString()}
+                              </p>
+                            </div>
+
+                            <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    <Link
+                      href={`/products?search=${encodeURIComponent(searchTerm.trim())}`}
+                      onClick={() => setIsSearchFocused(false)}
+                      className="block bg-gray-50 px-4 py-3 text-center text-sm font-bold text-red-600 transition hover:bg-red-50"
+                    >
+                      View all matching products
+                    </Link>
+                  </>
+                ) : (
+                  <div className="px-4 py-6 text-center">
+                    <p className="text-sm font-bold text-gray-800">
+                      No product found
+                    </p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      Try searching for flyers, bags, business cards, banners, shirts,
+                      or brochures.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+          </form>
         </div>
       </section>
+
 
       <section className="container mx-auto px-4 py-8 lg:py-12">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">

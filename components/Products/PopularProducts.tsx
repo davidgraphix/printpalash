@@ -28,21 +28,22 @@ export default function PopularProducts() {
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="container mx-auto px-4">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center lg:mb-12">
-          <div>
-            <h2 className="text-2xl font-black text-gray-900 lg:text-3xl">
+        <div className="mb-8 flex items-start justify-between gap-4 lg:mb-12">
+          <div className="min-w-0">
+            <h2 className="text-xl font-black text-gray-900 sm:text-2xl lg:text-3xl">
               Popular Products
             </h2>
-            <p className="mt-2 text-sm text-gray-500">
+
+            <p className="mt-2 hidden text-sm text-gray-500 sm:block">
               Top printing products customers order often.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="text-xl font-bold text-red-600 hover:text-red-700"
+            className="shrink-0 whitespace-nowrap text-sm font-bold text-red-600 hover:text-red-700 sm:text-base lg:text-xl"
           >
-            See all products
+            See All Product
           </Link>
         </div>
 
@@ -66,12 +67,12 @@ export default function PopularProducts() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
 
-                    {product.images?.length > 1 && (
+                    {/* {product.images?.length > 1 && (
                       <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
                         <ImageIcon className="h-3.5 w-3.5" />
                         {product.images.length}
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </Link>
 

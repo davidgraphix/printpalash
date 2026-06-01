@@ -1392,7 +1392,7 @@ export const productsData = {
     {
       name: "Cloth Paper Tag",
       slug: generateSlug("Cloth Paper Tag"),
-      image: "/product-images/clothestag/cloth-paper-tag-2.png",
+      image: "/product-images/clothestag/cloth-paper-tag-3.png",
       description:
         "Premium paper clothing tags designed for fashion branding and product presentation.",
       category: "ClothesTag",
@@ -1405,9 +1405,9 @@ export const productsData = {
       priceNumeric: 8000,
       tax: 640,
       images: [
+        "/product-images/clothestag/cloth-paper-tag-3.png",
         "/product-images/clothestag/cloth-paper-tag-2.png",
         "/product-images/clothestag/cloth-paper-tag.png",
-        "/product-images/clothestag/cloth-paper-tag-3.png",
       ],
     },
 

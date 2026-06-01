@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Image
-                src="/assets/printpalash-logo-footer.png"
+                src="/printpalash-logo-footer.png"
                 alt="PrintPalash logo"
                 width={140}
                 height={48}

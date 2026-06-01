@@ -83,12 +83,12 @@ function ProductCard({ product }: { product: Product }) {
             img
           </div>
 
-          {imageCount > 1 && (
+          {/* {imageCount > 1 && (
             <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
               <ImageIcon className="h-3.5 w-3.5" />
               {imageCount}
             </div>
-          )}
+          )} */}
         </div>
       </Link>
 

@@ -1,642 +1,798 @@
+import Link from "next/link";
 import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
 import Footer from "@/components/Footer/Footer";
 
-export default function BlogSection() {
+const articleSections = [
+  {
+    id: "why-professional-printing-matters",
+    title: "Why Professional Printing Matters",
+  },
+  {
+    id: "factors-to-consider",
+    title: "Important Factors to Consider",
+  },
+  {
+    id: "business-card-printing",
+    title: "Business Card Printing in Lagos",
+  },
+  {
+    id: "flyer-printing",
+    title: "Flyer Printing in Lagos",
+  },
+  {
+    id: "packaging-printing",
+    title: "Packaging Printing and Why It Matters",
+  },
+  {
+    id: "paper-bag-production",
+    title: "Paper Bag Production in Lagos",
+  },
+  {
+    id: "corporate-branding",
+    title: "Corporate Branding Services",
+  },
+  {
+    id: "souvenir-printing",
+    title: "Souvenir Printing and Promotional Products",
+  },
+  {
+    id: "tshirt-printing",
+    title: "T-Shirt Printing and Apparel Branding",
+  },
+  {
+    id: "large-format-printing",
+    title: "Signage and Large Format Printing",
+  },
+  {
+    id: "seo-online-visibility",
+    title: "SEO and Online Visibility",
+  },
+  {
+    id: "why-reviews-matter",
+    title: "Why Reviews Matter",
+  },
+  {
+    id: "best-packaging-company",
+    title: "How to Choose the Best Packaging Company",
+  },
+  {
+    id: "future-of-printing",
+    title: "Future of Printing and Branding in Nigeria",
+  },
+  {
+    id: "why-choose-printpalash",
+    title: "Why Businesses Choose PrintPalash",
+  },
+];
+
+const quickServices = [
+  "Flyer Printing",
+  "Business Card Printing",
+  "Packaging Printing",
+  "Paper Bag Production",
+  "T-Shirt Printing",
+  "Souvenir Branding",
+  "Corporate Branding",
+  "Banner Printing",
+  "Sticker Printing",
+];
+
+function SectionHeading({
+  id,
+  children,
+}: {
+  id: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Main Blog Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          {/* Article 1 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              1. The Importance of Quality Print Materials for Your Brand
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              In today's competitive market, first impressions matter more than
-              ever. The quality of your print materials can significantly impact
-              how your brand is perceived. Whether you're a startup or an
-              established business, investing in high-quality print products is
-              essential.
-            </p>
+    <h2
+      id={id}
+      className="scroll-mt-28 text-2xl font-black tracking-tight text-gray-950 lg:text-3xl"
+    >
+      {children}
+    </h2>
+  );
+}
 
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              The Role of Print Materials in Brand Perception
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Print materials like business cards, brochures, and flyers are
-              often the first tangible touchpoints a potential customer has with
-              your brand. High-quality prints convey professionalism, while
-              poor-quality materials can leave a negative impression.
-            </p>
+function Paragraph({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-base leading-8 text-gray-700 lg:text-lg">{children}</p>
+  );
+}
 
-            <ul className="list-disc pl-6 mb-6 text-gray-700">
-              <li className="mb-2">
-                <strong>Business Cards:</strong> A well-designed card printed on
-                premium paper can make you stand out.
-              </li>
-              <li className="mb-2">
-                <strong>Brochures:</strong> Informative and visually appealing
-                brochures can effectively communicate your brand's values.
-              </li>
-              <li className="mb-2">
-                <strong>Flyers:</strong> High-quality flyers can attract
-                attention and clearly convey your message.
-              </li>
-            </ul>
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="grid gap-3 text-gray-700 sm:grid-cols-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="flex gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4 text-sm leading-6 lg:text-base"
+        >
+          <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-red-600" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Examples of High-Quality Print Materials Elevating Brand Image
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Brands like Apple and Tesla use high-quality brochures that
-              reflect their innovative branding, capturing audience attention
-              and reinforcing their identities.
-            </p>
+function CTABox() {
+  return (
+    <div className="rounded-3xl border border-red-100 bg-red-50 p-6 lg:p-8">
+      <p className="text-sm font-bold uppercase tracking-wide text-red-600">
+        Ready to print?
+      </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Tips for Selecting the Right Print Materials
-            </h3>
-            <ol className="list-decimal pl-6 mb-6 text-gray-700">
-              <li className="mb-2">
-                <strong>Know Your Audience:</strong> Choose materials that
-                resonate with your target demographic.
-              </li>
-              <li className="mb-2">
-                <strong>Define Your Message:</strong> Ensure your prints align
-                with your brand message.
-              </li>
-              <li className="mb-2">
-                <strong>Choose the Right Finish:</strong> Matte, glossy, or
-                textured options can affect the look and feel.
-              </li>
-              <li className="mb-2">
-                <strong>Invest in Quality:</strong> Opt for reputable printing
-                services that guarantee high standards.
-              </li>
-            </ol>
+      <h3 className="mt-2 text-2xl font-black text-gray-950">
+        Bring your brand materials to life with PrintPalash.
+      </h3>
 
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Investing in quality print materials crafts an experience that
-              leaves a lasting impression. At PrintPalash, we help you create
-              prints that truly reflect your brand. Explore our offerings today!
-            </p>
-          </article>
+      <p className="mt-3 leading-7 text-gray-700">
+        Order flyers, business cards, packaging, paper bags, T-shirts, banners,
+        souvenirs, and other branded print materials with professional finishing
+        and fast delivery in Lagos.
+      </p>
 
-          {/* Article 2 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              2. Top 5 Print Trends to Watch in 2024
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The print industry is continually evolving, and staying ahead of
-              the trends can give your brand a competitive edge. Here are the
-              top five print trends to watch this year:
-            </p>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/products"
+          className="inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-3 text-sm font-black text-white transition hover:bg-red-700"
+        >
+          View Products
+        </Link>
 
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  1. Eco-Friendly Materials
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  As sustainability becomes a priority, more brands are opting
-                  for recycled and eco-friendly materials, reflecting a
-                  commitment to the environment.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  2. Minimalist Designs
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Clean, simple designs are gaining popularity. Minimalism
-                  allows the message to shine without unnecessary distractions,
-                  making prints more impactful.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  3. Customization and Personalization
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Personalized prints enhance customer engagement. Tailoring
-                  print products to individual preferences creates a unique
-                  experience that resonates with audiences.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  4. Digital Integration
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Incorporating QR codes and augmented reality (AR) into print
-                  materials bridges the gap between digital and print, providing
-                  interactive experiences.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  5. Bold Colors and Textures
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Vibrant colors and unique textures are making a comeback,
-                  helping brands stand out in a visually saturated market.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Embrace these trends to enhance your print materials and connect
-              with your audience effectively. Let PrintPalash help you stay
-              ahead of the curve!
-            </p>
-          </article>
-
-          {/* Article 3 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              3. How to Choose the Right Print Product for Your Needs
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              With a plethora of print products available, selecting the right
-              one can be challenging. Here's a step-by-step guide to help you
-              make informed decisions:
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Step 1: Assess Your Needs
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Determine the purpose of your print materials. Are you
-                  promoting an event, launching a product, or creating
-                  informational content?
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Step 2: Know Your Audience
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Understanding your target demographic will guide you in
-                  choosing the right format and design that resonates with them.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Step 3: Compare Different Print Products
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-3">
-                  Consider the differences between various options:
-                </p>
-                <ul className="list-disc pl-6 text-gray-700">
-                  <li className="mb-2">
-                    <strong>Flyers:</strong> Great for events and promotions.
-                  </li>
-                  <li className="mb-2">
-                    <strong>Brochures:</strong> Ideal for detailed information
-                    about products or services.
-                  </li>
-                  <li className="mb-2">
-                    <strong>Posters:</strong> Perfect for grabbing attention in
-                    public spaces.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Step 4: Budget Considerations
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Evaluate your budget to determine which print products you can
-                  afford without compromising quality.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Choosing the right print product enhances your marketing efforts.
-              At PrintPalash, we offer a range of options tailored to your
-              needs. Contact us for assistance!
-            </p>
-          </article>
-
-          {/* Article 4 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              4. DIY Design Tips for Stunning Print Materials
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Creating stunning print materials doesn't have to be daunting.
-              Here are some DIY design tips to help you produce eye-catching
-              products:
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  1. Understand Basic Design Principles
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Familiarize yourself with color theory, typography, and
-                  layout. Effective use of these principles can elevate your
-                  design.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  2. Use Design Tools
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Leverage online tools like Canva or Adobe Spark, which offer
-                  user-friendly interfaces and templates to help you create
-                  professional-looking designs.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  3. Create Eye-Catching Layouts
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Use grids to organize elements and ensure your design is
-                  visually appealing and easy to read.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  4. Don't Forget the Call to Action
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Include a clear call to action in your prints to guide your
-                  audience on the next steps.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              DIY design can be fun and rewarding. For those who prefer
-              professional help, PrintPalash is here to assist you in bringing
-              your vision to life!
-            </p>
-          </article>
-
-          {/* Article 5 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              5. Sustainability in Printing: How to Go Green
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Sustainability is becoming increasingly important in the print
-              industry. Here's how you can adopt eco-friendly practices:
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Overview of Eco-Friendly Materials
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Use recycled paper and eco-friendly inks to minimize
-                  environmental impact. Many printing services now offer
-                  sustainable options.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Tips for Reducing Waste
-                </h3>
-                <ul className="list-disc pl-6 text-gray-700">
-                  <li className="mb-2">Print on both sides of the paper.</li>
-                  <li className="mb-2">
-                    Use digital proofs instead of physical samples to reduce
-                    waste.
-                  </li>
-                  <li className="mb-2">
-                    Consider print-on-demand services to limit excess inventory.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Benefits of Choosing Sustainable Printing Services
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Opting for sustainable practices not only benefits the
-                  environment but also enhances your brand's image as a
-                  responsible company.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Going green in printing is achievable and beneficial. At
-              PrintPalash, we are committed to sustainability and offer
-              eco-friendly options for your print needs.
-            </p>
-          </article>
-
-          {/* Article 6 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              6. Case Study: Successful Print Campaigns
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Highlighting successful print campaigns can inspire and educate
-              your audience. Here are a few examples:
-            </p>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Case Study 1: A Local Coffee Shop
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  A local coffee shop used vibrant posters and flyers to promote
-                  a new product launch. The campaign increased foot traffic by
-                  30% in one month.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Case Study 2: An Event Planning Company
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  An event planning company utilized brochures that detailed
-                  their services, resulting in a 25% increase in inquiries
-                  following a local expo.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Lessons Learned
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Both businesses emphasized the importance of quality design
-                  and strategic distribution.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Successful print campaigns can significantly impact business
-              growth. Let PrintPalash help you create your own success story!
-            </p>
-          </article>
-
-          {/* Article 7 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              7. The Future of Printing: Innovations on the Horizon
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The printing industry is evolving with technology. Here's what to
-              expect in the future:
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  3D Printing
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  3D printing is revolutionizing product prototyping and custom
-                  product creation, offering limitless possibilities.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Digital Printing Advancements
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Advancements in digital printing technology are leading to
-                  faster turnaround times and lower costs for high-quality
-                  prints.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Predictions for the Future
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  As technology advances, we can expect more integration between
-                  digital and print, creating dynamic, interactive experiences.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Staying informed about innovations in printing can keep your brand
-              ahead of the curve. PrintPalash is ready to support you with the
-              latest technologies in the industry.
-            </p>
-          </article>
-
-          {/* Article 8 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              8. How to Maximize Your Marketing with Print Products
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Print products can be a powerful addition to your marketing
-              strategy. Here's how to maximize their impact:
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Integrating Print with Digital Campaigns
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Combine print materials with online marketing efforts. For
-                  example, use QR codes on flyers that direct customers to your
-                  website.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Successful Marketing Examples
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Highlight brands that have effectively combined print and
-                  digital strategies, such as sending direct mail that includes
-                  links to online content.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Measuring Effectiveness
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Track the success of your print campaigns by using unique
-                  codes or landing pages to analyze customer engagement.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              A well-rounded marketing strategy includes both print and digital
-              elements. Let PrintPalash assist you in maximizing your marketing
-              efforts!
-            </p>
-          </article>
-
-          {/* Article 9 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              9. Customer Spotlight: Stories from Our Valued Clients
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Sharing customer stories adds authenticity to your brand. Here are
-              a few highlights:
-            </p>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Client 1: A Local Bakery
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  A local bakery needed custom packaging. We collaborated
-                  closely, resulting in packaging that enhanced their brand and
-                  increased sales by 20%.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Client 2: A Tech Startup
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  A tech startup required promotional materials for a launch
-                  event. Our team created sleek brochures that effectively
-                  communicated their offerings, leading to numerous leads.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Quotes from Clients
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Include testimonials and feedback that emphasize the positive
-                  experiences and results achieved through your services.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              We value our clients and their stories. If you'd like to be
-              featured, contact us to share your success with PrintPalash!
-            </p>
-          </article>
-
-          {/* Article 10 */}
-          <article className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              10. Print vs. Digital: Finding the Right Balance
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The debate between print and digital continues, but finding the
-              right balance is crucial for effective marketing.
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Pros and Cons of Both Mediums
-                </h3>
-                <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                  <li>
-                    <strong>Print:</strong> Tangible, memorable, and can reach
-                    audiences who may not engage digitally.
-                  </li>
-                  <li>
-                    <strong>Digital:</strong> Quick, cost-effective, and offers
-                    real-time analytics.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Successful Integration Strategies
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Utilize print materials to drive traffic to your digital
-                  platforms. For example, include social media handles and
-                  website links on all print products.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Real-Life Examples
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Highlight companies successfully using both mediums to reach
-                  their target audiences.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">
-              Conclusion
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Balancing print and digital strategies enhances overall marketing
-              effectiveness. At PrintPalash, we can help you create an
-              integrated approach that works for your brand.
-            </p>
-          </article>
-        </div>
+        <Link
+          href="/get-a-quote"
+          className="inline-flex items-center justify-center rounded-xl border border-red-200 bg-white px-6 py-3 text-sm font-black text-red-600 transition hover:bg-red-600 hover:text-white"
+        >
+          Get a Quote
+        </Link>
       </div>
     </div>
+  );
+}
+
+export default function BlogSection() {
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline:
+      "How to Choose the Best Printing Company in Lagos for Packaging, Branding, and Business Printing",
+    description:
+      "A complete guide for businesses choosing a professional printing company in Lagos for packaging, branding, flyers, business cards, paper bags, T-shirts, souvenirs, and corporate printing.",
+    author: {
+      "@type": "Organization",
+      name: "PrintPalash",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "PrintPalash",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://printpalash.com/blog",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd),
+        }}
+      />
+
+      <main className="min-h-screen bg-white">
+        <section className="border-b bg-gradient-to-b from-red-50 via-white to-white">
+          <div className="container mx-auto px-4 py-12 lg:py-20">
+            <div className="mx-auto max-w-5xl text-center">
+              <p className="mb-4 inline-flex rounded-full border border-red-100 bg-white px-4 py-2 text-sm font-bold text-red-600 shadow-sm">
+                PrintPalash Blog
+              </p>
+
+              <h1 className="text-4xl font-black leading-tight tracking-tight text-gray-950 lg:text-6xl">
+                How to Choose the Best Printing Company in Lagos for Packaging,
+                Branding, and Business Printing
+              </h1>
+
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-gray-700 lg:text-xl">
+                A complete guide for businesses, brands, churches, schools,
+                event planners, fashion brands, and corporate organizations
+                looking for professional printing services in Lagos.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600">
+                <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+                  By PrintPalash
+                </span>
+                <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+                  Printing & Branding
+                </span>
+                <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+                  Lagos, Nigeria
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b bg-white">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-wrap justify-center gap-3">
+              {quickServices.map((service) => (
+                <span
+                  key={service}
+                  className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-bold text-gray-700"
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-12">
+          <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
+            <aside className="hidden lg:block">
+              <div className="sticky top-24 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+                <p className="mb-4 text-sm font-black uppercase tracking-wide text-red-600">
+                  In this article
+                </p>
+
+                <nav className="space-y-3">
+                  {articleSections.map((section) => (
+                    <a
+                      key={section.id}
+                      href={`#${section.id}`}
+                      className="block text-sm font-semibold leading-5 text-gray-600 transition hover:text-red-600"
+                    >
+                      {section.title}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+
+            <article className="mx-auto max-w-4xl">
+              <div className="space-y-8">
+                <Paragraph>
+                  In today’s highly competitive business environment, branding
+                  and printing are no longer optional. Every business, whether
+                  small or large, depends on professional printing to build
+                  visibility, attract customers, and establish credibility.
+                </Paragraph>
+
+                <Paragraph>
+                  From business cards and flyers to packaging boxes and branded
+                  paper bags, professionally printed materials influence how
+                  customers perceive a brand. Businesses in Lagos compete daily
+                  for customer attention, and quality printing can make the
+                  difference between a business that looks professional and one
+                  that gets ignored.
+                </Paragraph>
+
+                <Paragraph>
+                  Customers naturally trust businesses with premium packaging,
+                  sharp designs, quality finishing, and consistent branding.
+                  Choosing the right printing company in Lagos is therefore an
+                  important business decision.
+                </Paragraph>
+
+                <Paragraph>
+                  PrintPalash is a premium printing and branding company in
+                  Shomolu, Lagos, Nigeria, offering professional printing
+                  services for businesses, organizations, fashion brands,
+                  churches, schools, events, and corporate clients.
+                </Paragraph>
+
+                <Paragraph>
+                  The company specializes in flyer printing, business card
+                  printing, packaging printing, souvenir branding, T-shirt
+                  printing, paper bag production, custom gift boxes, corporate
+                  branding, and promotional materials.
+                </Paragraph>
+
+                <CTABox />
+
+                <section className="space-y-5">
+                  <SectionHeading id="why-professional-printing-matters">
+                    Why Professional Printing Matters
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Professional printing improves customer trust and brand
+                    recognition. When customers receive a professionally designed
+                    flyer, brochure, or package, they immediately associate the
+                    business with quality and professionalism.
+                  </Paragraph>
+
+                  <Paragraph>
+                    Printing is often the first physical interaction customers
+                    have with a brand. A premium business card creates stronger
+                    networking opportunities, a professionally printed flyer can
+                    improve marketing response, custom packaging improves
+                    customer experience, branded souvenirs increase visibility,
+                    and quality banners attract attention at events and business
+                    locations.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "A premium business card creates stronger networking opportunities.",
+                      "A professionally printed flyer increases marketing response.",
+                      "Custom packaging improves customer experience.",
+                      "Branded souvenirs increase brand visibility.",
+                      "Quality banners attract more attention at events and business locations.",
+                    ]}
+                  />
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="factors-to-consider">
+                    Important Factors to Consider When Choosing a Printing
+                    Company in Lagos
+                  </SectionHeading>
+
+                  <Paragraph>
+                    When selecting a printing company, businesses should
+                    evaluate quality, turnaround time, communication, product
+                    variety, pricing, value, reviews, and reputation.
+                  </Paragraph>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {[
+                      {
+                        title: "1. Print Quality",
+                        text: "High-quality printing should have sharp images, vibrant colors, accurate alignment, and clean finishing.",
+                      },
+                      {
+                        title: "2. Turnaround Time",
+                        text: "Fast production and reliable delivery are essential for events, launches, and corporate campaigns.",
+                      },
+                      {
+                        title: "3. Customer Service",
+                        text: "A good printing company should respond quickly, guide customers properly, and handle corrections professionally.",
+                      },
+                      {
+                        title: "4. Product Variety",
+                        text: "A strong printing company should offer business cards, flyers, packaging, T-shirts, stickers, souvenirs, banners, and paper bags.",
+                      },
+                      {
+                        title: "5. Pricing and Value",
+                        text: "Businesses should compare value, not just price. Premium materials and finishing often produce better long-term results.",
+                      },
+                      {
+                        title: "6. Reviews and Reputation",
+                        text: "Customer reviews reveal reliability and help businesses understand the quality of service to expect.",
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item.title}
+                        className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
+                      >
+                        <h3 className="font-black text-gray-950">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-7 text-gray-700">
+                          {item.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="business-card-printing">
+                    Business Card Printing in Lagos
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Business cards remain one of the most effective networking
+                    tools for professionals and businesses. A well-designed
+                    business card communicates professionalism and strengthens
+                    first impressions.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Premium paper quality",
+                      "Matte or glossy finishes",
+                      "Readable typography",
+                      "Clean design",
+                      "Brand consistency",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    PrintPalash offers premium business card printing in Lagos
+                    with sharp designs, high-quality paper options, and
+                    professional finishing suitable for entrepreneurs,
+                    executives, startups, and corporate organizations.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="flyer-printing">
+                    Flyer Printing in Lagos
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Flyers are still one of the most cost-effective marketing
+                    tools in Nigeria. Businesses use flyers for promotions,
+                    product launches, church events, real estate marketing,
+                    event awareness, and sales campaigns.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Promotions",
+                      "Product launches",
+                      "Church events",
+                      "Real estate marketing",
+                      "Event awareness",
+                      "Sales campaigns",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    Effective flyer printing combines strong design,
+                    high-resolution printing, quality paper, and clear
+                    messaging. PrintPalash provides flyer printing in Lagos with
+                    vibrant colors, excellent finishing, and fast turnaround.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="packaging-printing">
+                    Packaging Printing and Why It Matters
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Packaging is no longer just about protecting products.
+                    Packaging has become one of the strongest branding tools in
+                    modern business.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Gift boxes",
+                      "Rigid boxes",
+                      "Paper bags",
+                      "Product labels",
+                      "Packaging sleeves",
+                      "Custom packaging materials",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    Premium packaging improves customer experience, brand value,
+                    product perception, social media appeal, and customer
+                    loyalty. Fashion brands, skincare businesses, restaurants,
+                    event vendors, and ecommerce businesses increasingly depend
+                    on branded packaging.
+                  </Paragraph>
+
+                  <Paragraph>
+                    PrintPalash specializes in packaging printing in Lagos,
+                    including luxury gift boxes, paper bags, suit boxes, custom
+                    labels, and branded packaging solutions.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="paper-bag-production">
+                    Paper Bag Production in Lagos
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Custom paper bags are becoming increasingly popular because
+                    they improve brand presentation and create a premium shopping
+                    experience.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Fashion retail",
+                      "Product packaging",
+                      "Event gifting",
+                      "Corporate branding",
+                      "Luxury packaging",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    Professionally branded paper bags help businesses look more
+                    established and premium. PrintPalash provides paper bag
+                    production in Lagos using durable materials, professional
+                    finishing, and custom branding tailored to business needs.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="corporate-branding">
+                    Corporate Branding Services
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Corporate branding involves creating consistency across all
+                    customer-facing materials. Strong branding improves
+                    recognition and helps businesses appear professional.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "ID cards",
+                      "Branded stationery",
+                      "Presentation folders",
+                      "Corporate souvenirs",
+                      "Branded apparel",
+                      "Signage",
+                      "Promotional materials",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    PrintPalash helps businesses build professional brand
+                    identity through premium corporate branding services in
+                    Lagos.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="souvenir-printing">
+                    Souvenir Printing and Promotional Products
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Promotional products help businesses increase visibility and
+                    customer engagement. Corporate organizations, churches,
+                    schools, and event planners use souvenirs for branding and
+                    promotional campaigns.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Branded mugs",
+                      "Pens",
+                      "Jotters",
+                      "Bags",
+                      "Water bottles",
+                      "T-shirts",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    PrintPalash offers souvenir printing in Lagos with
+                    high-quality branding and professional finishing.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="tshirt-printing">
+                    T-Shirt Printing and Apparel Branding
+                  </SectionHeading>
+
+                  <Paragraph>
+                    T-shirt branding is widely used for corporate events, church
+                    programs, fashion brands, campaigns, and event souvenirs.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Durable print quality",
+                      "Quality fabric compatibility",
+                      "Proper color application",
+                      "Long-lasting finishing",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    PrintPalash provides T-shirt printing in Lagos using DTF
+                    printing and heat transfer technology for premium results.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="large-format-printing">
+                    Signage and Large Format Printing
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Signage improves visibility for businesses and helps attract
+                    customers. Businesses with strong signage often gain more
+                    attention and stronger customer awareness.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Flex banners",
+                      "Roll-up banners",
+                      "Shop signs",
+                      "Window graphics",
+                      "Wall branding",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    PrintPalash provides signage and large-format printing
+                    services in Lagos for businesses, events, and corporate
+                    branding.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="seo-online-visibility">
+                    How SEO and Online Visibility Affect Printing Companies
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Many businesses now discover printing companies online. This
+                    means SEO has become extremely important for printing
+                    businesses.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Flyer printing Lagos",
+                      "Business card printing Lagos",
+                      "Packaging printing Lagos",
+                      "Paper bag production Lagos",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    A strong online presence requires Google Business Profile
+                    optimization, customer reviews, SEO-focused website pages,
+                    Google posts, product-focused content, and professional
+                    branding.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="why-reviews-matter">
+                    Why Reviews Matter for Printing Businesses
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Customer reviews strongly influence buying decisions.
+                    Businesses with strong reviews appear more trustworthy and
+                    often rank higher on Google Maps.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Increase trust",
+                      "Improve visibility",
+                      "Expand keyword relevance",
+                      "Improve conversion rates",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    Reviews mentioning flyer printing Lagos, paper bag
+                    production, souvenir printing, and packaging printing help
+                    Google associate a business with those services.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="best-packaging-company">
+                    How to Choose the Best Packaging Company in Lagos
+                  </SectionHeading>
+
+                  <Paragraph>
+                    Businesses searching for packaging companies should evaluate
+                    material quality, design capabilities, durability, finishing,
+                    brand presentation, delivery speed, and product variety.
+                  </Paragraph>
+
+                  <Paragraph>
+                    Packaging affects customer perception significantly. A
+                    product with premium packaging often appears more valuable
+                    and trustworthy. PrintPalash focuses on creating premium
+                    packaging solutions that improve customer experience and
+                    strengthen brand identity.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="future-of-printing">
+                    Future of Printing and Branding in Nigeria
+                  </SectionHeading>
+
+                  <Paragraph>
+                    The printing industry continues to evolve as businesses
+                    demand premium packaging, ecommerce branding, faster
+                    turnaround, online ordering, and personalized products.
+                  </Paragraph>
+
+                  <Paragraph>
+                    Businesses that combine quality printing with strong branding
+                    and digital visibility are likely to dominate the future
+                    market. Online printing platforms, SEO visibility, AI
+                    recommendations, and customer reviews are becoming
+                    increasingly important for business growth.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5">
+                  <SectionHeading id="why-choose-printpalash">
+                    Why Businesses Choose PrintPalash
+                  </SectionHeading>
+
+                  <Paragraph>
+                    PrintPalash continues to position itself as a premium
+                    printing and branding company in Lagos because of
+                    professional print quality, modern branding solutions,
+                    customer-focused service, fast delivery, product diversity,
+                    premium packaging expertise, and strong local relevance.
+                  </Paragraph>
+
+                  <BulletList
+                    items={[
+                      "Professional print quality",
+                      "Modern branding solutions",
+                      "Customer-focused service",
+                      "Fast delivery",
+                      "Product diversity",
+                      "Premium packaging expertise",
+                      "Strong local relevance",
+                    ]}
+                  />
+
+                  <Paragraph>
+                    The company serves startups, fashion brands, churches,
+                    schools, corporate organizations, and businesses looking for
+                    reliable printing and branding solutions.
+                  </Paragraph>
+                </section>
+
+                <section className="space-y-5 rounded-3xl border border-gray-200 bg-gray-50 p-6 lg:p-8">
+                  <h2 className="text-2xl font-black text-gray-950">
+                    Conclusion
+                  </h2>
+
+                  <Paragraph>
+                    Choosing the right printing company in Lagos is important
+                    for businesses that want to improve visibility, strengthen
+                    branding, and create professional customer experiences.
+                    Quality printing affects how customers perceive a business
+                    and influences marketing success.
+                  </Paragraph>
+
+                  <Paragraph>
+                    From flyer printing and business cards to packaging printing
+                    and paper bag production, businesses need a printing partner
+                    that delivers professionalism, quality, and consistency.
+                  </Paragraph>
+
+                  <Paragraph>
+                    PrintPalash continues to grow as a premium printing and
+                    branding company in Shomolu, Lagos, offering professional
+                    printing services, packaging solutions, souvenir branding,
+                    and corporate branding for businesses and organizations
+                    across Lagos.
+                  </Paragraph>
+
+                  <div className="pt-4">
+                    <Link
+                      href="/get-a-quote"
+                      className="inline-flex rounded-xl bg-red-600 px-6 py-3 text-sm font-black text-white transition hover:bg-red-700"
+                    >
+                      Start Your Print Order
+                    </Link>
+                  </div>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <TrustedBrands />
+      </main>
+
+      <Footer />
+    </>
   );
 }
