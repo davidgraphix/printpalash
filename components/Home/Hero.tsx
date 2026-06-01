@@ -86,7 +86,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: "/assests/hero-slide-4.png",
+    image: "/hero-slide-4.png",
   },
 ];
 
