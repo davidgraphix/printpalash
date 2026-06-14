@@ -116,6 +116,28 @@ export const productsData = {
     },
 
     {
+      name: "Wine Paper Bag",
+      slug: generateSlug("Wine Paper Bag"),
+      image: "/product-images/bags/wine-paper-bag.png",
+      description:
+        "Premium wine paper bags designed for gifting, packaging, and luxury presentation.",
+      category: "Bags",
+      keyFeatures:
+        "Elegant wine bags with durable handles and premium finishing for special occasions.",
+      delivery: {
+        lagos: "3-5 Working Days for order within Lagos",
+        others: "5-7 Working Days for Order from other state",
+      },
+      priceNumeric: 50000,
+      tax: 4000,
+      images: [
+        "/product-images/bags/wine-paper-bag.png",
+        "/product-images/bags/wine-paper-bag-2.png",
+        "/product-images/bags/wine-paper-bag-3.png",
+      ],
+    },
+
+    {
       name: "Courier Bag",
       slug: generateSlug("Courier Bag"),
       image: "/product-images/bags/courier-bag.png",
@@ -336,27 +358,7 @@ export const productsData = {
       ],
     },
 
-    {
-      name: "Wine Paper Bag",
-      slug: generateSlug("Wine Paper Bag"),
-      image: "/product-images/bags/wine-paper-bag.png",
-      description:
-        "Premium wine paper bags designed for gifting, packaging, and luxury presentation.",
-      category: "Bags",
-      keyFeatures:
-        "Elegant wine bags with durable handles and premium finishing for special occasions.",
-      delivery: {
-        lagos: "3-5 Working Days for order within Lagos",
-        others: "5-7 Working Days for Order from other state",
-      },
-      priceNumeric: 50000,
-      tax: 4000,
-      images: [
-        "/product-images/bags/wine-paper-bag.png",
-        "/product-images/bags/wine-paper-bag-2.png",
-        "/product-images/bags/wine-paper-bag-3.png",
-      ],
-    },
+
   ],
 
   "Banners & Large Format": [
@@ -716,8 +718,8 @@ export const productsData = {
     },
 
     {
-      name: "Magnetic Flip Pack",
-      slug: generateSlug("Magnetic Flip Pack"),
+      name: "Magnetic Flip Box",
+      slug: generateSlug("Magnetic Flip Box"),
       image: "/product-images/box&packaging/magnetic-flip-pack.png",
       description:
         "Premium magnetic flip boxes designed for luxury packaging and special gift presentation.",
@@ -2013,7 +2015,7 @@ export const productsData = {
     {
       name: "Acrylic Invitation",
       slug: generateSlug("Acrylic Invitation"),
-      image: "/product-images/invitations/acrylic-invitation-2.jpeg",
+      image: "/product-images/invitations/acrylic-invitation-3.jpeg",
 
       description:
         "Premium acrylic invitation cards with elegant transparent finishing suitable for weddings, birthdays, luxury events, and corporate ceremonies.",
@@ -2028,9 +2030,9 @@ export const productsData = {
       priceNumeric: 35000,
       tax: 2800,
       images: [
+        "/product-images/invitations/acrylic-invitation-3.jpeg",
         "/product-images/invitations/acrylic-invitation-2.jpeg",
         "/product-images/invitations/acrylic-invitation.jpeg",
-        "/product-images/invitations/acrylic-invitation-3.jpeg",
         "/product-images/invitations/acrylic-invitation-4.jpeg",
       ],
     },

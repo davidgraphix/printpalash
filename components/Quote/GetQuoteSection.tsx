@@ -2,7 +2,7 @@ import Image from "next/image"
 import getQuoteImageBg from "@/public/assests/get-quote-img/getQuote-img-bg.png"
 
 export default function GetQuote() {
-  const whatsappNumber = "+2347039017359"
+  const whatsappNumber = "+2347035017359"
   const whatsappMessage = encodeURIComponent(
     "Hello PrintPalash! I would like to get a quote for my printing project. Please provide me with pricing details.",
   )
