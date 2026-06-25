@@ -39,7 +39,6 @@ Shomolu, Lagos, Nigeria.
 
 Phone: +2347035017359
 `;
-
     return new Response(content, {
         headers: {
             "Content-Type": "text/plain",
