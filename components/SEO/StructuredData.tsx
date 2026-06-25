@@ -44,8 +44,8 @@ export default function StructuredData() {
             },
         ],
         sameAs: [
-            "https://www.instagram.com/printpalash",
-            "https://www.facebook.com/printpalash",
+            "https://www.instagram.com/print_palash",
+            "https://www.facebook.com/share/1Ets8ZdRcu/?mibextid=wwXIfr",
             "https://www.linkedin.com/company/printpalash",
             "https://x.com/printpalash",
         ],
