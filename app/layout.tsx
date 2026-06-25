@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | PrintPalash",
   },
   description:
-    "Premium printing and brand execution in Lagos, Nigeria. Order flyers, business cards, banners, stickers, packaging, T-shirts, paper bags, souvenirs, and corporate branding materials.",
+    "PrintPalash Studios offers premium printing services in Lagos, Nigeria for flyers, business cards, packaging, branded paper bags, T-shirts, banners, souvenirs, and corporate branding.",
   keywords: [
     "printing services in Lagos",
     "printing services in Nigeria",

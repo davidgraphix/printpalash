@@ -15,6 +15,10 @@ export interface Product {
   popular?: boolean;
   rating?: number;
   reviewCount?: number;
+
+  // SEO fields
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 // Shared product data that can be used across components
@@ -503,8 +507,8 @@ export const productsData = {
       ],
     },
     {
-      name: "Lampost Banner",
-      slug: generateSlug("Lampost Banner"),
+      name: "Lamp Post Banner",
+      slug: generateSlug("Lamp Post Banner"),
       image: "/product-images/banners&largeformat/lampost-banner.png",
       description:
         "High-visibility lamp post banners suitable for street advertising and outdoor promotions.",
@@ -1199,7 +1203,7 @@ export const productsData = {
   "Clothing & Apparel": [
     {
       name: "Branded Towel",
-      slug: generateSlug("Branded Towel6"),
+      slug: generateSlug("Branded Towel"),
       image: "/product-images/clothing-apparel/branded-towel-lagos-nigeria.jpg",
       description:
         "Premium branded towel apparel suitable for souvenirs, events, and promotional campaigns.",
@@ -1305,7 +1309,7 @@ export const productsData = {
 
     {
       name: "Round Neck T-Shirt",
-      slug: generateSlug("Round Neck Polo"),
+      slug: generateSlug("Round Neck T-Shirt"),
       image: "/product-images/clothing-apparel/round-neck-polo.png",
       description:
         "Professional polo shirts suitable for corporate branding, uniforms, and events.",
@@ -1368,8 +1372,8 @@ export const productsData = {
     },
 
     {
-      name: "Versity Jacket",
-      slug: generateSlug("Versity Jacket"),
+      name: "Varsity Jacket",
+      slug: generateSlug("Varsity Jacket"),
       image: "/product-images/clothing-apparel/versity-jacket.png",
       description:
         "Stylish varsity jackets designed for fashion brands, schools, and corporate wear.",
@@ -1633,8 +1637,8 @@ export const productsData = {
     },
 
     {
-      name: "Party Event Handband",
-      slug: generateSlug("Party Event Handband"),
+      name: "Party Event Wristband",
+      slug: generateSlug("Party Event Wristband"),
       image: "/product-images/events&souvenirs/party-event-handband.jpeg",
       description:
         "Custom event handbands ideal for parties, concerts, access control, festivals, and special events.",
@@ -2307,9 +2311,343 @@ export const productsData = {
   ],
 };
 
+
+
+
+type ProductSeoMeta = {
+  seoTitle: string;
+  seoDescription: string;
+};
+
+const PRODUCT_SEO_OVERRIDES: Record<string, ProductSeoMeta> = {
+  [generateSlug("Courier Bag")]: {
+    seoTitle: "Custom Courier Bags Printing Lagos | Branded Mailing Bags Nigeria",
+    seoDescription:
+      "Order high-quality branded courier bags and tamper-evident mailing flyers for your e-commerce business. Premium nylon printing and fast delivery across Lagos.",
+  },
+
+  [generateSlug("Magnetic Flip Box")]: {
+    seoTitle: "Premium Magnetic Flip Boxes Lagos | Luxury Gift Packaging Nigeria",
+    seoDescription:
+      "Elevate your brand with custom rigid magnetic gift boxes. Premium custom packaging for corporate gifts, jewelry, and luxury items. Secure delivery across Nigeria.",
+  },
+
+  [generateSlug("Premium Business Card")]: {
+    seoTitle: "Premium Business Cards Printing Lagos | Luxury Cards Nigeria",
+    seoDescription:
+      "Make a statement with luxury business cards. Matte, gloss, and spot UV premium card finishes. Fast production and doorstep delivery in Lagos and nationwide.",
+  },
+
+  [generateSlug("Thank You Business Card")]: {
+    seoTitle: "Custom Thank You Cards for E-commerce Lagos | PrintPalash",
+    seoDescription:
+      "Boost customer loyalty with custom-printed retail packaging inserts and thank you cards. High-quality cardstock printing delivered fast anywhere in Nigeria.",
+  },
+
+  [generateSlug("A4 Landscape Brochure")]: {
+    seoTitle: "Corporate A4 Landscape Brochure Printing Lagos | PrintPalash",
+    seoDescription:
+      "Present your business professionally with custom high-gloss A4 landscape brochures, product catalogs, and company profiles printed and shipped fast in Lagos.",
+  },
+
+  [generateSlug("Table Calendar")]: {
+    seoTitle: "Custom Desk & Table Calendars Lagos | Corporate Branding Nigeria",
+    seoDescription:
+      "Keep your brand in front of clients all year round with premium custom table calendars. Top-tier desktop printing solutions for businesses across Lagos.",
+  },
+
+  [generateSlug("Branded Towel6")]: {
+    seoTitle: "Custom Branded Towels Lagos | Promotional Corporate Gifts Nigeria",
+    seoDescription:
+      "High-quality custom printed or embroidered towels for gyms, hotels, events, and corporate gifts. Durable fabrics with rich colors. Fast shipping within Lagos.",
+  },
+
+  [generateSlug("Branded Towel")]: {
+    seoTitle: "Custom Branded Towels Lagos | Promotional Corporate Gifts Nigeria",
+    seoDescription:
+      "High-quality custom printed or embroidered towels for gyms, hotels, events, and corporate gifts. Durable fabrics with rich colors. Fast shipping within Lagos.",
+  },
+
+  [generateSlug("Branded Polo Shirt")]: {
+    seoTitle: "Corporate Branded Polo Shirts Lagos | Custom Uniforms Nigeria",
+    seoDescription:
+      "Premium custom embroidered and printed polo shirts for corporate branding, team uniforms, and promotional activations. Doorstep delivery across Lagos.",
+  },
+
+  [generateSlug("Round Neck Polo")]: {
+    seoTitle: "Wholesale Round Neck T-Shirt Printing Lagos | PrintPalash",
+    seoDescription:
+      "High-volume, cost-effective round neck t-shirt printing for events, political campaigns, and clothing brands in Nigeria. Clean prints and durable cotton.",
+  },
+
+  [generateSlug("Round Neck T-Shirt")]: {
+    seoTitle: "Wholesale Round Neck T-Shirt Printing Lagos | PrintPalash",
+    seoDescription:
+      "High-volume, cost-effective round neck t-shirt printing for events, political campaigns, and clothing brands in Nigeria. Clean prints and durable cotton.",
+  },
+
+  [generateSlug("Baseball Cap")]: {
+    seoTitle: "Custom Branded Baseball Caps Lagos | Promotional Hats Nigeria",
+    seoDescription:
+      "Design premium branded baseball caps and promotional hats for corporate teams, marketing campaigns, or personal brands. Clean embroidery and printing in Lagos.",
+  },
+
+  [generateSlug("A5 Flyer")]: {
+    seoTitle: "Custom A5 Flyer Printing Lagos | Promotional Handbills Nigeria",
+    seoDescription:
+      "Grow your business with premium A5 flyers and handbills. High-quality double-sided color printing on glossy art paper. Fast delivery anywhere in Lagos.",
+  },
+
+  [generateSlug("Acrylic Invitation")]: {
+    seoTitle: "Luxury Acrylic Invitation Cards Lagos | Premium Event Stationery",
+    seoDescription:
+      "Make your wedding or corporate event unforgettable with custom luxury acrylic invitation cards. Elegant laser-cut designs delivered fast across Nigeria.",
+  },
+
+  [generateSlug("A5 Notebook")]: {
+    seoTitle: "Custom Corporate Jotters Printing Lagos | Branded Notepads Nigeria",
+    seoDescription:
+      "Design custom souvenir jotters and corporate notebooks for events, AGMs, and brand promotions. High-quality binding and crisp cover printing in Lagos.",
+  },
+
+  [generateSlug("Big Base Rollup")]: {
+    seoTitle: "Roll-Up Banners & Flex Printing Lagos | Corporate Displays Nigeria",
+    seoDescription:
+      "High-visibility roll-up banners, X-stands, and large format outdoor flex banners. Durable materials and sharp color printing for Lagos corporate events.",
+  },
+
+  [generateSlug("Small Base Rollup")]: {
+    seoTitle: "Roll-Up Banners & Flex Printing Lagos | Corporate Displays Nigeria",
+    seoDescription:
+      "High-visibility roll-up banners, X-stands, and large format outdoor flex banners. Durable materials and sharp color printing for Lagos corporate events.",
+  },
+
+  [generateSlug("X-Banner")]: {
+    seoTitle: "Roll-Up Banners & Flex Printing Lagos | Corporate Displays Nigeria",
+    seoDescription:
+      "High-visibility roll-up banners, X-stands, and large format outdoor flex banners. Durable materials and sharp color printing for Lagos corporate events.",
+  },
+
+  [generateSlug("Tote Bag")]: {
+    seoTitle: "Custom Tote Bags Printing Lagos | Branded Shopping Bags Nigeria",
+    seoDescription:
+      "Premium branded tote bags for boutiques, e-commerce, events, and corporate gifts. High-quality fabric, clean finishing, and fast delivery across Nigeria.",
+  },
+
+  [generateSlug("A2 Paper Bag")]: {
+    seoTitle: "Custom Luxury Paper Bags Printing Lagos | Branded Shopping Bags",
+    seoDescription:
+      "Premium branded paper shopping bags for boutiques, e-commerce, and corporate gifts. High-quality cardstock, elegant handles, and fast delivery across Nigeria.",
+  },
+
+  [generateSlug("A3 Paper Bag")]: {
+    seoTitle: "Custom Luxury Paper Bags Printing Lagos | Branded Shopping Bags",
+    seoDescription:
+      "Premium branded paper shopping bags for boutiques, e-commerce, and corporate gifts. High-quality cardstock, elegant handles, and fast delivery across Nigeria.",
+  },
+
+  [generateSlug("A4 Paper Bag")]: {
+    seoTitle: "Custom Luxury Paper Bags Printing Lagos | Branded Shopping Bags",
+    seoDescription:
+      "Premium branded paper shopping bags for boutiques, e-commerce, and corporate gifts. High-quality cardstock, elegant handles, and fast delivery across Nigeria.",
+  },
+
+  [generateSlug("A5 Paper Bag")]: {
+    seoTitle: "Custom Luxury Paper Bags Printing Lagos | Branded Shopping Bags",
+    seoDescription:
+      "Premium branded paper shopping bags for boutiques, e-commerce, and corporate gifts. High-quality cardstock, elegant handles, and fast delivery across Nigeria.",
+  },
+
+  [generateSlug("Mailer Box")]: {
+    seoTitle: "Custom Corrugated Shipping Boxes Lagos | Branded Mailers Nigeria",
+    seoDescription:
+      "Heavy-duty custom printed corrugated boxes and mailers for e-commerce brands and logistics. Protect your products with secure, branded packaging in Lagos.",
+  },
+
+  [generateSlug("Sticker Print")]: {
+    seoTitle: "Custom Product Labels & Sticker Printing Lagos | PrintPalash",
+    seoDescription:
+      "High-quality waterproof product labels and die-cut stickers for cosmetics, food packaging, and branding. Sharp prints and durable adhesive delivered in Nigeria.",
+  },
+
+  [generateSlug("Big Magic Mug")]: {
+    seoTitle: "Custom Magic Mugs & Ceramic Mug Printing Lagos | PrintPalash",
+    seoDescription:
+      "Design custom printed ceramic mugs and heat-changing magic mugs for corporate branding, personal gifts, or event souvenirs. High-quality prints in Lagos.",
+  },
+
+  [generateSlug("Small Magic Mug")]: {
+    seoTitle: "Custom Magic Mugs & Ceramic Mug Printing Lagos | PrintPalash",
+    seoDescription:
+      "Design custom printed ceramic mugs and heat-changing magic mugs for corporate branding, personal gifts, or event souvenirs. High-quality prints in Lagos.",
+  },
+
+  [generateSlug("Big White Mug")]: {
+    seoTitle: "Custom Ceramic Mug Printing Lagos | Corporate Gifts Nigeria",
+    seoDescription:
+      "Create premium custom printed ceramic mugs for corporate branding, personal gifts, events, and promotional souvenirs. High-quality mug printing in Lagos.",
+  },
+
+  [generateSlug("Small White Mug")]: {
+    seoTitle: "Custom Ceramic Mug Printing Lagos | Corporate Gifts Nigeria",
+    seoDescription:
+      "Create premium custom printed ceramic mugs for corporate branding, personal gifts, events, and promotional souvenirs. High-quality mug printing in Lagos.",
+  },
+
+  [generateSlug("Metallic Keyring")]: {
+    seoTitle: "Custom Promotional Keychains Lagos | Acrylic & Metal Keyrings",
+    seoDescription:
+      "Affordable branded keychains for corporate promotions, weddings, and event souvenirs. Available in metal, acrylic, and leather. Bulk shipping across Nigeria.",
+  },
+
+  [generateSlug("Wooden Keyring")]: {
+    seoTitle: "Custom Promotional Keychains Lagos | Acrylic & Metal Keyrings",
+    seoDescription:
+      "Affordable branded keychains for corporate promotions, weddings, and event souvenirs. Available in metal, acrylic, and leather. Bulk shipping across Nigeria.",
+  },
+
+  [generateSlug("Custom Lanyard")]: {
+    seoTitle: "Corporate Branded Lanyards & ID Cards Lagos | PrintPalash",
+    seoDescription:
+      "High-quality custom printed lanyards and plastic ID card holders for corporate staff, exhibitions, and events. Professional printing solutions in Lagos.",
+  },
+
+  [generateSlug("ID Card")]: {
+    seoTitle: "Corporate ID Card Printing Lagos | Staff Cards Nigeria",
+    seoDescription:
+      "Print durable PVC ID cards for staff, schools, offices, conferences, and events. Sharp card printing, clean finishing, and fast delivery across Lagos.",
+  },
+
+  [generateSlug("Pop Stand Banner")]: {
+    seoTitle: "Exhibition Pop-Up Counter & Promoter Table Printing Lagos",
+    seoDescription:
+      "Sturdy, portable custom-branded promoter tables and pop-up counters for trade shows, mall activations, and corporate exhibitions in Lagos and Nigeria.",
+  },
+
+  [generateSlug("Wall Canvas")]: {
+    seoTitle: "Custom Wall Canvas & Acrylic Photo Prints Lagos | PrintPalash",
+    seoDescription:
+      "Transform your office or home with high-definition custom wall canvas and acrylic prints. Premium framing and luxury wall art solutions across Nigeria.",
+  },
+};
+
+const PRODUCT_CATEGORY_SEO_SUFFIX: Record<string, string> = {
+  Bags: "Printing Lagos | Branded Bags Nigeria",
+  "Banners & Large Format": "Printing Lagos | Large Format Displays",
+  "Box & Packaging": "Packaging Printing Lagos | Custom Boxes Nigeria",
+  Brochures: "Brochure Printing Lagos | Business Catalogs Nigeria",
+  "Business Cards": "Business Card Printing Lagos | Premium Cards Nigeria",
+  Calendars: "Calendar Printing Lagos | Corporate Branding Nigeria",
+  "Campaign Materials": "Campaign Printing Lagos | Promotional Materials",
+  "Caps & Hats": "Custom Caps Printing Lagos | Branded Hats Nigeria",
+  "Clothing & Apparel": "Printing Lagos | Custom Apparel Nigeria",
+  ClothesTag: "Clothing Tag Printing Lagos | Fashion Labels Nigeria",
+  Envelopes: "Envelope Printing Lagos | Branded Office Stationery",
+  "Events & Souvenirs": "Souvenir Printing Lagos | Corporate Gifts Nigeria",
+  "Event Tag": "Event Tag Printing Lagos | Access Cards Nigeria",
+  "Flyers & Posters": "Flyer Printing Lagos | Posters and Handbills Nigeria",
+  Invitations: "Invitation Card Printing Lagos | Event Stationery Nigeria",
+  "Office Stationery": "Office Stationery Printing Lagos | Corporate Branding",
+};
+
+const normalizeMetaText = (text: string): string => {
+  return text.replace(/\s+/g, " ").trim();
+};
+
+const buildDefaultSeoTitle = (product: Product): string => {
+  const suffix =
+    PRODUCT_CATEGORY_SEO_SUFFIX[product.category] ||
+    "Printing Lagos | PrintPalash Nigeria";
+
+  return normalizeMetaText(`${product.name} ${suffix}`);
+};
+
+const buildDefaultSeoDescription = (product: Product): string => {
+  const categoryText = product.category.toLowerCase();
+
+  if (product.category === "Bags") {
+    return normalizeMetaText(
+      `Order custom ${product.name.toLowerCase()} from PrintPalash for retail packaging, corporate branding, events, and e-commerce delivery. Premium bag printing in Lagos and across Nigeria.`
+    );
+  }
+
+  if (product.category === "Box & Packaging") {
+    return normalizeMetaText(
+      `Order premium ${product.name.toLowerCase()} for product packaging, gifting, e-commerce, food brands, and corporate presentation. Custom packaging printing in Lagos and Nigeria.`
+    );
+  }
+
+  if (product.category === "Clothing & Apparel" || product.category === "Caps & Hats") {
+    return normalizeMetaText(
+      `Order custom ${product.name.toLowerCase()} for corporate branding, events, fashion brands, campaigns, and promotional use. Quality apparel printing in Lagos and Nigeria.`
+    );
+  }
+
+  if (product.category === "Flyers & Posters") {
+    return normalizeMetaText(
+      `Promote your business with premium ${product.name.toLowerCase()} from PrintPalash. Sharp full-color flyer and poster printing with fast delivery across Lagos and Nigeria.`
+    );
+  }
+
+  if (product.category === "Business Cards") {
+    return normalizeMetaText(
+      `Make a strong first impression with premium ${product.name.toLowerCase()} from PrintPalash. Luxury business card printing with professional finishing in Lagos.`
+    );
+  }
+
+  if (product.category === "Banners & Large Format") {
+    return normalizeMetaText(
+      `Create strong visibility with custom ${product.name.toLowerCase()} from PrintPalash. Large format printing for events, exhibitions, stores, and corporate branding in Lagos.`
+    );
+  }
+
+  if (product.category === "Events & Souvenirs") {
+    return normalizeMetaText(
+      `Order branded ${product.name.toLowerCase()} for corporate gifts, events, promotions, schools, churches, and souvenirs. Quality custom printing in Lagos and Nigeria.`
+    );
+  }
+
+  if (product.category === "Office Stationery") {
+    return normalizeMetaText(
+      `Print custom ${product.name.toLowerCase()} for offices, organizations, schools, events, and corporate branding. Professional stationery printing in Lagos and Nigeria.`
+    );
+  }
+
+  return normalizeMetaText(
+    `Order premium ${product.name.toLowerCase()} from PrintPalash. Professional ${categoryText} printing and branding services with fast delivery in Lagos and across Nigeria.`
+  );
+};
+
+export const getProductSeoMeta = (product: Product): ProductSeoMeta => {
+  const override = PRODUCT_SEO_OVERRIDES[product.slug];
+
+  if (override) return override;
+
+  return {
+    seoTitle: product.seoTitle || buildDefaultSeoTitle(product),
+    seoDescription: product.seoDescription || buildDefaultSeoDescription(product),
+  };
+};
+
+const withSeoMeta = (product: Product): Product => {
+  const seo = getProductSeoMeta(product);
+
+  return {
+    ...product,
+    seoTitle: seo.seoTitle,
+    seoDescription: seo.seoDescription,
+  };
+};
+
 // Helper function to get all products as a flat array
 export const getAllProducts = (): Product[] => {
-  return Object.values(productsData).flat();
+  const products = Object.values(productsData).flat() as Product[];
+
+  const uniqueProducts = Array.from(
+    new Map(products.map((product) => [product.slug, product])).values()
+  );
+
+  return uniqueProducts.map(withSeoMeta);
 };
 
 // Helper function to find a product by slug
@@ -2320,7 +2658,14 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 
 // Helper function to get products by category
 export const getProductsByCategory = (category: string): Product[] => {
-  return productsData[category as keyof typeof productsData] || [];
+  const products =
+    (productsData[category as keyof typeof productsData] as Product[]) || [];
+
+  const uniqueProducts = Array.from(
+    new Map(products.map((product) => [product.slug, product])).values()
+  );
+
+  return uniqueProducts.map(withSeoMeta);
 };
 
 export const getPopularProducts = (): Product[] => {
