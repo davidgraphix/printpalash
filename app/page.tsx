@@ -4,13 +4,15 @@ import PopularProducts from "@/components/Products/PopularProducts";
 import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Footer from "@/components/Footer/Footer";
+import HomeSEOSection from "@/components/Home/HomeSEOsection";
 
 export default function HomePage() {
   return (
     <div>
       <Hero />
-      <Features />
       <PopularProducts />
+      <HomeSEOSection />
+      <Features />
       <TrustedBrands />
       <Testimonials />
       <Footer />

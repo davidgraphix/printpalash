@@ -301,15 +301,19 @@ export default function Hero() {
               >
                 <div className="hidden grid-cols-2 items-center gap-10 lg:grid">
                   <div>
-                    <h1 className="font-biorhyme text-[96px] font-extrabold leading-[0.95] tracking-[0%]">
-                      <span className="text-7xl text-red-600">
-                        {s.titleRed}
-                      </span>
-                      <br />
-                      <span className="text-6xl text-black">
-                        {s.titleBlack}
-                      </span>
-                    </h1>
+                    {i === 0 ? (
+                      <h1 className="font-biorhyme font-extrabold text-[96px] leading-[0.95] tracking-[0%]">
+                        <span className="text-red-600 text-7xl">{s.titleRed}</span>
+                        <br />
+                        <span className="text-black text-6xl">{s.titleBlack}</span>
+                      </h1>
+                    ) : (
+                      <h2 className="font-biorhyme font-extrabold text-[96px] leading-[0.95] tracking-[0%]">
+                        <span className="text-red-600 text-7xl">{s.titleRed}</span>
+                        <br />
+                        <span className="text-black text-6xl">{s.titleBlack}</span>
+                      </h2>
+                    )}
 
                     <p className="mt-3 text-base text-gray-700">
                       {s.subtitle}
@@ -337,14 +341,17 @@ export default function Hero() {
 
                 <div className="lg:hidden">
                   <div className="mt-1">
-                    <h2 className="font-biorhyme text-[42px] font-extrabold leading-[1]">
-                      <span className="text-4xl text-red-600">
-                        {s.titleRed}
-                      </span>{" "} <br />
-                      <span className="text-3xl text-black">
-                        {s.titleBlack}
-                      </span>
-                    </h2>
+                    {i === 0 ? (
+                      <h1 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
+                        <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
+                        <span className="text-black text-3xl">{s.titleBlack}</span>
+                      </h1>
+                    ) : (
+                      <h2 className="font-biorhyme font-extrabold text-[42px] leading-[1]">
+                        <span className="text-red-600 text-4xl">{s.titleRed}</span>{" "}
+                        <span className="text-black text-3xl">{s.titleBlack}</span>
+                      </h2>
+                    )}
 
                     <p className="mt-2 text-sm text-gray-700">{s.subtitle}</p>
 

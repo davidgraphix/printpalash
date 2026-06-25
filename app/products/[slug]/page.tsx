@@ -31,30 +31,25 @@ export async function generateMetadata({
   const productImage = product.images?.[0] || product.image;
 
   return {
-    title: `${product.name} | Print Palash Studios`,
-    description: product.description,
+    title: `${product.name} Printing in Lagos, Nigeria`,
+    description: `Order premium ${product.name.toLowerCase()} from PrintPalash. ${product.description} Fast delivery in Lagos and across Nigeria.`,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${product.name} | Print Palash Studios`,
+      title: `${product.name} Printing in Lagos, Nigeria | PrintPalash`,
       description: product.description,
       url,
+      siteName: "PrintPalash",
       type: "website",
       images: [
         {
           url: productImage,
           width: 1200,
           height: 630,
-          alt: product.name,
+          alt: `${product.name} printing in Lagos by PrintPalash`,
         },
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} | Print Palash Studios`,
-      description: product.description,
-      images: [productImage],
     },
   };
 }
