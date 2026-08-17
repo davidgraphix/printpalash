@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { SERVICES, type ServiceCategory } from "@/lib/services";
+import { CATEGORIES } from "@/lib/catalog/categories";
+import { whatsappLink } from "@/lib/site";
 import { Search, ArrowRight, BadgeCheck, Zap, Truck } from "lucide-react";
 
 const CATEGORY_ORDER: ServiceCategory[] = [
@@ -44,19 +46,19 @@ export default function ServicesPage() {
         <div className="bg-white">
             {/* Hero */}
             <section className="border-b bg-gradient-to-b from-pink-50 to-white">
-                <div className="container mx-auto px-4 py-10 md:py-14">
+                <div className="container mx-auto px-4 py-8 md:py-10">
                     <div className="max-w-3xl">
                         <p className="text-sm font-semibold text-red-600">Print Palash Studios</p>
-                        <h1 className="mt-2 font-biorhyme text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                        <h1 className="mt-2 font-heading text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
                             Printing Services in Lagos — built for brands that want to look serious.
                         </h1>
-                        <p className="mt-4 text-gray-700 md:text-lg">
+                        <p className="mt-2.5 text-gray-700 md:text-lg">
                             Business cards, flyers, brochures, banners, stickers, labels, T-shirts, packaging and more — premium quality,
                             fast turnaround, reliable delivery.
                         </p>
 
                         {/* Search */}
-                        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
                             <div className="relative w-full sm:max-w-xl">
                                 <input
                                     value={query}
@@ -77,7 +79,7 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Trust strip */}
-                    <div className="mt-10 grid gap-4 md:grid-cols-3">
+                    <div className="mt-6 grid gap-4 md:grid-cols-3">
                         {TRUST_ITEMS.map((t) => (
                             <div key={t.title} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
                                 <div className="flex items-start gap-3">
@@ -96,7 +98,7 @@ export default function ServicesPage() {
             </section>
 
             {/* Body */}
-            <section className="container mx-auto px-4 py-10 md:py-14">
+            <section className="container mx-auto px-4 py-8 md:py-10">
                 {/* Categories */}
                 <div className="flex flex-wrap gap-2">
                     <button
@@ -156,9 +158,9 @@ export default function ServicesPage() {
                                 </span>
                             </div>
 
-                            <p className="mt-3 text-sm text-gray-600 leading-relaxed">{s.description}</p>
+                            <p className="mt-2 text-sm text-gray-600 leading-relaxed">{s.description}</p>
 
-                            <ul className="mt-4 grid gap-2">
+                            <ul className="mt-3 grid gap-2">
                                 {s.highlights.slice(0, 4).map((h) => (
                                     <li key={h} className="text-sm text-gray-700 flex items-center gap-2">
                                         <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
@@ -167,7 +169,7 @@ export default function ServicesPage() {
                                 ))}
                             </ul>
 
-                            <div className="mt-6 inline-flex items-center text-sm font-semibold text-gray-900">
+                            <div className="mt-4 inline-flex items-center text-sm font-semibold text-gray-900">
                                 View service
                                 <ArrowRight className="ml-2 h-4 w-4 transition group-hover:translate-x-1" />
                             </div>
@@ -175,11 +177,30 @@ export default function ServicesPage() {
                     ))}
                 </div>
 
+                {/* Route readers (and crawlers) from services into the catalogue. */}
+                <nav aria-label="Product categories" className="mt-8 border-t pt-6">
+                    <h2 className="text-sm font-extrabold uppercase tracking-wide text-gray-900">
+                        Shop products by category
+                    </h2>
+                    <ul className="mt-2.5 flex flex-wrap gap-2">
+                        {CATEGORIES.map((category) => (
+                            <li key={category.slug}>
+                                <Link
+                                    href={`/products/category/${category.slug}`}
+                                    className="inline-flex rounded-full border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition hover:border-red-300 hover:text-red-600"
+                                >
+                                    {category.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+
                 {/* CTA block */}
-                <div className="mt-12 rounded-2xl bg-gray-900 px-6 py-10 text-white md:px-10">
+                <div className="mt-8 rounded-2xl bg-gray-900 px-6 py-8 text-white md:px-10">
                     <div className="grid gap-6 md:grid-cols-2 md:items-center">
                         <div>
-                            <h3 className="font-biorhyme text-2xl md:text-3xl font-extrabold">
+                            <h3 className="font-heading text-2xl md:text-3xl font-extrabold">
                                 Ready to print? Let’s get your quote.
                             </h3>
                             <p className="mt-2 text-white/80">
@@ -193,12 +214,16 @@ export default function ServicesPage() {
                             >
                                 Get a Quote
                             </Link>
-                            <Link
-                                href="https://wa.me/2347035017359"
+                            <a
+                                href={whatsappLink(
+                                    "Hello PrintPalash, I would like to talk about a printing job."
+                                )}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/15"
                             >
                                 WhatsApp Us
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

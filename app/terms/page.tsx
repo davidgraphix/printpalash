@@ -1,16 +1,30 @@
+import type { Metadata } from "next";
+
 import Footer from "@/components/Footer/Footer";
 import TermsAndConditions from "@/components/Terms-and-Conditions/TermsAndConditionSection";
 import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
-import React from "react";
+import JsonLd from "@/components/SEO/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-const page = () => {
+export const metadata: Metadata = pageMetadata({
+  title: "Terms & Conditions",
+  description:
+    "The terms that apply to print orders placed with PrintPalash in Lagos, covering artwork approval, production, payment and delivery.",
+  path: "/terms",
+});
+
+export default function TermsPage() {
   return (
-    <div>
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Terms & Conditions", path: "/terms" },
+        ])}
+      />
       <TermsAndConditions />
       <TrustedBrands />
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default page;
+}

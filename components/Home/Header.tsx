@@ -11,7 +11,7 @@ export default function Header() {
         <div className="lg:hidden flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-lg font-bold text-black">
+            <div className="text-lg font-bold text-black">
               <Link href="/" aria-label="Go to homepage">
                 <Image
                   src="/assests/printpalash-logo.png"
@@ -21,7 +21,7 @@ export default function Header() {
                   className="w-32 sm:w-40 md:w-52 lg:w-72 h-auto object-contain"
                 />
               </Link>
-            </h1>
+            </div>
           </div>
 
           {/* Center - Need Help Call */}
@@ -72,7 +72,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-black">
+            <div className="text-2xl font-bold text-black">
               <Link href="/" aria-label="Go to homepage">
                 <Image
                   src="/assests/printpalash-logo.png"
@@ -82,7 +82,7 @@ export default function Header() {
                   className="w-50 h-auto object-contain"
                 />
               </Link>
-            </h1>
+            </div>
           </div>
 
           {/* Center Content */}

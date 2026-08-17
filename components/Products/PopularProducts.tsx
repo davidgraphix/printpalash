@@ -1,108 +1,59 @@
-import { ImageIcon, ShoppingCart, Star } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { getPopularProducts, getAllProducts } from "@/lib/products-data";
-
-function ProductStars({ rating = 4.8 }: { rating?: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Star
-          key={index}
-          className={`h-4 w-4 ${index < Math.round(rating)
-            ? "fill-red-600 text-red-600"
-            : "text-red-300"
-            }`}
-        />
-      ))}
-    </div>
-  );
-}
+import { listCategoriesSync, listFeaturedProductsSync } from "@/lib/catalog/repository";
+import ProductCard from "./ProductCard";
 
 export default function PopularProducts() {
-  const popularProducts = getPopularProducts();
+  const products = listFeaturedProductsSync(12);
+  const categories = listCategoriesSync();
 
-  const displayProducts =
-    popularProducts.length > 0 ? popularProducts : getAllProducts().slice(0, 12);
+  if (products.length === 0) return null;
 
   return (
-    <section className="bg-white py-12 lg:py-16">
+    <section className="bg-white py-10 lg:py-14">
       <div className="container mx-auto px-4">
-        <div className="mb-8 flex items-start justify-between gap-4 lg:mb-12">
+        <div className="mb-5 flex items-end justify-between gap-4">
           <div className="min-w-0">
-            <h2 className="text-xl font-black text-gray-900 sm:text-2xl lg:text-3xl">
-              Popular Products
+            <h2 className="text-xl font-extrabold text-gray-900 sm:text-2xl lg:text-3xl">
+              Popular products
             </h2>
-
-            <p className="mt-2 hidden text-sm text-gray-500 sm:block">
-              Top printing products customers order often.
+            <p className="mt-1 text-sm text-gray-600">
+              The printing jobs Lagos businesses order from us most often.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="shrink-0 whitespace-nowrap text-sm font-bold text-red-600 hover:text-red-700 sm:text-base lg:text-xl"
+            className="shrink-0 whitespace-nowrap text-sm font-bold text-red-600 hover:text-red-700"
           >
-            See All Product
+            See all products &rarr;
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {displayProducts.map((product) => {
-            const productImage =
-              product.images?.[0] || product.image || "/placeholder.svg";
-
-            return (
-              <article
-                key={product.slug}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <Link href={`/products/${product.slug}`} className="block">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                    <Image
-                      src={productImage}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-
-                    {/* {product.images?.length > 1 && (
-                      <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
-                        <ImageIcon className="h-3.5 w-3.5" />
-                        {product.images.length}
-                      </div>
-                    )} */}
-                  </div>
-                </Link>
-
-                <div className="flex flex-1 flex-col p-4">
-                  <ProductStars rating={product.rating || 4.8} />
-
-                  <Link href={`/products/${product.slug}`}>
-                    <h3 className="mt-3 line-clamp-2 text-sm font-black text-gray-900 transition group-hover:text-red-600 lg:text-base">
-                      {product.name}
-                    </h3>
-                  </Link>
-
-                  <p className="mt-3 font-black text-red-600">
-                    Starting at ₦{product.priceNumeric.toLocaleString()}
-                  </p>
-
-                  <Link href={`/products/${product.slug}`} className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-50 px-4 py-2 text-sm font-black text-red-600 transition hover:bg-red-600 hover:text-white"
-                    >
-                      <ShoppingCart className="h-4 w-4" />
-                      Place Order
-                    </button>
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard key={product.slug} product={product} />
+          ))}
         </div>
+
+        {/* Category links give the homepage a route into every part of the
+            catalogue, for readers and for crawlers. */}
+        <nav aria-label="Product categories" className="mt-6">
+          <h3 className="text-sm font-bold uppercase tracking-wide text-gray-500">
+            Shop by category
+          </h3>
+          <ul className="mt-2.5 flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <li key={category.slug}>
+                <Link
+                  href={`/products/category/${category.slug}`}
+                  className="inline-flex rounded-full border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition hover:border-red-300 hover:text-red-600"
+                >
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { Heart, ShoppingCart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -62,25 +62,13 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
-            <button
-              className="text-white hover:text-red-200 relative"
-              aria-label="Wishlist"
-            >
-              <Heart className="w-5 h-5" />
-            </button>
-
-            <button
-              className="text-white hover:text-red-200 relative"
-              aria-label="Cart"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 bg-white text-red-600 text-xs rounded-full w-4 h-4 flex items-center justify-center font-bold">
-                0
-              </span>
-            </button>
-          </div>
+          {/* Direct route to the highest-intent page from every screen. */}
+          <Link
+            href="/get-a-quote"
+            className="rounded bg-white px-3 py-1.5 text-xs font-bold text-red-600 transition hover:bg-red-50"
+          >
+            Get a Quote
+          </Link>
         </div>
 
         {/* Mobile Menu Dropdown */}

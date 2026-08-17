@@ -1,29 +1,24 @@
 "use client";
 
 import { FaWhatsapp } from "react-icons/fa";
+import { whatsappLink } from "@/lib/site";
+
+const CHAT_LINK = whatsappLink(
+  "Hello PrintPalash, I am interested in your printing services. Please tell me more about your products and pricing."
+);
 
 export default function WhatsAppButton() {
-  const openWhatsApp = () => {
-    const phoneNumber = "2347035017359";
-    const message =
-      "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, "_blank");
-  };
-
   return (
-    <button
-      onClick={openWhatsApp}
-      className="fixed bottom-5 right-5 flex items-center gap-2 px-3 py-2 rounded-full
-                 bg-green-500 text-white font-medium shadow-lg
-                 animate-bounce hover:bg-green-600 transition-all z-50
-                 text-sm sm:text-base sm:px-5 sm:py-3"
+    <a
+      href={CHAT_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with PrintPalash on WhatsApp"
+      className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700 focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 sm:px-5 sm:py-3 sm:text-base"
     >
-      <FaWhatsapp className="text-xl sm:text-2xl" />
+      <FaWhatsapp aria-hidden className="text-xl sm:text-2xl" />
       <span className="hidden sm:inline">Chat with us</span>
-      <span className="inline sm:hidden">Chat</span>
-    </button>
+      <span className="sm:hidden">Chat</span>
+    </a>
   );
 }

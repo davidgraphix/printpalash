@@ -1,58 +1,153 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
+import Footer from "@/components/Footer/Footer";
+import JsonLd from "@/components/SEO/JsonLd";
+import { PHONE_DISPLAY, PHONE_E164, SITE, whatsappLink } from "@/lib/site";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Us — Printing Company in Shomolu, Lagos",
+  description: `Reach PrintPalash at ${SITE.address.streetAddress}, ${SITE.address.addressLocality}, Lagos. Call ${PHONE_DISPLAY} or message us on WhatsApp. Open ${SITE.openingHours.display}.`,
+  path: "/contact",
+  keywords: [
+    "printing company Lagos contact",
+    "printer in Shomolu Lagos",
+    "PrintPalash address",
+  ],
+});
+
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">Contact Us</h1>
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-                <p className="text-gray-600 mb-6">
-                  We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      <div className="bg-gray-50">
+        <div className="container mx-auto px-4 py-10 lg:py-14">
+          <div className="mx-auto max-w-4xl">
+            <h1 className="text-3xl font-extrabold text-gray-900 lg:text-4xl">
+              Contact PrintPalash
+            </h1>
+            <p className="mt-2 max-w-2xl text-gray-600">
+              Talk to us about a print job, get a quote, or come to the shop.
+              WhatsApp is the fastest way to reach the team.
+            </p>
+
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              <div className="space-y-5">
+                <div className="flex gap-3">
+                  <MapPin
+                    aria-hidden
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600"
+                  />
+                  <div>
+                    <h2 className="font-bold text-gray-900">Address</h2>
+                    <address className="mt-0.5 not-italic leading-relaxed text-gray-600">
+                      {SITE.address.streetAddress}
+                      <br />
+                      {SITE.address.addressLocality},{" "}
+                      {SITE.address.addressRegion}, Nigeria
+                    </address>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <Phone
+                    aria-hidden
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600"
+                  />
+                  <div>
+                    <h2 className="font-bold text-gray-900">Phone</h2>
+                    <a
+                      href={`tel:${PHONE_E164}`}
+                      className="mt-0.5 block text-gray-600 hover:text-red-600"
+                    >
+                      {PHONE_DISPLAY}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <Mail
+                    aria-hidden
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600"
+                  />
+                  <div>
+                    <h2 className="font-bold text-gray-900">Email</h2>
+                    <a
+                      href={`mailto:${SITE.email}`}
+                      className="mt-0.5 block break-all text-gray-600 hover:text-red-600"
+                    >
+                      {SITE.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <Clock
+                    aria-hidden
+                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600"
+                  />
+                  <div>
+                    <h2 className="font-bold text-gray-900">Opening hours</h2>
+                    <p className="mt-0.5 text-gray-600">
+                      {SITE.openingHours.display}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-gray-200 bg-white p-6">
+                <h2 className="text-lg font-extrabold text-gray-900">
+                  Send us your job
+                </h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-600">
+                  Tell us what you are printing, the quantity and your deadline.
+                  Send artwork if you have it — if you do not, our team can
+                  design it for you.
                 </p>
+
+                <div className="mt-5 space-y-2.5">
+                  <a
+                    href={whatsappLink(
+                      "Hello PrintPalash, I would like to talk about a printing job."
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-700"
+                  >
+                    <FaWhatsapp aria-hidden className="text-lg" />
+                    Message us on WhatsApp
+                  </a>
+
+                  <Link
+                    href="/get-a-quote"
+                    className="flex w-full items-center justify-center rounded-lg bg-red-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-red-700"
+                  >
+                    Request a quote
+                  </Link>
+
+                  <Link
+                    href="/products"
+                    className="flex w-full items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+                  >
+                    Browse products and prices
+                  </Link>
+                </div>
               </div>
-
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900">Address</h3>
-                  <p className="text-gray-600">
-                    29 Shipeolu street, elediye
-                    <br />
-                    roundabout, onipanu, shomolu,
-                    <br />
-                    lagos, nigeria.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+234 703 901 7359</p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                  <p className="text-gray-600">Monday to Saturday: 9:00AM - 6:00PM</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form Placeholder */}
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Send us a Message</h3>
-              <p className="text-gray-600">
-                For the best experience, please use our WhatsApp contact or visit our{" "}
-                <a href="/get-a-quote" className="text-red-600 hover:text-red-700 font-medium">
-                  Get A Quote
-                </a>{" "}
-                page to discuss your printing needs directly with our team.
-              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+
+      <Footer />
+    </>
+  );
 }

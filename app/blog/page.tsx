@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-import BlogSection from "@/components/Blog/BlogSection";
-import Features from "@/components/Features/Features";
-import Footer from "@/components/Footer/Footer";
 
-export const metadata: Metadata = {
-  title:
-    "Best Printing Company in Lagos for Packaging & Branding | PrintPalash",
+import BlogSection from "@/components/Blog/BlogSection";
+import JsonLd from "@/components/SEO/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "How to Choose a Printing Company in Lagos",
   description:
-    "Learn how to choose the best printing company in Lagos for packaging, branding, flyers, business cards, paper bags, T-shirts, souvenirs, and corporate printing.",
-  alternates: {
-    canonical: "https://printpalash.com/blog",
-  },
-  openGraph: {
-    title:
-      "Best Printing Company in Lagos for Packaging & Branding | PrintPalash",
-    description:
-      "A complete guide for businesses choosing a professional printing company in Lagos for packaging, branding, business printing, flyers, paper bags, and corporate materials.",
-    url: "https://printpalash.com/blog",
-    siteName: "PrintPalash",
-    type: "article",
-  },
-};
+    "A practical guide to choosing a printing company in Lagos for packaging, branding, flyers, business cards, paper bags and corporate materials — what to check before you commit to a print run.",
+  path: "/blog",
+  type: "article",
+  keywords: [
+    "best printing company in Lagos",
+    "how to choose a printer Lagos",
+    "printing guide Nigeria",
+  ],
+});
 
 export default function BlogPage() {
   return (
-    <div>
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ])}
+      />
       <BlogSection />
-    </div>
+    </>
   );
 }

@@ -1,468 +1,225 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import {
-  ArrowUpRight,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ImageIcon,
-  Search,
-  ShieldCheck,
-  ShoppingCart,
-  Star,
-  Truck,
-  X,
-} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  getAllProducts,
-  getProductsByCategory,
-  type Product,
-} from "@/lib/products-data";
-import Footer from "../Footer/Footer";
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  MessageCircle,
+  Package,
+  Ruler,
+  Sparkles,
+  Truck,
+} from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
+import type { Product } from "@/lib/catalog/types";
+import { formatPrice, resolvePrice } from "@/lib/catalog/pricing";
+import { buildOrderLink, buildQuoteLink } from "@/lib/catalog/order";
+import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/site";
+import ProductCard from "./ProductCard";
 
 interface ProductDetailProps {
   product: Product;
+  categoryName: string;
+  categorySlug: string;
+  relatedProducts: Product[];
 }
 
-function ProductStars({ rating = 4.8 }: { rating?: number }) {
-  return (
-    <div
-      className="flex items-center gap-1"
-      aria-label={`${rating} star rating`}
-    >
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Star
-          key={index}
-          className={`h-4 w-4 ${index < Math.round(rating)
-            ? "fill-red-600 text-red-600"
-            : "text-red-300"
-            }`}
-        />
-      ))}
-      <span className="ml-2 text-sm font-medium text-gray-600">{rating}</span>
-    </div>
-  );
+/** Quantity presets scale with how the product is actually sold. */
+function quantityChoices(product: Product): number[] {
+  const batch = product.startingPrice?.quantity ?? 1;
+  if (batch >= 1000) return [1000, 2000, 5000, 10000];
+  if (batch >= 100) return [100, 200, 500, 1000];
+  if (batch >= 50) return [50, 100, 200, 500];
+  if (batch >= 10) return [10, 20, 50, 100];
+  return [1, 5, 10, 25, 50];
 }
 
-function RelatedProductCard({ product }: { product: Product }) {
-  const productImage =
-    product.images?.[0] || product.image || "/placeholder.svg";
+export default function ProductDetail({
+  product,
+  categoryName,
+  categorySlug,
+  relatedProducts,
+}: ProductDetailProps) {
+  const images = product.gallery.length > 0 ? product.gallery : [product.image];
 
-  const imageCount = product.images?.length || 1;
-
-  return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-          <Image
-            src={productImage}
-            alt={product.name}
-            fill
-            sizes="(max-width: 768px) 50vw, 25vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-
-          {imageCount > 1 && (
-            <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
-              <ImageIcon className="h-3.5 w-3.5" />
-              {imageCount}
-            </div>
-          )}
-        </div>
-      </Link>
-
-      <div className="flex flex-1 flex-col p-4">
-        <ProductStars rating={product.rating || 4.8} />
-
-        <Link href={`/products/${product.slug}`}>
-          <h3 className="mt-3 line-clamp-2 text-sm font-black leading-snug text-gray-900 transition group-hover:text-red-600 lg:text-base">
-            {product.name}
-          </h3>
-        </Link>
-
-        <p className="mt-3 font-black text-red-600">
-          Starting at ₦{product.priceNumeric.toLocaleString()}
-        </p>
-
-        <Link href={`/products/${product.slug}`} className="mt-4">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-50 px-4 py-2 text-sm font-black text-red-600 transition hover:bg-red-600 hover:text-white"
-          >
-            <ShoppingCart className="h-4 w-4" />
-            Place Order
-          </button>
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-export default function ProductDetail({ product }: ProductDetailProps) {
-  const [selectedQuantity, setSelectedQuantity] = useState("100");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const [selectedSpecs] = useState({
-    paperThickness: "thick-300gsm",
-    lamination: "matte-lamination",
-    edges: "square-edges",
-    shipping: "standard",
-  });
-
-  const router = useRouter();
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
-
-  const allProducts = useMemo(() => getAllProducts(), []);
-
-  const filteredProducts = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-
-    if (!term) return [];
-
-    return allProducts
-      .filter((item) => {
-        return (
-          item.name.toLowerCase().includes(term) ||
-          item.category.toLowerCase().includes(term) ||
-          item.description.toLowerCase().includes(term) ||
-          item.keyFeatures.toLowerCase().includes(term)
-        );
-      })
-      .slice(0, 6);
-  }, [allProducts, searchTerm]);
-
-  const showSearchResults = isSearchFocused && searchTerm.trim().length > 0;
-
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const firstProduct = filteredProducts[0];
-
-    if (firstProduct) {
-      router.push(`/products/${firstProduct.slug}`);
-      setSearchTerm("");
-      setIsSearchFocused(false);
-      return;
-    }
-
-    router.push(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
-  };
-
-  const clearSearch = () => {
-    setSearchTerm("");
-  };
-
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(
+    () =>
+      Object.fromEntries(
+        product.optionGroups.map((group) => [group.id, group.options[0]?.id])
+      ) as Record<string, string>
+  );
+  const [quantity, setQuantity] = useState(
+    () => quantityChoices(product)[0] ?? 1
+  );
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [notes, setNotes] = useState("");
 
-  const productImages = useMemo(() => {
-    if (product.images && product.images.length > 0) return product.images;
-    if (product.image) return [product.image];
-    return ["/placeholder.svg"];
-  }, [product.image, product.images]);
+  const activeImage = images[activeImageIndex] ?? images[0];
+  const activePrice = useMemo(
+    () => resolvePrice(product, selectedOptions),
+    [product, selectedOptions]
+  );
 
-  const activeImage = productImages[activeImageIndex] || productImages[0];
+  const orderLink = useMemo(
+    () =>
+      buildOrderLink({
+        product,
+        customerName,
+        customerPhone,
+        quantity,
+        selectedOptions,
+        notes,
+      }),
+    [product, customerName, customerPhone, quantity, selectedOptions, notes]
+  );
 
-  const quantityNumber = Number(selectedQuantity);
-  const unitPrice = product.priceNumeric || 0;
-  const totalPrice = unitPrice * quantityNumber;
+  const quoteLink = useMemo(() => buildQuoteLink(product), [product]);
 
-  const relatedProducts = useMemo(() => {
-    const sameCategoryProducts = getProductsByCategory(product.category).filter(
-      (item) => item.slug !== product.slug
+  /**
+   * Best-effort copy of the enquiry to the shop's inbox. The WhatsApp link is
+   * a plain anchor and opens regardless — this fires alongside it and is never
+   * allowed to block or fail the customer's click.
+   */
+  const notifyShop = () => {
+    const optionLabels = Object.fromEntries(
+      product.optionGroups.map((group) => [
+        group.label,
+        group.options.find((o) => o.id === selectedOptions[group.id])?.label ??
+          "",
+      ])
     );
 
-    if (sameCategoryProducts.length >= 4) {
-      return sameCategoryProducts.slice(0, 4);
-    }
-
-    const fallbackProducts = getAllProducts().filter(
-      (item) =>
-        item.slug !== product.slug &&
-        !sameCategoryProducts.some((related) => related.slug === item.slug)
-    );
-
-    return [...sameCategoryProducts, ...fallbackProducts].slice(0, 4);
-  }, [product.category, product.slug]);
-
-  const goToPreviousImage = () => {
-    setActiveImageIndex((prev) =>
-      prev === 0 ? productImages.length - 1 : prev - 1
-    );
+    void fetch("/api/send-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        productName: product.name,
+        productSlug: `/products/${product.slug}`,
+        quantity,
+        priceLabel: activePrice ? formatPrice(activePrice) : "Quote on request",
+        options: optionLabels,
+        customer: { name: customerName, phone: customerPhone },
+        notes,
+      }),
+    }).catch(() => {
+      /* The order still reaches the team over WhatsApp. */
+    });
   };
 
-  const goToNextImage = () => {
-    setActiveImageIndex((prev) =>
-      prev === productImages.length - 1 ? 0 : prev + 1
-    );
-  };
+  const specRows = [
+    { icon: Package, label: "Material", value: product.specs.material },
+    { icon: Ruler, label: "Size", value: product.specs.size },
+    { icon: Sparkles, label: "Finishing", value: product.specs.finishing },
+    { icon: FileText, label: "Pages", value: product.specs.pages },
+    { icon: Sparkles, label: "Branding", value: product.specs.branding },
+    { icon: FileText, label: "Design", value: product.specs.design },
+  ].filter((row) => Boolean(row.value));
 
-  const handleOrder = async () => {
-    setError(null);
-
-    if (!customerName.trim() || !customerPhone.trim()) {
-      setError("Please fill in your name and phone number.");
-      return;
-    }
-
-    setIsLoading(true);
-
-    const orderPayload = {
-      productName: product.name,
-      productId: product.slug,
-      quantity: quantityNumber,
-      unitPrice,
-      totalPrice,
-      tax: product.tax,
-      specs: selectedSpecs,
-      customer: {
-        name: customerName,
-        phone: customerPhone,
-      },
-    };
-
-    try {
-      const resp = await fetch("/api/send-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderPayload),
-      });
-
-      const data = await resp.json();
-
-      if (!resp.ok) {
-        throw new Error(data?.message || "Failed to place order");
-      }
-
-      const whatsAppNumber =
-        process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2347035017359";
-
-      const specsText = Object.entries(selectedSpecs)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join(", ");
-
-      const message = `Hello, my name is ${orderPayload.customer.name
-        }, phone: ${orderPayload.customer.phone}. I want to order ${orderPayload.quantity
-        } x ${orderPayload.productName
-        }. Specs: ${specsText}. Total: ₦${orderPayload.totalPrice.toLocaleString()}.`;
-
-      const waUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(
-        message
-      )}`;
-
-      window.location.href = waUrl;
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Something went wrong";
-      setError(message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const hasDelivery = Boolean(product.delivery.lagos || product.delivery.nationwide);
 
   return (
-    <main className="bg-white">
-      <section className="border-b bg-gray-50">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex flex-wrap items-center gap-2 text-sm">
+    <div className="bg-white">
+      {/* Breadcrumb — mirrors the BreadcrumbList JSON-LD on this page. */}
+      <nav aria-label="Breadcrumb" className="border-b bg-gray-50">
+        <ol className="container mx-auto flex flex-wrap items-center gap-x-2 gap-y-1 px-4 py-3 text-sm">
+          <li>
             <Link href="/" className="text-gray-500 hover:text-red-600">
               Home
             </Link>
-            <ChevronRight className="h-4 w-4 text-gray-400" />
+          </li>
+          <ChevronRight aria-hidden className="h-4 w-4 text-gray-400" />
+          <li>
             <Link href="/products" className="text-gray-500 hover:text-red-600">
-              All Products
+              Products
             </Link>
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-            <span className="font-medium text-red-600">{product.name}</span>
-          </nav>
-        </div>
-      </section>
+          </li>
+          <ChevronRight aria-hidden className="h-4 w-4 text-gray-400" />
+          <li>
+            <Link
+              href={`/products/category/${categorySlug}`}
+              className="text-gray-500 hover:text-red-600"
+            >
+              {categoryName}
+            </Link>
+          </li>
+          <ChevronRight aria-hidden className="h-4 w-4 text-gray-400" />
+          <li aria-current="page" className="font-semibold text-red-600">
+            {product.name}
+          </li>
+        </ol>
+      </nav>
 
-      <section className="relative z-30 border-b bg-white py-4">
-        <div className="container mx-auto px-4">
-          <form onSubmit={handleSearchSubmit} className="relative ml-auto max-w-md">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onFocus={() => setIsSearchFocused(true)}
-                placeholder="Search for any product"
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pr-20 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
-              />
-
-              {searchTerm.trim() ? (
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-600"
-                  aria-label="Clear search"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              ) : null}
-
-              <button
-                type="submit"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-red-600"
-                aria-label="Search products"
-              >
-                <Search className="h-5 w-5" />
-              </button>
-            </div>
-
-            {showSearchResults && (
-              <div
-                className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
-                onMouseDown={(e) => e.preventDefault()}
-              >
-                {filteredProducts.length > 0 ? (
-                  <>
-                    <div className="border-b px-4 py-3">
-                      <p className="text-xs font-bold uppercase tracking-wide text-gray-500">
-                        Product results
-                      </p>
-                    </div>
-
-                    <div className="max-h-[360px] overflow-y-auto">
-                      {filteredProducts.map((item) => {
-                        const productImage =
-                          item.images?.[0] || item.image || "/placeholder.svg";
-
-                        return (
-                          <Link
-                            key={item.slug}
-                            href={`/products/${item.slug}`}
-                            onClick={() => {
-                              setSearchTerm("");
-                              setIsSearchFocused(false);
-                            }}
-                            className="flex items-center gap-3 border-b px-4 py-3 transition last:border-b-0 hover:bg-red-50"
-                          >
-                            <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
-                              <Image
-                                src={productImage}
-                                alt={item.name}
-                                fill
-                                sizes="56px"
-                                className="object-cover"
-                              />
-                            </div>
-
-                            <div className="min-w-0 flex-1">
-                              <h3 className="truncate text-sm font-bold text-gray-900">
-                                {item.name}
-                              </h3>
-
-                              <p className="truncate text-xs text-gray-500">
-                                {item.category}
-                              </p>
-
-                              <p className="mt-1 text-sm font-black text-red-600">
-                                Starting at ₦{item.priceNumeric.toLocaleString()}
-                              </p>
-                            </div>
-
-                            <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-gray-400" />
-                          </Link>
-                        );
-                      })}
-                    </div>
-
-                    <Link
-                      href={`/products?search=${encodeURIComponent(searchTerm.trim())}`}
-                      onClick={() => setIsSearchFocused(false)}
-                      className="block bg-gray-50 px-4 py-3 text-center text-sm font-bold text-red-600 transition hover:bg-red-50"
-                    >
-                      View all matching products
-                    </Link>
-                  </>
-                ) : (
-                  <div className="px-4 py-6 text-center">
-                    <p className="text-sm font-bold text-gray-800">
-                      No product found
-                    </p>
-                    <p className="mt-1 text-xs text-gray-500">
-                      Try searching for flyers, bags, business cards, banners, shirts,
-                      or brochures.
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
-          </form>
-        </div>
-      </section>
-
-
-      <section className="container mx-auto px-4 py-8 lg:py-12">
+      <section className="container mx-auto px-4 py-6 lg:py-10">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-4">
-            <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
+          {/* Gallery */}
+          <div className="space-y-3">
+            <div className="relative aspect-square overflow-hidden rounded-xl border border-gray-200 bg-gray-100">
               <Image
-                src={activeImage}
-                alt={`${product.name} preview ${activeImageIndex + 1}`}
+                src={activeImage.src}
+                alt={activeImage.alt}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
 
-              {productImages.length > 1 && (
+              {images.length > 1 && (
                 <>
                   <button
                     type="button"
-                    onClick={goToPreviousImage}
-                    className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white"
+                    onClick={() =>
+                      setActiveImageIndex((i) =>
+                        i === 0 ? images.length - 1 : i - 1
+                      )
+                    }
+                    className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white focus-visible:ring-2 focus-visible:ring-red-500"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="h-5 w-5 text-gray-900" />
                   </button>
-
                   <button
                     type="button"
-                    onClick={goToNextImage}
-                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white"
+                    onClick={() =>
+                      setActiveImageIndex((i) =>
+                        i === images.length - 1 ? 0 : i + 1
+                      )
+                    }
+                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition hover:bg-white focus-visible:ring-2 focus-visible:ring-red-500"
                     aria-label="Next image"
                   >
                     <ChevronRight className="h-5 w-5 text-gray-900" />
                   </button>
-
-                  <div className="absolute bottom-3 right-3 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white">
-                    {activeImageIndex + 1} / {productImages.length}
-                  </div>
                 </>
               )}
             </div>
 
-            {productImages.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto pb-2">
-                {productImages.map((image, index) => (
+            {images.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {images.map((image, index) => (
                   <button
-                    key={`${image}-${index}`}
+                    key={image.src}
                     type="button"
                     onClick={() => setActiveImageIndex(index)}
-                    className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border-2 bg-gray-100 transition ${activeImageIndex === index
-                      ? "border-red-600"
-                      : "border-transparent hover:border-gray-300"
-                      }`}
-                    aria-label={`View image ${index + 1}`}
+                    aria-label={`Show image ${index + 1} of ${images.length}`}
+                    aria-current={activeImageIndex === index}
+                    className={`relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border-2 bg-gray-100 transition ${
+                      activeImageIndex === index
+                        ? "border-red-600"
+                        : "border-transparent hover:border-gray-300"
+                    }`}
                   >
                     <Image
-                      src={image}
-                      alt={`${product.name} thumbnail ${index + 1}`}
+                      src={image.src}
+                      alt=""
                       fill
-                      sizes="80px"
+                      sizes="64px"
                       className="object-cover"
                     />
                   </button>
@@ -471,173 +228,289 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
           </div>
 
-          <div className="space-y-6">
+          {/* Summary + order panel */}
+          <div className="space-y-5">
             <div>
-              <ProductStars rating={product.rating || 4.8} />
+              <Link
+                href={`/products/category/${categorySlug}`}
+                className="text-xs font-bold uppercase tracking-wide text-red-600 hover:text-red-700"
+              >
+                {categoryName}
+              </Link>
 
-              <h1 className="mt-3 text-2xl font-bold text-gray-900 lg:text-3xl">
+              <h1 className="mt-1.5 text-2xl font-extrabold leading-tight text-gray-900 lg:text-3xl">
                 {product.name}
               </h1>
 
-              <p className="mt-4 leading-relaxed text-gray-600">
+              <p className="mt-2 leading-relaxed text-gray-600">
                 {product.description}
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-xl border border-gray-200 bg-white p-4">
-                <div className="mb-2 flex items-center gap-2">
-                  <ShieldCheck className="h-5 w-5 text-red-600" />
-                  <h3 className="font-bold text-gray-900">Key Features</h3>
-                </div>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {product.keyFeatures}
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-gray-200 bg-white p-4">
-                <div className="mb-2 flex items-center gap-2">
-                  <Truck className="h-5 w-5 text-red-600" />
-                  <h3 className="font-bold text-gray-900">Delivery</h3>
-                </div>
-                <div className="space-y-1 text-sm leading-relaxed text-gray-600">
-                  <p>{product.delivery.lagos}</p>
-                  <p>{product.delivery.others}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-red-100 bg-red-50 p-4">
-              <h3 className="font-black text-gray-900">Need custom design?</h3>
-              <p className="mt-1 text-sm text-gray-600">
-                You can upload your design or request help from our team after
-                placing your order.
+            <div className="rounded-xl border border-red-100 bg-red-50 p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-red-700">
+                Price
+              </p>
+              <p className="mt-1 text-2xl font-extrabold text-red-600">
+                {activePrice ? formatPrice(activePrice) : "Quote on request"}
+              </p>
+              <p className="mt-1.5 text-sm text-gray-600">
+                {activePrice
+                  ? "Starting price for the batch shown. Your final price depends on artwork, finishing and total quantity — we confirm it before production."
+                  : "We quote this product per job. Send your quantity, size and deadline and we will come back with pricing."}
               </p>
             </div>
 
-            <div>
-              <label className="mb-2 block font-bold text-gray-900">
-                Quantity
-              </label>
-              <div className="relative">
-                <select
-                  value={selectedQuantity}
-                  onChange={(e) => setSelectedQuantity(e.target.value)}
-                  className="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+            {specRows.length > 0 && (
+              <div>
+                <h2 className="text-sm font-bold uppercase tracking-wide text-gray-900">
+                  Specifications
+                </h2>
+                <dl className="mt-2 divide-y divide-gray-100 rounded-xl border border-gray-200">
+                  {specRows.map((row) => (
+                    <div
+                      key={row.label}
+                      className="flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:gap-4"
+                    >
+                      <dt className="flex items-center gap-2 text-sm font-semibold text-gray-900 sm:w-32 sm:flex-shrink-0">
+                        <row.icon aria-hidden className="h-4 w-4 text-red-600" />
+                        {row.label}
+                      </dt>
+                      <dd className="text-sm leading-relaxed text-gray-600">
+                        {row.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+
+            {hasDelivery && (
+              <div className="rounded-xl border border-gray-200 p-4">
+                <h2 className="flex items-center gap-2 text-sm font-bold text-gray-900">
+                  <Truck aria-hidden className="h-4 w-4 text-red-600" />
+                  Delivery time
+                </h2>
+                <ul className="mt-1.5 space-y-0.5 text-sm text-gray-600">
+                  {product.delivery.lagos && (
+                    <li>Within Lagos: {product.delivery.lagos}</li>
+                  )}
+                  {product.delivery.nationwide && (
+                    <li>Other states in Nigeria: {product.delivery.nationwide}</li>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            {/* Order form — feeds the WhatsApp message directly. */}
+            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 lg:p-5">
+              <h2 className="text-base font-extrabold text-gray-900">
+                Order this product
+              </h2>
+              <p className="mt-1 text-sm text-gray-600">
+                Choose your options and we will open WhatsApp with the details
+                already filled in.
+              </p>
+
+              <div className="mt-4 space-y-3.5">
+                {product.optionGroups.map((group) => (
+                  <div key={group.id}>
+                    <label
+                      htmlFor={`option-${group.id}`}
+                      className="mb-1 block text-sm font-semibold text-gray-900"
+                    >
+                      {group.label}
+                    </label>
+                    <select
+                      id={`option-${group.id}`}
+                      value={selectedOptions[group.id] ?? ""}
+                      onChange={(e) =>
+                        setSelectedOptions((prev) => ({
+                          ...prev,
+                          [group.id]: e.target.value,
+                        }))
+                      }
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    >
+                      {group.options.map((option) => (
+                        <option key={option.id} value={option.id}>
+                          {option.label}
+                          {option.detail ? ` — ${option.detail}` : ""}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+
+                <div>
+                  <label
+                    htmlFor="order-quantity"
+                    className="mb-1 block text-sm font-semibold text-gray-900"
+                  >
+                    Quantity
+                  </label>
+                  <select
+                    id="order-quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                  >
+                    {quantityChoices(product).map((value) => (
+                      <option key={value} value={value}>
+                        {value.toLocaleString("en-NG")}{" "}
+                        {product.startingPrice?.unit ?? "piece"}
+                        {value === 1 ? "" : "s"}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="order-name"
+                      className="mb-1 block text-sm font-semibold text-gray-900"
+                    >
+                      Your name
+                    </label>
+                    <input
+                      id="order-name"
+                      type="text"
+                      autoComplete="name"
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="order-phone"
+                      className="mb-1 block text-sm font-semibold text-gray-900"
+                    >
+                      Phone number{" "}
+                      <span className="font-normal text-gray-500">
+                        (optional)
+                      </span>
+                    </label>
+                    <input
+                      id="order-phone"
+                      type="tel"
+                      autoComplete="tel"
+                      value={customerPhone}
+                      onChange={(e) => setCustomerPhone(e.target.value)}
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="order-notes"
+                    className="mb-1 block text-sm font-semibold text-gray-900"
+                  >
+                    Anything else we should know?{" "}
+                    <span className="font-normal text-gray-500">(optional)</span>
+                  </label>
+                  <textarea
+                    id="order-notes"
+                    rows={2}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="Deadline, artwork status, colour preferences…"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 space-y-2.5">
+                <a
+                  href={orderLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={notifyShop}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-6 py-3.5 font-extrabold text-white transition hover:bg-red-700 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                 >
-                  <option value="50">50 pieces</option>
-                  <option value="100">100 pieces</option>
-                  <option value="250">250 pieces</option>
-                  <option value="500">500 pieces</option>
-                  <option value="1000">1000 pieces</option>
-                </select>
+                  <FaWhatsapp aria-hidden className="text-xl" />
+                  Order now on WhatsApp
+                </a>
 
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 lg:p-6">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Unit Price</span>
-                  <span className="font-bold text-gray-900">
-                    ₦{unitPrice.toLocaleString()}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Quantity</span>
-                  <span className="font-bold text-gray-900">
-                    {quantityNumber}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between border-t pt-3">
-                  <span className="font-bold text-gray-900">Total</span>
-                  <span className="text-2xl font-black text-red-600">
-                    ₦{totalPrice.toLocaleString()}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Tax</span>
-                  <span className="text-gray-500">
-                    ₦{product.tax.toLocaleString()}
-                  </span>
+                <div className="grid gap-2.5 sm:grid-cols-2">
+                  <a
+                    href={quoteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+                  >
+                    <MessageCircle aria-hidden className="h-4 w-4" />
+                    Get a quote
+                  </a>
+                  <a
+                    href={`tel:${PHONE_E164}`}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+                  >
+                    Call {PHONE_DISPLAY}
+                  </a>
                 </div>
               </div>
-
-              <div className="mt-5 space-y-3">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
-                />
-
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={customerPhone}
-                  onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100"
-                />
-              </div>
-
-              <button
-                type="button"
-                onClick={handleOrder}
-                disabled={isLoading}
-                className="mt-5 w-full rounded-xl bg-red-600 px-6 py-4 font-black text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {isLoading ? "PLACING ORDER..." : "ORDER NOW"}
-              </button>
-
-              {error && (
-                <p className="mt-3 text-sm font-medium text-red-600">
-                  {error}
-                </p>
-              )}
             </div>
           </div>
         </div>
       </section>
 
-      {relatedProducts.length > 0 && (
-        <section className="border-t bg-gray-50 py-12 lg:py-16">
+      {product.faqs.length > 0 && (
+        <section className="border-t bg-gray-50 py-10 lg:py-12">
           <div className="container mx-auto px-4">
-            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-extrabold text-gray-900 lg:text-2xl">
+                {product.name} — frequently asked questions
+              </h2>
+              <dl className="mt-5 space-y-3">
+                {product.faqs.map((faq) => (
+                  <div
+                    key={faq.question}
+                    className="rounded-xl border border-gray-200 bg-white p-4"
+                  >
+                    <dt className="font-bold text-gray-900">{faq.question}</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-600">
+                      {faq.answer}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {relatedProducts.length > 0 && (
+        <section className="border-t py-10 lg:py-12">
+          <div className="container mx-auto px-4">
+            <div className="mb-5 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className="text-2xl font-black text-gray-900 lg:text-3xl">
-                  Related Products
+                <h2 className="text-xl font-extrabold text-gray-900 lg:text-2xl">
+                  Related products
                 </h2>
-                <p className="mt-2 text-sm text-gray-600">
-                  More products customers usually check in this category.
+                <p className="mt-0.5 text-sm text-gray-600">
+                  Other items customers order alongside {product.name.toLowerCase()}.
                 </p>
               </div>
 
               <Link
-                href="/products"
-                className="font-bold text-red-600 hover:text-red-700"
+                href={`/products/category/${categorySlug}`}
+                className="text-sm font-bold text-red-600 hover:text-red-700"
               >
-                View all products
+                All {categoryName.toLowerCase()} &rarr;
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-              {relatedProducts.map((relatedProduct) => (
-                <RelatedProductCard
-                  key={relatedProduct.slug}
-                  product={relatedProduct}
-                />
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {relatedProducts.map((related) => (
+                <ProductCard key={related.slug} product={related} />
               ))}
             </div>
           </div>
         </section>
       )}
-      <Footer />
-
-    </main>
+    </div>
   );
 }

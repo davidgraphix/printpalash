@@ -1,112 +1,214 @@
 import Link from "next/link";
+import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+
 import type { Service } from "@/lib/services";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import type { Category, Product } from "@/lib/catalog/types";
+import { PHONE_DISPLAY, PHONE_E164, whatsappLink } from "@/lib/site";
+import ProductCard from "@/components/Products/ProductCard";
 
-export default function ServiceDetail({ service }: { service: Service }) {
-    return (
-        <div className="bg-white">
-            {/* Header */}
-            <section className="border-b bg-gradient-to-b from-pink-50 to-white">
-                <div className="container mx-auto px-4 py-10 md:py-14">
-                    <p className="text-sm font-semibold text-red-600">{service.category}</p>
-                    <h1 className="mt-2 font-biorhyme text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                        {service.h1}
-                    </h1>
-                    <p className="mt-4 text-gray-700 md:text-lg max-w-3xl">{service.intro}</p>
+export default function ServiceDetail({
+  service,
+  relatedProducts = [],
+  relatedCategories = [],
+}: {
+  service: Service;
+  relatedProducts?: Product[];
+  relatedCategories?: Category[];
+}) {
+  const whatsapp = whatsappLink(
+    `Hello PrintPalash,\nI would like a quote for ${service.title.toLowerCase()} in Lagos.\n\nPlease let me know pricing, options and turnaround time.`
+  );
 
-                    <div className="mt-6 flex flex-wrap gap-3">
-                        <Link
-                            href="/get-a-quote"
-                            className="inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700"
-                        >
-                            Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                        <Link
-                            href="/services"
-                            className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                            Back to Services
-                        </Link>
-                    </div>
+  return (
+    <div className="bg-white">
+      <section className="border-b bg-gradient-to-b from-pink-50 to-white">
+        <div className="container mx-auto px-4 py-6 lg:py-10">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+              <li>
+                <Link href="/" className="text-gray-500 hover:text-red-600">
+                  Home
+                </Link>
+              </li>
+              <ChevronRight aria-hidden className="h-4 w-4 text-gray-400" />
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-500 hover:text-red-600"
+                >
+                  Services
+                </Link>
+              </li>
+              <ChevronRight aria-hidden className="h-4 w-4 text-gray-400" />
+              <li aria-current="page" className="font-semibold text-red-600">
+                {service.title}
+              </li>
+            </ol>
+          </nav>
 
-                    {/* Highlights */}
-                    <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                        {service.highlights.map((h) => (
-                            <div key={h} className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
-                                <div className="flex items-start gap-2">
-                                    <CheckCircle2 className="h-5 w-5 text-red-600 mt-0.5" />
-                                    <p className="text-sm font-semibold text-gray-900">{h}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+          <p className="mt-3 text-sm font-semibold text-red-600">
+            {service.category}
+          </p>
+          <h1 className="mt-1 max-w-3xl text-3xl font-extrabold leading-tight text-gray-900 md:text-5xl">
+            {service.h1}
+          </h1>
+          <p className="mt-2.5 max-w-3xl leading-relaxed text-gray-700 md:text-lg">
+            {service.intro}
+          </p>
 
-            {/* Content */}
-            <section className="container mx-auto px-4 py-10 md:py-14">
-                <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
-                    {/* Main */}
-                    <div className="space-y-8">
-                        {service.sections.map((sec) => (
-                            <div key={sec.heading} className="rounded-2xl border border-gray-100 p-6">
-                                <h2 className="text-lg md:text-xl font-bold text-gray-900">{sec.heading}</h2>
-                                <ul className="mt-4 space-y-2">
-                                    {sec.body.map((line) => (
-                                        <li key={line} className="text-gray-700 flex items-start gap-2">
-                                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-red-600" />
-                                            <span className="leading-relaxed">{line}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+          <div className="mt-4 flex flex-wrap gap-2.5">
+            <Link
+              href="/get-a-quote"
+              className="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-red-700"
+            >
+              Get a quote <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+            </Link>
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+            >
+              WhatsApp us
+            </a>
+          </div>
 
-                        {/* FAQ */}
-                        <div className="rounded-2xl border border-gray-100 p-6">
-                            <h2 className="text-lg md:text-xl font-bold text-gray-900">FAQs</h2>
-                            <div className="mt-4 space-y-4">
-                                {service.faqs.map((f) => (
-                                    <div key={f.q} className="rounded-xl bg-gray-50 p-4">
-                                        <p className="font-semibold text-gray-900">{f.q}</p>
-                                        <p className="mt-1 text-sm text-gray-700 leading-relaxed">{f.a}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Sidebar */}
-                    <aside className="lg:sticky lg:top-6 h-fit rounded-2xl border border-gray-100 p-6 bg-white shadow-sm">
-                        <p className="text-sm font-semibold text-gray-900">Need pricing?</p>
-                        <p className="mt-2 text-sm text-gray-600">
-                            Tell us your quantity, size, finishing, and deadline — we’ll send a quote.
-                        </p>
-
-                        <div className="mt-5 space-y-3">
-                            <Link
-                                href="/get-a-quote"
-                                className="w-full inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700"
-                            >
-                                Get a Quote
-                            </Link>
-                            <Link
-                                href="https://wa.me/2347035017359"
-                                className="w-full inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-                            >
-                                WhatsApp
-                            </Link>
-                        </div>
-
-                        <div className="mt-6 border-t pt-5">
-                            <p className="text-xs font-semibold text-gray-500">Service URL</p>
-                            <p className="mt-1 text-sm text-gray-900 break-words">
-                                /services/{service.slug}
-                            </p>
-                        </div>
-                    </aside>
-                </div>
-            </section>
+          <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+            {service.highlights.map((highlight) => (
+              <li
+                key={highlight}
+                className="flex items-start gap-2 rounded-xl border border-gray-100 bg-white p-3 shadow-sm"
+              >
+                <CheckCircle2
+                  aria-hidden
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600"
+                />
+                <span className="text-sm font-semibold text-gray-900">
+                  {highlight}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-    );
+      </section>
+
+      <section className="container mx-auto px-4 py-8 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+          <div className="space-y-5">
+            {service.sections.map((section) => (
+              <div
+                key={section.heading}
+                className="rounded-xl border border-gray-200 p-5"
+              >
+                <h2 className="text-lg font-extrabold text-gray-900 md:text-xl">
+                  {section.heading}
+                </h2>
+                <ul className="mt-2.5 space-y-1.5">
+                  {section.body.map((line) => (
+                    <li
+                      key={line}
+                      className="flex items-start gap-2 text-gray-700"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-600"
+                      />
+                      <span className="leading-relaxed">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {service.faqs.length > 0 && (
+              <div className="rounded-xl border border-gray-200 p-5">
+                <h2 className="text-lg font-extrabold text-gray-900 md:text-xl">
+                  Frequently asked questions
+                </h2>
+                <dl className="mt-3 space-y-3">
+                  {service.faqs.map((faq) => (
+                    <div key={faq.q} className="rounded-lg bg-gray-50 p-3.5">
+                      <dt className="font-semibold text-gray-900">{faq.q}</dt>
+                      <dd className="mt-1 text-sm leading-relaxed text-gray-700">
+                        {faq.a}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+          </div>
+
+          <aside className="h-fit space-y-4 lg:sticky lg:top-6">
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <h2 className="text-sm font-extrabold text-gray-900">
+                Need pricing?
+              </h2>
+              <p className="mt-1.5 text-sm text-gray-600">
+                Tell us your quantity, size, finishing and deadline and we will
+                send a quote.
+              </p>
+
+              <div className="mt-3.5 space-y-2.5">
+                <Link
+                  href="/get-a-quote"
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-red-700"
+                >
+                  Get a quote
+                </Link>
+                <a
+                  href={`tel:${PHONE_E164}`}
+                  className="inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+                >
+                  Call {PHONE_DISPLAY}
+                </a>
+              </div>
+            </div>
+
+            {relatedCategories.length > 0 && (
+              <div className="rounded-xl border border-gray-200 p-5">
+                <h2 className="text-sm font-extrabold text-gray-900">
+                  Shop related products
+                </h2>
+                <ul className="mt-2.5 space-y-1.5">
+                  {relatedCategories.map((category) => (
+                    <li key={category.slug}>
+                      <Link
+                        href={`/products/category/${category.slug}`}
+                        className="text-sm font-semibold text-red-600 hover:text-red-700"
+                      >
+                        {category.name}
+                      </Link>
+                      <p className="text-xs text-gray-600">
+                        {category.tagline}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </aside>
+        </div>
+      </section>
+
+      {relatedProducts.length > 0 && (
+        <section className="border-t bg-gray-50 py-8 lg:py-12">
+          <div className="container mx-auto px-4">
+            <h2 className="text-xl font-extrabold text-gray-900 lg:text-2xl">
+              Products for {service.title.toLowerCase()}
+            </h2>
+            <p className="mt-0.5 text-sm text-gray-600">
+              Prices, specifications and delivery times for each item.
+            </p>
+
+            <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-3">
+              {relatedProducts.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
+  );
 }

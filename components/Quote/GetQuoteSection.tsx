@@ -1,12 +1,22 @@
 import Image from "next/image"
 import getQuoteImageBg from "@/public/assests/get-quote-img/getQuote-img-bg.png"
+import { whatsappLink } from "@/lib/site"
 
 export default function GetQuote() {
-  const whatsappNumber = "+2347035017359"
-  const whatsappMessage = encodeURIComponent(
-    "Hello PrintPalash! I would like to get a quote for my printing project. Please provide me with pricing details.",
+  // Prompts for the details we need up front, so the first reply can be a
+  // real quote rather than a round of questions.
+  const whatsappUrl = whatsappLink(
+    [
+      "Hello PrintPalash, I would like a quote.",
+      "",
+      "Product:",
+      "Quantity:",
+      "Size:",
+      "Finishing:",
+      "Deadline:",
+      "Do you have artwork ready? (yes/no):",
+    ].join("\n"),
   )
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
   return (
     <div>

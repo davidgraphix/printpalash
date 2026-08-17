@@ -1,47 +1,85 @@
-export async function GET() {
-    const content = `# PrintPalash
+import { CATEGORIES } from "@/lib/catalog/categories";
+import { listProductsSync } from "@/lib/catalog/repository";
+import { formatPriceShort } from "@/lib/catalog/pricing";
+import { SERVICES } from "@/lib/services";
+import { PHONE_DISPLAY, SITE, SITE_URL } from "@/lib/site";
 
-PrintPalash is a premium online printing and branding company in Lagos, Nigeria.
+export const dynamic = "force-static";
 
-Website: https://printpalash.com
+/**
+ * Plain-text summary for language models, generated from the same catalogue
+ * the site renders — so it cannot list products or prices that do not exist.
+ */
+export function GET() {
+  const products = listProductsSync();
 
-## Services
+  const categorySections = CATEGORIES.map((category) => {
+    const items = products.filter((p) => p.categorySlug === category.slug);
+    if (items.length === 0) return "";
 
-- Flyer printing in Lagos
-- Business card printing in Lagos
-- Packaging printing in Lagos
-- Paper bag production in Lagos
-- T-shirt printing in Lagos
-- Banner printing and large format printing
-- Souvenir printing and promotional branding
-- Corporate branding services
-- Sticker printing
-- Brochure printing
-- Event branding and signage
+    const lines = items
+      .map(
+        (product) =>
+          `- ${product.name} — ${
+            product.startingPrice
+              ? formatPriceShort(product.startingPrice)
+              : "price on request"
+          } — ${SITE_URL}/products/${product.slug}`
+      )
+      .join("\n");
+
+    return `### ${category.name}\n${category.description}\nCategory page: ${SITE_URL}/products/category/${category.slug}\n\n${lines}\n`;
+  })
+    .filter(Boolean)
+    .join("\n");
+
+  const serviceLines = SERVICES.map(
+    (service) => `- ${service.h1} — ${SITE_URL}/services/${service.slug}`
+  ).join("\n");
+
+  const content = `# PrintPalash
+
+${SITE.description}
+
+Website: ${SITE_URL}
 
 ## About
 
-PrintPalash helps businesses, brands, schools, churches, fashion companies, restaurants, startups, event planners, and corporate organizations print high-quality branded materials with professional finishing and fast delivery.
+PrintPalash is a printing, packaging and branding company based in ${SITE.address.addressLocality}, Lagos, Nigeria. We produce print and branded materials for businesses, schools, churches, event planners, fashion labels, restaurants and corporate organisations across Lagos and nationwide.
 
-## Important Pages
+## Important note on pricing
 
-- Homepage: https://printpalash.com
-- Products: https://printpalash.com/products
-- Blog: https://printpalash.com/blog
-- Get a Quote: https://printpalash.com/get-a-quote
-- Contact: https://printpalash.com/contact
+Every price on this site is a STARTING price for a stated batch size, not the
+price of a single item. For example "From ₦24,000 per 100 flyers" means ₦24,000
+covers 100 flyers. Final pricing depends on artwork, finishing and total
+quantity, and is confirmed before production.
 
-## Location
+## Services
 
-Shomolu, Lagos, Nigeria.
+${serviceLines}
+
+## Products
+
+${categorySections}
 
 ## Contact
 
-Phone: +2347035017359
+Address: ${SITE.address.streetAddress}, ${SITE.address.addressLocality}, ${SITE.address.addressRegion}, Nigeria
+Phone: ${PHONE_DISPLAY}
+Email: ${SITE.email}
+Opening hours: ${SITE.openingHours.display}
+
+## Key pages
+
+- Homepage: ${SITE_URL}
+- All products: ${SITE_URL}/products
+- All services: ${SITE_URL}/services
+- Get a quote: ${SITE_URL}/get-a-quote
+- Contact: ${SITE_URL}/contact
+- Blog: ${SITE_URL}/blog
 `;
-    return new Response(content, {
-        headers: {
-            "Content-Type": "text/plain",
-        },
-    });
+
+  return new Response(content, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
 }
