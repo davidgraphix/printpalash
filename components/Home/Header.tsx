@@ -1,177 +1,112 @@
 "use client";
-import { Phone, MessageCircle, Clock } from "lucide-react";
+
+import { Clock, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Header() {
+import ProductSearch from "@/components/Products/ProductSearch";
+import type { SearchIndexEntry } from "@/lib/catalog/search-index";
+import { PHONE_DISPLAY, PHONE_E164, SITE } from "@/lib/site";
+
+/**
+ * Site header.
+ *
+ * The product search lives here so it is present on every page — including
+ * product detail pages, where the client reported it was missing. It is the
+ * same component the homepage hero uses, driven by the same catalogue index.
+ */
+export default function Header({
+  searchEntries,
+}: {
+  searchEntries: SearchIndexEntry[];
+}) {
+  const logo = (
+    <Link href="/" aria-label="PrintPalash home" className="inline-block">
+      <Image
+        src="/assests/printpalash-logo.png"
+        alt="PrintPalash Logo"
+        width={280}
+        height={280}
+        priority
+        className="h-auto w-32 object-contain sm:w-40 lg:w-48"
+      />
+    </Link>
+  );
+
   return (
-    <header className="bg-white py-3 border-b border-gray-200">
+    <header className="border-b border-gray-200 bg-white py-2.5">
       <div className="container mx-auto px-4">
-        {/* Mobile Layout */}
-        <div className="lg:hidden flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="text-lg font-bold text-black">
-              <Link href="/" aria-label="Go to homepage">
-                <Image
-                  src="/assests/printpalash-logo.png"
-                  alt="PrintPalash Logo"
-                  width={280}
-                  height={280}
-                  className="w-32 sm:w-40 md:w-52 lg:w-72 h-auto object-contain"
-                />
-              </Link>
-            </div>
-          </div>
+        {/* Mobile */}
+        <div className="lg:hidden">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-shrink-0">{logo}</div>
 
-          {/* Center - Need Help Call */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-              <Phone className="w-4 h-4 text-gray-600" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs text-gray-500">Need help? Call:</span>
-              <a
-                href="tel:+2347035017359"
-                className="text-[10px] text-gray-900 font-medium cursor-pointer hover:underline"
-              >
-                +234 703 501 7359
-              </a>
-            </div>
-          </div>
-
-          {/* Right Side - Chat Button */}
-          {/* <div className="flex-shrink-0">
-            <Link
-              href="https://wa.me/2347035017359"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a
+              href={`tel:${PHONE_E164}`}
+              className="flex items-center gap-2 text-right"
             >
-              <div
-                className="flex items-center space-x-2 bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 transition-colors"
-                onClick={() => {
-                  window.open(
-                    "https://wa.me/2347035017359?text=" +
-                    encodeURIComponent(
-                      "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
-                    ),
-                    "_blank",
-                    "noopener,noreferrer",
-                  );
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                <MessageCircle className="w-3 h-3" />
-                <span className="text-[10px] font-medium">Chat</span>
-              </div>
-            </Link>
-          </div> */}
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
+                <Phone aria-hidden className="h-4 w-4 text-gray-600" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-[10px] text-gray-500">Need help?</span>
+                <span className="text-[11px] font-medium text-gray-900">
+                  {PHONE_DISPLAY}
+                </span>
+              </span>
+            </a>
+          </div>
+
+          <div className="mt-2.5">
+            <ProductSearch
+              entries={searchEntries}
+              variant="header"
+              placeholder="Search products…"
+            />
+          </div>
         </div>
 
-        {/* Desktop Layout */}
-        <div className="hidden lg:flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="text-2xl font-bold text-black">
-              <Link href="/" aria-label="Go to homepage">
-                <Image
-                  src="/assests/printpalash-logo.png"
-                  alt="PrintPalash Logo"
-                  width={280}
-                  height={280}
-                  className="w-50 h-auto object-contain"
-                />
-              </Link>
-            </div>
+        {/* Desktop */}
+        <div className="hidden items-center gap-6 lg:flex">
+          <div className="flex-shrink-0">{logo}</div>
+
+          <div className="min-w-0 flex-1 max-w-md">
+            <ProductSearch
+              entries={searchEntries}
+              variant="header"
+              placeholder="Search products…"
+            />
           </div>
 
-          {/* Center Content */}
-          <div className="flex items-center space-x-8">
-            {/* Business Hours */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                <Clock className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="flex flex-col">
+          <div className="flex flex-shrink-0 items-center gap-6">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100">
+                <Clock aria-hidden className="h-4 w-4 text-gray-600" />
+              </span>
+              <span className="flex flex-col leading-tight">
                 <span className="text-sm font-semibold text-gray-900">
-                  8:00AM - 8:00PM
+                  {SITE.openingHours.hoursShort}
                 </span>
                 <span className="text-xs text-gray-500">
-                  Monday to Saturday
+                  {SITE.openingHours.daysShort}
                 </span>
-              </div>
+              </span>
             </div>
 
-            {/* Online 24/7 */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-gray-900">
-                  Online 24/7
-                </span>
-                <span className="text-xs text-gray-500">
-                  Top notch customer service
-                </span>
-              </div>
-            </div>
-
-            {/* Need Help Call */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                <Phone className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs text-gray-500">Need help? Call</span>
-                <a
-                  href="tel:+2347035017359"
-                  className="text-sm text-gray-900 font-semibold cursor-pointer hover:underline"
-                >
-                  +234 703 501 7359
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side */}
-          <div className="flex items-center space-x-4">
-            {/* Chat Button */}
-            {/* <Link
-              href="https://wa.me/2347035017359"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a
+              href={`tel:${PHONE_E164}`}
+              className="flex items-center gap-2.5 hover:text-red-600"
             >
-              <div
-                className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
-                onClick={() => {
-                  window.open(
-                    "https://wa.me/2347035017359?text=" +
-                    encodeURIComponent(
-                      "Hello PrintPalash! I’m interested in your print services. Please tell me more about your products and how you can help bring my ideas to life.",
-                    ),
-                    "_blank",
-                    "noopener,noreferrer",
-                  );
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span className="text-sm font-medium">Chat with us</span>
-              </div>
-            </Link> */}
-
-            {/* Nigeria Flag */}
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-4 bg-green-600 relative overflow-hidden rounded-sm">
-                <div className="absolute left-0 top-0 w-2 h-full bg-green-600"></div>
-                <div className="absolute left-2 top-0 w-2 h-full bg-white"></div>
-                <div className="absolute right-0 top-0 w-2 h-full bg-green-600"></div>
-              </div>
-              <span className="text-sm text-gray-700 font-medium">Nigeria</span>
-            </div>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100">
+                <Phone aria-hidden className="h-4 w-4 text-gray-600" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-xs text-gray-500">Need help? Call</span>
+                <span className="text-sm font-semibold text-gray-900">
+                  {PHONE_DISPLAY}
+                </span>
+              </span>
+            </a>
           </div>
         </div>
       </div>

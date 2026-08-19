@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,24 +12,35 @@ import {
 } from "@/lib/catalog/search-index";
 
 /**
- * Type-ahead product search used on the homepage.
+ * Type-ahead product search.
  *
- * Matching goes through the same scorer as the shop page, so "business cards",
- * "t shirt" and "wedding" all resolve the way a customer expects rather than
- * relying on an exact substring of the product name.
+ * Used in the site header (so it is available on every page, including product
+ * detail pages) and in the homepage hero. Results appear as you type — there is
+ * no submit step — and matching runs through the same scorer as the shop page,
+ * so "p", "pa", "paper" and "business card" all behave the way a customer
+ * expects.
+ *
+ * `useId` keeps the input id unique, because two instances of this component
+ * can be mounted on the same page.
  */
 export default function ProductSearch({
   entries,
+  variant = "hero",
   placeholder = "Search for flyers, paper bags, business cards…",
   label = "Search products",
 }: {
   entries: SearchIndexEntry[];
+  variant?: "hero" | "header";
   placeholder?: string;
   label?: string;
 }) {
   const router = useRouter();
+  const inputId = useId();
+  const listboxId = `${inputId}-results`;
+  const blurTimer = useRef<number | undefined>(undefined);
+
   const [term, setTerm] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const trimmed = term.trim();
   const results = useMemo(
@@ -37,40 +48,68 @@ export default function ProductSearch({
     [entries, trimmed]
   );
 
-  const showResults = isFocused && trimmed.length > 0;
+  const showResults = isOpen && trimmed.length > 0;
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const goToResults = () => {
     if (!trimmed) return;
-    setIsFocused(false);
+    setIsOpen(false);
     router.push(`/products?search=${encodeURIComponent(trimmed)}`);
   };
 
+  const isHeader = variant === "header";
+
   return (
-    <form onSubmit={handleSubmit} className="relative max-w-md" role="search">
-      <label htmlFor="hero-product-search" className="sr-only">
+    <div
+      className={`relative ${isHeader ? "w-full" : "max-w-md"}`}
+      role="search"
+    >
+      <label htmlFor={inputId} className="sr-only">
         {label}
       </label>
 
       <div className="relative">
         <input
-          id="hero-product-search"
-          type="search"
+          id={inputId}
+          type="text"
           value={term}
-          onChange={(e) => setTerm(e.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => window.setTimeout(() => setIsFocused(false), 150)}
+          onChange={(event) => {
+            setTerm(event.target.value);
+            setIsOpen(true);
+          }}
+          onFocus={() => setIsOpen(true)}
+          onBlur={() => {
+            // Delay so a click on a result is registered before we unmount it.
+            blurTimer.current = window.setTimeout(() => setIsOpen(false), 150);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              goToResults();
+            }
+            if (event.key === "Escape") setIsOpen(false);
+          }}
           placeholder={placeholder}
           autoComplete="off"
+          role="combobox"
           aria-expanded={showResults}
-          className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 pr-20 text-sm text-gray-800 shadow-sm placeholder:text-gray-400 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-100"
+          aria-controls={listboxId}
+          aria-autocomplete="list"
+          className={
+            isHeader
+              ? "w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-3 pr-16 text-sm text-gray-800 placeholder:text-gray-400 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-100"
+              : "w-full rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 pr-20 text-sm text-gray-800 shadow-sm placeholder:text-gray-400 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-100"
+          }
         />
 
         {trimmed && (
           <button
             type="button"
-            onClick={() => setTerm("")}
-            className="absolute right-11 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+            onClick={() => {
+              window.clearTimeout(blurTimer.current);
+              setTerm("");
+              setIsOpen(false);
+            }}
+            className="absolute right-9 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
             aria-label="Clear search"
           >
             <X className="h-4 w-4" />
@@ -78,11 +117,12 @@ export default function ProductSearch({
         )}
 
         <button
-          type="submit"
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-1 text-gray-400 transition hover:text-red-600 focus-visible:ring-2 focus-visible:ring-red-500"
-          aria-label="Search products"
+          type="button"
+          onClick={goToResults}
+          className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-gray-400 transition hover:text-red-600 focus-visible:ring-2 focus-visible:ring-red-500"
+          aria-label="See all matching products"
         >
-          <Search className="h-5 w-5" />
+          <Search className="h-4 w-4" />
         </button>
       </div>
 
@@ -91,39 +131,40 @@ export default function ProductSearch({
           {results.length > 0 ? (
             <>
               <p className="border-b px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-500">
-                Products
+                {results.length === 6 ? "Top matches" : "Products"}
               </p>
 
-              <ul className="max-h-[340px] overflow-y-auto">
-                {results.map((entry) => (
-                  <li key={entry.slug}>
+              <ul id={listboxId} className="max-h-[320px] overflow-y-auto">
+                {results.map(({ card }) => (
+                  <li key={card.slug}>
                     <Link
-                      href={`/products/${entry.slug}`}
+                      href={`/products/${card.slug}`}
                       onClick={() => {
+                        window.clearTimeout(blurTimer.current);
                         setTerm("");
-                        setIsFocused(false);
+                        setIsOpen(false);
                       }}
-                      className="flex items-center gap-3 border-b px-4 py-2.5 transition last:border-b-0 hover:bg-red-50"
+                      className="flex items-center gap-3 border-b px-3 py-2.5 transition last:border-b-0 hover:bg-red-50"
                     >
-                      <span className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                      <span className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
                         <Image
-                          src={entry.image}
+                          src={card.image}
                           alt=""
                           fill
-                          sizes="48px"
+                          sizes="44px"
                           className="object-cover"
                         />
                       </span>
 
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-bold text-gray-900">
-                          {entry.name}
+                          {card.name}
                         </span>
                         <span className="block truncate text-xs text-gray-500">
-                          {entry.categoryName}
+                          {card.categoryName}
                         </span>
-                        <span className="mt-0.5 block truncate text-xs font-bold text-red-600">
-                          {entry.priceLabel}
+                        <span className="block truncate text-xs font-bold text-red-600">
+                          {card.priceLabel}
                         </span>
                       </span>
 
@@ -138,7 +179,10 @@ export default function ProductSearch({
 
               <Link
                 href={`/products?search=${encodeURIComponent(trimmed)}`}
-                onClick={() => setIsFocused(false)}
+                onClick={() => {
+                  window.clearTimeout(blurTimer.current);
+                  setIsOpen(false);
+                }}
                 className="block bg-gray-50 px-4 py-2.5 text-center text-sm font-bold text-red-600 transition hover:bg-red-50"
               >
                 See all matching products
@@ -157,6 +201,6 @@ export default function ProductSearch({
           )}
         </div>
       )}
-    </form>
+    </div>
   );
 }

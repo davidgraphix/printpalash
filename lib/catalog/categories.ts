@@ -167,7 +167,10 @@ export const CATEGORIES: Category[] = [
     description:
       "Business cards printed on art card stock with 300gsm and 600gsm thickness options, matte or gloss lamination, and round or square corner finishing.",
     seo: {
-      title: "Business Card Printing in Lagos",
+      // Distinct from the /services/business-card-printing-lagos page, which
+      // targets the same phrase from a service angle. Two pages sharing one
+      // title makes them compete with each other.
+      title: "Business Cards in Lagos — Premium & Thank You Cards",
       description:
         "Premium business card printing in Lagos on 300gsm and 600gsm art card with matte or gloss lamination and round or square corners. Delivered in 1-3 days within Lagos.",
       keywords: [

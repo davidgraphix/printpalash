@@ -10,6 +10,7 @@ import Header from "@/components/Home/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import WhatsAppButton from "@/components/Chat-with-us/WhatsappButton";
 import JsonLd from "@/components/SEO/JsonLd";
+import { buildSearchIndex } from "@/lib/catalog/search-index";
 import { GA_MEASUREMENT_ID, SITE, SITE_URL } from "@/lib/site";
 import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
@@ -77,6 +78,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Built once on the server and handed to the header search box, which is
+  // rendered on every route (including product detail pages).
+  const searchEntries = buildSearchIndex();
+
   return (
     <html lang="en-NG" className={`${inter.variable} ${montserrat.variable}`}>
       <body>
@@ -96,7 +101,7 @@ export default function RootLayout({
         </a>
 
         <TopBar />
-        <Header />
+        <Header searchEntries={searchEntries} />
         <Navbar />
 
         <main id="main-content">{children}</main>

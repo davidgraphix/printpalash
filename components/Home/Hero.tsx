@@ -6,8 +6,6 @@ import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-import ProductSearch from "@/components/Products/ProductSearch";
-import type { SearchIndexEntry } from "@/lib/catalog/search-index";
 
 type Slide = {
   titleRed: string;
@@ -88,14 +86,21 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export default function Hero({
-  searchEntries,
-}: {
-  searchEntries: SearchIndexEntry[];
-}) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
-    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true }),
-  ]);
+export default function Hero() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [
+      Autoplay({
+        delay: 5500,
+        // Keep rotating after a dot click. With stopOnInteraction: true the
+        // carousel stopped for good the first time anyone touched it, which is
+        // what made the hero look broken.
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+        stopOnFocusIn: true,
+      }),
+    ]
+  );
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -104,21 +109,37 @@ export default function Hero({
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
     onSelect();
     emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
     return () => {
       emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
     };
+  }, [emblaApi]);
+
+  /**
+   * Honour "reduce motion". The plugin has to be attached at init (the server
+   * cannot know the preference without risking a hydration mismatch), so it is
+   * stopped here instead once we are on the client.
+   */
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const autoplay = emblaApi.plugins().autoplay;
+    if (!autoplay) return;
+
+    const apply = () => {
+      if (media.matches) autoplay.stop();
+      else autoplay.play();
+    };
+
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
   }, [emblaApi]);
 
   return (
     <section className="bg-white" aria-label="Featured printing services">
       <div className="container mx-auto px-4">
-        <div className="relative z-20 pt-4">
-          <p className="mb-1.5 text-sm font-semibold text-gray-900">
-            Start printing today
-          </p>
-          <ProductSearch entries={searchEntries} />
-        </div>
-
         <div
           className="mt-4 w-full overflow-hidden"
           ref={emblaRef}

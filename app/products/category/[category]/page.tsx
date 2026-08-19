@@ -8,6 +8,7 @@ import ProductCard from "@/components/Products/ProductCard";
 import JsonLd from "@/components/SEO/JsonLd";
 import { SERVICES } from "@/lib/services";
 import { getCategory } from "@/lib/catalog/categories";
+import { toCardView } from "@/lib/catalog/card";
 import {
   listCategoriesSync,
   listProductsByCategorySync,
@@ -142,7 +143,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {products.map((product, index) => (
               <ProductCard
                 key={product.slug}
-                product={product}
+                view={toCardView(product)}
                 priority={index < 4}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />

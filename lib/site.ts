@@ -58,6 +58,9 @@ export const SITE = {
     opens: "08:00",
     closes: "20:00",
     display: "Monday to Saturday, 8:00AM - 8:00PM",
+    /** Just the times, for the compact header block. */
+    hoursShort: "8:00AM - 8:00PM",
+    daysShort: "Monday to Saturday",
   },
   /**
    * Only profiles that are actually referenced by the business are listed.
@@ -89,4 +92,17 @@ export function absoluteUrl(path = ""): string {
 /** Builds a wa.me link with a pre-filled message. */
 export function whatsappLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+/**
+ * Builds a `mailto:` link against the centralised business address.
+ *
+ * Used by the "Get a quote" CTAs so the email address lives in exactly one
+ * place. Line breaks in `body` are encoded, which is what mail clients expect.
+ */
+export function mailtoLink(subject: string, body: string): string {
+  const params = new URLSearchParams({ subject, body });
+  // URLSearchParams encodes spaces as "+", which mail clients render literally
+  // in the subject line, so switch those back to %20.
+  return `mailto:${SITE.email}?${params.toString().replace(/\+/g, "%20")}`;
 }

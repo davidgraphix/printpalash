@@ -9,6 +9,7 @@ import {
   listProductsSync,
   searchSync,
 } from "@/lib/catalog/repository";
+import { buildSearchIndex } from "@/lib/catalog/search-index";
 import { breadcrumbJsonLd, itemListJsonLd, pageMetadata } from "@/lib/seo";
 
 interface ProductsPageProps {
@@ -53,6 +54,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const query = search?.trim();
 
   const categories = listCategoriesSync();
+  const searchEntries = buildSearchIndex();
   const products = query
     ? searchSync(query).map((result) => result.product)
     : listProductsSync();
@@ -82,6 +84,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <ProductsBrowser
         products={products}
         categories={categories}
+        searchEntries={searchEntries}
         query={query}
       />
 

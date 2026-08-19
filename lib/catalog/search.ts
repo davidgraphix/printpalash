@@ -35,15 +35,15 @@ function singularize(token: string): string {
 }
 
 /**
- * Single characters are dropped. They carry no meaning on their own and,
- * because they appear inside almost every word, a stray "t" from "t shirt"
- * would otherwise match the entire catalogue.
+ * A lone single character is a legitimate prefix search — typing "p" should
+ * start showing paper bags, posters and polos straight away. A single
+ * character sitting next to other words is noise, though: the "t" in
+ * "t shirt" would otherwise match half the catalogue, so it is dropped.
  */
 export function tokenize(value: string): string[] {
-  return normalize(value)
-    .split(" ")
-    .filter((token) => token.length > 1)
-    .map(singularize);
+  const raw = normalize(value).split(" ").filter(Boolean);
+  const kept = raw.length === 1 ? raw : raw.filter((token) => token.length > 1);
+  return kept.map(singularize);
 }
 
 /**
@@ -160,6 +160,19 @@ function haystackHas(haystack: string, token: string): boolean {
 }
 
 /**
+ * Matches a token against the *start of any word* in the haystack.
+ *
+ * This is what makes live search feel instant: "p" matches "Paper Bag" and
+ * "Pizza Box" but not the "p" buried inside "shopping". A bare `includes`
+ * would match both, which is why prefix matching is used for short tokens.
+ */
+function startsWord(haystack: string, token: string): boolean {
+  if (!token) return false;
+  const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(^| )${escaped}`).test(haystack);
+}
+
+/**
  * Scores one item's haystacks against a query.
  *
  * Returns 0 when any query token fails to match anywhere, so
@@ -176,26 +189,44 @@ export function scoreHaystacks(
 
   let total = 0;
 
-  for (const token of tokens) {
+  for (let index = 0; index < tokens.length; index += 1) {
+    const token = tokens[index];
+    // Only the final token can still be half-typed, so only it gets prefix
+    // treatment. Earlier tokens in "business car" are complete words.
+    const isTrailing = index === tokens.length - 1;
     let best = 0;
 
     for (const candidate of expand([token])) {
-      // Substring matching is only safe for reasonably long tokens; below
-      // that it matches fragments of unrelated words.
-      const allowPartial = candidate.length >= 4;
+      // A relevance ladder keyed off how much the customer has actually typed.
+      // One or two characters is far too little to search inside descriptions
+      // with, so short tokens only look at names and categories.
+      const searchBody = candidate.length >= 3;
+      const allowInfix = candidate.length >= 4;
 
-      // An exact word in the name is the strongest signal.
+      // Name — the strongest signal.
       if (haystackHas(haystacks.name, candidate)) best = Math.max(best, 10);
-      // A partial match in the name catches mid-typing ("busin").
-      else if (allowPartial && haystacks.name.includes(candidate)) {
+      else if (isTrailing && startsWord(haystacks.name, candidate)) {
+        best = Math.max(best, 8);
+      } else if (allowInfix && haystacks.name.includes(candidate)) {
         best = Math.max(best, 6);
       }
 
+      // Category name and tagline. Prefix matching here is gated on the same
+      // three-character threshold as the body: on one or two letters a tagline
+      // hit would drag in every product in that category.
       if (haystackHas(haystacks.category, candidate)) best = Math.max(best, 4);
+      else if (searchBody && isTrailing && startsWord(haystacks.category, candidate)) {
+        best = Math.max(best, 3);
+      }
 
-      if (haystackHas(haystacks.body, candidate)) best = Math.max(best, 2);
-      else if (allowPartial && haystacks.body.includes(candidate)) {
-        best = Math.max(best, 1);
+      // Description, specifications and customer-vocabulary terms.
+      if (searchBody) {
+        if (haystackHas(haystacks.body, candidate)) best = Math.max(best, 2);
+        else if (isTrailing && startsWord(haystacks.body, candidate)) {
+          best = Math.max(best, 1.5);
+        } else if (allowInfix && haystacks.body.includes(candidate)) {
+          best = Math.max(best, 1);
+        }
       }
     }
 

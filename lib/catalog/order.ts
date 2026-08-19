@@ -1,6 +1,6 @@
 import type { Product } from "./types";
 import { formatPrice, resolvePrice } from "./pricing";
-import { absoluteUrl, whatsappLink } from "../site";
+import { absoluteUrl, mailtoLink, whatsappLink } from "../site";
 
 export interface OrderRequest {
   product: Product;
@@ -91,16 +91,68 @@ export function buildOrderLink(request: OrderRequest): string {
   return whatsappLink(buildOrderMessage(request));
 }
 
-/** Lighter message for the "Get a quote" CTA, where no options are chosen. */
-export function buildQuoteLink(product: Product): string {
-  return whatsappLink(
+/**
+ * "Get a quote" for a specific product, as an email.
+ *
+ * The client asked for this CTA to open an email rather than reveal a phone
+ * number, so the button next to it is gone. The body is pre-structured with
+ * the fields the sales team needs, which turns the first reply into an actual
+ * quote instead of a round of questions.
+ *
+ * The recipient address comes from `lib/site.ts` — it is never written into a
+ * component.
+ */
+export function buildQuoteEmailLink(product: Product): string {
+  const price = product.startingPrice
+    ? formatPrice(product.startingPrice)
+    : "quote on request";
+
+  return mailtoLink(
+    `Quote request: ${product.name}`,
     [
       "Hello PrintPalash,",
+      "",
       `I would like a quote for ${product.name}.`,
       "",
-      "Please let me know the price, available options and delivery time.",
+      "Quantity:",
+      "Preferred options:",
+      "Deadline:",
+      "Do you have artwork ready? (yes / no):",
       "",
+      `Price shown on the website: ${price}`,
       `Product page: ${absoluteUrl(`/products/${product.slug}`)}`,
+      "",
+      "Please confirm the final price and delivery time.",
+      "",
+      "Thank you.",
+    ].join("\n")
+  );
+}
+
+/** "Get a quote" for a service page, where there is no single product. */
+export function buildServiceQuoteEmailLink(
+  serviceName: string,
+  servicePath: string
+): string {
+  return mailtoLink(
+    `Quote request: ${serviceName}`,
+    [
+      "Hello PrintPalash,",
+      "",
+      `I would like a quote for ${serviceName.toLowerCase()}.`,
+      "",
+      "What I need printed:",
+      "Quantity:",
+      "Size:",
+      "Finishing:",
+      "Deadline:",
+      "Do you have artwork ready? (yes / no):",
+      "",
+      `Service page: ${absoluteUrl(servicePath)}`,
+      "",
+      "Please send pricing, options and delivery time.",
+      "",
+      "Thank you.",
     ].join("\n")
   );
 }

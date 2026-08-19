@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, Mail } from "lucide-react";
 
 import type { Service } from "@/lib/services";
 import type { Category, Product } from "@/lib/catalog/types";
-import { PHONE_DISPLAY, PHONE_E164, whatsappLink } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
+import { buildServiceQuoteEmailLink } from "@/lib/catalog/order";
+import { toCardView } from "@/lib/catalog/card";
 import ProductCard from "@/components/Products/ProductCard";
 
 export default function ServiceDetail({
@@ -15,6 +17,12 @@ export default function ServiceDetail({
   relatedProducts?: Product[];
   relatedCategories?: Category[];
 }) {
+  // Email quote request for this service; the address lives in lib/site.ts.
+  const quoteEmailLink = buildServiceQuoteEmailLink(
+    service.h1,
+    `/services/${service.slug}`
+  );
+
   const whatsapp = whatsappLink(
     `Hello PrintPalash,\nI would like a quote for ${service.title.toLowerCase()} in Lagos.\n\nPlease let me know pricing, options and turnaround time.`
   );
@@ -57,12 +65,12 @@ export default function ServiceDetail({
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <Link
-              href="/get-a-quote"
+            <a
+              href={quoteEmailLink}
               className="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-red-700"
             >
               Get a quote <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
             <a
               href={whatsapp}
               target="_blank"
@@ -150,18 +158,19 @@ export default function ServiceDetail({
               </p>
 
               <div className="mt-3.5 space-y-2.5">
+                <a
+                  href={quoteEmailLink}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-red-700"
+                >
+                  <Mail aria-hidden className="h-4 w-4" />
+                  Get a quote
+                </a>
                 <Link
                   href="/get-a-quote"
-                  className="inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-red-700"
-                >
-                  Get a quote
-                </Link>
-                <a
-                  href={`tel:${PHONE_E164}`}
                   className="inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
                 >
-                  Call {PHONE_DISPLAY}
-                </a>
+                  Other ways to reach us
+                </Link>
               </div>
             </div>
 
@@ -203,7 +212,7 @@ export default function ServiceDetail({
 
             <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-3">
               {relatedProducts.map((product) => (
-                <ProductCard key={product.slug} product={product} />
+                <ProductCard key={product.slug} view={toCardView(product)} />
               ))}
             </div>
           </div>

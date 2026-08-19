@@ -9,7 +9,6 @@ import Footer from "@/components/Footer/Footer";
 import HomeSEOSection from "@/components/Home/HomeSEOSection";
 import HomeFAQ, { HOME_FAQS } from "@/components/Home/HomeFAQ";
 import JsonLd from "@/components/SEO/JsonLd";
-import { buildSearchIndex } from "@/lib/catalog/search-index";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -28,14 +27,12 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function HomePage() {
-  const searchEntries = buildSearchIndex();
-
   return (
     <>
       {/* Matches the FAQ section rendered further down this page. */}
       <JsonLd data={faqJsonLd(HOME_FAQS)} />
 
-      <Hero searchEntries={searchEntries} />
+      <Hero />
       <PopularProducts />
       <HomeSEOSection />
       <Features />

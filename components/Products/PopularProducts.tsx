@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { listCategoriesSync, listFeaturedProductsSync } from "@/lib/catalog/repository";
+
+import {
+  listCategoriesSync,
+  listFeaturedProductsSync,
+} from "@/lib/catalog/repository";
+import { toCardView } from "@/lib/catalog/card";
 import ProductCard from "./ProductCard";
 
 export default function PopularProducts() {
@@ -9,17 +14,14 @@ export default function PopularProducts() {
   if (products.length === 0) return null;
 
   return (
-    <section className="bg-white py-10 lg:py-14">
+    <section className="bg-white py-10 lg:py-12">
       <div className="container mx-auto px-4">
-        <div className="mb-5 flex items-end justify-between gap-4">
-          <div className="min-w-0">
-            <h2 className="text-xl font-extrabold text-gray-900 sm:text-2xl lg:text-3xl">
-              Popular products
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              The printing jobs Lagos businesses order from us most often.
-            </p>
-          </div>
+        {/* Heading and the "see all" link only — no explanatory paragraph, per
+            the client's note that the homepage felt packed. */}
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <h2 className="text-xl font-extrabold text-gray-900 sm:text-2xl lg:text-3xl">
+            Popular Products
+          </h2>
 
           <Link
             href="/products"
@@ -31,14 +33,14 @@ export default function PopularProducts() {
 
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+            <ProductCard key={product.slug} view={toCardView(product)} />
           ))}
         </div>
 
         {/* Category links give the homepage a route into every part of the
             catalogue, for readers and for crawlers. */}
-        <nav aria-label="Product categories" className="mt-6">
-          <h3 className="text-sm font-bold uppercase tracking-wide text-gray-500">
+        <nav aria-label="Product categories" className="mt-7">
+          <h3 className="text-xs font-bold uppercase tracking-wide text-gray-500">
             Shop by category
           </h3>
           <ul className="mt-2.5 flex flex-wrap gap-2">

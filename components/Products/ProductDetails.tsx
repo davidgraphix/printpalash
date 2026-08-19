@@ -7,7 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FileText,
-  MessageCircle,
+  Mail,
   Package,
   Ruler,
   Sparkles,
@@ -17,8 +17,8 @@ import { FaWhatsapp } from "react-icons/fa";
 
 import type { Product } from "@/lib/catalog/types";
 import { formatPrice, resolvePrice } from "@/lib/catalog/pricing";
-import { buildOrderLink, buildQuoteLink } from "@/lib/catalog/order";
-import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/site";
+import { buildOrderLink, buildQuoteEmailLink } from "@/lib/catalog/order";
+import { toCardView } from "@/lib/catalog/card";
 import ProductCard from "./ProductCard";
 
 interface ProductDetailProps {
@@ -79,7 +79,9 @@ export default function ProductDetail({
     [product, customerName, customerPhone, quantity, selectedOptions, notes]
   );
 
-  const quoteLink = useMemo(() => buildQuoteLink(product), [product]);
+  // "Get a quote" opens an email rather than exposing a phone number, per the
+  // client's request. The address comes from lib/site.ts.
+  const quoteEmailLink = useMemo(() => buildQuoteEmailLink(product), [product]);
 
   /**
    * Best-effort copy of the enquiry to the shop's inbox. The WhatsApp link is
@@ -157,6 +159,21 @@ export default function ProductDetail({
       </nav>
 
       <section className="container mx-auto px-4 py-6 lg:py-10">
+        {/* Title sits above both columns so the name is the first thing read on
+            mobile, without duplicating the h1 into a second breakpoint block. */}
+        <div className="mb-5 max-w-3xl">
+          <Link
+            href={`/products/category/${categorySlug}`}
+            className="text-xs font-bold uppercase tracking-wide text-red-600 hover:text-red-700"
+          >
+            {categoryName}
+          </Link>
+
+          <h1 className="mt-1.5 text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
+            {product.name}
+          </h1>
+        </div>
+
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Gallery */}
           <div className="space-y-3">
@@ -230,36 +247,9 @@ export default function ProductDetail({
 
           {/* Summary + order panel */}
           <div className="space-y-5">
-            <div>
-              <Link
-                href={`/products/category/${categorySlug}`}
-                className="text-xs font-bold uppercase tracking-wide text-red-600 hover:text-red-700"
-              >
-                {categoryName}
-              </Link>
-
-              <h1 className="mt-1.5 text-2xl font-extrabold leading-tight text-gray-900 lg:text-3xl">
-                {product.name}
-              </h1>
-
-              <p className="mt-2 leading-relaxed text-gray-600">
-                {product.description}
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-red-100 bg-red-50 p-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-red-700">
-                Price
-              </p>
-              <p className="mt-1 text-2xl font-extrabold text-red-600">
-                {activePrice ? formatPrice(activePrice) : "Quote on request"}
-              </p>
-              <p className="mt-1.5 text-sm text-gray-600">
-                {activePrice
-                  ? "Starting price for the batch shown. Your final price depends on artwork, finishing and total quantity — we confirm it before production."
-                  : "We quote this product per job. Send your quantity, size and deadline and we will come back with pricing."}
-              </p>
-            </div>
+            <p className="leading-relaxed text-gray-600">
+              {product.description}
+            </p>
 
             {specRows.length > 0 && (
               <div>
@@ -301,6 +291,20 @@ export default function ProductDetail({
                 </ul>
               </div>
             )}
+
+            <div className="rounded-xl border border-red-100 bg-red-50 p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-red-700">
+                Price
+              </p>
+              <p className="mt-1 text-2xl font-extrabold text-red-600">
+                {activePrice ? formatPrice(activePrice) : "Quote on request"}
+              </p>
+              <p className="mt-1.5 text-sm text-gray-600">
+                {activePrice
+                  ? "Starting price for the batch shown. Your final price depends on artwork, finishing and total quantity — we confirm it before production."
+                  : "We quote this product per job. Send your quantity, size and deadline and we will come back with pricing."}
+              </p>
+            </div>
 
             {/* Order form — feeds the WhatsApp message directly. */}
             <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 lg:p-5">
@@ -434,23 +438,13 @@ export default function ProductDetail({
                   Order now on WhatsApp
                 </a>
 
-                <div className="grid gap-2.5 sm:grid-cols-2">
-                  <a
-                    href={quoteLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
-                  >
-                    <MessageCircle aria-hidden className="h-4 w-4" />
-                    Get a quote
-                  </a>
-                  <a
-                    href={`tel:${PHONE_E164}`}
-                    className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
-                  >
-                    Call {PHONE_DISPLAY}
-                  </a>
-                </div>
+                <a
+                  href={quoteEmailLink}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:border-red-300 hover:text-red-600"
+                >
+                  <Mail aria-hidden className="h-4 w-4" />
+                  Get a quote by email
+                </a>
               </div>
             </div>
           </div>
@@ -490,9 +484,6 @@ export default function ProductDetail({
                 <h2 className="text-xl font-extrabold text-gray-900 lg:text-2xl">
                   Related products
                 </h2>
-                <p className="mt-0.5 text-sm text-gray-600">
-                  Other items customers order alongside {product.name.toLowerCase()}.
-                </p>
               </div>
 
               <Link
@@ -505,7 +496,7 @@ export default function ProductDetail({
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {relatedProducts.map((related) => (
-                <ProductCard key={related.slug} product={related} />
+                <ProductCard key={related.slug} view={toCardView(related)} />
               ))}
             </div>
           </div>
