@@ -91,7 +91,8 @@ export default function Hero() {
     { loop: true, align: "start" },
     [
       Autoplay({
-        delay: 5500,
+        // 4s: lively enough to feel active without rushing the headline.
+        delay: 4000,
         // Keep rotating after a dot click. With stopOnInteraction: true the
         // carousel stopped for good the first time anyone touched it, which is
         // what made the hero look broken.

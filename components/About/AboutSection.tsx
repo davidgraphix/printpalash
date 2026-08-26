@@ -11,6 +11,7 @@ export default function AboutSection() {
             src="/assests/about-image/about-bg-img.png"
             alt="Professional printing machine with colorful prints"
             fill
+            sizes="100vw"
             className="object-cover opacity-100"
             priority
           />

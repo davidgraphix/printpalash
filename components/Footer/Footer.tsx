@@ -74,6 +74,18 @@ export default function Footer() {
             >
               Terms
             </Link>
+            <Link
+              href="/services"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Services
+            </Link>
+            <Link
+              href="/money-back"
+              className="text-gray-300 hover:text-white transition-colors py-2"
+            >
+              Money Back
+            </Link>
           </div>
 
           {/* Social Media */}
@@ -207,6 +219,18 @@ export default function Footer() {
                   className="block text-gray-300 hover:text-white transition-colors"
                 >
                   Privacy Policy
+                </Link>
+                <Link
+                  href="/services"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  Printing Services
+                </Link>
+                <Link
+                  href="/money-back"
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  Money Back Guarantee
                 </Link>
               </div>
             </div>

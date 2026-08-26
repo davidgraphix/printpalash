@@ -144,7 +144,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <ProductCard
                 key={product.slug}
                 view={toCardView(product)}
-                priority={index < 4}
+                priority={index < 2}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
             ))}

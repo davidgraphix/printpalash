@@ -203,8 +203,17 @@ export function websiteJsonLd() {
  * schema.org construct that means exactly that. Representing it as a plain
  * Offer `price` would tell Google a single unit costs the batch price.
  *
- * No `aggregateRating` or `review` is emitted: PrintPalash has no collected
- * review data, and inventing it would be a fabricated signal.
+ * `highPrice` is emitted **only** for products that genuinely have more than
+ * one published price (a size, stock or layout choice that changes the
+ * figure). Those have a real ceiling. Products with a single "from ₦X" price
+ * have a floor and no known maximum, so no ceiling is invented just to satisfy
+ * a Search Console recommendation — a made-up highPrice would misrepresent the
+ * price to customers.
+ *
+ * No `aggregateRating` or `review` is emitted either. PrintPalash collects no
+ * first-party review data, and Google's own policy treats invented review
+ * markup as spam. Search Console lists both as *non-critical* suggestions; the
+ * honest response is to leave them out until real reviews exist.
  */
 export function productJsonLd(product: Product, categoryName: string) {
   const url = absoluteUrl(`/products/${product.slug}`);
@@ -216,9 +225,16 @@ export function productJsonLd(product: Product, categoryName: string) {
     ...product.optionGroups.flatMap((g) =>
       g.affectsPrice ? g.options.map((o) => o.price) : []
     ),
-  ].filter(Boolean);
+  ].filter((quote): quote is NonNullable<typeof quote> => Boolean(quote));
 
   const base = product.startingPrice ?? pricedQuotes[0];
+
+  // Distinct published amounts. A product whose options all cost the same has
+  // one real price, not a range.
+  const amounts = Array.from(new Set(pricedQuotes.map((q) => q.amount)));
+  const lowPrice = Math.min(...amounts);
+  const highPrice = Math.max(...amounts);
+  const hasRealRange = amounts.length > 1;
 
   return {
     "@context": "https://schema.org",
@@ -242,10 +258,10 @@ export function productJsonLd(product: Product, categoryName: string) {
             "@type": "AggregateOffer",
             url,
             priceCurrency: base.currency,
-            lowPrice: Math.min(
-              ...pricedQuotes.map((q) => q!.amount)
-            ),
-            offerCount: Math.max(1, pricedQuotes.length),
+            lowPrice,
+            // Only when the product really does have a maximum.
+            ...(hasRealRange ? { highPrice } : {}),
+            offerCount: Math.max(1, amounts.length),
             availability: "https://schema.org/InStock",
             itemCondition: "https://schema.org/NewCondition",
             eligibleQuantity: {

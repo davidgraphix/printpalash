@@ -28,6 +28,7 @@ export default function GetQuote() {
             src={getQuoteImageBg}
             alt="Colorful printing materials and papers"
             fill
+            sizes="100vw"
             className="object-cover opacity-100"
             priority
           />
