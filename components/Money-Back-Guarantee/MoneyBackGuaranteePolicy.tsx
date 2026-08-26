@@ -4,9 +4,9 @@ const MoneyBackGuaranteePolicy = () => {
   return (
     <section id="money-back-policy" className="py-16 bg-white scroll-mt-20">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-6 lg:text-3xl">
           Money-Back Guarantee Policy
-        </h2>
+        </h1>
         <p className="text-gray-700 mb-4">
           At Print Palash, we are committed to delivering high-quality printing
           products that meet your expectations. If you are not satisfied with

@@ -5,8 +5,11 @@ export default function TermsAndConditions() {
     <div className="min-h-screen bg-white">
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="prose prose-lg max-w-none">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4 lg:text-3xl">
+            Terms &amp; Conditions
+          </h1>
           <p className="text-gray-700 mb-8">
             Welcome to Printpalash.com website. By using our website <a className="text-red-600 font-bold" href="">printpalash</a> and our services, you agree to
             these Terms and Conditions. Please read them carefully before accessing our services.
@@ -187,7 +190,7 @@ export default function TermsAndConditions() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
 
     </div>
   )

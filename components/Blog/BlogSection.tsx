@@ -183,7 +183,7 @@ export default function BlogSection() {
         }}
       />
 
-      <main className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white">
         <section className="border-b bg-gradient-to-b from-red-50 via-white to-white">
           <div className="container mx-auto px-4 py-12 lg:py-20">
             <div className="mx-auto max-w-5xl text-center">
@@ -790,7 +790,7 @@ export default function BlogSection() {
         </section>
 
         <TrustedBrands />
-      </main>
+      </div>
 
       <Footer />
     </>
