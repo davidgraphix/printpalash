@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
-/** One year, in seconds. */
-const YEAR = 31_536_000;
+const HOUR = 3_600;
+/** One day, in seconds. */
+const DAY = 86_400;
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,14 +15,23 @@ const nextConfig: NextConfig = {
      * Optimised images were being served with
      * `Cache-Control: public, max-age=0, must-revalidate`, inherited from the
      * host's default headers on `/public`. That made every browser revalidate
-     * every product image on every navigation.
+     * every product image on every navigation, which is what made them feel
+     * slow. A real TTL fixes that.
      *
-     * Product images are immutable in practice — a changed photo gets a new
-     * file — so they are cached for a year. Redeploying with a new image at the
-     * same path still busts the cache because the optimiser keys on the source
-     * file, and a hard purge is available from the hosting dashboard.
+     * One DAY rather than one year, deliberately. Product image URLs are not
+     * content-hashed: the catalogue references literal paths like
+     * `/product-images/bags/a4-paper-bag.jpg`, so replacing a photo reuses the
+     * same URL. The optimiser caches its output against (url, width, quality)
+     * only — it does not look at the source file's mtime or ETag — so a longer
+     * TTL would pin a replaced photo for that entire period. Verified by
+     * overwriting a source file and re-requesting: the optimiser kept serving
+     * the old bytes, and kept doing so across a server restart.
+     *
+     * A day keeps the caching win while capping how long a swapped photo can
+     * linger. If these files are ever content-hashed or version-stamped, this
+     * can safely go back up to a year.
      */
-    minimumCacheTTL: YEAR,
+    minimumCacheTTL: DAY,
   },
 
   // One canonical URL shape. Next's default is trailingSlash: false, stated
@@ -71,17 +81,34 @@ const nextConfig: NextConfig = {
         ],
       },
       /**
-       * Long-lived caching for the raw image files. The image optimiser reads
-       * the upstream `Cache-Control` when deciding what to put on its own
-       * output, so setting it here fixes both the direct requests and the
-       * optimised variants.
+       * Caching for the raw image files, which the optimiser also reads when
+       * deciding what to put on its own output.
+       *
+       * NOT `immutable`, and not a year. Both of these paths serve literal,
+       * non-versioned filenames straight out of `public/` — `/product-images/*`
+       * is referenced by hard-coded path from the catalogue data, and the
+       * `/assests/*` files used via `src="/assests/..."` are the same. A photo
+       * can therefore be replaced at its existing URL, which is exactly how a
+       * non-technical update would happen.
+       *
+       * `immutable` tells the browser never to revalidate, not even on a
+       * reload, so a returning visitor would have been pinned to the old photo
+       * for the full max-age with no way to clear it. An hour of freshness plus
+       * stale-while-revalidate keeps repeat views instant, still removes the
+       * per-navigation revalidation that made images feel slow, and lets a
+       * replaced photo propagate quickly. ETags are already served, so the
+       * revalidation itself is a cheap 304.
+       *
+       * The genuinely immutable assets — `/_next/static/*`, including the
+       * content-hashed `/_next/static/media/*` files produced by static
+       * imports — are handled by Next itself and are untouched here.
        */
       {
         source: "/product-images/:path*",
         headers: [
           {
             key: "Cache-Control",
-            value: `public, max-age=${YEAR}, immutable`,
+            value: `public, max-age=${HOUR}, stale-while-revalidate=${DAY}`,
           },
         ],
       },
@@ -90,7 +117,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: `public, max-age=${YEAR}, immutable`,
+            value: `public, max-age=${HOUR}, stale-while-revalidate=${DAY}`,
           },
         ],
       },
