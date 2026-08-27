@@ -3,7 +3,7 @@ export default function Loading() {
     <div className="min-h-screen">
       <div className="min-h-[70vh] bg-gray-300 animate-pulse flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="h-12 bg-gray-400 rounded w-96 mx-auto"></div>
+          <div className="h-12 bg-gray-400 rounded w-full max-w-96 mx-auto"></div>
           <div className="h-6 bg-gray-400 rounded w-80 mx-auto"></div>
           <div className="h-12 bg-gray-400 rounded-full w-48 mx-auto"></div>
         </div>

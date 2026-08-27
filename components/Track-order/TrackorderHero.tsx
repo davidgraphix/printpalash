@@ -27,7 +27,7 @@ export default function TrackOrderHero() {
           <div className="relative">
             {/* Background Arrow */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-96 h-32 bg-pink-200 rounded-full transform rotate-12 opacity-50"></div>
+              <div className="w-full max-w-96 h-32 bg-pink-200 rounded-full transform rotate-12 opacity-50"></div>
             </div>
 
             {/* Mobile Phone with Tracking Steps */}
