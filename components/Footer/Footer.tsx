@@ -302,7 +302,7 @@ export default function Footer() {
       <div className="bg-red-600 py-3">
         <div className="container mx-auto px-4">
           <p className="text-center text-white text-sm">
-            Copyright © 2024 DePalashltd. All rights reserved.
+            Copyright © 2026 DePalashltd. All rights reserved.
           </p>
         </div>
       </div>
