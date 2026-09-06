@@ -1,0 +1,28 @@
+{
+  // The test build compiles a few lib/admin modules to plain ES modules that
+  // Node can run directly. It extends the app config purely for the "@/*" path
+  // mapping — lib/admin/format.ts imports a type through it, and without the
+  // mapping tsc cannot resolve it.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../lib/admin",
+    // The app config is incremental, and its build-info file sits outside the
+    // output directory — so after the runner deleted the output, tsc still
+    // believed everything was up to date and emitted nothing.
+    "incremental": false,
+    "composite": false,
+    "module": "esnext",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "noEmit": false,
+    "jsx": "preserve",
+    "outDir": "../.test-build/admin"
+  },
+  "include": [],
+  "files": [
+    "../lib/admin/api.ts",
+    "../lib/admin/config.ts",
+    "../lib/admin/format.ts"
+  ]
+}

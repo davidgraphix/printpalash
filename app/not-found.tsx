@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteChrome from "@/components/Site/SiteChrome";
 import type { Metadata } from "next";
 
 import { CATEGORIES } from "@/lib/catalog/categories";
@@ -9,8 +10,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
+/**
+ * Unmatched URLs.
+ *
+ * This lives at the root rather than inside the (site) group because a URL that
+ * matches nothing never enters that group, so a not-found file there would only
+ * cover notFound() calls from within real routes. It renders the site chrome
+ * explicitly for the same reason: the root layout no longer provides it, and a
+ * 404 with no header is a dead end on the one page a lost visitor is most
+ * likely to hit.
+ */
 export default function NotFound() {
   return (
+    <SiteChrome withSearch={false}>
     <div className="bg-gray-50">
       <div className="container mx-auto px-4 py-16 text-center lg:py-24">
         <p className="text-5xl font-extrabold text-red-600">404</p>
@@ -56,5 +68,6 @@ export default function NotFound() {
         </nav>
       </div>
     </div>
+    </SiteChrome>
   );
 }

@@ -1,27 +1,23 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "./globals.css";
 
-import TopBar from "@/components/Home/Topbar";
-import Header from "@/components/Home/Header";
-import Navbar from "@/components/Navbar/Navbar";
-import WhatsAppButton from "@/components/Chat-with-us/WhatsappButton";
-import JsonLd from "@/components/SEO/JsonLd";
-import { buildSearchIndex } from "@/lib/catalog/search-index";
-import { GA_MEASUREMENT_ID, SITE, SITE_URL } from "@/lib/site";
-import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { SITE, SITE_URL } from "@/lib/site";
 
 /**
- * Headings use Montserrat — the closest production-safe web font to the
- * heavy, wide geometric sans in the typography reference the client supplied
- * (double-storey `a`, tall x-height, straight-tailed `y`). Body copy uses
- * Inter for legibility at small sizes.
+ * The root layout, reduced to what is genuinely global.
  *
- * Both are self-hosted by next/font, so there is no render-blocking request to
- * Google Fonts and no layout shift beyond the `swap` fallback.
+ * It used to render the public site's chrome — top bar, header, navigation,
+ * the WhatsApp button, site-wide JSON-LD and Google Analytics. Layouts nest, so
+ * anything added under `app/` inherited all of it, and an admin dashboard would
+ * have arrived wrapped in the marketing site's navigation.
+ *
+ * That chrome now lives in `app/(site)/layout.tsx`, which covers exactly the
+ * routes it belongs to. Route groups are invisible in the URL, so every public
+ * address is unchanged. What stays here is the html element, the body, the two
+ * font variables and the metadata that is true of every page on the domain.
  */
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -36,6 +32,10 @@ const inter = Inter({
   display: "swap",
 });
 
+/**
+ * Defaults for the domain. The public site narrows these in
+ * `app/(site)/layout.tsx`; the admin replaces them outright and adds noindex.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -78,37 +78,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Built once on the server and handed to the header search box, which is
-  // rendered on every route (including product detail pages).
-  const searchEntries = buildSearchIndex();
-
   return (
     <html lang="en-NG" className={`${inter.variable} ${montserrat.variable}`}>
-      <body>
-        {/*
-          Site-wide entities. Page-level Product, Breadcrumb and FAQ blocks are
-          emitted by the individual routes.
-        */}
-        <JsonLd
-          data={[organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()]}
-        />
-
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-red-600 focus:px-4 focus:py-2 focus:font-bold focus:text-white"
-        >
-          Skip to main content
-        </a>
-
-        <TopBar />
-        <Header searchEntries={searchEntries} />
-        <Navbar />
-
-        <main id="main-content">{children}</main>
-
-        <WhatsAppButton />
-        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

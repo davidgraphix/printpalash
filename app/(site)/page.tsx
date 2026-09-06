@@ -12,6 +12,13 @@ import JsonLd from "@/components/SEO/JsonLd";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
+  // This title already ends in the brand, and the root layout appends
+  // " | PrintPalash" to every child segment's title. While the home page sat
+  // directly beside the root layout the template did not apply to it; moving it
+  // into the (site) group made it a child segment, and the brand started
+  // appearing twice. Marked absolute so the rendered <title> is exactly what it
+  // was before the route groups existed.
+  titleAbsolute: true,
   title:
     "Printing Company in Lagos — Packaging, Branding & Print | PrintPalash",
   description:

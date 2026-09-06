@@ -17,6 +17,8 @@ interface PageMetaInput {
   type?: "website" | "article";
   /** Set false for pages that should not be indexed. */
   index?: boolean;
+  /** Use the title exactly as given, without the site-wide template. */
+  titleAbsolute?: boolean;
 }
 
 /**
@@ -33,12 +35,16 @@ export function pageMetadata({
   imageAlt,
   type = "website",
   index = true,
+  titleAbsolute = false,
 }: PageMetaInput): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image ? absoluteUrl(image) : SITE.ogImage;
 
   return {
-    title,
+    // An absolute title opts out of the root layout template. Used where the
+    // title already ends in the brand and appending it again would read
+    // "... | PrintPalash | PrintPalash".
+    title: titleAbsolute ? { absolute: title } : title,
     description,
     ...(keywords?.length ? { keywords } : {}),
     alternates: { canonical: url },
