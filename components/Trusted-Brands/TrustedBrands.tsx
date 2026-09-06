@@ -77,7 +77,7 @@ export default function TrustedBrands() {
       <div className="container mx-auto px-4">
         <div className="mb-8 text-center lg:mb-12">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 lg:text-3xl">
-            Nigeria&apos;s No. 1 Online Print KING 👑
+            Nigeria&apos;s Print KING 👑
           </h2>
 
           <p className="mx-auto max-w-2xl text-sm text-gray-600 lg:text-base">

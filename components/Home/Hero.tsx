@@ -32,7 +32,7 @@ const SLIDES: Slide[] = [
         </span>
       </>
     ),
-    image: "/assests/hero-slide-1.png",
+    image: "/assests/hero-slide1.png",
     imageAlt:
       "Printed flyers, business cards and branded materials by PrintPalash",
     ctaHref: "/products",
@@ -231,9 +231,8 @@ export default function Hero() {
               onClick={() => emblaApi?.scrollTo(index)}
               aria-label={`Show slide ${index + 1}: ${slide.titleRed} ${slide.titleBlack}`}
               aria-current={selectedIndex === index}
-              className={`h-1 w-10 rounded-full transition-all ${
-                selectedIndex === index ? "bg-gray-900" : "bg-gray-300"
-              }`}
+              className={`h-1 w-10 rounded-full transition-all ${selectedIndex === index ? "bg-gray-900" : "bg-gray-300"
+                }`}
             />
           ))}
         </div>
