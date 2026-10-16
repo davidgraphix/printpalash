@@ -72,6 +72,27 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
+          /**
+           * A year, and deliberately without includeSubDomains or preload.
+           *
+           * The host already serves HTTPS and redirects to it, so this adds
+           * the one case a redirect cannot cover: the very first request of a
+           * session, typed or followed as plain http, which travels in the
+           * clear before anything can redirect it.
+           *
+           * includeSubDomains is left off because it would apply to every
+           * subdomain of this domain, including any that is not on HTTPS, and
+           * the effect is not reversible for a visitor who has already been
+           * told once — their browser refuses the subdomain for the full year
+           * with no way for the site to withdraw it. Worth turning on, but as
+           * a decision taken with the DNS in front of you, not as a side
+           * effect of a header list. preload is the same bargain, harder to
+           * undo.
+           */
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000",
+          },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           {

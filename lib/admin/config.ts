@@ -4,9 +4,34 @@
  * The only value the browser needs, and it is a public URL — no secret belongs
  * in this bundle. The JWT signing key, the database connection string and every
  * provider credential stay on the ASP.NET Core server.
+ *
+ * The localhost default is for development only and deliberately does not
+ * survive a production build. NEXT_PUBLIC_* values are inlined at build time,
+ * so a deploy missing this variable used to bake "http://localhost:5080" into
+ * the bundle: every staff member's browser would try to reach a server on
+ * their own machine, and the dashboard would report a network error that
+ * blames their connection. An empty base is checked for instead, and the
+ * failure says what is actually wrong.
+ *
+ * A trailing slash is trimmed because every call site appends a path that
+ * begins with one, and "https://api.example.com//api/orders" is not the same
+ * URL.
  */
+const configured = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/+$/, "");
+
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5080";
+  configured && configured.length > 0
+    ? configured
+    : process.env.NODE_ENV === "production"
+      ? ""
+      : "http://localhost:5080";
+
+/** True when the build shipped without NEXT_PUBLIC_API_URL set. */
+export const API_URL_MISSING = API_BASE_URL.length === 0;
+
+export const API_URL_MISSING_MESSAGE =
+  "This deployment has no API address configured. Set NEXT_PUBLIC_API_URL to " +
+  "the backend's public URL and redeploy.";
 
 /** Roles as the backend spells them, in the `role` field of `/api/auth/me`. */
 export const ROLES = {

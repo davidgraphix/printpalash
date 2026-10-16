@@ -1,6 +1,6 @@
 "use client";
 
-import { API_BASE_URL } from "./config";
+import { API_BASE_URL, API_URL_MISSING, API_URL_MISSING_MESSAGE } from "./config";
 
 /**
  * An error the server actually explained.
@@ -178,6 +178,8 @@ export async function apiFetch<T>(
 ): Promise<T> {
   const { method = "GET", body, signal, retried = false } = options;
 
+  if (API_URL_MISSING) throw new ApiError(0, API_URL_MISSING_MESSAGE);
+
   const headers: Record<string, string> = {};
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
@@ -245,6 +247,8 @@ export async function apiDownload(
   filename: string,
   retried = false,
 ): Promise<void> {
+  if (API_URL_MISSING) throw new ApiError(0, API_URL_MISSING_MESSAGE);
+
   const headers: Record<string, string> = {};
   if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
 

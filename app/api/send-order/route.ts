@@ -32,9 +32,73 @@ interface OrderPayload {
 
 const MAX_LEN = 400;
 
+/* ------------------------------------------------------------------ *
+ * Rate limiting
+ *
+ * This endpoint sends mail, and anonymously. The recipient is fixed to
+ * TO_EMAIL, so it cannot be made to deliver to anybody else — the exposure is
+ * the sending allowance itself: a few thousand requests exhausts the day's
+ * quota and the shop stops hearing about real enquiries, with nothing on the
+ * site to show why.
+ *
+ * In-memory and therefore per-instance. On a serverless host each cold start
+ * begins with an empty window and several instances may run at once, so this
+ * is a cost increase rather than a hard ceiling. Said plainly because it is
+ * the kind of limit that gets mistaken for a guarantee: a determined flood
+ * still needs stopping at the edge, and the provider's own sending cap is the
+ * real backstop.
+ * ------------------------------------------------------------------ */
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 8;
+
+const recent = new Map<string, number[]>();
+
+function callerKey(req: Request): string {
+  // x-forwarded-for is set by the platform's edge. The leftmost entry is the
+  // client; the rest are proxies. A caller can add their own, which is why only
+  // the first is read and why this is a cost increase and not an identity.
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0].trim();
+  return req.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+function overLimit(key: string): boolean {
+  const now = Date.now();
+  const hits = (recent.get(key) ?? []).filter((at) => now - at < WINDOW_MS);
+
+  if (hits.length >= MAX_PER_WINDOW) {
+    recent.set(key, hits);
+    return true;
+  }
+
+  hits.push(now);
+  recent.set(key, hits);
+
+  // The map would otherwise grow for the life of the instance. Expired
+  // entries are dropped on the way past rather than on a timer.
+  if (recent.size > 500) {
+    for (const [otherKey, times] of recent) {
+      if (times.every((at) => now - at >= WINDOW_MS)) recent.delete(otherKey);
+    }
+  }
+
+  return false;
+}
+
 function clean(value: unknown): string {
   if (typeof value !== "string" && typeof value !== "number") return "";
-  return String(value).slice(0, MAX_LEN).trim();
+
+  // Carriage returns and newlines are removed, not just trimmed from the ends.
+  // The product name is interpolated into the Subject header, and a value
+  // carrying a line break is the shape of a header-injection attempt. Nodemailer
+  // encodes headers and so already refuses this, but the value has no business
+  // containing one either way, and relying on a library's guard for a rule this
+  // cheap to enforce is how the guard becomes load-bearing without anyone
+  // deciding it should be.
+  return String(value)
+    .replace(/[\r\n]+/g, " ")
+    .slice(0, MAX_LEN)
+    .trim();
 }
 
 /** Escapes user input before it is placed in the notification HTML. */
@@ -48,6 +112,13 @@ function escapeHtml(value: string): string {
 }
 
 export async function POST(req: Request) {
+  if (overLimit(callerKey(req))) {
+    return NextResponse.json(
+      { delivered: false, reason: "rate-limited" },
+      { status: 429, headers: { "Retry-After": String(WINDOW_MS / 1000) } },
+    );
+  }
+
   let payload: OrderPayload;
 
   try {

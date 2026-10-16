@@ -16,14 +16,48 @@ export const runtime = "nodejs";
  * money, no customer details and no artwork on it. This adds nothing to that
  * payload and takes nothing away.
  */
+/**
+ * API_URL first, so the Next server can be given a different address than the
+ * browser if it ever needs one, then the public variable the dashboard already
+ * requires. Trailing slashes are trimmed because the path below begins with
+ * one.
+ *
+ * The localhost default does not survive a production build, matching
+ * lib/admin/config.ts. Left in, a deploy with neither variable set would spend
+ * every tracking lookup dialling a port on the Vercel instance itself and
+ * report it as "we could not reach our system" — a message that reads like an
+ * outage and would be chased as one.
+ */
+const trimmed = (value: string | undefined) =>
+  value?.trim().replace(/\/+$/, "") || "";
+
 const API_BASE_URL =
-  process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5080";
+  trimmed(process.env.API_URL) ||
+  trimmed(process.env.NEXT_PUBLIC_API_URL) ||
+  (process.env.NODE_ENV === "production" ? "" : "http://localhost:5080");
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ trackingNumber: string }> },
 ) {
   const { trackingNumber } = await params;
+
+  if (!API_BASE_URL) {
+    // Named in the server log, not in the response. The caller here is an
+    // anonymous visitor on the public site, and which environment variables a
+    // deployment is missing is not something to tell them. They get the same
+    // wording as any other outage; whoever reads the logs gets the cause.
+    console.error(
+      "[track] Neither API_URL nor NEXT_PUBLIC_API_URL is set. " +
+        "Order tracking cannot reach the API. Set one in the hosting " +
+        "environment and redeploy.",
+    );
+
+    return NextResponse.json(
+      { message: "We could not reach our system just now. Please try again shortly." },
+      { status: 503 },
+    );
+  }
 
   // Tracking numbers are generated as PP-YYYY-XXXXXX. Anything that cannot be
   // one is refused here rather than forwarded, so the upstream rate limit is

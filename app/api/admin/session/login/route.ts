@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { API_BASE_URL } from "@/lib/admin/config";
+import {
+  API_BASE_URL,
+  API_URL_MISSING,
+  API_URL_MISSING_MESSAGE,
+} from "@/lib/admin/config";
 import { REFRESH_COOKIE, refreshCookieOptions } from "../cookie";
 
 export const runtime = "nodejs";
@@ -32,6 +36,16 @@ export async function POST(request: Request) {
   // Wrapped deliberately: an unreachable API used to throw straight out of the
   // handler and surface as a 500, which a client cannot tell apart from a
   // broken session and which says nothing useful to the person looking at it.
+  // A deploy with no NEXT_PUBLIC_API_URL would otherwise fetch a relative URL,
+  // get this Next server's own 404 and report it as a transport failure. Said
+  // plainly instead, because it is a configuration problem, not an outage.
+  if (API_URL_MISSING) {
+    return NextResponse.json(
+      { message: API_URL_MISSING_MESSAGE },
+      { status: 503 },
+    );
+  }
+
   let upstream: Response;
 
   try {
