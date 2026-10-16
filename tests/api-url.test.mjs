@@ -110,3 +110,59 @@ test("a blank value counts as missing rather than as an address", async () => {
   assert.equal(API_BASE_URL, "");
   assert.equal(API_URL_MISSING, true);
 });
+
+/* ------------------------------------------------------------------ *
+ * The shared resolver
+ *
+ * The public order-tracking proxy resolves its API address from API_URL then
+ * NEXT_PUBLIC_API_URL, through this same function. It takes isProduction as an
+ * argument rather than reading NODE_ENV, so these cases need no module-cache
+ * tricks and cover the proxy's two-candidate shape as well as the dashboard's
+ * single one.
+ * ------------------------------------------------------------------ */
+
+const { resolveApiBaseUrl, LOCAL_API_FALLBACK } = await import(MODULE);
+
+test("the first usable candidate wins", () => {
+  assert.equal(
+    resolveApiBaseUrl(["https://first.example", "https://second.example"], true),
+    "https://first.example",
+  );
+});
+
+test("an unset or blank candidate is skipped, not treated as an answer", () => {
+  // This is the proxy's ordinary case: API_URL is optional, so the value that
+  // should apply is usually the second one.
+  assert.equal(
+    resolveApiBaseUrl([undefined, "https://second.example"], true),
+    "https://second.example",
+  );
+
+  assert.equal(
+    resolveApiBaseUrl(["", "   ", "https://third.example"], true),
+    "https://third.example",
+  );
+});
+
+test("production with no candidate resolves to empty, never to localhost", () => {
+  assert.equal(resolveApiBaseUrl([undefined, undefined], true), "");
+  assert.equal(resolveApiBaseUrl([], true), "");
+});
+
+test("development with no candidate resolves to the local default", () => {
+  assert.equal(resolveApiBaseUrl([undefined, undefined], false), LOCAL_API_FALLBACK);
+});
+
+test("trailing slashes are trimmed from whichever candidate wins", () => {
+  assert.equal(
+    resolveApiBaseUrl(["https://api.example.com///"], true),
+    "https://api.example.com",
+  );
+});
+
+test("whitespace around a candidate does not make it look unset", () => {
+  assert.equal(
+    resolveApiBaseUrl(["  https://api.example.com  "], true),
+    "https://api.example.com",
+  );
+});

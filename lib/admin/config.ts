@@ -17,14 +17,34 @@
  * begins with one, and "https://api.example.com//api/orders" is not the same
  * URL.
  */
-const configured = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/+$/, "");
+export const LOCAL_API_FALLBACK = "http://localhost:5080";
 
-export const API_BASE_URL =
-  configured && configured.length > 0
-    ? configured
-    : process.env.NODE_ENV === "production"
-      ? ""
-      : "http://localhost:5080";
+/**
+ * One address out of however many candidates, under one rule.
+ *
+ * Exported because the public order-tracking proxy resolves the same thing
+ * from a different pair of variables, and two copies of "trim it, drop the
+ * trailing slash, no localhost in production" would not stay the same for
+ * long. This file is plain constants with no client directive, so a server
+ * route can import it.
+ *
+ * Returns "" rather than a default when nothing is configured in production,
+ * and callers check for that. The alternative — substituting localhost — is
+ * what shipped a dashboard pointed at the visitor's own machine.
+ */
+export function resolveApiBaseUrl(
+  candidates: (string | undefined)[],
+  isProduction = process.env.NODE_ENV === "production",
+): string {
+  for (const candidate of candidates) {
+    const trimmed = candidate?.trim().replace(/\/+$/, "");
+    if (trimmed) return trimmed;
+  }
+
+  return isProduction ? "" : LOCAL_API_FALLBACK;
+}
+
+export const API_BASE_URL = resolveApiBaseUrl([process.env.NEXT_PUBLIC_API_URL]);
 
 /** True when the build shipped without NEXT_PUBLIC_API_URL set. */
 export const API_URL_MISSING = API_BASE_URL.length === 0;

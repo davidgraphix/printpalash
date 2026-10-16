@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { resolveApiBaseUrl } from "@/lib/admin/config";
 
 export const runtime = "nodejs";
 
@@ -28,13 +29,10 @@ export const runtime = "nodejs";
  * report it as "we could not reach our system" — a message that reads like an
  * outage and would be chased as one.
  */
-const trimmed = (value: string | undefined) =>
-  value?.trim().replace(/\/+$/, "") || "";
-
-const API_BASE_URL =
-  trimmed(process.env.API_URL) ||
-  trimmed(process.env.NEXT_PUBLIC_API_URL) ||
-  (process.env.NODE_ENV === "production" ? "" : "http://localhost:5080");
+const API_BASE_URL = resolveApiBaseUrl([
+  process.env.API_URL,
+  process.env.NEXT_PUBLIC_API_URL,
+]);
 
 export async function GET(
   _request: Request,
