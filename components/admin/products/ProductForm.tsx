@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 
+import { FileUpload } from "@/components/admin/FileUpload";
 import { Button, Card, Input } from "@/components/admin/ui/primitives";
 import { useToast } from "@/components/admin/ui/feedback";
 import { ApiError } from "@/lib/admin/api";
+import { move } from "@/lib/admin/arrays";
 import { can } from "@/lib/admin/config";
 import { useQuery } from "@/lib/admin/hooks";
 import { brands, categories, products } from "@/lib/admin/resources";
@@ -338,26 +340,99 @@ export function ProductForm({
             No images. A product needs at least one before it can be published.
           </p>
         ) : (
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-4">
             {images.map((image, index) => (
-              <li key={index} className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
-                <Input
-                  label={index === 0 ? "Image path" : undefined}
-                  aria-label={`Image ${index + 1} path`}
-                  value={image.url}
-                  onChange={(event) => setImages(patch(images, index, { url: event.target.value }))}
-                  placeholder="/product-images/example.webp"
-                />
-                <Input
-                  label={index === 0 ? "Alt text" : undefined}
-                  aria-label={`Image ${index + 1} alt text`}
-                  value={image.altText}
-                  onChange={(event) =>
-                    setImages(patch(images, index, { altText: event.target.value }))
-                  }
-                  placeholder="What the image shows"
-                />
-                <div className={index === 0 ? "flex items-end pb-0.5" : "flex items-start"}>
+              <li
+                key={index}
+                className="grid gap-3 border-t border-gray-100 pt-4 first:border-0 first:pt-0 sm:grid-cols-[5rem_1fr_auto]"
+              >
+                {/*
+                  A plain img, not next/image. The value is whatever is in the
+                  field — a local path, a freshly uploaded address, or something
+                  half-typed — and the optimiser refuses hosts that are not
+                  configured for it. A broken thumbnail here is useful feedback;
+                  a runtime error in the editor is not.
+                */}
+                <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-md border border-gray-200 bg-gray-50">
+                  {image.url.trim() ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={image.url.trim()}
+                      alt=""
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <span className="px-1 text-center text-[10px] leading-tight text-gray-400">
+                      No image
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex min-w-0 flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-semibold text-gray-700">
+                      Image {index + 1}
+                    </span>
+                    {index === 0 && (
+                      <span className="rounded bg-gray-900 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                        Primary
+                      </span>
+                    )}
+                  </div>
+
+                  <Input
+                    aria-label={`Image ${index + 1} path`}
+                    value={image.url}
+                    onChange={(event) =>
+                      setImages(patch(images, index, { url: event.target.value }))
+                    }
+                    placeholder="/product-images/example.webp"
+                  />
+
+                  <FileUpload
+                    kind="product-image"
+                    label="Upload a photograph"
+                    onUploaded={(url, publicId) =>
+                      setImages(patch(images, index, { url, publicId }))
+                    }
+                  />
+
+                  <Input
+                    aria-label={`Image ${index + 1} alt text`}
+                    value={image.altText}
+                    onChange={(event) =>
+                      setImages(patch(images, index, { altText: event.target.value }))
+                    }
+                    placeholder="What the image shows"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  {/*
+                    Order is the array's order, and the first image is the one
+                    the storefront and the structured data use. So moving a row
+                    up is how the primary image is chosen — there is no separate
+                    flag to set, and a "primary" checkbox would imply a second
+                    source of truth.
+                  */}
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    disabled={index === 0}
+                    aria-label={`Move image ${index + 1} earlier`}
+                    onClick={() => setImages(move(images, index, index - 1))}
+                  >
+                    <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    disabled={index === images.length - 1}
+                    aria-label={`Move image ${index + 1} later`}
+                    onClick={() => setImages(move(images, index, index + 1))}
+                  >
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Button>
                   <Button
                     size="sm"
                     variant="secondary"
@@ -371,6 +446,13 @@ export function ProductForm({
             ))}
           </ul>
         )}
+
+        <p className="mt-3 text-xs text-gray-500">
+          The first image is the one shown on listings, the product page and in
+          search results. Uploading replaces that row&rsquo;s address; the
+          previous file is left in the store rather than deleted, because an
+          older order or a cached page may still point at it.
+        </p>
       </Card>
 
       <Card
@@ -524,6 +606,7 @@ const toAddOnDraft = (addOn: AddOn): AddOnDraft => ({
 function patch<T>(rows: T[], index: number, changes: Partial<T>): T[] {
   return rows.map((row, i) => (i === index ? { ...row, ...changes } : row));
 }
+
 
 /** True when any of the four price figures actually moved. */
 function pricingChanged(

@@ -22,6 +22,7 @@
   "include": [],
   "files": [
     "../lib/admin/api.ts",
+    "../lib/admin/arrays.ts",
     "../lib/admin/config.ts",
     "../lib/admin/format.ts"
   ]

@@ -19,23 +19,37 @@ import { API_BASE_URL } from "@/lib/admin/config";
  * a paste is often quicker than a picker. When the store is not configured the
  * server answers 503 and this says so, leaving the URL field working.
  */
+export type UploadKind = "artwork" | "payment-proof" | "product-image";
+
+/** What the picker offers. The server decides regardless, from the bytes. */
+const ACCEPT: Record<UploadKind, string> = {
+  artwork: ".pdf,.png,.jpg,.jpeg,.gif,.tif,.tiff,.eps,.cdr,.ai,.zip,.webp",
+  "payment-proof": ".pdf,.png,.jpg,.jpeg,.gif,.tif,.tiff,.webp",
+  // Narrower, matching the server: only what a browser renders in an img tag.
+  // Offering a PDF here would let someone pick one and be refused for a reason
+  // the file picker had implied was fine.
+  "product-image": ".png,.jpg,.jpeg,.webp,.gif",
+};
+
 export function FileUpload({
   kind,
   onUploaded,
   label = "Upload a file",
 }: {
-  kind: "artwork" | "payment-proof";
-  onUploaded: (url: string) => void;
+  kind: UploadKind;
+  /**
+   * The stored address, and the store's own id for it. The id is what a later
+   * replace or delete would need, so it is handed over even though the URL is
+   * all the page needs to render.
+   */
+  onUploaded: (url: string, publicId: string) => void;
   label?: string;
 }) {
   const input = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const accept =
-    kind === "artwork"
-      ? ".pdf,.png,.jpg,.jpeg,.gif,.tif,.tiff,.eps,.cdr,.ai,.zip,.webp"
-      : ".pdf,.png,.jpg,.jpeg,.gif,.tif,.tiff,.webp";
+  const accept = ACCEPT[kind];
 
   async function send(file: File) {
     setBusy(true);
@@ -62,7 +76,7 @@ export function FileUpload({
         throw new ApiError(response.status, data?.message ?? "The upload failed.");
       }
 
-      onUploaded(data.url as string);
+      onUploaded(data.url as string, (data.publicId as string) ?? "");
     } catch (caught) {
       setError(
         caught instanceof ApiError
