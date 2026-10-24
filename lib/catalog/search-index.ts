@@ -1,6 +1,12 @@
 import { listProductsSync } from "./repository";
 import { toCardView, type ProductCardView } from "./card";
-import { productHaystacks, scoreHaystacks, type Haystacks } from "./search";
+import {
+  normalize,
+  productHaystacks,
+  scoreHaystacks,
+  type Haystacks,
+} from "./search";
+import type { CatalogCard } from "./source";
 
 /**
  * A pre-flattened, client-safe view of the catalogue.
@@ -25,6 +31,35 @@ export function buildSearchIndex(): SearchIndexEntry[] {
     card: toCardView(product),
     haystacks: productHaystacks(product),
     featured: product.featured,
+  }));
+}
+
+/**
+ * The same index, built from the API's card payload.
+ *
+ * Narrower than the product-based version on purpose, because a card is all
+ * the listing endpoint returns. The haystacks lose the full description, the
+ * specifications, the hand-written search terms and the variant labels, so a
+ * search for "kraft" or "A2" no longer matches a product whose name does not
+ * contain the word.
+ *
+ * That is the same limit the API's own server-side search has — it matches on
+ * name, short description and category name — so the live dropdown and the
+ * server-rendered results page now agree with each other. Fetching 104 full
+ * products to rebuild the richer index would be 104 requests per page render,
+ * which is a worse trade than a slightly blunter search.
+ */
+export function buildSearchIndexFromCards(
+  cards: CatalogCard[],
+): SearchIndexEntry[] {
+  return cards.map((card) => ({
+    card,
+    haystacks: {
+      name: normalize(card.name),
+      category: normalize(card.categoryName),
+      body: normalize(card.excerpt),
+    },
+    featured: card.featured,
   }));
 }
 

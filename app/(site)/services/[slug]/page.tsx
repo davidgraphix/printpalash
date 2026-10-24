@@ -6,7 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import JsonLd from "@/components/SEO/JsonLd";
 import { SERVICES } from "@/lib/services";
 import { CATEGORIES } from "@/lib/catalog/categories";
-import { listProductsByCategorySync } from "@/lib/catalog/repository";
+import { fetchCards } from "@/lib/catalog/source";
 import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 import { SITE, absoluteUrl } from "@/lib/site";
 
@@ -66,9 +66,32 @@ export default async function ServicePage({ params }: ServicePageProps) {
     category.relatedServiceSlugs.includes(service.slug)
   );
 
-  const relatedProducts = relatedCategories
-    .flatMap((category) => listProductsByCategorySync(category.slug).slice(0, 3))
-    .slice(0, 6);
+  /*
+   * One request for the whole catalogue, then grouped here — rather than one
+   * request per related category. A service page names at most a handful of
+   * categories, but the whole catalogue is a single call either way and this
+   * keeps the page to one round trip.
+   *
+   * A failure leaves the row out instead of failing the page. A service page
+   * is written content in its own right; the product links are a useful
+   * addition to it, not the reason it exists.
+   */
+  let relatedProducts: Awaited<ReturnType<typeof fetchCards>> = [];
+
+  try {
+    const cards = await fetchCards();
+
+    relatedProducts = relatedCategories
+      .flatMap((category) =>
+        cards.filter((card) => card.categorySlug === category.slug).slice(0, 3),
+      )
+      .slice(0, 6);
+  } catch (caught) {
+    console.error(
+      `[services] Related products unavailable for ${service.slug}.`,
+      caught,
+    );
+  }
 
   const serviceJsonLd = {
     "@context": "https://schema.org",

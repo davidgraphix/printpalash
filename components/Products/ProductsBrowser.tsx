@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import type { Category, Product } from "@/lib/catalog/types";
-import { toCardView } from "@/lib/catalog/card";
+import type { Category } from "@/lib/catalog/types";
+import type { CatalogCard } from "@/lib/catalog/source";
 import type { SearchIndexEntry } from "@/lib/catalog/search-index";
 import ProductCard from "./ProductCard";
 import ProductsLiveSearch from "./ProductsLiveSearch";
@@ -24,7 +24,11 @@ export default function ProductsBrowser({
   query,
   activeCategory,
 }: {
-  products: Product[];
+  /* Cards, not whole products. This component only ever read the slug, the
+     category it belongs to, and whatever toCardView produced — so the API's
+     card payload is exactly its input, and nothing has to download a
+     catalogue to render a grid. */
+  products: CatalogCard[];
   categories: Category[];
   searchEntries: SearchIndexEntry[];
   query?: string;
@@ -101,7 +105,7 @@ export default function ProductsBrowser({
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {group.items.map((product) => (
-                <ProductCard key={product.slug} view={toCardView(product)} />
+                <ProductCard key={product.slug} view={product} />
               ))}
             </div>
           </section>
@@ -110,7 +114,7 @@ export default function ProductsBrowser({
     ) : (
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
         {products.map((product) => (
-          <ProductCard key={product.slug} view={toCardView(product)} />
+          <ProductCard key={product.slug} view={product} />
         ))}
       </div>
     );

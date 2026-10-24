@@ -4,17 +4,20 @@ import ProductsBrowser from "@/components/Products/ProductsBrowser";
 import Footer from "@/components/Footer/Footer";
 import TrustedBrands from "@/components/Trusted-Brands/TrustedBrands";
 import JsonLd from "@/components/SEO/JsonLd";
-import {
-  listCategoriesSync,
-  listProductsSync,
-  searchSync,
-} from "@/lib/catalog/repository";
-import { buildSearchIndex } from "@/lib/catalog/search-index";
+import { fetchCards, fetchCategories } from "@/lib/catalog/source";
+import { buildSearchIndexFromCards } from "@/lib/catalog/search-index";
 import { breadcrumbJsonLd, itemListJsonLd, pageMetadata } from "@/lib/seo";
 
 interface ProductsPageProps {
   searchParams: Promise<{ search?: string }>;
 }
+
+/**
+ * An hour, as a backstop behind the tag invalidation that /api/revalidate does.
+ * Matches the product pages so the grid and the detail pages cannot disagree
+ * about what the catalogue contains.
+ */
+export const revalidate = 3600;
 
 const BASE_METADATA = {
   title: "Printing Products in Lagos — Bags, Packaging, Flyers & Branding",
@@ -53,11 +56,31 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const { search } = await searchParams;
   const query = search?.trim();
 
-  const categories = listCategoriesSync();
-  const searchEntries = buildSearchIndex();
-  const products = query
-    ? searchSync(query).map((result) => result.product)
-    : listProductsSync();
+  /*
+   * Both reads together, and neither failure caught.
+   *
+   * An empty grid with the category navigation still drawn would read as "the
+   * shop has nothing in it", which is worse than a page that failed: a visitor
+   * leaves, and a crawler records a category page with no products. Letting it
+   * throw returns a 500, which is retried.
+   *
+   * The full catalogue in one request. 104 products is well inside the API's
+   * 200-row limit, and the grid groups by category client-side exactly as it
+   * did when the data was local.
+   */
+  const [cards, categories] = await Promise.all([
+    // The API's search matches name, short description and category name. It
+    // is used for the server-rendered results so that what a crawler sees and
+    // what the live dropdown shows come from the same rule.
+    query ? fetchCards({ search: query }) : fetchCards(),
+    fetchCategories(),
+  ]);
+
+  // The live dropdown searches this in the browser, so it is built from the
+  // cards already being sent rather than from a second fetch.
+  const searchEntries = buildSearchIndexFromCards(
+    query ? await fetchCards() : cards,
+  );
 
   return (
     <>
@@ -82,7 +105,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       )}
 
       <ProductsBrowser
-        products={products}
+        products={cards}
         categories={categories}
         searchEntries={searchEntries}
         query={query}

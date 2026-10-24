@@ -94,6 +94,15 @@ export interface Product {
   slug: string;
   name: string;
   categorySlug: string;
+  /**
+   * The category's display name, when the source supplies one.
+   *
+   * Optional because the static records never carried it — they looked it up
+   * in the local category list. The API returns it with the product, which is
+   * what lets a category created in the admin render correctly instead of
+   * falling back to "Products".
+   */
+  categoryName?: string;
   brand?: string;
   shortDescription: string;
   description: string;
@@ -135,6 +144,15 @@ export interface Product {
 export interface Category {
   slug: string;
   name: string;
+  /**
+   * How many published products the category holds, when the source knows.
+   *
+   * Optional because the static records never carried it — the count was
+   * derived by grouping the local product array. The API returns it, and the
+   * sitemap uses it to leave out a category with nothing in it rather than
+   * inviting Google to crawl an empty page.
+   */
+  productCount?: number;
   /** Short line used on category cards. */
   tagline: string;
   description: string;

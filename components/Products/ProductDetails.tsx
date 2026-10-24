@@ -18,14 +18,17 @@ import { FaWhatsapp } from "react-icons/fa";
 import type { Product } from "@/lib/catalog/types";
 import { formatPrice, resolvePrice } from "@/lib/catalog/pricing";
 import { buildOrderLink, buildQuoteEmailLink } from "@/lib/catalog/order";
-import { toCardView } from "@/lib/catalog/card";
+import type { ProductCardView } from "@/lib/catalog/card";
 import ProductCard from "./ProductCard";
 
 interface ProductDetailProps {
   product: Product;
   categoryName: string;
   categorySlug: string;
-  relatedProducts: Product[];
+  /* Cards, not whole products. The related row only ever rendered a card, and
+     the API returns exactly that shape — so fetching four full products to
+     throw away everything but seven fields was work nobody needed. */
+  relatedProducts: ProductCardView[];
 }
 
 /** Quantity presets scale with how the product is actually sold. */
@@ -496,7 +499,7 @@ export default function ProductDetail({
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {relatedProducts.map((related) => (
-                <ProductCard key={related.slug} view={toCardView(related)} />
+                <ProductCard key={related.slug} view={related} />
               ))}
             </div>
           </div>

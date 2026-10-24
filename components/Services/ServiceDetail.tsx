@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, ChevronRight, Mail } from "lucide-react";
 
 import type { Service } from "@/lib/services";
-import type { Category, Product } from "@/lib/catalog/types";
+import type { Category } from "@/lib/catalog/types";
 import { whatsappLink } from "@/lib/site";
 import { buildServiceQuoteEmailLink } from "@/lib/catalog/order";
-import { toCardView } from "@/lib/catalog/card";
+import type { ProductCardView } from "@/lib/catalog/card";
 import ProductCard from "@/components/Products/ProductCard";
 
 export default function ServiceDetail({
@@ -14,7 +14,9 @@ export default function ServiceDetail({
   relatedCategories = [],
 }: {
   service: Service;
-  relatedProducts?: Product[];
+  /* Cards. This row only ever rendered a product card, and the API returns
+     that shape directly. */
+  relatedProducts?: ProductCardView[];
   relatedCategories?: Category[];
 }) {
   // Email quote request for this service; the address lives in lib/site.ts.
@@ -212,7 +214,7 @@ export default function ServiceDetail({
 
             <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-3">
               {relatedProducts.map((product) => (
-                <ProductCard key={product.slug} view={toCardView(product)} />
+                <ProductCard key={product.slug} view={product} />
               ))}
             </div>
           </div>

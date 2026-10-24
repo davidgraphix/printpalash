@@ -7,12 +7,11 @@ import Footer from "@/components/Footer/Footer";
 import ProductCard from "@/components/Products/ProductCard";
 import JsonLd from "@/components/SEO/JsonLd";
 import { SERVICES } from "@/lib/services";
-import { getCategory } from "@/lib/catalog/categories";
-import { toCardView } from "@/lib/catalog/card";
 import {
-  listCategoriesSync,
-  listProductsByCategorySync,
-} from "@/lib/catalog/repository";
+  fetchCards,
+  fetchCategories,
+  fetchCategory,
+} from "@/lib/catalog/source";
 import {
   breadcrumbJsonLd,
   categoryMetadata,
@@ -25,22 +24,39 @@ interface CategoryPageProps {
 }
 
 /**
- * The catalogue is a fixed set, so any slug outside generateStaticParams is a
- * genuine 404. Without this, Next renders the route on demand and returns the
- * not-found body with a 200 status — a soft 404 that Google treats as a real,
- * indexable page.
+ * Categories that exist at build time are prerendered; one added later renders
+ * on first request. This was false, which meant a category created in the admin
+ * returned 404 until the frontend was redeployed.
+ *
+ * The soft-404 problem that false was solving is still handled: a slug the API
+ * does not publish calls notFound() below, which returns a real 404 status.
  */
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return listCategoriesSync().map((category) => ({ category: category.slug }));
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  // A build must not fail because the API is briefly unreachable. With an empty
+  // list every category page renders on demand instead.
+  try {
+    return (await fetchCategories()).map((category) => ({
+      category: category.slug,
+    }));
+  } catch (caught) {
+    console.error(
+      "[categories] Could not list categories at build time; every category " +
+        "page will render on demand instead.",
+      caught,
+    );
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   const { category: slug } = await params;
-  const category = getCategory(slug);
+  const category = await fetchCategory(slug);
 
   if (!category) {
     return {
@@ -55,17 +71,23 @@ export async function generateMetadata({
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category: slug } = await params;
-  const category = getCategory(slug);
+
+  const [category, categories] = await Promise.all([
+    fetchCategory(slug),
+    fetchCategories(),
+  ]);
 
   if (!category) notFound();
 
-  const products = listProductsByCategorySync(slug);
+  const products = await fetchCards({ category: slug });
   if (products.length === 0) notFound();
 
+  // Editorial, and deliberately still from the repository: the database has no
+  // column pairing a category with the service pages that relate to it.
   const relatedServices = SERVICES.filter((service) =>
     category.relatedServiceSlugs.includes(service.slug)
   );
-  const otherCategories = listCategoriesSync().filter((c) => c.slug !== slug);
+  const otherCategories = categories.filter((c) => c.slug !== slug);
 
   return (
     <>
@@ -143,7 +165,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {products.map((product, index) => (
               <ProductCard
                 key={product.slug}
-                view={toCardView(product)}
+                view={product}
                 priority={index < 2}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />

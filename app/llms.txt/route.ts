@@ -1,5 +1,5 @@
 import { CATEGORIES } from "@/lib/catalog/categories";
-import { listProductsSync } from "@/lib/catalog/repository";
+import { fetchCards } from "@/lib/catalog/source";
 import { formatPriceShort } from "@/lib/catalog/pricing";
 import { SERVICES } from "@/lib/services";
 import { PHONE_DISPLAY, SITE, SITE_URL } from "@/lib/site";
@@ -10,8 +10,8 @@ export const dynamic = "force-static";
  * Plain-text summary for language models, generated from the same catalogue
  * the site renders — so it cannot list products or prices that do not exist.
  */
-export function GET() {
-  const products = listProductsSync();
+export async function GET() {
+  const products = await fetchCards();
 
   const categorySections = CATEGORIES.map((category) => {
     const items = products.filter((p) => p.categorySlug === category.slug);
@@ -20,11 +20,11 @@ export function GET() {
     const lines = items
       .map(
         (product) =>
-          `- ${product.name} — ${
-            product.startingPrice
-              ? formatPriceShort(product.startingPrice)
-              : "price on request"
-          } — ${SITE_URL}/products/${product.slug}`
+          // The card's priceLabel is already formatted with its batch
+          // basis, and already reads "Request a quote" for a product whose
+          // price is withheld — so the wording here now comes from the same
+          // place the product pages get it, rather than a second rule.
+          `- ${product.name} — ${product.priceLabel} — ${SITE_URL}/products/${product.slug}`
       )
       .join("\n");
 

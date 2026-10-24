@@ -249,6 +249,7 @@ export function productFromApi(dto: ApiProduct): Product | undefined {
 
   return {
     ...derived,
+    ...(clean(dto.categoryName) ? { categoryName: clean(dto.categoryName)! } : {}),
     ...(clean(dto.brandName) ? { brand: clean(dto.brandName)! } : {}),
     // The alt text a person actually wrote, in place of the generated
     // "<name>, view 2". An image whose alt text is blank upstream keeps the
@@ -295,6 +296,7 @@ export function categoryFromApi(dto: ApiCategory): Category | undefined {
   return {
     slug,
     name,
+    productCount: dto.productCount ?? 0,
     tagline: clean(dto.tagline) ?? "",
     description,
     seo: {
