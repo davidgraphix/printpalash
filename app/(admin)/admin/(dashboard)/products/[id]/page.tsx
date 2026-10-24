@@ -6,7 +6,7 @@ import { AlertTriangle, ArrowLeft, ExternalLink, Pencil, Trash2, X } from "lucid
 
 import { PricingReviewBadge, ProductStatusBadge } from "@/components/admin/ui/badges";
 import { Button, Card, ErrorState, Input, Skeleton } from "@/components/admin/ui/primitives";
-import { ConfirmDialog, useToast } from "@/components/admin/ui/feedback";
+import { announceSaved, ConfirmDialog, useToast } from "@/components/admin/ui/feedback";
 import { Field, PageHeader } from "@/components/admin/ui/table";
 import { PricingReviewPanel } from "@/components/admin/products/PricingReviewPanel";
 import { ProductForm } from "@/components/admin/products/ProductForm";
@@ -51,7 +51,7 @@ export default function ProductDetailPage({
     setBusy(true);
     try {
       await products.setStatus(product!.id, status);
-      toast.success(`Product ${status.toLowerCase()}.`);
+      announceSaved(toast, `Product ${status.toLowerCase()}.`);
       reload();
     } catch (caught) {
       // Publishing refuses an incomplete product and says what is missing.
@@ -65,7 +65,7 @@ export default function ProductDetailPage({
     setBusy(true);
     try {
       await products.remove(product!.id);
-      toast.success("Product deleted.");
+      announceSaved(toast, "Product deleted.");
       window.location.href = "/admin/products";
     } catch (caught) {
       // Almost always "it appears on N orders — archive it instead".

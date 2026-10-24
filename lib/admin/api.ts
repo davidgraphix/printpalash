@@ -225,9 +225,69 @@ export async function apiFetch<T>(
     throw new ApiError(response.status, await messageFor(response));
   }
 
+  noteRevalidation(response);
+
   if (response.status === 204) return undefined as T;
 
   return (await response.json()) as T;
+}
+
+/* ------------------------------------------------------------------ *
+ * Whether the public site caught up
+ * ------------------------------------------------------------------ */
+
+/**
+ * The storefront caches what it reads from the API, so after a save the API
+ * tells it to refresh. That call can fail while the save itself succeeded —
+ * the storefront might be mid-deploy, or briefly unreachable.
+ *
+ * The API reports this on the response rather than in the body, because every
+ * write action already has a response shape the admin relies on. So it is read
+ * here, once, for whichever request just completed.
+ *
+ * Held in a module variable rather than returned, so that no call site's
+ * signature changes for something that is not part of the product. It is read
+ * and cleared together: a warning belongs to the save that produced it, and a
+ * leftover value would otherwise surface on an unrelated save later.
+ *
+ * Writes in this admin are sequential — the save button is disabled while a
+ * request is in flight — so there is no interleaving to get wrong. If that ever
+ * stops being true this needs to travel with the response instead.
+ */
+let pendingRevalidationWarning: string | null = null;
+
+const DEFAULT_WARNING =
+  "Saved. The public site could not be refreshed just now, so the change may " +
+  "take up to an hour to appear.";
+
+function noteRevalidation(response: Response): void {
+  const header = response.headers.get("x-storefront-revalidated");
+
+  // Absent means this endpoint does not notify the storefront at all — a read,
+  // or a write that changes nothing public. Not a failure, so nothing is said.
+  if (header === null) return;
+
+  if (header.toLowerCase() === "false") {
+    pendingRevalidationWarning =
+      response.headers.get("x-storefront-revalidation-detail")?.trim() ||
+      DEFAULT_WARNING;
+    return;
+  }
+
+  // An explicit success clears anything left over.
+  pendingRevalidationWarning = null;
+}
+
+/**
+ * The warning for the write that just succeeded, or null.
+ *
+ * Returns it once. Call it immediately after an awaited write, before showing
+ * the success message, so the two can be shown together.
+ */
+export function takeRevalidationWarning(): string | null {
+  const warning = pendingRevalidationWarning;
+  pendingRevalidationWarning = null;
+  return warning;
 }
 
 /**

@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 
 import { FileUpload } from "@/components/admin/FileUpload";
 import { Button, Card, Input } from "@/components/admin/ui/primitives";
-import { useToast } from "@/components/admin/ui/feedback";
+import { announceSaved, useToast } from "@/components/admin/ui/feedback";
 import { ApiError } from "@/lib/admin/api";
 import { move } from "@/lib/admin/arrays";
 import { can } from "@/lib/admin/config";
@@ -173,7 +173,7 @@ export function ProductForm({
           priceTiers: [],
         });
 
-        toast.success(`${created.name} created as a draft.`);
+        announceSaved(toast, `${created.name} created as a draft.`);
         onSaved(created);
         return;
       }
@@ -187,7 +187,7 @@ export function ProductForm({
         saved = await products.updatePricing(product.id, { ...pricing, priceTiers: [] });
       }
 
-      toast.success("Saved.");
+      announceSaved(toast, "Saved.");
       onSaved(saved);
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : "Could not save the product.");

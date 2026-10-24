@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 
 import { Button, Card, Input } from "@/components/admin/ui/primitives";
-import { ConfirmDialog, Modal, useToast } from "@/components/admin/ui/feedback";
+import { announceSaved, ConfirmDialog, Modal, useToast } from "@/components/admin/ui/feedback";
 import { Column, DataTable, PageHeader } from "@/components/admin/ui/table";
 import { ApiError } from "@/lib/admin/api";
 import { can } from "@/lib/admin/config";
@@ -30,7 +30,7 @@ export default function CategoriesPage() {
 
     try {
       await categories.remove(deleting.id);
-      toast.success(`${deleting.name} deleted.`);
+      announceSaved(toast, `${deleting.name} deleted.`);
       setDeleting(null);
       reload();
     } catch (caught) {
@@ -197,7 +197,7 @@ function CategoryForm({
       if (existing) await categories.update(existing.id, body);
       else await categories.create(body);
 
-      toast.success(existing ? "Category updated." : "Category created.");
+      announceSaved(toast, existing ? "Category updated." : "Category created.");
       onSaved();
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : "Could not save.");

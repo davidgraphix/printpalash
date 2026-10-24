@@ -11,13 +11,15 @@ import {
 } from "react";
 import { AlertTriangle, Check, Info, X } from "lucide-react";
 
+import { takeRevalidationWarning } from "@/lib/admin/api";
+
 import { Button, cx } from "./primitives";
 
 /* ================================================================== *
  * Toasts
  * ================================================================== */
 
-type ToastTone = "success" | "error" | "info";
+type ToastTone = "success" | "error" | "warning" | "info";
 
 interface Toast {
   id: number;
@@ -28,6 +30,8 @@ interface Toast {
 interface ToastApi {
   success: (message: string) => void;
   error: (message: string) => void;
+  /** Something worked, with a caveat the person needs to act on or expect. */
+  warning: (message: string) => void;
   info: (message: string) => void;
 }
 
@@ -63,6 +67,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     () => ({
       success: (message) => push("success", message),
       error: (message) => push("error", message),
+      warning: (message) => push("warning", message),
       info: (message) => push("info", message),
     }),
     [push],
@@ -78,16 +83,29 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       >
         {toasts.map((toast) => {
           const Icon =
-            toast.tone === "success" ? Check : toast.tone === "error" ? AlertTriangle : Info;
+            toast.tone === "success"
+              ? Check
+              : toast.tone === "error" || toast.tone === "warning"
+                ? AlertTriangle
+                : Info;
 
           return (
             <div
               key={toast.id}
-              role={toast.tone === "error" ? "alert" : "status"}
+              // A warning is announced like an error: it carries something
+              // the person has to know, and "status" is often not announced
+              // until the screen reader is idle.
+              role={
+                toast.tone === "error" || toast.tone === "warning"
+                  ? "alert"
+                  : "status"
+              }
               className={cx(
                 "pointer-events-auto flex w-full max-w-sm items-start gap-2.5 rounded-lg border px-3.5 py-2.5 shadow-lg",
                 toast.tone === "success" && "border-green-200 bg-green-50 text-green-900",
                 toast.tone === "error" && "border-red-200 bg-red-50 text-red-900",
+                toast.tone === "warning" &&
+                  "border-amber-200 bg-amber-50 text-amber-900",
                 toast.tone === "info" && "border-gray-200 bg-white text-gray-900",
               )}
             >
@@ -296,4 +314,28 @@ export function ConfirmDialog({
       <p className="text-sm text-gray-700">{message}</p>
     </Modal>
   );
+}
+
+/**
+ * Confirms a catalogue write, and adds the caveat when the public site has not
+ * caught up yet.
+ *
+ * The API tells us on the response whether it managed to refresh the
+ * storefront's cache. When it did not, the save still happened — so the
+ * confirmation is shown as usual, followed by a warning saying the change is
+ * saved but may take up to an hour to appear publicly.
+ *
+ * Both, in that order, rather than one combined message. The person needs to
+ * know the save worked, which is the thing they were waiting for; the delay is
+ * a separate fact about the public site, and conflating the two is how "saved"
+ * starts reading as "maybe saved".
+ *
+ * Call it immediately after an awaited write. The warning belongs to the
+ * request that just finished and is consumed when read.
+ */
+export function announceSaved(toast: ToastApi, message: string): void {
+  toast.success(message);
+
+  const warning = takeRevalidationWarning();
+  if (warning) toast.warning(warning);
 }
