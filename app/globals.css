@@ -84,9 +84,55 @@
   animation-play-state: paused;
 }
 
+/*
+ * The floating WhatsApp button, nudged.
+ *
+ * Still for most of the cycle, then one small settle-and-stop. A button that
+ * bounces continuously reads as an advert and gets ignored; one that moves
+ * briefly and then sits still draws the eye without competing with the page.
+ *
+ * Only transform is animated, so this runs on the compositor and never lays
+ * the page out again. The button is position: fixed, so the translate cannot
+ * shift content or create a scrollbar either.
+ */
+@keyframes whatsapp-nudge {
+  0%,
+  82%,
+  100% {
+    transform: translateY(0);
+  }
+  86% {
+    transform: translateY(-6px);
+  }
+  90% {
+    transform: translateY(0);
+  }
+  94% {
+    transform: translateY(-3px);
+  }
+  97% {
+    transform: translateY(0);
+  }
+}
+
+.animate-whatsapp-nudge {
+  animation: whatsapp-nudge 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/*
+ * Held still while somebody is aiming at it. A moving target is harder to hit,
+ * and this is the one element on the page whose whole job is to be clicked.
+ */
+.animate-whatsapp-nudge:hover,
+.animate-whatsapp-nudge:focus-visible {
+  animation-play-state: paused;
+}
+
 /* Respect users who have asked the OS to reduce motion. */
 @media (prefers-reduced-motion: reduce) {
-  .animate-trusted-brand-marquee {
+  .animate-trusted-brand-marquee,
+  .animate-whatsapp-nudge {
     animation: none;
   }
 
