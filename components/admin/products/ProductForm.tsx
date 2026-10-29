@@ -184,7 +184,20 @@ export function ProductForm({
       // made when the figures actually moved, so an edit by a Super Admin who
       // did not touch the price writes no pricing audit entry.
       if (mayPrice && pricingChanged(product, pricing)) {
-        saved = await products.updatePricing(product.id, { ...pricing, priceTiers: [] });
+        /*
+         * priceTiers is deliberately omitted, not sent empty.
+         *
+         * This form edits the base price and its batch basis; it has no volume
+         * tier editor at all. It used to send `priceTiers: []`, and the server
+         * treats a present-but-empty list as "replace the tiers with nothing" —
+         * so editing a price by one naira silently deleted every volume
+         * discount the product had, with no warning and nothing in the form to
+         * suggest tiers were even in scope.
+         *
+         * Omitting the field leaves them exactly as they were. A real tier
+         * editor can send the field when one exists.
+         */
+        saved = await products.updatePricing(product.id, pricing);
       }
 
       announceSaved(toast, "Saved.");

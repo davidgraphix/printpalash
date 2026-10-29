@@ -6,6 +6,36 @@ const DAY = 86_400;
 
 const nextConfig: NextConfig = {
   images: {
+    /**
+     * Where an image may be loaded from.
+     *
+     * Next refuses to optimise any host that is not listed here, answering the
+     * optimiser with 400 INVALID_IMAGE_OPTIMIZE_REQUEST and leaving a blank
+     * space on the page. Nothing is logged in the browser console that names
+     * the cause, so it reads as "the image did not upload".
+     *
+     * That is exactly what happened: product images uploaded through the admin
+     * land on Cloudinary and are served from res.cloudinary.com, while the
+     * original catalogue used local /product-images paths that need no entry at
+     * all. So the omission stayed invisible until the first image was uploaded
+     * rather than shipped with the repository.
+     *
+     * Scoped to this account's own upload path rather than the whole of
+     * res.cloudinary.com. The optimiser fetches whatever it is pointed at, so a
+     * wildcard host would let anyone use this site to resize images from any
+     * Cloudinary account, at our bandwidth and our bill.
+     */
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        // "upload" is the public delivery type. Artwork and payment receipts
+        // are stored as "authenticated" and are deliberately not matched here:
+        // they are customer property and have no business on a public page.
+        pathname: "/secjaphs/image/upload/**",
+      },
+    ],
+
     formats: ["image/avif", "image/webp"],
     // Matches the breakpoints the product grids actually request, so Next
     // stops generating sizes nothing asks for.

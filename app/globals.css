@@ -96,27 +96,46 @@
  * shift content or create a scrollbar either.
  */
 @keyframes whatsapp-nudge {
+  /*
+   * One hop, then two decreasing settles, then rest.
+   *
+   * The first version lifted six pixels and was honestly reported as too
+   * subtle to notice. This lifts fourteen and lands in stages — 14, then 7,
+   * then 3 — which is roughly how a dropped object behaves, and the reason it
+   * reads as a bounce rather than a twitch.
+   *
+   * Motion occupies the last third of the cycle. The long still stretch is
+   * what keeps it from becoming an advert: a button hopping continuously is
+   * tuned out within seconds, while one that moves, stops, and moves again a
+   * few seconds later keeps catching the eye.
+   */
   0%,
-  82%,
+  68%,
   100% {
     transform: translateY(0);
   }
-  86% {
-    transform: translateY(-6px);
+  75% {
+    transform: translateY(-14px);
   }
-  90% {
+  82% {
     transform: translateY(0);
   }
-  94% {
+  87% {
+    transform: translateY(-7px);
+  }
+  92% {
+    transform: translateY(0);
+  }
+  96% {
     transform: translateY(-3px);
   }
-  97% {
+  99% {
     transform: translateY(0);
   }
 }
 
 .animate-whatsapp-nudge {
-  animation: whatsapp-nudge 4.5s ease-in-out infinite;
+  animation: whatsapp-nudge 3.6s ease-in-out infinite;
   will-change: transform;
 }
 

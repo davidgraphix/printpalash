@@ -62,9 +62,11 @@ test("it animates transform and nothing else", () => {
   }
 });
 
-test("the movement is small", () => {
-  // A button that travels far reads as an advert. Every offset stays inside
-  // single figures, which also keeps it clear of its own drop shadow.
+test("the movement is noticeable but restrained", () => {
+  // The first version lifted six pixels and was reported as too subtle to
+  // notice, so the floor below is the real point of this test. The ceiling
+  // still matters: past about twenty pixels the button reads as an advert, and
+  // on a phone it travels far enough to look detached from its corner.
   const frames = block("@keyframes whatsapp-nudge");
   const offsets = [...frames.matchAll(/translateY\((-?\d+(?:\.\d+)?)px\)/g)]
     .map((m) => Math.abs(Number(m[1])));
@@ -72,8 +74,25 @@ test("the movement is small", () => {
   assert.ok(offsets.length > 0, "no translateY offsets found");
 
   for (const offset of offsets) {
-    assert.ok(offset <= 8, `translateY(${offset}px) is further than a nudge`);
+    assert.ok(offset <= 20, `translateY(${offset}px) is further than a bounce`);
   }
+
+  assert.ok(
+    Math.max(...offsets) >= 10,
+    `the largest lift is ${Math.max(...offsets)}px, which reads as a twitch rather than a bounce`,
+  );
+});
+
+test("it settles in stages rather than stopping dead", () => {
+  // A single hop back to rest looks mechanical. Decreasing lifts are what make
+  // it read as something landing.
+  const frames = block("@keyframes whatsapp-nudge");
+  const lifts = [...new Set(
+    [...frames.matchAll(/translateY\(-(\d+(?:\.\d+)?)px\)/g)].map((m) => Number(m[1])),
+  )];
+
+  assert.ok(lifts.length >= 2, "expected a lift and at least one smaller settle");
+  assert.ok(Math.min(...lifts) < Math.max(...lifts), "every lift is the same height");
 });
 
 test("it returns to rest", () => {
